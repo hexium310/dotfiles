@@ -1,0 +1,157 @@
+#export LANG=ja_JP.UTF-8 # 文字コードをUTF-8に設定
+#export KCODE=u          # KCODEにUTF-8を設定
+
+#source $ZPLUG_HOME/init.zsh
+
+#KEYTIMEOUT=1
+
+#setopt no_beep            # ビープ音を鳴らさないようにする
+#setopt auto_cd            # ディレクトリ名の入力でcdする
+#setopt auto_pushd         # cd したら自動的にpushdする
+#setopt pushd_ignore_dups  # 重複したディレクトリを追加しない
+#setopt correct            # コマンドのスペルを訂正する
+#setopt magic_equal_subst  # =以降も補完する(--prefix=/usrなど)
+#setopt prompt_subst       # プロンプト定義内で変数置換やコマンド置換を扱う
+#setopt notify             # バックグラウンドジョブの状態変化を即時報告する
+#setopt equals             # =commandを`which command`と同じ処理にする
+#setopt print_eight_bit    # 出力時8ビットを通す
+
+bindkey '^R' history-incremental-pattern-search-backward  # ^R で履歴検索をするときに * でワイルドカードを使用出来るようにする
+
+bindkey '[D' backward-word
+bindkey '[C' forward-word
+
+### Completement ###
+fpath=(/usr/local/share/zsh-completions $fpath)     # zsh-completions
+#autoload -Uz compinit; compinit # 補完を有効にする
+#setopt auto_list                # 補完候補を一覧で表示する(d)
+#setopt auto_menu                # 補完キー連打で補完候補を順に表示する(d)
+#setopt list_packed              # 補完候補をできるだけ詰めて表示する
+#setopt list_types                                   # 補完候補にファイルの種類も表示する
+#setopt globdots
+bindkey "^[[Z" reverse-menu-complete                # Shift-Tabで補完候補を逆順する("\e[Z"でも動作する)
+#zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小文字を区別しない
+#zstyle ':completion:*' ignore-parents parent pwd .. # ../ の後は今いるディレクトリを補完しない
+#zstyle ':completion:*:default' menu select=1
+#zstyle ':completion:*' list-colors "${LS_COLORS}"   # 補完でカラーを使用
+#zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin # コマンドにsudoを付けても補完
+
+### Glob ###
+#setopt extended_glob  # グロブ機能を拡張する
+#unsetopt caseglob     # ファイルグロブで大文字小文字を区別しない
+
+### History ###
+HISTFILE=~/.zsh_history   # 保存先
+SAVEHIST=100000           # 保存する履歴の数
+HISTSIZE=100000           # メモリに展開する履歴の数
+#setopt extended_history   # 実行時間も保存する
+#setopt hist_ignore_dups   # 直前と同じコマンドは追加しない
+#setopt hist_ignore_space  # スペースから始まるコマンド行はヒストリに残さない
+#setopt share_history      # 他のシェルのヒストリをリアルタイムで共有する
+#setopt hist_reduce_blanks # 余分なスペースを削除して保存する
+
+# マッチしたコマンドのヒストリを表示できるようにする
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end  # ↑
+bindkey "^[[B" history-beginning-search-forward-end   # ↓
+bindkey "^P" history-beginning-search-backward-end    # CTRL-P
+bindkey "^N" history-beginning-search-forward-end     # CTRL-N
+
+### Word ###
+# 単語の区切り文字を指定
+autoload -Uz select-word-style
+select-word-style default
+zstyle ':zle:*' word-chars " /=;@:{},|"
+zstyle ':zle:*' word-style unspecified
+
+### LS Color ###
+# 色の設定
+export LSCOLORS=Exfxcxdxbxegedabagacad
+# 補完時の色の設定
+export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export ZLS_COLORS=$LS_COLORS
+export CLICOLOR=true  # lsコマンド時自動で色を付ける
+
+# ### Prompt ###
+# autoload -U colors; colors  # プロンプトに色をつける
+# autoload -Uz vcs_info
+# autoload -Uz add-zsh-hook
+# PROMPT="%{${fg_bold[green]}%}%n@%m %{${fg_bold[blue]}%}%~ $%{${reset_color}%} " # プロンプトの表示
+# zstyle ':vcs_info:git:*' check-for-changes true
+# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+# zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+# zstyle ':vcs_info:git:*' untrackedstr "%F{green}?"
+# zstyle ':vcs_info:*' formats " (%b)" "%c%u"
+# zstyle ':vcs_info:*' actionformats " (%b|%a)" "%c%u"
+# precmd () {
+#   vcs_info
+# }
+# function _update_vcs_info_msg() {
+#   # git時
+#   PROMPT="%{${fg_bold[green]}%}%n@%m %{${fg_bold[blue]}%}%~%F{blue}${vcs_info_msg_1_}${vcs_info_msg_0_}%{${fg_bold[blue]}%} $%{${reset_color}%} "
+# }
+# add-zsh-hook precmd _update_vcs_info_msg
+
+
+
+
+### Alias ###
+alias ls='ls -F'
+alias la='ls -a'
+alias ll='ls -l'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias sudo='sudo '  # sudo の後のコマンドでエイリアスを有効にする
+alias vim='nvim'
+alias fig="docker-compose"
+alias python='python3'
+#alias rmds="rm -v ~/**/.DS_Store"
+
+# Fuck typo
+alias brwe='brew'
+
+# ### nodenv ###
+# export PATH="$HOME/.nodenv/bin:$PATH"
+# eval "$(nodenv init -)"
+
+### cargo ###
+# export PATH="$HOME/.cargo/bin:$PATH"
+
+### rust ###
+#source ~/.cargo/env
+
+### composer ###
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+### yarn ###
+export PATH="$PATH:/opt/yarn-[version]/bin"
+
+# ### rbenv ###
+# eval "$(rbenv init -)"
+
+# added by travis gem
+[ -f /Users/hexin/.travis/travis.sh ] && source /Users/hexin/.travis/travis.sh
+
+### Go ###
+export GOPATH=$HOME/go
+
+
+# MacPorts Installer addition on 2014-09-25_at_18:39:26: adding an appropriate PATH variable for use with MacPorts.
+#export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+#export MANPATH="/opt/local/man:$MANPATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+export PATH="$HOME/Repositories/2vg/mofuw/nim/bin:$PATH"
+export C_INCLUDE_PATH=/usr/local/include
+
+function replace-githooks() {
+  if [ -e .git/hooks ]; then
+    rm -rf .git/hooks
+    ln -s ~/.config/git/.githooks .git/hooks
+  fi
+}
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+

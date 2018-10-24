@@ -1,0 +1,26 @@
+#!/bin/zsh
+local dir=$(cd $(dirname $0) && pwd)
+
+echo '[dotfiles] Install hexium310/dotfiles.'
+
+[[ -L $HOME/.zshenv ]] && unlink $HOME/.zshenv
+if [[ -e $HOME/.zshenv ]]; then
+    echo "[dotfiles] $HOME/.zshenv exists."
+else
+    ln -s $dir/config/zsh/.zshenv $HOME
+    source ~/.zshenv
+fi
+
+[[ -L $ZDOTDIR ]] && unlink $ZDOTDIR
+if [[ -e $ZDOTDIR ]]; then
+    echo "[dotfiles] $ZDOTDIR exists."
+else
+    ln -s $dir/config/zsh/ $ZDOTDIR
+fi
+
+if [[ ! -d $ZPLUG_HOME ]]; then
+    echo '[dotfiles] Installing zplug/zplug.'
+    git clone --depth=1 https://github.com/zplug/zplug.git $ZPGLU_HOME
+fi
+
+echo '[dotfiles] Done.'

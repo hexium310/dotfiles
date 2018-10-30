@@ -1,0 +1,46 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:lightline = {
+  \  'colorscheme': 'one',
+  \}
+  "let s:palette = g:lightline.colorscheme.{g:lightline.colorscheme}.palette.tabline.left[0][0] = '#bbbbbb'
+'''
+
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+hook_add = '''
+  let g:clever_f_smart_case = 1
+  let g:clever_f_use_migemo = 1
+  let g:clever_f_fix_key_direction = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+  let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'tpope/vim-surround'

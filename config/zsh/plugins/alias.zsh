@@ -26,3 +26,13 @@ if [[ `uname` = 'Darwin' ]]; then
 elif [[ `uname` = 'Linux' ]]; then
     alias ls='ls -F --color=always'
 fi
+
+# Display the files (*.php or *.js) which end with the duplicate new lines under the current directory.
+check-file-end() {
+    find . -type d \( -name 'node_modules' -o -name 'vendor' \) -prune -o -type f \( -name '*.js' -o -name '*.php' \) -print | while read a; do
+        start=$(expr $(wc -c < $a) - 2)
+        [[ $start -lt 0 ]] && continue
+        new_line=$(hexdump -s $start $a | cut -c 9-13)
+        [[ $new_line = '0a 0a' ]] && echo $a
+    done
+}

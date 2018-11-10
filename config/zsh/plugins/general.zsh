@@ -12,6 +12,7 @@ setopt correct
 setopt magic_equal_subst
 setopt hist_ignore_dups
 setopt hist_reduce_blanks
+setopt share_history
 setopt extended_history
 setopt auto_resume
 setopt ignore_eof

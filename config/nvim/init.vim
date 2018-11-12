@@ -27,12 +27,11 @@ if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
 
 " Add or remove your plugins here:
-  let s:toml = '~/.config/nvim/plugins/dein.toml'
-  call dein#load_toml(s:toml, {'lazy': 0})
-  call dein#load_toml('~/.config/nvim/plugins/dein-lazy.toml', {'lazy': 1})
-  call dein#load_toml('~/.config/nvim/plugins/lang/php.toml', {'lazy': 1})
-  call dein#load_toml('~/.config/nvim/plugins/lang/javascript.toml', {'lazy': 1})
-  call dein#load_toml('~/.config/nvim/plugins/lang/html.toml', {'lazy': 1})
+  call dein#load_toml('$XDG_CONFIG_HOME/nvim/plugins/dein.toml', {'lazy': 0})
+  call dein#load_toml('$XDG_CONFIG_HOME/nvim/plugins/dein-lazy.toml')
+  for file in glob('$XDG_CONFIG_HOME/nvim/plugins/lang/*.toml', 1, 1)
+    call dein#load_toml(file)
+  endfor
 
   " You can specify revision/branch/tag.
   call dein#add('Shougo/deol.nvim', { 'rev': 'a1b5108fd' })

@@ -28,9 +28,9 @@ if dein#load_state('~/.cache/dein')
 
 " Add or remove your plugins here:
   call dein#load_toml('$XDG_CONFIG_HOME/nvim/plugins/dein.toml', {'lazy': 0})
-  call dein#load_toml('$XDG_CONFIG_HOME/nvim/plugins/dein-lazy.toml')
+  call dein#load_toml('$XDG_CONFIG_HOME/nvim/plugins/dein-lazy.toml', {'lazy': 1})
   for file in glob('$XDG_CONFIG_HOME/nvim/plugins/lang/*.toml', 1, 1)
-    call dein#load_toml(file)
+    call dein#load_toml(file, {'lazy': 1})
   endfor
 
   " You can specify revision/branch/tag.

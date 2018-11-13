@@ -44,3 +44,7 @@ repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'

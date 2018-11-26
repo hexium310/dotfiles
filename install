@@ -23,4 +23,11 @@ if [[ ! -d $ZPLUG_HOME ]]; then
     git clone --depth=1 https://github.com/zplug/zplug.git $ZPLUG_HOME
 fi
 
+[[ -L $XDG_CONFIG_PATH/git ]] && unlink $XDG_CONFIG_PATH/git
+if [[ -e $XDG_CONFIG_PATH/git ]]; then
+  echo "[dotfiles] $XDG_CONFIG_PATH/git exists."
+else
+  ln -s $dir/config/git/ $XDG_CONFIG_PATH/git
+fi
+
 echo '[dotfiles] Done.'

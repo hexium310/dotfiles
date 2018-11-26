@@ -1,1 +1,8 @@
+### macOS ###
+.DS_Store
+
+### IDE, Editor ###
 .idea/
+
+### Node ###
+yarn-error.log

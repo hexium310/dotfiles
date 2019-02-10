@@ -14,5 +14,5 @@ hook_add = '''
 repo = 'pangloss/vim-javascript'
 
 [[plugins]]
-repo = 'MaxMEllon/vim-jsx-pretty'
+repo = 'maxmellon/vim-jsx-pretty'
 

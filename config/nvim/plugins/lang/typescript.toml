@@ -1,6 +1,3 @@
-# [[plugins]]
-# repo = 'leafgarland/typescript-vim'
-
-# [[plugins]]
-# repo = 'Quramy/tsuquyomi'
-# on_ft = ['typescript']
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+on_ft = ['typescript']

@@ -36,7 +36,8 @@ if isdirectory(s:dein_core_dir)
   endif
 endif
 
-filetype plugin indent on
+runtime! userautoload/*.vim
+
 "syntax enable
 syntax on
 
@@ -52,38 +53,6 @@ hi StatusLine guifg=#000000 guibg=#98C379
 hi CursorLineNr term=bold cterm=NONE ctermfg=7 ctermbg=8
 hi clear CursorLine
 
-" General
-language en_US.UTF-8
-set encoding=utf-8
-scriptencoding utf-8
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set autoindent
-set smartindent
-set backspace=indent,eol,start
-set whichwrap=b,s,h,l,<,>,[,],~
-set hidden
-"set clipboard+=unnamedplus
-
-" Search
-set hlsearch
-set ignorecase
-set smartcase
-set incsearch
-set inccommand=split
-let v:hlsearch = 0
-
-" Display
-set number
-set numberwidth=5
-set showtabline=2
-set nowrap
-set pumheight=10
-set ambiwidth=double
-set lazyredraw
-set cursorline
-set noshowmode
 
 " Mapping
 inoremap <silent> jj <ESC>

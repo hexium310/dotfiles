@@ -4,7 +4,7 @@
 if (empty($TMUX))
   if (has("nvim"))
     "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -14,43 +14,33 @@ if (empty($TMUX))
   endif
 endif
 
-"dein Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
+let s:dein_dir = expand('$XDG_CACHE_HOME/dein')
+let s:dein_core_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+if isdirectory(s:dein_core_dir)
+  let &runtimepath .= ',' . s:dein_core_dir
+
+  if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
+
+    for file in glob('$XDG_CONFIG_HOME/nvim/plugins/**/*.toml', 1, 1)
+      call dein#load_toml(file)
+    endfor
+
+    if dein#check_install()
+      call dein#install()
+    endif
+
+    call dein#end()
+    call dein#save_state()
+  endif
 endif
 
-" Required:
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
-" Required:
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-
-" Add or remove your plugins here:
-  call dein#load_toml('$XDG_CONFIG_HOME/nvim/plugins/dein.toml', {'lazy': 0})
-  call dein#load_toml('$XDG_CONFIG_HOME/nvim/plugins/dein-lazy.toml', {'lazy': 1})
-  for file in glob('$XDG_CONFIG_HOME/nvim/plugins/lang/*.toml', 1, 1)
-    call dein#load_toml(file, {'lazy': 1})
-  endfor
-
-  " You can specify revision/branch/tag.
-  call dein#add('Shougo/deol.nvim', { 'rev': 'a1b5108fd' })
-
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
-
-" Required:
 filetype plugin indent on
 "syntax enable
 syntax on
 
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
+  " If you want to install not installed plugins on startup.
 "End dein Scripts-------------------------
 
 " Color

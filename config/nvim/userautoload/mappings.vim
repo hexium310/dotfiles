@@ -8,6 +8,10 @@ nnoremap <silent> tp :tabprevious<Cr>
 nnoremap + <C-a>
 nnoremap - <C-x>
 vnoremap v $h
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)

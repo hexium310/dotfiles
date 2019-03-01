@@ -16,3 +16,6 @@ repo = 'pangloss/vim-javascript'
 [[plugins]]
 repo = 'maxmellon/vim-jsx-pretty'
 
+[[plugins]]
+repo = 'styled-components/vim-styled-components'
+on_ft = ['typescript', 'typescript.tsx']

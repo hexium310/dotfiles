@@ -21,10 +21,3 @@ if isdirectory(s:dein_core_dir)
 endif
 
 runtime! userautoload/*.vim
-
-" lightline
-" tomlに書くと死ぬ
-let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
-let s:palette.tabline.left[0][0] = '#bbbbbb'
-
-let g:gista#client#default_username = 'hexium310'

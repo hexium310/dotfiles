@@ -20,9 +20,37 @@ repo = 'editorconfig/editorconfig-vim'
 repo = 'itchyny/lightline.vim'
 hook_add = '''
   let g:lightline = {
-  \  'colorscheme': 'one',
-  \}
-  "let s:palette = g:lightline.colorscheme.{g:lightline.colorscheme}.palette.tabline.left[0][0] = '#bbbbbb'
+        \  'colorscheme': 'onedark',
+        \  'subseparator': {
+        \    'left': '>',
+        \  },
+        \  'active': {
+        \    'left': [
+        \      ['mode', 'paste'],
+        \      ['readonly', 'filename', 'modified', 'dir'],
+        \      ['anzu']
+        \    ],
+        \    'right': [
+        \      ['lineinfo', 'rows'],
+        \      ['fileformat', 'fileencoding', 'filetype'],
+        \    ],
+        \  },
+        \  'tabline': {
+        \    'right': [],
+        \  },
+        \  'component': {
+        \    'dir': '%.25(%{expand("%:h:s?\\S$?\\0/?")}%)',
+        \    'rows': '%LL',
+        \  },
+        \  'component_function': {
+        \    'readonly': 'Readonly',
+        \    'anzu': 'anzu#search_status',
+        \  },
+        \}
+
+  function! Readonly()
+    return &readonly || &filetype == 'help' ? '👀' : ''
+  endfunction
 '''
 
 [[plugins]]
@@ -38,13 +66,120 @@ repo = 'Shougo/deoplete.nvim'
 hook_add = '''
   let g:deoplete#enable_at_startup = 1
 '''
+if = 'has("nivm") && has("python3")'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]
-repo = 'tpope/vim-surround'
-
-[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+
+[[plugins]]
+repo = 'lambdalisue/vim-gista'
+
+[[plugins]]
+repo = 'justinmk/vim-dirvish'
+hook_add = '''
+  nnoremap <silent> <Space>e :Dirvish<CR>
+  nnoremap <silent> <Space>r :Dirvish %<CR>
+'''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'php', 'css', 'javascript', 'typescript']
+hook_add = '''
+  let g:user_emmet_settings = {
+        \  'javascript': {
+        \    'extends': 'jsx',
+        \  },
+        \  'typescript': {
+        \    'extends': 'tsx',
+        \  },
+        \  'variables': {
+        \    'lang': 'ja',
+        \  },
+        \}
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+hook_add = '''
+  nmap <silent> <Esc><Esc> <Plug>(anzu-clear-search-status):nohlsearch<Cr>
+  nmap n <Plug>(anzu-n)zz
+  nmap N <Plug>(anzu-N)zz
+  nmap * <Plug>(anzu-star)zz
+  nmap # <Plug>(anzu-sharp)zz
+
+  augroup vim-anzu
+    autocmd!
+    autocmd WinLeave, TabLeave * call anzu#clear_search_status()
+  augroup END
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-jplus'
+hook_add = '''
+  nmap J <Plug>(jplus)
+  vmap J <Plug>(jplus)
+  nmap <Space>J <Plug>(jplus-getchar)
+  vmap <Space>J <Plug>(jplus-getchar)
+'''
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+
+[[plugins]]
+repo = 'rhysd/vim-operator-surround'
+hook_add = '''
+  nmap <silent>sa <Plug>(operator-surround-append)
+  nmap <silent>sd <Plug>(operator-surround-delete)
+  nmap <silent>sr <Plug>(operator-surround-replace)
+'''
+
+[[plugins]]
+repo = 'haya14busa/vim-operator-flashy'
+hook_add = '''
+  map y <Plug>(operator-flashy)
+'''
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'rhysd/vim-textobj-anyblock'
+hook_add = '''
+  nmap R <Plug>(operator-replace)
+'''
+
+[[plugins]]
+repo = 'kana/vim-textobj-indent'
+
+[[plugins]]
+repo = 'kana/vim-textobj-line'
+
+[[plugins]]
+repo = 'sgur/vim-textobj-parameter'
+
+[[plugins]]
+repo = 'Julian/vim-textobj-variable-segment'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = '''
+  let g:caw_operator_keymappings = 1
+  nmap <Space>c <Plug>(caw:prefix)
+  vmap <Space>c <Plug>(caw:prefix)
+'''

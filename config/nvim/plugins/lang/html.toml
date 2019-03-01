@@ -1,3 +1,0 @@
-[[plugins]]
-repo = 'mattn/emmet-vim'
-on_ft = ['html', 'php', 'css', 'javascript', 'javascript.jsx']

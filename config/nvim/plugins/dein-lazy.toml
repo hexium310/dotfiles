@@ -1,3 +1,0 @@
-[[plugins]]
-repo = 'lambdalisue/vim-gista'
-on_cmd = 'Gista'

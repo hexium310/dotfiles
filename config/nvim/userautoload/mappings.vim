@@ -1,4 +1,3 @@
-nnoremap <silent> <Esc><Esc> :nohlsearch<Cr>
 nnoremap <S-Left> ^
 nnoremap <S-Right> $
 nnoremap <silent> tc :tablast <bar> tabnew<Cr>

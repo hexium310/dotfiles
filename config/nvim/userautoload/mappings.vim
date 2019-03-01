@@ -11,6 +11,14 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <Space>y "+y
+vnoremap <Space>y "+y
+nnoremap <Space>d "+d
+vnoremap <Space>d "+d
+nnoremap <Space>p "+p
+vnoremap <Space>p "+p
+nnoremap <Space>P "+P
+vnoremap <Space>P "+P
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)

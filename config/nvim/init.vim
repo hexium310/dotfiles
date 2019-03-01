@@ -38,48 +38,9 @@ endif
 
 runtime! userautoload/*.vim
 
-
-" Mapping
-inoremap <silent> jj <ESC>
-nnoremap <silent> Y y$
-nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
-nnoremap <silent> <CR> o<ESC>
-nnoremap <silent> ✠ O<ESC>
-nnoremap <silent> <Space> jzz
-nnoremap <silent> <Space> kzz
-nnoremap <silent> <S-Left> ^
-nnoremap <silent> <S-Right> $
-nnoremap <silent> tc :tablast <bar> tabnew<CR>
-nnoremap <silent> tx :tabclose<CR>
-nnoremap <silent> tn :tabnext<CR>
-nnoremap <silent> tp :tabprevious<CR>
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-inoremap <silent> <C-f> <ESC>:call ExitBrackets()<CR>
-
 " lightline
 " tomlに書くと死ぬ
 let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
 let s:palette.tabline.left[0][0] = '#bbbbbb'
-
-
-function ExitBrackets()
-    normal %
-    let currentChar = getline('.')[col('.') - 1]
-    if !(currentChar == '(' || currentChar == '[' || currentChar == '{')
-        normal %
-    endif
-
-    while currentChar == '(' || currentChar == '[' || currentChar == '{'
-        normal h
-        let currentChar = getline('.')[col('.') - 1]
-    endwhile
-    normal l%
-    startinsert
-    call cursor(line('.'), col('.') + 1)
-endfunction
 
 let g:gista#client#default_username = 'hexium310'

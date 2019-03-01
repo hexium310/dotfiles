@@ -1,5 +1,6 @@
 syntax on
 
+set termguicolors
 colorscheme onedark
 hi Normal guibg=NONE
 hi Comment cterm=italic gui=italic guifg=#aaaaaa

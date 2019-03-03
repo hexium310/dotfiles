@@ -15,12 +15,6 @@ repo = 'itchyny/lightline.vim'
 hook_add = '''
   let g:lightline = {
         \  'colorscheme': 'onedark',
-        \  'subseparator': {
-        \    'left': '>',
-        \  },
-        \  'tabline_subseparator': {
-        \    'left': '|',
-        \  },
         \  'active': {
         \    'left': [
         \      ['mode', 'paste'],
@@ -29,14 +23,14 @@ hook_add = '''
         \    ],
         \    'right': [
         \      ['lineinfo', 'rows'],
-        \      ['fileformat', 'fileencoding', 'filetype'],
+        \      ['fileencoding', 'filetype'],
         \    ],
         \  },
         \  'tabline': {
         \    'right': [],
         \  },
         \  'component': {
-        \    'dir': '%.25(%{expand("%:h:s?\\S$?\\0/?")}%)',
+        \    'dir': '%.35(%{expand("%:h:s?\\S$?\\0/?")}%)',
         \    'rows': '%LL',
         \  },
         \  'component_function': {
@@ -63,7 +57,6 @@ repo = 'Shougo/deoplete.nvim'
 hook_add = '''
   let g:deoplete#enable_at_startup = 1
 '''
-if = 'has("nivm") && has("python3")'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'

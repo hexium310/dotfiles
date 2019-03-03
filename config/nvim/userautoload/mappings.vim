@@ -19,9 +19,6 @@ nnoremap <Space>p "+p
 vnoremap <Space>p "+p
 nnoremap <Space>P "+P
 vnoremap <Space>P "+P
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 nnoremap <F1> <Nop>
 inoremap <F1> <Nop>

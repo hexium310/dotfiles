@@ -18,6 +18,9 @@ hook_add = '''
         \  'subseparator': {
         \    'left': '>',
         \  },
+        \  'tabline_subseparator': {
+        \    'left': '|',
+        \  },
         \  'active': {
         \    'left': [
         \      ['mode', 'paste'],

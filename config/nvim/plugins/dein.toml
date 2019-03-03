@@ -1,8 +1,8 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]]
-repo = 'sheerun/vim-polyglot'
+# [[plugins]]
+# repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
 repo = 'joshdick/onedark.vim'
@@ -19,7 +19,8 @@ hook_add = '''
         \    'left': [
         \      ['mode', 'paste'],
         \      ['readonly', 'filename', 'modified', 'dir'],
-        \      ['anzu']
+        \      ['sign'],
+        \      ['anzu'],
         \    ],
         \    'right': [
         \      ['lineinfo', 'rows'],
@@ -37,11 +38,25 @@ hook_add = '''
         \    'readonly': 'Readonly',
         \    'anzu': 'anzu#search_status',
         \  },
+        \  'component_expand': {
+        \    'sign': 'Sign',
+        \  },
+        \  'component_type': {
+        \    'sign': 'error',
+        \  },
         \}
 
   function! Readonly()
     return &readonly || &filetype == 'help' ? '👀' : ''
   endfunction
+
+  function! Sign()
+    let count = len(getloclist(0))
+    return count == 0 ? '' : '✖ ' . count
+  endfunction
+
+  let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
+  let s:palette.normal.error = [['#ebcb8b', '#bf616a', '07', '01']]
 '''
 
 [[plugins]]

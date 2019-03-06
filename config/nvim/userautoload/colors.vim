@@ -2,9 +2,9 @@ syntax on
 
 set termguicolors
 colorscheme onedark
-hi Normal guibg=NONE
-hi Comment cterm=italic gui=italic guifg=#aaaaaa
-hi LineNr guifg=#000000 guibg=#8f8f8f
-hi StatusLine guifg=#000000 guibg=#98C379
-hi CursorLineNr term=bold cterm=NONE ctermfg=7 ctermbg=8
-hi clear CursorLine
+highlight Normal guibg=NONE
+highlight Comment cterm=italic gui=italic guifg=#aaaaaa
+highlight LineNr guifg=#000000 guibg=#8f8f8f
+highlight StatusLine guifg=#000000 guibg=#98C379
+highlight CursorLineNr term=bold cterm=NONE ctermfg=7 ctermbg=8
+highlight clear CursorLine

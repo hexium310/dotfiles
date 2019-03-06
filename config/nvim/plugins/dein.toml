@@ -87,6 +87,9 @@ build = 'make'
 
 [[plugins]]
 repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+  let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git)$'
+'''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

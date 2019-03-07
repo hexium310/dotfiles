@@ -89,6 +89,7 @@ build = 'make'
 repo = 'ctrlpvim/ctrlp.vim'
 hook_add = '''
   let g:ctrlp_custom_ignore = '\v[\/](node_modules|\.git)$'
+  let g:ctrlp_show_hidden = 1
 '''
 
 [[plugins]]

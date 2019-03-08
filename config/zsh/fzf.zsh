@@ -4,7 +4,7 @@ fzf-edit-file() {
     local file=$(find -E . -mindepth 1 \( -type f -o -type l \) -not -regex ".*/$FZF_IGNORE/.*" 2> /dev/null \
       | cut -b3- | fzf)
     [[ -n "$file" ]] && {
-        local cmd="${EDITOR:-vim} \"$file\""
+        local cmd="${EDITOR:-vim} $file"
         eval $cmd
         print -s $cmd
     }

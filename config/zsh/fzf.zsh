@@ -30,7 +30,7 @@ fzf-history() {
     local command=( $(history 1 \
       | tail -r \
       | awk '{c="";for(i=2;i<NF;i++){c=c sprintf("%s ",$i);}c=c $NF;if(!a[c]++){printf(" %6s%s\n", substr($1, length($1), 1)=="*"?$1" ":$1"  ",c)}}' \
-      | fzf --query=${LBUFFER}) )
+      | fzf --query=${LBUFFER} +s --bind=ctrl-r:toggle-sort) )
     [[ -n "$command[1]" ]] && zle vi-fetch-history -n $command[1]
 
     zle reset-prompt

@@ -29,7 +29,7 @@ bindkey '^T' fzf-select-files
 fzf-history() {
     local command=( $(history 1 \
       | tail -r \
-      | awk '{c="";for(i=2;i<NF;i++){c=c sprintf("%s ",$i);}c=c $NF;if(!a[c]++){printf(" %6s%s\n", substr($1, length($1), 1) == "*" ? $1 " " :$1 "  ", c)}}' \
+      | awk '{c="";for(i=2;i<NF;i++){c=c sprintf("%s ",$i);}c=c $NF;if(!a[c]++){printf(" %6s%s\n", substr($1, length($1), 1)=="*"?$1" ":$1"  ",c)}}' \
       | fzf --query=${LBUFFER}) )
     [[ -n "$command[1]" ]] && zle vi-fetch-history -n $command[1]
 

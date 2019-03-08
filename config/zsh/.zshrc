@@ -13,3 +13,7 @@
     zplug check || zplug install
     zplug load
 }
+
+if (( $+commands[fzf] )); then
+  source "$ZDOTDIR/fzf.zsh"
+fi

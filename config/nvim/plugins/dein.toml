@@ -197,3 +197,6 @@ hook_add = '''
   nmap <Space>c <Plug>(caw:prefix)
   vmap <Space>c <Plug>(caw:prefix)
 '''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'

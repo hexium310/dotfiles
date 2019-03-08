@@ -45,4 +45,5 @@ endif
 augroup init_vim
   autocmd!
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+  autocmd QuickFixCmdPost *grep* cwindow
 augroup END

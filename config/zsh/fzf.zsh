@@ -1,8 +1,5 @@
 [[ $- == *i* ]] && source $(dirname $(dirname $(which brew)))/opt/fzf/shell/completion.zsh 2> /dev/null
 
-# TODO: Implement history search
-source $(dirname $(dirname $(which brew)))/opt/fzf/shell/key-bindings.zsh 2> /dev/null
-
 fzf-edit-file() {
     local file=$(find -E . -mindepth 1 \( -type f -o -type l \) -not -regex ".*/$FZF_IGNORE/.*" 2> /dev/null \
       | cut -b3- | fzf)
@@ -28,3 +25,16 @@ fzf-select-files() {
 
 zle -N fzf-select-files
 bindkey '^T' fzf-select-files
+
+fzf-history() {
+    local command=( $(history 1 \
+      | tail -r \
+      | awk '{c="";for(i=2;i<NF;i++){c=c sprintf("%s ",$i);}c=c $NF;if(!a[c]++){printf(" %6s%s\n", substr($1, length($1), 1) == "*" ? $1 " " :$1 "  ", c)}}' \
+      | fzf --query=${LBUFFER}) )
+    [[ -n "$command[1]" ]] && zle vi-fetch-history -n $command[1]
+
+    zle reset-prompt
+}
+
+zle -N fzf-history
+bindkey '^R' fzf-history

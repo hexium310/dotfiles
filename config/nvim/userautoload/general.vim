@@ -31,6 +31,7 @@ set shortmess+=cs
 set completeopt-=preview
 set pumheight=10
 set cursorline
+set signcolumn=yes
 
 " Search
 set ignorecase

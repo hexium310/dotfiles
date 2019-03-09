@@ -200,3 +200,20 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+  let g:ale_linters = {
+        \  'typescript': ['eslint'],
+        \}
+  let g:ale_lint_delay = 50
+  let g:ale_sign_error = '✖'
+  let g:ale_sign_warning = '⚠︎'
+  let g:ale_echo_msg_error_str = '✖'
+  let g:ale_echo_msg_warning_str = '⚠︎'
+  let g:ale_echo_msg_format = '%severity% [%linter%] %s'
+
+  nmap <silent> <Space>ap <Plug>(ale_previous_wrap)
+  nmap <silent> <Space>an <Plug>(ale_next_wrap)
+'''

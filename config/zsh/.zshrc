@@ -7,10 +7,11 @@
     zplug 'zsh-users/zsh-syntax-highlighting', defer:2
     zplug 'zsh-users/zsh-completions', lazy:true
 
+    zplug check || zplug install
+
     zplug "$ZDOTDIR/plugins", from:local
     zplug "$ZDOTDIR/local", from:local
 
-    zplug check || zplug install
     zplug load
 }
 

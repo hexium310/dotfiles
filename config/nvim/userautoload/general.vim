@@ -47,4 +47,5 @@ augroup init_vim
   autocmd!
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
   autocmd QuickFixCmdPost *grep* cwindow
+  autocmd VimLeave * set guicursor=a:ver25
 augroup END

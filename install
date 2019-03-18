@@ -28,6 +28,7 @@ if [[ -e $XDG_CONFIG_PATH/git ]]; then
   echo "[dotfiles] $XDG_CONFIG_PATH/git exists."
 else
   ln -s $dir/config/git/ $XDG_CONFIG_PATH/git
+  echo "[dotfiles] Be used to $HOME/.gitconfig if it exists."
 fi
 
 echo '[dotfiles] Done.'

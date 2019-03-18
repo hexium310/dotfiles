@@ -1,0 +1,11 @@
+[color]
+	ui = true
+[user]
+	name = Hexin
+	email = hexium310@gmail.com
+[merge]
+	ff = false
+[pull]
+	ff = only
+[core]
+	editor = nvim

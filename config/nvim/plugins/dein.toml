@@ -94,6 +94,17 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+hook_add = '''
+  let g:context_filetype#filetypes = {
+        \   'typescript.tsx': [
+        \     {
+        \       'start': '\v(styled\..*|css)',
+        \       'end': '`',
+        \       'filetype': 'sass',
+        \     },
+        \   ],
+        \ }
+'''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'

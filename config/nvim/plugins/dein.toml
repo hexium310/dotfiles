@@ -117,7 +117,7 @@ hook_add = '''
         \    'extends': 'jsx',
         \  },
         \  'typescript': {
-        \    'extends': 'tsx',
+        \    'extends': 'jsx',
         \  },
         \  'variables': {
         \    'lang': 'ja',

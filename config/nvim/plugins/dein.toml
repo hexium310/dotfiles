@@ -98,7 +98,7 @@ hook_add = '''
   let g:context_filetype#filetypes = {
         \   'typescript.tsx': [
         \     {
-        \       'start': '\v(styled\..*|css)',
+        \       'start': '\v(styled\..*|css)`',
         \       'end': '`',
         \       'filetype': 'sass',
         \     },

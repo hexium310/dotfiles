@@ -9,8 +9,14 @@ repo = 'maxmellon/vim-jsx-pretty'
 # on_ft = ['javascript', 'typescript.tsx']
 
 [[plugins]]
-repo = 'HerringtonDarkholme/yats.vim'
+repo = 'hexium310/yats.vim'
 on_ft = ['typescript', 'typescript.tsx']
+hook_add = '''
+  let g:yats_indent_disable = 1
+'''
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
 
 [[plugins]]
 repo = 'mhartington/nvim-typescript'

@@ -22,7 +22,6 @@ repo = 'leafgarland/typescript-vim'
 repo = 'mhartington/nvim-typescript'
 on_ft = ['typescript', 'typescript.tsx']
 build = './install.sh'
-rev = '973188f0d3075e2a17ed64c42b05d6ceb976492c'
 hook_add = '''
   let g:nvim_typescript#default_signs = [
         \  {

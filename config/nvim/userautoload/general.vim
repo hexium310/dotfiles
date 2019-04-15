@@ -10,6 +10,7 @@ set title
 set whichwrap=b,s,h,l,<,>,[,],~
 set backspace=indent,eol,start
 set virtualedit=block
+set updatetime=500
 
 " Display
 filetype plugin indent on

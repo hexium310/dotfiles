@@ -228,3 +228,7 @@ hook_add = '''
   nmap <silent> <Space>ap <Plug>(ale_previous_wrap)
   nmap <silent> <Space>an <Plug>(ale_next_wrap)
 '''
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+build = './install.sh nightly'

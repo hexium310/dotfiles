@@ -11,6 +11,7 @@ set whichwrap=b,s,h,l,<,>,[,],~
 set backspace=indent,eol,start
 set virtualedit=block
 set updatetime=500
+set pyxversion=3
 
 " Display
 filetype plugin indent on

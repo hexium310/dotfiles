@@ -1,0 +1,6 @@
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+
+[[plugins]]
+repo = 'neoclide/coc-rls'
+build = 'yarn install --frozen-lockfile'

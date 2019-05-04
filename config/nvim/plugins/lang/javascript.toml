@@ -19,36 +19,5 @@ hook_add = '''
 repo = 'leafgarland/typescript-vim'
 
 [[plugins]]
-repo = 'mhartington/nvim-typescript'
-on_ft = ['typescript', 'typescript.tsx']
-build = './install.sh'
-hook_add = '''
-  let g:nvim_typescript#default_signs = [
-        \  {
-        \    'TSerror': {
-        \      'texthl': 'SpellBad',
-        \      'signText': '✖',
-        \      'signTexthl': 'NeomakeErrorSign',
-        \    },
-        \  },
-        \  {
-        \    'TSwarning': {
-        \      'texthl': 'SpellBad',
-        \      'signText': '⚠︎',
-        \      'signTexthl': 'NeomakeWarningSign',
-        \    },
-        \  },
-        \  {
-        \    'TSinformation': {
-        \      'texthl': 'SpellBad',
-        \      'signText': 'ℹ︎',
-        \      'signTexthl': 'NeomakeInfoSign',
-        \    },
-        \  },
-        \]
-
-  augroup nvim_typescript
-    autocmd!
-    autocmd CursorMoved,CursorMovedI * call lightline#update()
-  augroup END
-'''
+repo = 'neoclide/coc-tsserver'
+build = 'yarn install --frozen-lockfile'

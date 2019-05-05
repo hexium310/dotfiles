@@ -1,7 +1,2 @@
 [[plugins]]
 repo = 'StanAngeloff/php.vim'
-
-[[plugins]]
-repo = 'padawan-php/deoplete-padawan'
-lazy = 1
-on_ft = ['php']

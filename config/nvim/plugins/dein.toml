@@ -68,17 +68,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = '''
-  let g:deoplete#enable_at_startup = 1
-
-  inoremap <expr><Tab> pumvisible() ? deoplete#close_popup() : "\<Tab>"
-  inoremap <expr><Cr> pumvisible() ? deoplete#close_popup() : "\<Cr>"
-  inoremap <expr><Down> pumvisible() ? "\<C-n>" : "\<Down>"
-  inoremap <expr><Up> pumvisible() ? "\<C-p>" : "\<Up>"
-'''
-
-[[plugins]]
 repo = 'jiangmiao/auto-pairs'
 
 [[plugins]]

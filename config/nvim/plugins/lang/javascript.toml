@@ -21,3 +21,4 @@ repo = 'leafgarland/typescript-vim'
 [[plugins]]
 repo = 'neoclide/coc-tsserver'
 build = 'yarn install --frozen-lockfile'
+on_ft = ['javascript', 'typescript']

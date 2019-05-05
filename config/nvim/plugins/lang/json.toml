@@ -1,3 +1,4 @@
 [[plugins]]
 repo = 'neoclide/coc-json'
 build = 'yarn install --frozen-lockfile'
+on_ft = ['json']

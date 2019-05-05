@@ -22,3 +22,4 @@ vnoremap <Space>P "+P
 
 nnoremap <F1> <Nop>
 inoremap <F1> <Nop>
+nnoremap q: <Nop>

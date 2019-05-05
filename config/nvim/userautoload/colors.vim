@@ -12,4 +12,5 @@ highlight NeomakeErrorSign guifg=#282C34 guibg=#E06C75
 highlight! link NeomakeWarningSign NeomakeErrorSign
 highlight! link NeomakeInfoSign NeomakeErrorSign
 highlight! link gitcommitComment Comment
+highlight CocFloating guibg=#1e2128
 highlight clear CursorLine

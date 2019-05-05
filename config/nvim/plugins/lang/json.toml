@@ -1,0 +1,3 @@
+[[plugins]]
+repo = 'neoclide/coc-json'
+build = 'yarn install --frozen-lockfile'

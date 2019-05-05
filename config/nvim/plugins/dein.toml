@@ -18,7 +18,7 @@ hook_add = '''
         \  'active': {
         \    'left': [
         \      ['mode', 'paste'],
-        \      ['readonly', 'filename', 'modified', 'dir'],
+        \      ['readonly', 'filename', 'modified', 'dir', 'cocstatus'],
         \      ['sign'],
         \      ['anzu'],
         \    ],
@@ -37,6 +37,7 @@ hook_add = '''
         \  'component_function': {
         \    'readonly': 'Readonly',
         \    'anzu': 'anzu#search_status',
+        \    'cocstatus': 'coc#status',
         \  },
         \  'component_expand': {
         \    'sign': 'Sign',
@@ -221,3 +222,33 @@ hook_add = '''
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 build = './install.sh nightly'
+hook_add ='''
+  inoremap <silent><expr> <Tab>
+        \ pumvisible() ? coc#_select_confirm() :
+        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump', ''])\<Cr>" :
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
+
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~# '\s'
+  endfunction
+
+  nmap <silent> [c <Plug>(coc-diagnostic-prev)
+  nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+  let g:coc_snippet_next = '<Tab>'
+  let g:coc_snippet_prev = '<S-Tab>'
+'''
+
+[[plugins]]
+repo = 'neoclide/coc-emmet'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-highlight'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-snippets'
+build = 'yarn install --frozen-lockfile'

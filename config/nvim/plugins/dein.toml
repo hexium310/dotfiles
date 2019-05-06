@@ -239,16 +239,13 @@ hook_add ='''
 
   let g:coc_snippet_next = '<Tab>'
   let g:coc_snippet_prev = '<S-Tab>'
+
+  let g:coc_global_extensions = [
+        \   'coc-snippets',
+        \   'coc-highlight',
+        \   'coc-emmet',
+        \   'coc-tsserver',
+        \   'coc-rls',
+        \   'coc-json',
+        \ ]
 '''
-
-[[plugins]]
-repo = 'neoclide/coc-emmet'
-build = 'yarn install --frozen-lockfile'
-
-[[plugins]]
-repo = 'neoclide/coc-highlight'
-build = 'yarn install --frozen-lockfile'
-
-[[plugins]]
-repo = 'neoclide/coc-snippets'
-build = 'yarn install --frozen-lockfile'

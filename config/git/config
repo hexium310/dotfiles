@@ -11,3 +11,5 @@
 	editor = nvim
 [alias]
   oneline = log --oneline --graph --pretty=format:'%C(yellow)%h%Creset %C(blue)[%cd]%Creset %C(auto)%d %s' --date=format:'%Y/%m/%d %H:%M:%S'
+[rebase]
+	autosquash = true

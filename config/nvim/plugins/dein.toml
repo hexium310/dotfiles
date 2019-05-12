@@ -25,6 +25,7 @@ hook_add = '''
         \    'right': [
         \      ['lineinfo', 'rows'],
         \      ['fileencoding', 'filetype'],
+        \      ['ale_checking', 'ale_errors', 'ale_warnings', 'ale_ok'],
         \    ],
         \  },
         \  'tabline': {
@@ -40,24 +41,22 @@ hook_add = '''
         \    'cocstatus': 'coc#status',
         \  },
         \  'component_expand': {
-        \    'sign': 'Sign',
+        \    'ale_checking': 'lightline#ale#checking',
+        \    'ale_warnings': 'lightline#ale#warnings',
+        \    'ale_errors': 'lightline#ale#errors',
+        \    'ale_ok': 'lightline#ale#ok',
         \  },
         \  'component_type': {
-        \    'sign': 'error',
+        \    'ale_checking': 'left',
+        \    'ale_warnings': 'warning',
+        \    'ale_errors': 'error',
+        \    'ok': 'left',
         \  },
         \}
 
   function! Readonly()
     return &readonly || &filetype == 'help' ? '👀' : ''
   endfunction
-
-  function! Sign()
-    let count = len(getloclist(0))
-    return count == 0 ? '' : '✖ ' . count
-  endfunction
-
-  let s:palette = g:lightline#colorscheme#{g:lightline.colorscheme}#palette
-  let s:palette.normal.error = [['#ebcb8b', '#bf616a', '07', '01']]
 '''
 
 [[plugins]]
@@ -211,14 +210,10 @@ hook_add = '''
         \  'javascript': ['eslint'],
         \}
   let g:ale_lint_delay = 50
-  let g:ale_sign_error = '✖'
-  let g:ale_sign_warning = '⚠︎'
-  let g:ale_echo_msg_error_str = '✖'
-  let g:ale_echo_msg_warning_str = '⚠︎'
   let g:ale_echo_msg_format = '%severity% [%linter%] %s'
 
-  nmap <silent> <Space>ap <Plug>(ale_previous_wrap)
-  nmap <silent> <Space>an <Plug>(ale_next_wrap)
+  nmap <silent> [a <Plug>(ale_previous_wrap)
+  nmap <silent> ]a <Plug>(ale_next_wrap)
 '''
 
 [[plugins]]
@@ -251,3 +246,6 @@ hook_add ='''
         \   'coc-json',
         \ ]
 '''
+
+[[plugins]]
+repo = 'maximbaz/lightline-ale'

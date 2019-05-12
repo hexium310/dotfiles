@@ -14,6 +14,7 @@ set updatetime=300
 set pyxversion=3
 set nobackup
 set nowritebackup
+set noswapfile
 
 " Display
 filetype plugin indent on

@@ -68,7 +68,7 @@ highlight link typescriptAbstract Keyword
 
 highlight link typescriptClassStatic Keyword
 
-highlight link typescriptTypeMember Label
+highlight link typescriptMember Label
 
 highlight link typescriptGlobal Constant
 

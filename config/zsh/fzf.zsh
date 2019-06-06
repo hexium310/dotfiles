@@ -1,19 +1,14 @@
 [[ $- == *i* ]] && source $(dirname $(dirname $(which brew)))/opt/fzf/shell/completion.zsh 2> /dev/null
 
-fzf-edit-file() {
-    local file=$(find -E . -mindepth 1 \( -type f -o -type l \) -not -regex ".*/$FZF_IGNORE/.*" 2> /dev/null \
-      | cut -b3- | fzf)
-    [[ -n "$file" ]] && {
-        local cmd="${EDITOR:-vim} $file"
-        eval $cmd
-        print -s $cmd
-    }
+fzf-select-git-files() {
+    local file=$(git ls-files . -co --exclude-standard 2> /dev/null | fzf)
+    [[ -n "$file" ]] && LBUFFER="$LBUFFER$file "
 
     zle reset-prompt
 }
 
-zle -N fzf-edit-file
-bindkey '^P' fzf-edit-file
+zle -N fzf-select-git-files
+bindkey '^P' fzf-select-git-files
 
 fzf-select-files() {
     local file=$(find -E . -mindepth 1 \( -type f -o -type l -o -type d \) -not -regex ".*/$FZF_IGNORE/?.*" 2> /dev/null \
@@ -23,8 +18,8 @@ fzf-select-files() {
     zle reset-prompt
 }
 
-zle -N fzf-select-files
-bindkey '^T' fzf-select-files
+zle -N fzf-select-all-files
+bindkey '^T' fzf-select-all-files
 
 fzf-history() {
     local command=( $(history 1 \

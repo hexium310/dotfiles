@@ -75,13 +75,6 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
-hook_add = '''
-  let g:ctrlp_show_hidden = 1
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
-'''
-
-[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 hook_add = '''
   let g:context_filetype#filetypes = {
@@ -249,3 +242,31 @@ hook_add ='''
 
 [[plugins]]
 repo = 'maximbaz/lightline-ale'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+	set runtimepath+=/usr/local/opt/fzf
+
+  let g:fzf_rg_glob_files = [
+        \   '!LICENSE',
+        \   '!README.md',
+        \   '!yarn.lock',
+        \   '!package-lock.json',
+        \ ]
+  let g:fzf_rg_glob = join(map(g:fzf_rg_glob_files, '"-g ''" . v:val . "''"'), ' ')
+
+  command! -bang -nargs=* Rg
+        \ call fzf#vim#grep(
+        \   'rg --line-number --no-heading --color=always ' . g:fzf_rg_glob . ' ' . shellescape(<q-args>),
+        \   0,
+        \   fzf#vim#with_preview(
+        \     { 'options': '--color --exact --delimiter : --nth 3..' },
+        \     'up:50%'
+        \   ),
+        \   <bang>1
+        \ )
+
+	nnoremap <C-p> :GFiles -co --exclude-standard<Cr>
+  nnoremap <C-m> :History<Cr>
+'''

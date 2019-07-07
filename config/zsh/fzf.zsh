@@ -10,7 +10,7 @@ fzf-select-git-files() {
 zle -N fzf-select-git-files
 bindkey '^P' fzf-select-git-files
 
-fzf-select-files() {
+fzf-select-all-files() {
     local file=$(find -E . -mindepth 1 \( -type f -o -type l -o -type d \) -not -regex ".*/$FZF_IGNORE/?.*" 2> /dev/null \
       | cut -b3- | fzf -m | perl -pe 's/\n/ /m' | sed -e 's/ $//')
     [[ -n "$file" ]] && LBUFFER="$LBUFFER$file "

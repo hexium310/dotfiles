@@ -269,4 +269,8 @@ hook_add = '''
 
 	nnoremap <C-p> :GFiles -co --exclude-standard<Cr>
   nnoremap <C-m> :History<Cr>
+
+  augroup fzf
+    autocmd FileType fzf tunmap <buffer> <Esc>
+  augroup END
 '''

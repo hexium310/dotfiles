@@ -54,5 +54,5 @@ augroup init_vim
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
-  autocmd TermOpen * startinsert
+  autocmd TermOpen * startinsert | tnoremap <buffer> <Esc> <C-\><C-n>
 augroup END

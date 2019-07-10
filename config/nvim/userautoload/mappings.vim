@@ -19,6 +19,8 @@ nnoremap <Space>p "+p
 vnoremap <Space>p "+p
 nnoremap <Space>P "+P
 vnoremap <Space>P "+P
+nnoremap <silent> <Space>s :sp \| terminal<Cr>
+tnoremap <Esc> <C-\><C-n>
 
 nnoremap <F1> <Nop>
 inoremap <F1> <Nop>

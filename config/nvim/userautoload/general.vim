@@ -32,6 +32,7 @@ set ambiwidth=single
 set nowrap
 set lazyredraw
 set splitright
+set splitbelow
 set shortmess+=cs
 set completeopt-=preview
 set pumheight=10
@@ -53,4 +54,5 @@ augroup init_vim
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
+  autocmd TermOpen * startinsert
 augroup END

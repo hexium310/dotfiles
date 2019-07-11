@@ -1,8 +1,12 @@
 [[plugins]]
 repo = 'pangloss/vim-javascript'
+lazy = 1
+on_ft = ['javascript']
 
 [[plugins]]
 repo = 'maxmellon/vim-jsx-pretty'
+lazy = 1
+on_ft = ['javascript.jsx', 'typescript.tsx']
 
 # [[plugins]]
 # repo = 'styled-components/vim-styled-components'
@@ -18,3 +22,5 @@ hook_add = '''
 
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
+lazy = 1
+on_ft = ['typescript', 'typescript.tsx']

@@ -1,2 +1,4 @@
 [[plugins]]
 repo = 'cespare/vim-toml'
+lazy = 1
+on_ft = ['toml']

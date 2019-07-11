@@ -61,6 +61,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
+lazy = 1
+on_event = 'BufEnter'
 hook_add = '''
   let g:clever_f_smart_case = 1
   let g:clever_f_use_migemo = 1
@@ -69,6 +71,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
+lazy = 1
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -90,12 +94,18 @@ hook_add = '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
+lazy = 1
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'lambdalisue/vim-gista'
+lazy = 1
+on_event = 'CmdlineEnter'
 
 [[plugins]]
 repo = 'justinmk/vim-dirvish'
+lazy = 1
+on_event = 'BufEnter'
 hook_add = '''
   nnoremap <silent> <Space>e :Dirvish<CR>
   nnoremap <silent> <Space>r :Dirvish %<CR>
@@ -136,6 +146,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-jplus'
+lazy = 1
+on_event = 'BufEnter'
 hook_add = '''
   nmap J <Plug>(jplus)
   vmap J <Plug>(jplus)
@@ -145,12 +157,18 @@ hook_add = '''
 
 [[plugins]]
 repo = 'kana/vim-operator-user'
+lazy = 1
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'kana/vim-operator-replace'
+lazy = 1
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'rhysd/vim-operator-surround'
+lazy = 1
+on_event = 'BufEnter'
 hook_add = '''
   nmap <silent>sa <Plug>(operator-surround-append)
   nmap <silent>sd <Plug>(operator-surround-delete)
@@ -159,33 +177,49 @@ hook_add = '''
 
 [[plugins]]
 repo = 'haya14busa/vim-operator-flashy'
+lazy = 1
+on_event = 'BufEnter'
 hook_add = '''
   map y <Plug>(operator-flashy)
 '''
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'
+lazy = 1
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'rhysd/vim-textobj-anyblock'
+lazy = 1
+on_event = 'BufEnter'
 hook_add = '''
   nmap R <Plug>(operator-replace)
 '''
 
 [[plugins]]
 repo = 'kana/vim-textobj-indent'
+lazy = 1
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'kana/vim-textobj-line'
+lazy = 1
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'sgur/vim-textobj-parameter'
+lazy = 1
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'Julian/vim-textobj-variable-segment'
+lazy = 1
+on_event = 'BufEnter'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
+lazy = 1
+on_event = 'BufEnter'
 hook_add = '''
   let g:caw_operator_keymappings = 1
   nmap <Space>c <Plug>(caw:prefix)
@@ -194,6 +228,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'w0rp/ale'
+lazy = 1
+on_ft = ['javascript', 'typescript']
 hook_add = '''
   let g:ale_linters = {
         \  'typescript': ['eslint'],
@@ -247,6 +283,8 @@ repo = 'maximbaz/lightline-ale'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
+lazy = 1
+on_event = 'BufEnter'
 hook_add = '''
 	set runtimepath+=/usr/local/opt/fzf
 

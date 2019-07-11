@@ -237,6 +237,7 @@ hook_add ='''
         \   'coc-tsserver',
         \   'coc-rls',
         \   'coc-json',
+        \   'coc-yaml',
         \ ]
 '''
 

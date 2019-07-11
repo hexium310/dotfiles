@@ -103,6 +103,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
+lazy = 1
 on_ft = ['html', 'php', 'css', 'javascript', 'typescript']
 hook_add = '''
   let g:user_emmet_settings = {

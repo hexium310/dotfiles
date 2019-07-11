@@ -10,6 +10,7 @@ repo = 'maxmellon/vim-jsx-pretty'
 
 [[plugins]]
 repo = 'hexium310/yats.vim'
+lazy = 1
 on_ft = ['typescript', 'typescript.tsx']
 hook_add = '''
   let g:yats_indent_disable = 1

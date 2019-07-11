@@ -15,7 +15,3 @@
 
     zplugin cdreplay -q
 }
-
-# if (( $+commands[fzf] )); then
-#     source "$ZDOTDIR/fzf.zsh"
-# fi

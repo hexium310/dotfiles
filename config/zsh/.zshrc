@@ -11,10 +11,11 @@
 
     zplugin ice atinit'local i; for i in *.zsh; do source $i; done'; zplugin light $ZDOTDIR/plugins
     zplugin ice atinit'local i; for i in *.zsh; do source $i; done'; zplugin light $ZDOTDIR/local
+    zplugin ice has'fzf' atinit'source *.zsh'; zplugin light $ZDOTDIR/plugins/fzf
 
     zplugin cdreplay -q
 }
 
-if (( $+commands[fzf] )); then
-    source "$ZDOTDIR/fzf.zsh"
-fi
+# if (( $+commands[fzf] )); then
+#     source "$ZDOTDIR/fzf.zsh"
+# fi

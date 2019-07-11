@@ -127,6 +127,7 @@ hook_add = '''
         \    'lang': 'ja',
         \  },
         \}
+  let g:user_emmet_leader_key = '<silent> <C-y>'
 '''
 
 [[plugins]]
@@ -307,8 +308,8 @@ hook_add = '''
         \   <bang>1
         \ )
 
-	nnoremap <C-p> :GFiles -co --exclude-standard<Cr>
-  nnoremap <C-m> :History<Cr>
+  nnoremap <silent> <C-p> :GFiles -co --exclude-standard<Cr>
+  nnoremap <silent> <C-m> :History<Cr>
 
   augroup fzf
     autocmd FileType fzf tunmap <buffer> <Esc>

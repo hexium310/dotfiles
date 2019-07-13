@@ -66,7 +66,7 @@ install_plugin_managers() {
   info "Done\n"
 }
 
-info ">>> Installing dotfiels\n"
+info ">>> Installing dotfiles\n"
 install_dotfiels
 
 info "\n"

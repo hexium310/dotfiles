@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-declare -r dir=$(cd $(dirname $0) && pwd)/config
-
 info() {
   printf "\e[39m$1\e[0m"
 }
@@ -19,6 +17,7 @@ path() {
 }
 
 make_symlink() {
+  declare -r dir=$(cd $(dirname $0) && pwd)/config
   declare -r source=$dir/$1
   declare -r target=$2
 

@@ -40,13 +40,40 @@ make_symlink() {
   ln -s $source $target && info "Create symblic link: $(path $source) -> $(path $target)\n"
 }
 
-make_symlink zsh/.zshenv $HOME/.zshenv
-source $HOME/.zshenv
+install_dotfiels() {
+  make_symlink zsh/.zshenv $HOME/.zshenv
+  source $HOME/.zshenv
 
-mkdir -p $XDG_CONFIG_HOME
-mkdir -p $XDG_CACHE_HOME
-mkdir -p $XDG_CONFIG_HOME
+  mkdir -p $XDG_CONFIG_HOME
+  mkdir -p $XDG_CACHE_HOME
+  mkdir -p $XDG_CONFIG_HOME
 
-make_symlink zsh $ZDOTDIR
-make_symlink git $XDG_CONFIG_HOME/git
-make_symlink nvim $XDG_CONFIG_HOME/nvim
+  make_symlink zsh $ZDOTDIR
+  make_symlink git $XDG_CONFIG_HOME/git
+  make_symlink nvim $XDG_CONFIG_HOME/nvim
+}
+
+install_plugin_managers() {
+  declare -r github_repo=$1
+  declare -r install_dir=$2
+
+  if [[ -d $2 ]]; then
+    error "$(path $2) already exists.\n"
+    return
+  fi
+
+  info "Installing $1\n"
+  git clone --depth=1 https://github.com/$1 $2
+  info "Done\n"
+}
+
+info ">>> Installing dotfiels\n"
+install_dotfiels
+
+info "\n"
+
+info ">>> Installing plugin managers\n"
+mkdir -p $XDG_CACHE_HOME/dein
+install_plugin_managers Shougo/dein.vim $XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim
+mkdir -p $XDG_CACHE_HOME/zplugin
+install_plugin_managers zdharma/zplugin $ZPLG_HOME/bin

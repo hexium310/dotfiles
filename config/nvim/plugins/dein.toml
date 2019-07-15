@@ -237,10 +237,11 @@ hook_add = '''
         \  'javascript': ['eslint'],
         \}
   let g:ale_fixers = {
-        \  'typescript': ['eslint'],
-        \  'javascript': ['eslint'],
+        \  'typescript': ['prettier'],
+        \  'javascript': ['prettier'],
         \}
   let g:ale_lint_delay = 50
+  let g:ale_fix_on_save = 1
   let g:ale_echo_msg_format = '%severity% [%linter%] %s'
 
   nmap <silent> [a <Plug>(ale_previous_wrap)

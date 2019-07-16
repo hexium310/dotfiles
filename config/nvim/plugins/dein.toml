@@ -237,8 +237,16 @@ hook_add = '''
         \  'javascript': ['eslint'],
         \}
   let g:ale_fixers = {
-        \  'typescript': ['prettier'],
-        \  'javascript': ['prettier'],
+        \  'typescript': [
+        \    { buffer, lines -> {
+        \      'command': 'yarn eslint --fix --config .eslintrc.fix.json %t', 'read_temporary_file': 1
+        \    } }
+        \  ],
+        \  'javascript': [
+        \    { buffer, lines -> {
+        \      'command': 'yarn eslint --fix --config .eslintrc.fix.json %t', 'read_temporary_file': 1
+        \    } }
+        \  ],
         \}
   let g:ale_lint_delay = 50
   let g:ale_fix_on_save = 1

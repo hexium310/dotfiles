@@ -21,3 +21,12 @@ function! utils#open_terminal() abort
 
   call win_gotoid(window_ids[0])
 endfunction
+
+function! utils#remove_multiple_empty_lines(target_filetypes) abort
+  for filetype in split(&filetype, '\.')
+    if index(a:target_filetypes, filetype) >= 0
+      silent! keeppatterns %s/\v(\n\n)\n+/\1/
+      return
+    endif
+  endfor
+endfunction

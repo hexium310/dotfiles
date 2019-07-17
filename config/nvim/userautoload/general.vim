@@ -55,4 +55,5 @@ augroup init_vim
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
   autocmd TermOpen * startinsert | tnoremap <buffer> <Esc> <C-\><C-n>
+  autocmd BufWritePre * call utils#remove_multiple_empty_lines(['typescript', 'javascript'])
 augroup END

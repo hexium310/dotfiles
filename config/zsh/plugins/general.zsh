@@ -1,4 +1,4 @@
-autoload -Uz history-search-end
+autoload -Uz history-search-end select-word-style
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
@@ -25,6 +25,10 @@ setopt globdots
 setopt extended_glob
 
 unsetopt caseglob
+
+select-word-style default
+zstyle ':zle:*' word-chars " _-=~./;:@"
+zstyle ':zle:*' word-style unspecified
 
 HISTFILE=~/.config/zsh/.zsh_history
 SAVEHIST=100000

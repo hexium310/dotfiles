@@ -30,3 +30,7 @@ function! utils#remove_multiple_empty_lines(target_filetypes) abort
     endif
   endfor
 endfunction
+
+function! utils#insert_newline_in_element_attributes() abort
+  silent! keeppatterns s/\v%(\{)@1<!%( (\l)|(\>$))/\r\1\2/g
+endfunction

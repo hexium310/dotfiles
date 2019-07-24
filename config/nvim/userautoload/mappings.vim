@@ -20,6 +20,7 @@ vnoremap <Space>p "+p
 nnoremap <Space>P "+P
 vnoremap <Space>P "+P
 nnoremap <silent> <Space>s :call utils#open_terminal()<Cr>
+nnoremap <silent> <Space>j :call utils#insert_newline_in_element_attributes()<Cr>
 
 nnoremap <F1> <Nop>
 inoremap <F1> <Nop>

@@ -285,6 +285,9 @@ hook_add ='''
         \   'coc-json',
         \   'coc-yaml',
         \ ]
+
+  call plugin#coc#set_maps()
+  call plugin#coc#set_commands()
 '''
 
 [[plugins]]

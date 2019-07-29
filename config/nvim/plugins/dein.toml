@@ -1,9 +1,6 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# [[plugins]]
-# repo = 'sheerun/vim-polyglot'
-
 [[plugins]]
 repo = 'joshdick/onedark.vim'
 
@@ -73,10 +70,6 @@ hook_add = '''
 repo = 'jiangmiao/auto-pairs'
 lazy = 1
 on_event = 'BufEnter'
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

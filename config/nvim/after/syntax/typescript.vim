@@ -68,7 +68,8 @@ highlight link typescriptAbstract Keyword
 
 highlight link typescriptClassStatic Keyword
 
-highlight link typescriptMember Label
+highlight link typescriptMember Identifier
+highlight link typescriptObjectLabel Identifier
 
 highlight link typescriptGlobal Constant
 
@@ -86,5 +87,8 @@ highlight link typescriptObjectStaticMethod Function
 highlight link typescriptPromiseStaticMethod Function
 highlight link typescriptStringStaticMethod Function
 highlight link typescriptSymbolStaticMethod Function
+
+highlight link typescriptEndColons None
+highlight link typescriptVariable Keyword
 
 command! VimShowHlItem echo synIDattr(synID(line("."), col("."), 1), "name")

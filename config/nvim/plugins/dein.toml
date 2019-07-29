@@ -303,3 +303,9 @@ hook_add = '''
   call plugin#gitgutter#set_maps()
   call plugin#gitgutter#define_sign_linenr_highlights()
 '''
+
+[[plugins]]
+repo = 'chriskempson/base16-vim'
+hook_add = '''
+  let base16colorspace=256
+'''

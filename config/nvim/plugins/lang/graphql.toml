@@ -1,0 +1,4 @@
+[[plugins]]
+repo = 'jparise/vim-graphql'
+lazy = 1
+on_ft = ['typescript.tsx']

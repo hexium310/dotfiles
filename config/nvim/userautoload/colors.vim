@@ -10,3 +10,8 @@ highlight! link gitcommitComment Comment
 highlight CocFloating guibg=#1e2128
 highlight CocErrorSign guifg=#fb4934
 highlight clear CursorLine
+highlight SignColumn guibg=none
+highlight link GitGutterAddLineNr DiffAdd
+highlight GitGutterChangeLineNr guifg=#282C34 guibg=#E5C07B
+highlight GitGutterDeleteLineNr gui=underline guifg=#E06C75
+highlight GitGutterChangeDeleteLineNr gui=underline guifg=#E06C75 guibg=#E5C07B

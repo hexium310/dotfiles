@@ -300,3 +300,13 @@ hook_add = '''
     autocmd FileType fzf tunmap <buffer> <Esc>
   augroup END
 '''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+lazy = 1
+on_event = 'BufEnter'
+hook_add = '''
+  call plugin#gitgutter#set_variables()
+  call plugin#gitgutter#set_maps()
+  call plugin#gitgutter#define_sign_linenr_highlights()
+'''

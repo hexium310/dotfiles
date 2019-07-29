@@ -3,7 +3,7 @@ syntax on
 set termguicolors
 colorscheme onedark
 highlight Comment gui=italic guifg=#aaaaaa
-highlight LineNr guifg=#000000 guibg=#8f8f8f
+highlight LineNr guifg=#282C34 guibg=#8f8f8f
 highlight StatusLine guifg=#000000 guibg=#98C379
 highlight CursorLineNr gui=bold
 highlight! link gitcommitComment Comment

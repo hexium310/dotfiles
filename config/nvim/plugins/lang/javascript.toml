@@ -21,6 +21,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'leafgarland/typescript-vim'
+repo = 'jason0x43/vim-js-indent'
 lazy = 1
 on_ft = ['typescript', 'typescript.tsx']

@@ -54,15 +54,6 @@ lazy = 1
 on_event = 'CmdlineEnter'
 
 [[plugins]]
-repo = 'justinmk/vim-dirvish'
-lazy = 1
-on_event = 'BufEnter'
-hook_add = '''
-  nnoremap <silent> <Space>e :Dirvish<CR>
-  nnoremap <silent> <Space>r :Dirvish %<CR>
-'''
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
 lazy = 1
 on_ft = ['html', 'php', 'css', 'javascript', 'typescript']

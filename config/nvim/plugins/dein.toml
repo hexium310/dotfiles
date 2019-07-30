@@ -11,6 +11,7 @@ repo = 'editorconfig/editorconfig-vim'
 repo = 'itchyny/lightline.vim'
 hook_add = '''
   call plugin#lightline#set_variables()
+  call plugin#lightline#autocmd()
 '''
 
 [[plugins]]

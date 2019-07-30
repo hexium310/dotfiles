@@ -14,6 +14,16 @@ function! plugin#lightline#set_variables() abort
         \      ['ale_checking', 'ale_errors', 'ale_warnings', 'ale_ok'],
         \    ],
         \  },
+        \  'inactive': {
+        \    'left': [
+        \      ['filename', 'modified'],
+        \      ['dir'],
+        \    ],
+        \    'right': [
+        \      ['lineinfo', 'rows'],
+        \      ['fileencoding', 'filetype'],
+        \    ],
+        \  },
         \  'tabline': {
         \    'right': [],
         \  },
@@ -22,15 +32,15 @@ function! plugin#lightline#set_variables() abort
         \    'rows': '%LL',
         \  },
         \  'component_function': {
-        \    'readonly': 'plugin#lightlinereadonly',
+        \    'readonly': 'plugin#lightline#readonly',
         \    'anzu': 'anzu#search_status',
+        \    'ale_ok': 'lightline#ale#ok',
         \    'coc_status_ok': 'plugin#lightline#coc_status_ok',
         \  },
         \  'component_expand': {
         \    'ale_checking': 'lightline#ale#checking',
         \    'ale_warnings': 'lightline#ale#warnings',
         \    'ale_errors': 'lightline#ale#errors',
-        \    'ale_ok': 'lightline#ale#ok',
         \    'coc_status_error': 'plugin#lightline#coc_status_error',
         \    'coc_status_warning': 'plugin#lightline#coc_status_warning',
         \  },
@@ -38,11 +48,15 @@ function! plugin#lightline#set_variables() abort
         \    'ale_checking': 'left',
         \    'ale_warnings': 'warning',
         \    'ale_errors': 'error',
-        \    'ok': 'left',
         \    'coc_status_error': 'error',
         \    'coc_status_warning': 'error',
         \  },
         \}
+
+  let s:palette = g:lightline#colorscheme#onedark#palette
+  let s:palette.inactive.left[0] = s:palette.inactive.right[0]
+  let s:palette.normal.left[0] = ['#282C34', '#99CC99', 12, 11]
+  let s:palette.normal.right[0] = ['#282C34', '#99CC99', 12, 11]
 endfunction
 
 function plugin#lightline#autocmd() abort

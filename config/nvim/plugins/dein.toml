@@ -10,50 +10,7 @@ repo = 'editorconfig/editorconfig-vim'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-  let g:lightline = {
-        \  'colorscheme': 'onedark',
-        \  'active': {
-        \    'left': [
-        \      ['mode', 'paste'],
-        \      ['readonly', 'filename', 'modified', 'dir', 'cocstatus'],
-        \      ['sign'],
-        \      ['anzu'],
-        \    ],
-        \    'right': [
-        \      ['lineinfo', 'rows'],
-        \      ['fileencoding', 'filetype'],
-        \      ['ale_checking', 'ale_errors', 'ale_warnings', 'ale_ok'],
-        \    ],
-        \  },
-        \  'tabline': {
-        \    'right': [],
-        \  },
-        \  'component': {
-        \    'dir': '%.35(%{expand("%:h:s?\\S$?\\0/?")}%)',
-        \    'rows': '%LL',
-        \  },
-        \  'component_function': {
-        \    'readonly': 'Readonly',
-        \    'anzu': 'anzu#search_status',
-        \    'cocstatus': 'coc#status',
-        \  },
-        \  'component_expand': {
-        \    'ale_checking': 'lightline#ale#checking',
-        \    'ale_warnings': 'lightline#ale#warnings',
-        \    'ale_errors': 'lightline#ale#errors',
-        \    'ale_ok': 'lightline#ale#ok',
-        \  },
-        \  'component_type': {
-        \    'ale_checking': 'left',
-        \    'ale_warnings': 'warning',
-        \    'ale_errors': 'error',
-        \    'ok': 'left',
-        \  },
-        \}
-
-  function! Readonly()
-    return &readonly || &filetype == 'help' ? '👀' : ''
-  endfunction
+  call plugin#lightline#set_variables()
 '''
 
 [[plugins]]

@@ -11,6 +11,7 @@ endfunction
 function! plugin#fzf#set_maps() abort
   nnoremap <silent> <C-p> :GFiles -co --exclude-standard<Cr>
   nnoremap <silent> <C-m> :History<Cr>
+  nnoremap <silent> tt :Buffers<Cr>
 endfunction
 
 function! plugin#fzf#set_commands() abort

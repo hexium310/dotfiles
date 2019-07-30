@@ -265,33 +265,11 @@ repo = 'junegunn/fzf.vim'
 lazy = 1
 on_event = 'BufEnter'
 hook_add = '''
-	set runtimepath+=/usr/local/opt/fzf
-
-  let g:fzf_rg_glob_files = [
-        \   '!LICENSE',
-        \   '!README.md',
-        \   '!yarn.lock',
-        \   '!package-lock.json',
-        \ ]
-  let g:fzf_rg_glob = join(map(g:fzf_rg_glob_files, '"-g ''" . v:val . "''"'), ' ')
-
-  command! -bang -nargs=* Rg
-        \ call fzf#vim#grep(
-        \   'rg --line-number --no-heading --color=always ' . g:fzf_rg_glob . ' ' . shellescape(<q-args>),
-        \   0,
-        \   fzf#vim#with_preview(
-        \     { 'options': '--color --exact --delimiter : --nth 3..' },
-        \     'up:50%'
-        \   ),
-        \   <bang>1
-        \ )
-
-  nnoremap <silent> <C-p> :GFiles -co --exclude-standard<Cr>
-  nnoremap <silent> <C-m> :History<Cr>
-
-  augroup fzf
-    autocmd FileType fzf tunmap <buffer> <Esc>
-  augroup END
+  set runtimepath+=/usr/local/opt/fzf
+  call plugin#fzf#set_variables()
+  call plugin#fzf#set_maps()
+  call plugin#fzf#set_commands()
+  call plugin#fzf#autocmd()
 '''
 
 [[plugins]]

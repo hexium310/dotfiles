@@ -9,6 +9,7 @@ function! plugin#coc#set_variables() abort
         \   'coc-rls',
         \   'coc-json',
         \   'coc-yaml',
+        \   'coc-vimlsp',
         \ ]
 endfunction
 

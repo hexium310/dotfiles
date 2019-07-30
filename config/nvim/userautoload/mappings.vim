@@ -1,9 +1,5 @@
 nnoremap <S-Left> ^
 nnoremap <S-Right> $
-nnoremap <silent> tc :tablast <bar> tabnew<Cr>
-nnoremap <silent> tx :tabclose<Cr>
-nnoremap <silent> tn :tabnext<Cr>
-nnoremap <silent> tp :tabprevious<Cr>
 nnoremap + <C-a>
 nnoremap - <C-x>
 vnoremap v $h

@@ -218,7 +218,6 @@ hook_add = '''
   call plugin#fzf#set_variables()
   call plugin#fzf#set_maps()
   call plugin#fzf#set_commands()
-  call plugin#fzf#autocmd()
 '''
 
 [[plugins]]

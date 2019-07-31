@@ -56,7 +56,7 @@ augroup init_vim
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
-  autocmd TermOpen * startinsert | tnoremap <buffer> <Esc> <C-\><C-n>
+  autocmd TermOpen * startinsert | tnoremap <buffer> <C-q> <C-\><C-n>
   autocmd BufWritePre * call utils#remove_multiple_empty_lines(['typescript', 'javascript'])
   autocmd FileType gitcommit,gitrebase setlocal bufhidden=delete
 augroup END

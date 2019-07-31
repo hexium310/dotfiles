@@ -25,9 +25,3 @@ function! plugin#fzf#set_commands() abort
         \   <bang>1
         \ )
 endfunction
-
-function! plugin#fzf#autocmd() abort
-  augroup fzf
-    autocmd FileType fzf tunmap <buffer> <Esc>
-  augroup END
-endfunction

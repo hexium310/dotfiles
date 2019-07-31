@@ -11,8 +11,7 @@ zle -N fzf-select-git-files
 bindkey '^P' fzf-select-git-files
 
 fzf-select-all-files() {
-    local file=$(find -E . -mindepth 1 \( -type f -o -type l -o -type d \) -not -regex ".*/$FZF_IGNORE/?.*" 2> /dev/null \
-      | cut -b3- | fzf -m | perl -pe 's/\n/ /m' | sed -e 's/ $//')
+    local file=$(fd --hidden --exclude=.git/ --type=file --type=directory --color=always 2> /dev/null | fzf -m)
     [[ -n "$file" ]] && LBUFFER="$LBUFFER$file "
 
     zle reset-prompt

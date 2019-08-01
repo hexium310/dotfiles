@@ -3,7 +3,8 @@
     autoload -Uz _zplugin
     (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
-    zplugin ice lucid; zplugin light chitoku-k/zsh-togglecursor
+    zplugin light chitoku-k/zsh-togglecursor
+    zplugin light zsh-users/zsh-autosuggestions
     zplugin ice lucid wait'0'; zplugin light chitoku-k/zsh-reset-title
     zplugin ice lucid wait'0'; zplugin light chitoku-k/zsh-vcs-extended
     zplugin ice lucid wait'0'; zplugin light zsh-users/zsh-completions

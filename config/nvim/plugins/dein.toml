@@ -1,5 +1,9 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
+hook_add = '''
+  command! -nargs=0 DeinUpdate call dein#update()
+  command! -nargs=0 DeinRecache call dein#recache_runtimepath()
+'''
 
 [[plugins]]
 repo = 'joshdick/onedark.vim'

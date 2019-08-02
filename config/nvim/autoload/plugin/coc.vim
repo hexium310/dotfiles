@@ -20,14 +20,15 @@ function! plugin#coc#set_maps() abort
 endfunction
 
 function! plugin#coc#set_commands() abort
-  command! -nargs=0 Rename :call CocAction('rename')
+  command! -nargs=0 Rename call CocActionAsync('rename')
+  command! -nargs=0 RenameFile call CocActionAsync('runCommand', 'workspace.renameCurrentFile')
 endfunction
 
 function! plugin#coc#show_documentation() abort
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
-    call CocAction('doHover')
+    call CocActionAsync('doHover')
   endif
 endfunction
 

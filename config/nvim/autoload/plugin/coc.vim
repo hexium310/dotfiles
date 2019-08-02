@@ -23,3 +23,18 @@ endfunction
 function! plugin#coc#set_commands() abort
   command! -nargs=0 Rename :call CocAction('rename')
 endfunction
+
+function! plugin#coc#show_documentation() abort
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+function! plugin#coc#autocmd() abort
+  augroup coc
+    autocmd!
+    autocmd CursorHoldI * silent call CocAction('doHover')
+  augroup END
+endfunction

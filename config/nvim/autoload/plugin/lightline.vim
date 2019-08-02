@@ -5,7 +5,7 @@ function! plugin#lightline#set_variables() abort
         \    'left': [
         \      ['mode', 'paste'],
         \      ['readonly', 'filename', 'modified', 'dir'],
-        \      ['coc_status_error', 'coc_status_warning', 'coc_status_ok'],
+        \      ['coc_status_error', 'coc_status_warning', 'coc_status_info'],
         \      ['anzu'],
         \    ],
         \    'right': [
@@ -35,7 +35,7 @@ function! plugin#lightline#set_variables() abort
         \    'readonly': 'plugin#lightline#readonly',
         \    'anzu': 'anzu#search_status',
         \    'ale_ok': 'lightline#ale#ok',
-        \    'coc_status_ok': 'plugin#lightline#coc_status_ok',
+        \    'coc_status_info': 'plugin#lightline#coc_status_info',
         \  },
         \  'component_expand': {
         \    'ale_checking': 'lightline#ale#checking',
@@ -49,7 +49,7 @@ function! plugin#lightline#set_variables() abort
         \    'ale_warnings': 'warning',
         \    'ale_errors': 'error',
         \    'coc_status_error': 'error',
-        \    'coc_status_warning': 'error',
+        \    'coc_status_warning': 'warning',
         \  },
         \}
 
@@ -61,7 +61,7 @@ endfunction
 
 function plugin#lightline#autocmd() abort
   augroup coc
-    autocmd User CocStatusChange call lightline#update()
+    autocmd User CocDiagnosticChange call lightline#update()
   augroup END
 endfunction
 
@@ -70,28 +70,16 @@ function! plugin#lightline#readonly()
 endfunction
 
 function! plugin#lightline#coc_status_error() abort
-  let error = coc#status()
-  if stridx(error, 'E:') == 0
-    return error
-  endif
-
-  return ''
+  let count = get(get(b:, 'coc_diagnostic_info', {}), 'error', 0)
+  return count == 0 ? '' : get(g:, 'coc_status_error_sign', 'E: ') . count
 endfunction
 
 function! plugin#lightline#coc_status_warning() abort
-  let error = coc#status()
-  if stridx(error, 'W:') == 0
-    return error
-  endif
-
-  return ''
+  let count = get(get(b:, 'coc_diagnostic_info', {}), 'warning', 0)
+  return count == 0 ? '' : get(g:, 'coc_status_warning_sign', 'W: ') . count
 endfunction
 
-function! plugin#lightline#coc_status_ok() abort
-  let error = coc#status()
-  if stridx(error, 'E:') != 0 && stridx(error, 'W:') != 0
-    return error
-  endif
-
-  return ''
+function! plugin#lightline#coc_status_info() abort
+  let count = get(get(b:, 'coc_diagnostic_info', {}), 'information', 0)
+  return count == 0 ? '' : get(g:, 'coc_status_info_sign', 'I: ') . count
 endfunction

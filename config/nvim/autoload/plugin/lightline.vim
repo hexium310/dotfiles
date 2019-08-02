@@ -60,7 +60,8 @@ function! plugin#lightline#set_variables() abort
 endfunction
 
 function plugin#lightline#autocmd() abort
-  augroup coc
+  augroup lightline
+    autocmd!
     autocmd User CocDiagnosticChange call lightline#update()
   augroup END
 endfunction

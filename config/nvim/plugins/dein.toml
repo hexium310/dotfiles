@@ -185,6 +185,7 @@ hook_add ='''
   call plugin#coc#set_variables()
   call plugin#coc#set_maps()
   call plugin#coc#set_commands()
+  call plugin#coc#autocmd()
 '''
 
 [[plugins]]

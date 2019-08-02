@@ -5,7 +5,6 @@ function! plugin#coc#set_variables() abort
   let g:coc_global_extensions = [
         \   'coc-snippets',
         \   'coc-highlight',
-        \   'coc-emmet',
         \   'coc-tsserver',
         \   'coc-rls',
         \   'coc-json',
@@ -35,6 +34,6 @@ endfunction
 function! plugin#coc#autocmd() abort
   augroup coc
     autocmd!
-    autocmd CursorHoldI * silent call CocAction('doHover')
+    autocmd CursorHoldI * silent call CocActionAsync('doHover')
   augroup END
 endfunction

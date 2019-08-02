@@ -32,3 +32,14 @@ fzf-history() {
 
 zle -N fzf-history
 bindkey '^R' fzf-history
+
+fzf-github-repositories() {
+    local repositories_path="~/Repositories/"
+    local repo=$(fd -HI --type=directory --maxdepth=1 . ~/Repositories/hexium310 | cut -d "/" -f 5- | fzf)
+    [[ -n $repo ]] && LBUFFER="$LBUFFER$repositories_path$repo "
+
+    zle reset-prompt
+}
+
+zle -N fzf-github-repositories
+bindkey '^G' fzf-github-repositories

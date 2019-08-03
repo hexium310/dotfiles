@@ -4,7 +4,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZPLG_HOME=$XDG_CACHE_HOME/zplugin
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=247,underline"
 
 declare -A ZPLGM
 ZPLGM[HOME_DIR]=$XDG_CACHE_HOME/zplugin

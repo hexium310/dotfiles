@@ -10,7 +10,7 @@ hook_add = '''
   endfunction
 
   function s:check_update_progress() abort
-    if exists('s:timer') && dein#install#_get_progress() == ''
+    if exists('s:timer') && dein#get_progress() == ''
       call timer_stop(s:timer)
       unlet s:timer
 
@@ -20,8 +20,7 @@ hook_add = '''
       setlocal buftype=nofile
       setlocal noswapfile
       silent file dein\#update()
-      silent put =dein#install#_get_updates_log()
-      1delete _
+      silent put! =dein#get_updates_log()
     endif
   endfunction
 '''

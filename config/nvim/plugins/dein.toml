@@ -1,27 +1,20 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 hook_add = '''
-  command! -nargs=0 DeinUpdate call s:DeinUpdateBuf()
+  command! -nargs=0 DeinUpdate call dein#update()
   command! -nargs=0 DeinRecache call dein#recache_runtimepath()
 
-  function s:DeinUpdateBuf() abort
-    call dein#update()
-    let s:timer = timer_start(1000, { -> s:check_update_progress() }, { 'repeat': -1 })
-  endfunction
+  autocmd VimEnter * call dein#set_hook([], 'hook_done_update', 'call s:display_updates_log()')
 
-  function s:check_update_progress() abort
-    if exists('s:timer') && dein#get_progress() == ''
-      call timer_stop(s:timer)
-      unlet s:timer
-
-      new
-      setlocal bufhidden=unload
-      setlocal nobuflisted
-      setlocal buftype=nofile
-      setlocal noswapfile
-      silent file dein\#update()
-      silent put! =dein#get_updates_log()
-    endif
+  function s:display_updates_log() abort
+    new
+    setlocal bufhidden=unload
+    setlocal nobuflisted
+    setlocal buftype=nofile
+    setlocal noswapfile
+    setlocal wrap
+    silent file dein\#update()
+    silent put! =dein#get_updates_log()
   endfunction
 '''
 

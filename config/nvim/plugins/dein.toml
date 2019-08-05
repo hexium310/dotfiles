@@ -6,7 +6,7 @@ hook_add = '''
 
   autocmd VimEnter * call dein#set_hook([], 'hook_done_update', 'call s:display_updates_log()')
 
-  function s:display_updates_log() abort
+  function! s:display_updates_log() abort
     new
     setlocal bufhidden=unload
     setlocal nobuflisted

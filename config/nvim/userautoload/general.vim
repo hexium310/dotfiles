@@ -35,7 +35,7 @@ set splitright
 set splitbelow
 set shortmess+=cs
 set completeopt-=preview
-set pumheight=10
+set pumheight=20
 set cursorline
 set signcolumn=yes
 

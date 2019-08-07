@@ -59,7 +59,7 @@ function! plugin#lightline#set_variables() abort
   let s:palette.normal.right[0] = ['#282C34', '#99CC99', 12, 11]
 endfunction
 
-function plugin#lightline#autocmd() abort
+function! plugin#lightline#autocmd() abort
   augroup lightline
     autocmd!
     autocmd User CocDiagnosticChange call lightline#update()

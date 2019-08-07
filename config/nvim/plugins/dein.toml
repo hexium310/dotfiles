@@ -1,12 +1,18 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 hook_add = '''
-  command! -nargs=0 DeinUpdate call dein#update()
+  command! -nargs=0 DeinUpdate let s:dein_update_called = 0 | call dein#update()
   command! -nargs=0 DeinRecache call dein#recache_runtimepath()
 
   autocmd VimEnter * call dein#set_hook([], 'hook_done_update', 'call s:display_updates_log()')
 
   function! s:display_updates_log() abort
+    if s:dein_update_called == 1
+      return
+    endif
+
+    let s:dein_update_called = 1
+
     new
     setlocal bufhidden=unload
     setlocal nobuflisted

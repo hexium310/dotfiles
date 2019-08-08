@@ -24,4 +24,18 @@ function! plugin#fzf#set_commands() abort
         \   ),
         \   <bang>1
         \ )
+  command! -nargs=0 EditNew call plugin#fzf#new_file()
+endfunction
+
+function! plugin#fzf#new_file() abort
+  function! s:callback(line) abort
+    let file = input('New file: ', a:line . '/')
+    execute 'edit' file
+  endfunction
+
+  call fzf#run(fzf#wrap({
+        \  'source': 'fd -H --type=directory --exclude=.git/',
+        \  'sink': function('s:callback'),
+        \  'options': '--prompt="Directory> "'
+        \}))
 endfunction

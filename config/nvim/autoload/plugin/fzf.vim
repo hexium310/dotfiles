@@ -35,7 +35,7 @@ function! plugin#fzf#new_file() abort
 
   call fzf#run(fzf#wrap({
         \  'source': 'fd -H --type=directory --exclude=.git/',
-        \  'sink': function('s:callback'),
+        \  'sink': { line -> execute('call timer_start(0, { -> s:callback(line) })') },
         \  'options': '--prompt="Directory> "'
         \}))
 endfunction

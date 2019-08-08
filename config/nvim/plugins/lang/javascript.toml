@@ -3,11 +3,6 @@ repo = 'pangloss/vim-javascript'
 lazy = 1
 on_ft = ['javascript']
 
-[[plugins]]
-repo = 'maxmellon/vim-jsx-pretty'
-lazy = 1
-on_ft = ['javascript.jsx', 'typescript.tsx']
-
 # [[plugins]]
 # repo = 'styled-components/vim-styled-components'
 # on_ft = ['javascript', 'typescript.tsx']
@@ -15,12 +10,12 @@ on_ft = ['javascript.jsx', 'typescript.tsx']
 [[plugins]]
 repo = 'hexium310/yats.vim'
 lazy = 1
-on_ft = ['typescript', 'typescript.tsx']
+on_ft = ['typescript']
 hook_add = '''
   let g:yats_indent_disable = 1
 '''
 
 [[plugins]]
-repo = 'jason0x43/vim-js-indent'
+repo = 'maxmellon/vim-jsx-pretty'
 lazy = 1
-on_ft = ['typescript', 'typescript.tsx']
+on_ft = ['javascript', 'typescript']

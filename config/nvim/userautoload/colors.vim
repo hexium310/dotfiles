@@ -17,3 +17,4 @@ highlight GitGutterChangeDeleteLineNr gui=underline guifg=#E06C75 guibg=#E5C07B
 highlight ALEErrorSign guifg=#F2777A
 highlight ALEStyleErrorSign guifg=#FFCC66
 highlight link EndOfBuffer Ignore
+highlight Flashy guibg=#134a28

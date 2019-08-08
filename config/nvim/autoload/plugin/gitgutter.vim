@@ -11,6 +11,10 @@ endfunction
 function! plugin#gitgutter#set_maps() abort
   nmap <silent> [g <Plug>GitGutterPrevHunk
   nmap <silent> ]g <Plug>GitGutterNextHunk
+  omap ih <Plug>GitGutterTextObjectInnerPending
+  omap ah <Plug>GitGutterTextObjectOuterPending
+  xmap ih <Plug>GitGutterTextObjectInnerVisual
+  xmap ah <Plug>GitGutterTextObjectOuterVisual
 endfunction
 
 function! plugin#gitgutter#define_sign_linenr_highlights() abort

@@ -130,6 +130,9 @@ on_event = 'BufEnter'
 repo = 'kana/vim-operator-replace'
 lazy = 1
 on_event = 'BufEnter'
+hook_add = '''
+  nmap R <Plug>(operator-replace)
+'''
 
 [[plugins]]
 repo = 'rhysd/vim-operator-surround'
@@ -158,9 +161,6 @@ on_event = 'BufEnter'
 repo = 'rhysd/vim-textobj-anyblock'
 lazy = 1
 on_event = 'BufEnter'
-hook_add = '''
-  nmap R <Plug>(operator-replace)
-'''
 
 [[plugins]]
 repo = 'kana/vim-textobj-indent'
@@ -171,6 +171,22 @@ on_event = 'BufEnter'
 repo = 'kana/vim-textobj-line'
 lazy = 1
 on_event = 'BufEnter'
+
+[[plugins]]
+repo = 'kana/vim-textobj-entire'
+lazy = 1
+on_event = 'BufEnter'
+
+[[plugins]]
+repo = 'thinca/vim-textobj-between'
+lazy = 1
+on_event = 'BufEnter'
+hook_add = '''
+  omap if <Plug>(textobj-between-i)
+  omap af <Plug>(textobj-between-a)
+  xmap if <Plug>(textobj-between-i)
+  xmap af <Plug>(textobj-between-a)
+'''
 
 [[plugins]]
 repo = 'sgur/vim-textobj-parameter'

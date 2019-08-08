@@ -10,6 +10,7 @@ function! plugin#coc#set_variables() abort
         \   'coc-json',
         \   'coc-yaml',
         \   'coc-vimlsp',
+        \   'coc-git',
         \ ]
 endfunction
 
@@ -17,6 +18,7 @@ function! plugin#coc#set_maps() abort
   nnoremap <silent> K :call plugin#coc#show_documentation()<CR>
   nmap <silent> [c <Plug>(coc-diagnostic-prev)
   nmap <silent> ]c <Plug>(coc-diagnostic-next)
+  nmap <silent> <Space>h <Plug>(coc-git-chunkinfo)
 endfunction
 
 function! plugin#coc#set_commands() abort

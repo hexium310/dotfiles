@@ -25,6 +25,9 @@ function! plugin#lightline#set_variables() abort
         \    ],
         \  },
         \  'tabline': {
+        \    'left': [
+        \      ['tabs', 'git_changes']
+        \    ],
         \    'right': [],
         \  },
         \  'component': {
@@ -36,6 +39,7 @@ function! plugin#lightline#set_variables() abort
         \    'anzu': 'anzu#search_status',
         \    'ale_ok': 'lightline#ale#ok',
         \    'coc_status_info': 'plugin#lightline#coc_status_info',
+        \    'git_changes': 'plugin#lightline#coc_git_changes',
         \  },
         \  'component_expand': {
         \    'ale_checking': 'lightline#ale#checking',
@@ -62,7 +66,7 @@ endfunction
 function! plugin#lightline#autocmd() abort
   augroup lightline
     autocmd!
-    autocmd User CocDiagnosticChange call lightline#update()
+    autocmd User CocDiagnosticChange,CocGitStatusChange call lightline#update()
   augroup END
 endfunction
 
@@ -83,4 +87,8 @@ endfunction
 function! plugin#lightline#coc_status_info() abort
   let count = get(get(b:, 'coc_diagnostic_info', {}), 'information', 0)
   return count == 0 ? '' : get(g:, 'coc_status_info_sign', 'I: ') . count
+endfunction
+
+function! plugin#lightline#coc_git_changes() abort
+  return get(b:, 'coc_git_status', '')
 endfunction

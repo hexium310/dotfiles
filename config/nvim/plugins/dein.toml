@@ -249,7 +249,6 @@ on_event = 'BufEnter'
 hook_add = '''
   call plugin#gitgutter#set_variables()
   call plugin#gitgutter#set_maps()
-  call plugin#gitgutter#define_sign_linenr_highlights()
 '''
 
 [[plugins]]

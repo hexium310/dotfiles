@@ -14,6 +14,9 @@ highlight GitGutterAddLineNr guifg=#282C34 guibg=#99cc99
 highlight GitGutterChangeLineNr guifg=#282C34 guibg=#E5C07B
 highlight GitGutterDeleteLineNr gui=underline guifg=#E06C75
 highlight GitGutterChangeDeleteLineNr gui=underline guifg=#E06C75 guibg=#E5C07B
+highlight GitGutterAdd guibg=none
+highlight GitGutterChange guibg=none
+highlight GitGutterDelete guibg=none
 highlight ALEErrorSign guifg=#F2777A
 highlight ALEStyleErrorSign guifg=#FFCC66
 highlight link EndOfBuffer Ignore

@@ -1,5 +1,5 @@
-let s:dein_dir = expand('$XDG_CACHE_HOME/dein')
-let s:dein_core_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+const s:dein_dir = expand('$XDG_CACHE_HOME/dein')
+const s:dein_core_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if isdirectory(s:dein_core_dir)
   let &runtimepath .= ',' . s:dein_core_dir

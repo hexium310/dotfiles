@@ -1,11 +1,11 @@
 function! plugin#fzf#set_variables() abort
-  let g:fzf_rg_glob_files = [
+  const g:fzf_rg_glob_files = [
         \   '!LICENSE',
         \   '!README.md',
         \   '!yarn.lock',
         \   '!package-lock.json',
         \ ]
-  let g:fzf_rg_glob = join(map(g:fzf_rg_glob_files, '"-g ''" . v:val . "''"'), ' ')
+  const g:fzf_rg_glob = join(map(g:fzf_rg_glob_files, '"-g ''" . v:val . "''"'), ' ')
 endfunction
 
 function! plugin#fzf#set_maps() abort
@@ -29,7 +29,7 @@ endfunction
 
 function! plugin#fzf#new_file() abort
   function! s:callback(line) abort
-    let file = input('New file: ', a:line . '/')
+    const file = input('New file: ', a:line . '/')
     execute 'edit' file
   endfunction
 

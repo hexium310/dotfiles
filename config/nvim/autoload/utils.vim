@@ -1,5 +1,5 @@
 function! utils#open_terminal() abort
-  let terminal_buffers = filter(getbufinfo(), 'v:val.name =~ "^term://.*$"')
+  const terminal_buffers = filter(getbufinfo(), 'v:val.name =~ "^term://.*$"')
 
   if empty(terminal_buffers)
     split
@@ -8,8 +8,8 @@ function! utils#open_terminal() abort
     return
   endif
 
-  let latest_terminal_buffer = get(terminal_buffers, -1)
-  let window_ids = win_findbuf(latest_terminal_buffer.bufnr)
+  const latest_terminal_buffer = get(terminal_buffers, -1)
+  const window_ids = win_findbuf(latest_terminal_buffer.bufnr)
 
   if empty(window_ids)
     split

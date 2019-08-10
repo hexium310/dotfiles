@@ -6,7 +6,7 @@ hook_add = '''
 
   function s:DeinUpdateBuf() abort
     call dein#update()
-    let s:timer = timer_start(1000, { -> s:check_update_progress() }, { 'repeat': -1 })
+    const s:timer = timer_start(1000, { -> s:check_update_progress() }, { 'repeat': -1 })
   endfunction
 
   function s:check_update_progress() abort
@@ -254,5 +254,5 @@ hook_add = '''
 [[plugins]]
 repo = 'chriskempson/base16-vim'
 hook_add = '''
-  let base16colorspace=256
+  let g:base16colorspace = 256
 '''

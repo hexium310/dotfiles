@@ -57,7 +57,7 @@ function! plugin#lightline#set_variables() abort
         \  },
         \}
 
-  let s:palette = g:lightline#colorscheme#onedark#palette
+  const s:palette = g:lightline#colorscheme#onedark#palette
   let s:palette.inactive.left[0] = s:palette.inactive.right[0]
   let s:palette.normal.left[0] = ['#282C34', '#99CC99', 12, 11]
   let s:palette.normal.right[0] = ['#282C34', '#99CC99', 12, 11]
@@ -75,17 +75,17 @@ function! plugin#lightline#readonly()
 endfunction
 
 function! plugin#lightline#coc_status_error() abort
-  let count = get(get(b:, 'coc_diagnostic_info', {}), 'error', 0)
+  const count = get(get(b:, 'coc_diagnostic_info', {}), 'error', 0)
   return count == 0 ? '' : get(g:, 'coc_status_error_sign', 'E: ') . count
 endfunction
 
 function! plugin#lightline#coc_status_warning() abort
-  let count = get(get(b:, 'coc_diagnostic_info', {}), 'warning', 0)
+  const count = get(get(b:, 'coc_diagnostic_info', {}), 'warning', 0)
   return count == 0 ? '' : get(g:, 'coc_status_warning_sign', 'W: ') . count
 endfunction
 
 function! plugin#lightline#coc_status_info() abort
-  let count = get(get(b:, 'coc_diagnostic_info', {}), 'information', 0)
+  const count = get(get(b:, 'coc_diagnostic_info', {}), 'information', 0)
   return count == 0 ? '' : get(g:, 'coc_status_info_sign', 'I: ') . count
 endfunction
 

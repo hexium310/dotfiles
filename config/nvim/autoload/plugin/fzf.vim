@@ -1,11 +1,11 @@
 function! plugin#fzf#set_variables() abort
-  const g:fzf_rg_glob_files = [
+  const fzf_rg_glob_files = [
         \   '!LICENSE',
         \   '!README.md',
         \   '!yarn.lock',
         \   '!package-lock.json',
         \ ]
-  const g:fzf_rg_glob = join(map(g:fzf_rg_glob_files, '"-g ''" . v:val . "''"'), ' ')
+  const s:fzf_rg_glob = join(map(copy(fzf_rg_glob_files), { _, file -> printf("-g %s", file) }), ' ')
 endfunction
 
 function! plugin#fzf#set_maps() abort
@@ -16,7 +16,7 @@ endfunction
 
 function! plugin#fzf#set_commands() abort
   command! -bang -nargs=* Rg call fzf#vim#grep(
-        \ 'rg --line-number --no-heading --color=always ' . g:fzf_rg_glob . ' ' . shellescape(<q-args>),
+        \ 'rg --line-number --no-heading --color=always ' . get(s:, 'fzf_rg_glob', '') . ' ' . shellescape(<q-args>),
         \   0,
         \   fzf#vim#with_preview(
         \     { 'options': '--color --exact --delimiter : --nth 3..' },
@@ -28,14 +28,14 @@ function! plugin#fzf#set_commands() abort
 endfunction
 
 function! plugin#fzf#new_file() abort
-  function! s:callback(line) abort
+  function! l:callback(line) abort
     const file = input('New file: ', a:line . '/')
     execute 'edit' file
   endfunction
 
   call fzf#run(fzf#wrap({
         \  'source': 'fd -H --type=directory --exclude=.git/',
-        \  'sink': { line -> execute('call timer_start(0, { -> s:callback(line) })') },
+        \  'sink': { line -> execute('call timer_start(0, { -> l:callback(line) })') },
         \  'options': '--prompt="Directory> "'
         \}))
 endfunction

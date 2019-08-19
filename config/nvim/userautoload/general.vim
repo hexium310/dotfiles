@@ -19,7 +19,7 @@ set noswapfile
 " Display
 filetype plugin indent on
 set list
-set listchars=tab:»-,trail:-
+set listchars=tab:»-
 set scrolloff=2
 set noshowmode
 set novisualbell
@@ -59,4 +59,5 @@ augroup init_vim
   autocmd TermOpen * startinsert | setlocal signcolumn=no | tnoremap <buffer> <C-q> <C-\><C-n>
   autocmd BufWritePre * call utils#remove_multiple_empty_lines(['typescript', 'javascript'])
   autocmd FileType gitcommit,gitrebase setlocal bufhidden=delete
+  autocmd FileType markdown let &listchars .=",trail:·"
 augroup END

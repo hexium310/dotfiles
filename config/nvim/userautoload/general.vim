@@ -19,7 +19,7 @@ set noswapfile
 " Display
 filetype plugin indent on
 set list
-set listchars=tab:»-
+set listchars=tab:»-,trail:-
 set scrolloff=2
 set noshowmode
 set novisualbell

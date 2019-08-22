@@ -28,14 +28,14 @@ function! plugin#fzf#set_commands() abort
 endfunction
 
 function! plugin#fzf#new_file() abort
-  function! l:callback(line) abort
+  function! Callback(line) abort
     const file = input('New file: ', a:line . '/')
     execute 'edit' file
   endfunction
 
   call fzf#run(fzf#wrap({
         \  'source': 'fd -H --type=directory --exclude=.git/',
-        \  'sink': { line -> execute('call timer_start(0, { -> l:callback(line) })') },
+        \  'sink': { line -> execute('call timer_start(0, { -> Callback(line) })') },
         \  'options': '--prompt="Directory> "'
         \}))
 endfunction

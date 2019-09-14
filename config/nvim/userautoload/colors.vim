@@ -8,6 +8,8 @@ highlight CursorLineNr gui=bold
 highlight! link gitcommitComment Comment
 highlight CocFloating guibg=#1e2128
 highlight CocErrorSign guifg=#F2777A
+highlight link CocCursorRange None
+highlight link CocHoverRange None
 highlight clear CursorLine
 highlight SignColumn guibg=none
 highlight GitGutterAddLineNr guifg=#282C34 guibg=#99cc99

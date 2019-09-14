@@ -1,6 +1,7 @@
 {
   "javascript.validate.enable": false,
   "coc.preferences.extensionUpdateCheck": "never",
+  "rust-analyzer.enableCargoWatchOnStartup": "disabled",
   "git.enableGlobalStatus": false,
   "git.enableGutters": false,
   "git.realtimeGutters": false

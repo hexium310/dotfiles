@@ -11,6 +11,7 @@ function! plugin#coc#set_variables() abort
         \   'coc-yaml',
         \   'coc-vimlsp',
         \   'coc-git',
+        \   'coc-rust-analyzer',
         \ ]
 endfunction
 

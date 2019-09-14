@@ -10,6 +10,8 @@ function! plugin#ale#set_variable() abort
   let g:ale_lint_on_filetype_changed = 0
   let g:ale_lint_on_insert_leave = 0
   let g:ale_lint_on_text_changed = 0
+  let g:ale_rust_cargo_use_check = 0
+  let g:ale_rust_cargo_use_clippy = 1
 endfunction
 
 function! plugin#ale#set_maps() abort

@@ -6,7 +6,7 @@ highlight Comment gui=italic guifg=#aaaaaa
 highlight StatusLine guifg=#282C34 guibg=#99cc99
 highlight CursorLineNr gui=bold
 highlight! link gitcommitComment Comment
-highlight CocFloating guibg=#1e2128
+highlight CocFloating guibg=#000000
 highlight CocErrorSign guifg=#F2777A
 highlight link CocCursorRange None
 highlight link CocHoverRange None

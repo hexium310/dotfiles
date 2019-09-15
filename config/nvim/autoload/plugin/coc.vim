@@ -6,7 +6,6 @@ function! plugin#coc#set_variables() abort
         \   'coc-snippets',
         \   'coc-highlight',
         \   'coc-tsserver',
-        \   'coc-rls',
         \   'coc-json',
         \   'coc-yaml',
         \   'coc-vimlsp',

@@ -16,6 +16,7 @@ endfunction
 
 function! plugin#coc#set_maps() abort
   nnoremap <silent> K :call plugin#coc#show_documentation()<CR>
+  inoremap <silent><expr> <C-x><C-n> coc#refresh()
   nmap <silent> [c <Plug>(coc-diagnostic-prev)
   nmap <silent> ]c <Plug>(coc-diagnostic-next)
   nmap <silent> <Space>h <Plug>(coc-git-chunkinfo)

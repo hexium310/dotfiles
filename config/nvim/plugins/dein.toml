@@ -261,3 +261,18 @@ hook_add = '''
 repo = 'AndrewRadev/splitjoin.vim'
 lazy = 1
 on_event = 'BufEnter'
+
+[[plugins]]
+repo = 'jeetsukumaran/vim-indentwise'
+lazy = 1
+on_event = 'BufEnter'
+hook_add = '''
+  map ;l <Plug>(IndentWisePreviousLesserIndent)
+  map ;s <Plug>(IndentWisePreviousEqualIndent)
+  map ;g <Plug>(IndentWisePreviousGreaterIndent)
+  map ,l <Plug>(IndentWiseNextLesserIndent)
+  map ,s <Plug>(IndentWiseNextEqualIndent)
+  map ,g <Plug>(IndentWiseNextGreaterIndent)
+  map <Nop>IndentWisePreviousAbsoluteIndent <Plug>(IndentWisePreviousAbsoluteIndent)
+  map <Nop>IndentWiseNextAbsoluteIndent <Plug>(IndentWiseNextAbsoluteIndent)
+'''

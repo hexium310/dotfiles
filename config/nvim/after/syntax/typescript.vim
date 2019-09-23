@@ -6,13 +6,15 @@ syntax match typescriptDotNotation /\./ nextgroup=typescriptProp,typescriptFuncC
 syntax match typescriptFuncCall /[a-zA-Z]\k*\ze\(<.*>\)\?(/ containedin=@typescriptStatement nextgroup=typescriptGenericImpl
 highlight link typescriptFuncCall Function
 
+" import/export syntax highlight
 syntax keyword typescriptImport import nextgroup=typescriptModuleAsterisk,typescriptModuleKeyword,typescriptModuleGroup skipwhite skipempty
+syntax keyword typescriptExport export nextgroup=typescriptModuleAsterisk,typescriptModuleKeyword,typescriptModuleGroup skipwhite skipempty
 syntax match typescriptModuleKeyword /\<\K\k*/ nextgroup=typescriptModuleAs,typescriptFrom,typescriptModuleComma contained skipwhite skipempty
 syntax match typescriptModuleAsterisk /\*/ nextgroup=typescriptModuleKeyword,typescriptModuleAs,typescriptFrom contained skipwhite skipempty
 syntax keyword typescriptModuleAs as nextgroup=typescriptModuleKeyword contained skipwhite skipempty
 syntax keyword typescriptFrom from nextgroup=typescriptString contained skipwhite skipempty
 syntax match typescriptModuleComma /,/ nextgroup=typescriptModuleKeyword,typescriptModuleAsterisk,typescriptModuleGroup contained skipwhite skipempty
-syntax region typescriptModuleGroup matchgroup=typescriptModuleBraces start=/{/ end=/}/ contains=typescriptModuleKeyword,typescriptModuleComma,typescriptModuleAs,typescriptComment nextgroup=typescriptFrom contained skipwhite skipempty
+syntax region typescriptModuleGroup matchgroup=typescriptModuleBraces start=/{/ end=/}/ contains=typescriptModuleKeyword,typescriptModuleComma,typescriptModuleAs,@typescriptComments nextgroup=typescriptFrom contained skipwhite skipempty
 
 
 

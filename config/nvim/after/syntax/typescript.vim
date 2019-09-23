@@ -8,7 +8,7 @@ highlight link typescriptFuncCall Function
 
 " import/export syntax highlight
 syntax keyword typescriptImport import nextgroup=typescriptModuleAsterisk,typescriptModuleKeyword,typescriptModuleGroup skipwhite skipempty
-syntax keyword typescriptExport export nextgroup=typescriptModuleAsterisk,typescriptModuleKeyword,typescriptModuleGroup skipwhite skipempty
+syntax keyword typescriptExport export nextgroup=typescriptModuleAsterisk,typescriptModuleKeyword,typescriptModuleGroup,@typescriptStatement skipwhite skipempty
 syntax match typescriptModuleKeyword /\<\K\k*/ nextgroup=typescriptModuleAs,typescriptFrom,typescriptModuleComma contained skipwhite skipempty
 syntax match typescriptModuleAsterisk /\*/ nextgroup=typescriptModuleKeyword,typescriptModuleAs,typescriptFrom contained skipwhite skipempty
 syntax keyword typescriptModuleAs as nextgroup=typescriptModuleKeyword contained skipwhite skipempty

@@ -54,6 +54,7 @@ let $GIT_EDITOR = 'nvr --remote-tab-wait'
 augroup init_vim
   autocmd!
   autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+  autocmd BufReadPre *.tsx call dein#source('vim-jsx-pretty')
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
   autocmd TermOpen * startinsert | setlocal signcolumn=no | tnoremap <buffer> <C-q> <C-\><C-n>

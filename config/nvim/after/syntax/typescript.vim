@@ -3,7 +3,13 @@ syntax region typescriptClassTypeParameter matchgroup=typescriptTypeBrackets sta
 syntax cluster typescriptTopExpression add=typescriptVariable,typescriptConditional,typescriptRepeat
 
 syntax match typescriptDotNotation /\./ nextgroup=typescriptProp,typescriptFuncCall skipnl
-syntax match typescriptFuncCall /[a-zA-Z]\k*\ze\(<.*>\)\?(/ containedin=@typescriptStatement nextgroup=typescriptGenericImpl
+syntax match typescriptFuncCall /[a-zA-Z]\k*\ze\(<.*>\)\?(/ containedin=typescriptTopExpressionWithoutTypescriptPromitive nextgroup=typescriptGenericImpl
+syntax cluster typescriptTopExpressionWithoutTypescriptPrimitive
+  \ contains=typescriptIdentifier,typescriptIdentifierName,
+  \ typescriptOperator,typescriptUnaryOp,
+  \ typescriptParenExp,typescriptRegexpString,
+  \ typescriptGlobal,typescriptAsyncFuncKeyword,
+  \ typescriptClassKeyword,typescriptTypeCast
 highlight link typescriptFuncCall Function
 
 " import/export syntax highlight

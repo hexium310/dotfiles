@@ -87,5 +87,6 @@ highlight link typescriptStringStaticMethod Function
 highlight link typescriptSymbolStaticMethod Function
 highlight link typescriptEndColons None
 highlight link typescriptVariable Keyword
+highlight link typescriptRepeat Keyword
 
 command! VimShowHlItem echo synIDattr(synID(line("."), col("."), 1), "name")

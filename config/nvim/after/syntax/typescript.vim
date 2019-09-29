@@ -32,6 +32,12 @@ syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
   \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator,typescriptUserDefinedType,typescriptConstraint
   \ skipwhite contained skipempty
 
+" Changes tuple syntax highlight from typescriptBraces to typescriptTypeBraces
+syntax region typescriptTupleType matchgroup=typescriptTypeBraces
+ \ start=/\[/ end=/\]/
+ \ contains=@typescriptType
+ \ contained skipwhite oneline
+
 " Redefines typescriptArrowFuncDef ----------------------------------------------
 syntax clear typescriptArrowFuncDef
 syntax match   typescriptArrowFuncDef          contained /({\_[^}]*}\(:\_[^)]\)\?)\s*=>/

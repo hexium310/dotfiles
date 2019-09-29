@@ -27,6 +27,11 @@ highlight link typescriptFrom Keyword
 highlight link typescriptModuleAs Keyword
 highlight link typescriptModule Keyword
 
+" Enables `extends` syntax highlight in <> or () or other
+syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
+  \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator,typescriptUserDefinedType,typescriptConstraint
+  \ skipwhite contained skipempty
+
 " Redefines typescriptArrowFuncDef ----------------------------------------------
 syntax clear typescriptArrowFuncDef
 syntax match   typescriptArrowFuncDef          contained /({\_[^}]*}\(:\_[^)]\)\?)\s*=>/
@@ -88,5 +93,15 @@ highlight link typescriptSymbolStaticMethod Function
 highlight link typescriptEndColons None
 highlight link typescriptVariable Keyword
 highlight link typescriptRepeat Keyword
+highlight link typescriptConstraint Special
+highlight link typescriptConstructorType Special
+highlight link typescriptUserDefinedType Special
+highlight link typescriptTypeQuery Special
+highlight link typescriptUnion Special
+highlight link typescriptTypeAnnotation Special
+highlight link typescriptMappedIn Special
+highlight link typescriptDefaultParam Special
+highlight link typescriptReadonlyArrayKeyword Special
+highlight link typescriptOptionalMark Special
 
 command! VimShowHlItem echo synIDattr(synID(line("."), col("."), 1), "name")

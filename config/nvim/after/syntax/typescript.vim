@@ -109,5 +109,6 @@ highlight link typescriptMappedIn Special
 highlight link typescriptDefaultParam Special
 highlight link typescriptReadonlyArrayKeyword Special
 highlight link typescriptOptionalMark Special
+highlight link typescriptCall Constant
 
 command! VimShowHlItem echo synIDattr(synID(line("."), col("."), 1), "name")

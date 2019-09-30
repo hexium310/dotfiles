@@ -27,12 +27,14 @@ highlight link typescriptFrom Keyword
 highlight link typescriptModuleAs Keyword
 highlight link typescriptModule Keyword
 
-" Enables `extends` syntax highlight in <> or () or other
+" Enables `extends` highlight in <> or () or other (nextgroup=typescriptConstraint)
+" Enables types highlight in indexed access operator (K of T[K]) (containedin=typescriptTypeBracket)
 syntax match typescriptTypeReference /\K\k*\(\.\K\k*\)*/
+  \ containedin=typescriptTypeBracket
   \ nextgroup=typescriptTypeArguments,@typescriptTypeOperator,typescriptUserDefinedType,typescriptConstraint
   \ skipwhite contained skipempty
 
-" Changes tuple syntax highlight from typescriptBraces to typescriptTypeBraces
+" Changes tuple-type syntax matchgroup (matchgroup=typescript=TypeBraces)
 syntax region typescriptTupleType matchgroup=typescriptTypeBraces
  \ start=/\[/ end=/\]/
  \ contains=@typescriptType

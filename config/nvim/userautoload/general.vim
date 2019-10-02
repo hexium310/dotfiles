@@ -62,4 +62,5 @@ augroup init_vim
   autocmd FileType gitcommit,gitrebase setlocal bufhidden=delete
   autocmd FileType markdown let &listchars .=",trail:·"
   autocmd FileType list highlight CursorLine gui=bold
+  autocmd FileType typescript nnoremap <silent><buffer> gf :call plugin#tsgf#findFile()<Cr>
 augroup END

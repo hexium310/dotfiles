@@ -61,5 +61,5 @@ augroup init_vim
   autocmd BufWritePre * call utils#remove_multiple_empty_lines(['typescript', 'javascript'])
   autocmd FileType gitcommit,gitrebase setlocal bufhidden=delete
   autocmd FileType markdown let &listchars .=",trail:·"
-  autocmd FileType list highlight CursorLine gui=bold | autocmd init_vim BufLeave * highlight clear CursorLine
+  autocmd FileType list autocmd OptionSet * setlocal number
 augroup END

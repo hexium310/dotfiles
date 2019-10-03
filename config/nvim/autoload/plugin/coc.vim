@@ -20,6 +20,7 @@ function! plugin#coc#set_maps() abort
   nmap <silent> [c <Plug>(coc-diagnostic-prev)
   nmap <silent> ]c <Plug>(coc-diagnostic-next)
   nmap <silent> <Space>h <Plug>(coc-git-chunkinfo)
+  nmap <silent> gf <Plug>(coc-definition)
 endfunction
 
 function! plugin#coc#set_commands() abort

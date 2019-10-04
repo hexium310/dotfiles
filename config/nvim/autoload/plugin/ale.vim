@@ -20,4 +20,5 @@ endfunction
 function! plugin#ale#set_maps() abort
   nmap <silent> [a <Plug>(ale_previous_wrap)
   nmap <silent> ]a <Plug>(ale_next_wrap)
+  nmap <Space>fix <Plug>(ale_fix)
 endfunction

@@ -1,7 +1,9 @@
 function! plugin#ale#set_variable() abort
   let g:ale_linters = {
         \  'typescript': ['eslint'],
+        \  'typescriptreact': ['eslint'],
         \  'javascript': ['eslint'],
+        \  'javascriptreact': ['eslint'],
         \}
   let g:ale_disable_lsp = 1
   let g:ale_echo_msg_format = '%severity% [%linter%] %s'
@@ -14,6 +16,7 @@ function! plugin#ale#set_variable() abort
   let g:ale_rust_cargo_use_clippy = 1
   let g:ale_fixers = {
         \  'typescript': ['eslint'],
+        \  'typescriptreact': ['eslint'],
         \}
 endfunction
 

@@ -58,7 +58,12 @@ augroup init_vim
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
   autocmd TermOpen * startinsert | setlocal signcolumn=no | tnoremap <buffer> <C-q> <C-\><C-n>
-  autocmd BufWritePre * call utils#remove_multiple_empty_lines(['typescript', 'javascript'])
+  autocmd BufWritePre * call utils#remove_multiple_empty_lines([
+        \'typescript',
+        \'typescriptreact',
+        \'javascript',
+        \'javascriptreact'
+        \])
   autocmd FileType gitcommit,gitrebase setlocal bufhidden=delete
   autocmd FileType markdown let &listchars .=",trail:·"
   autocmd FileType list autocmd OptionSet * setlocal number

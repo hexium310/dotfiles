@@ -173,17 +173,6 @@ lazy = 1
 on_event = 'BufEnter'
 
 [[plugins]]
-repo = 'thinca/vim-textobj-between'
-lazy = 1
-on_event = 'BufEnter'
-hook_add = '''
-  omap if <Plug>(textobj-between-i)
-  omap af <Plug>(textobj-between-a)
-  xmap if <Plug>(textobj-between-i)
-  xmap af <Plug>(textobj-between-a)
-'''
-
-[[plugins]]
 repo = 'sgur/vim-textobj-parameter'
 lazy = 1
 on_event = 'BufEnter'
@@ -199,8 +188,6 @@ lazy = 1
 on_event = 'BufEnter'
 hook_add = '''
   let g:caw_operator_keymappings = 1
-  nmap <Space>c <Plug>(caw:prefix)
-  vmap <Space>c <Plug>(caw:prefix)
 '''
 
 [[plugins]]

@@ -257,3 +257,8 @@ hook_add = '''
   map <Nop>IndentWisePreviousAbsoluteIndent <Plug>(IndentWisePreviousAbsoluteIndent)
   map <Nop>IndentWiseNextAbsoluteIndent <Plug>(IndentWiseNextAbsoluteIndent)
 '''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+lazy = 1
+on_event = 'BufEnter'

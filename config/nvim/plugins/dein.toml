@@ -10,7 +10,7 @@ hook_add = '''
     split
     call nvim_set_current_buf(buf)
     put! ='Updating...'
-    call dein#set_hook([], 'hook_done_update', 'call Display_updates_log(' . buf . ') | put =')
+    call dein#set_hook([], 'hook_done_update', 'call Display_updates_log(' . buf . ')')
   endfunction
 
   function! Display_updates_log(buf) abort

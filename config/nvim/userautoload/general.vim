@@ -58,7 +58,7 @@ augroup init_vim
   autocmd BufReadPre *.tsx call dein#source('vim-jsx-pretty')
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
-  autocmd TermOpen * startinsert | setlocal signcolumn=no | tnoremap <buffer> <C-q> <C-\><C-n>
+  autocmd TermOpen * startinsert | setlocal signcolumn=no | tnoremap <buffer> <C-q> <C-\><C-n> | set filetype=terminal
   autocmd BufWritePre * call utils#remove_multiple_empty_lines([
         \'typescript',
         \'typescriptreact',
@@ -71,7 +71,9 @@ augroup END
 
 augroup line_number
   autocmd!
-  autocmd FileType list,help autocmd OptionSet * setlocal number norelativenumber
+  autocmd FileType fzf autocmd OptionSet * ++once setlocal nonumber norelativenumber
+  autocmd FileType list,help autocmd OptionSet * ++once setlocal number norelativenumber
+  autocmd FileType terminal autocmd BufEnter * ++once setlocal norelativenumber
   autocmd BufEnter,InsertLeave,WinEnter * setlocal relativenumber
   autocmd BufLeave,InsertEnter,WinLeave,TermEnter * setlocal norelativenumber
 augroup END

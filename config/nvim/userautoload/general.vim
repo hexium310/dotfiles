@@ -25,6 +25,7 @@ set noshowmode
 set novisualbell
 set nofoldenable
 set number
+set relativenumber
 set numberwidth=5
 set showtabline=2
 set laststatus=2
@@ -66,5 +67,11 @@ augroup init_vim
         \])
   autocmd FileType gitcommit,gitrebase setlocal bufhidden=delete
   autocmd FileType markdown let &listchars .=",trail:·"
-  autocmd FileType list autocmd OptionSet * setlocal number
+augroup END
+
+augroup line_number
+  autocmd!
+  autocmd FileType list,help autocmd OptionSet * setlocal number norelativenumber
+  autocmd BufEnter,InsertLeave,WinEnter * setlocal relativenumber
+  autocmd BufLeave,InsertEnter,WinLeave,TermEnter * setlocal norelativenumber
 augroup END

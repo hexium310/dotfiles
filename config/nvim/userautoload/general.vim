@@ -54,7 +54,7 @@ let $GIT_EDITOR = 'nvr --remote-tab-wait'
 " autocmd
 augroup init_vim
   autocmd!
-  autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+  autocmd BufEnter * setlocal formatoptions-=cro
   autocmd BufReadPre *.tsx call dein#source('vim-jsx-pretty')
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
@@ -66,7 +66,7 @@ augroup init_vim
         \'javascriptreact'
         \])
   autocmd FileType gitcommit,gitrebase setlocal bufhidden=delete
-  autocmd FileType markdown let &listchars .=",trail:·"
+  autocmd FileType markdown setlocal listchars+=trail:·
 augroup END
 
 augroup line_number

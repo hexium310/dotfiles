@@ -40,5 +40,6 @@ function! plugin#coc#autocmd() abort
   augroup coc
     autocmd!
     autocmd CursorHoldI * silent call CocActionAsync('doHover')
+    autocmd User CocDiagnosticChange,CocGitStatusChange call lightline#update()
   augroup END
 endfunction

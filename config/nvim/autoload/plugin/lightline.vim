@@ -63,13 +63,6 @@ function! plugin#lightline#set_variables() abort
   let s:palette.normal.right[0] = ['#282C34', '#99CC99', 12, 11]
 endfunction
 
-function! plugin#lightline#autocmd() abort
-  augroup lightline
-    autocmd!
-    autocmd User CocDiagnosticChange,CocGitStatusChange call lightline#update()
-  augroup END
-endfunction
-
 function! plugin#lightline#readonly()
   return &readonly || &filetype == 'help' ? '👀' : ''
 endfunction

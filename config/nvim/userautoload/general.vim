@@ -67,6 +67,7 @@ augroup init_vim
         \])
   autocmd FileType gitcommit,gitrebase setlocal bufhidden=delete
   autocmd FileType markdown setlocal listchars+=trail:·
+  autocmd FileType vim autocmd OptionSet * ++once setlocal iskeyword-=#
 augroup END
 
 augroup line_number

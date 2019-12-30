@@ -203,7 +203,6 @@ hook_add = '''
 [[plugins]]
 repo = 'w0rp/ale'
 lazy = 1
-on_ft = ['javascript', 'javascriptreact', 'typescript', 'typescriptreact']
 hook_add = '''
   call plugin#ale#set_variable()
   call plugin#ale#set_maps()
@@ -221,6 +220,11 @@ hook_add ='''
 
 [[plugins]]
 repo = 'maximbaz/lightline-ale'
+depends = ['ale', 'lightline']
+lazy = 1
+hook_add = '''
+  let g:lightline#ale#indicator_checking = '...'
+'''
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'

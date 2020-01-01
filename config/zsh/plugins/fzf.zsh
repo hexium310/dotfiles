@@ -145,11 +145,13 @@ _fzf_complete_yarn_post() {
     {
         if ($1 ~ /\x27/) {
             for (i = 2; i <= NF; ++i) {
-                if ($i ~ /\x27/) {
-                    for (j = 1; j <= i; ++j) {
-                        str = str " " $j
-                    }
+                if ($i !~ /\x27/) {
+                    continue
                 }
+                for (j = 1; j <= i; ++j) {
+                    str = str " " $j
+                }
+                break
             }
         } else {
             str = $1

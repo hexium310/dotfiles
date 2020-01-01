@@ -6,6 +6,8 @@ function! plugin#fzf#set_variables() abort
         \   '!package-lock.json',
         \ ]
   const s:fzf_rg_glob = join(map(copy(fzf_rg_glob_files), { _, file -> printf("-g %s", file) }), ' ')
+  let g:fzf_statusline = 0
+  let g:fzf_nvim_statusline = 0
 endfunction
 
 function! plugin#fzf#set_maps() abort

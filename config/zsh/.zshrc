@@ -14,6 +14,7 @@
     zplugin ice lucid wait'0'; zplugin light zsh-users/zsh-completions
     zplugin ice lucid wait'0' atload'zpcompinit; zpcdreplay'; zplugin light zdharma/fast-syntax-highlighting
     zplugin ice lucid wait'0' from'gh-r' as'program'; zplugin light junegunn/fzf-bin
+    zplugin ice lucid wait'0' from'gh-r' src'shell/completion.zsh' pick'/dev/null'; zplugin light junegunn/fzf
     zplugin ice lucid wait'0' from'gh-r' as'program' pick'ripgrep*/rg'; zplugin light BurntSushi/ripgrep
     zplugin ice lucid wait'0' from'gh-r' as'program' pick'fd*/fd'; zplugin light sharkdp/fd
     zplugin ice lucid wait'0' from'gh-r' as'program' pick'nvim*/bin/nvim'; zplugin light neovim/neovim

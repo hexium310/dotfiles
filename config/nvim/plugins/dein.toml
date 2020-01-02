@@ -203,6 +203,7 @@ hook_add = '''
 [[plugins]]
 repo = 'w0rp/ale'
 lazy = 1
+on_ft = ['typescript', 'typescriptreact']
 hook_add = '''
   call plugin#ale#set_variable()
   call plugin#ale#set_maps()
@@ -222,6 +223,7 @@ hook_add ='''
 repo = 'maximbaz/lightline-ale'
 depends = ['ale', 'lightline']
 lazy = 1
+on_ft = ['typescript', 'typescriptreact']
 hook_add = '''
   let g:lightline#ale#indicator_checking = '...'
 '''

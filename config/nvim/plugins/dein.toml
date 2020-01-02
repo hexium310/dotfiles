@@ -232,6 +232,7 @@ hook_add = '''
 repo = 'junegunn/fzf.vim'
 lazy = 1
 on_if = 'executable("fzf")'
+on_event = 'BufEnter'
 hook_add = '''
   set runtimepath+=$ZPLG_HOME/plugins/junegunn---fzf
   call plugin#fzf#set_variables()

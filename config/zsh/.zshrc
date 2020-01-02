@@ -12,7 +12,9 @@
     zplugin ice lucid wait'0'; zplugin light chitoku-k/zsh-reset-title
     zplugin ice lucid wait'0'; zplugin light chitoku-k/zsh-vcs-extended
     zplugin ice lucid wait'0'; zplugin light zsh-users/zsh-completions
+    zplugin ice lucid wait'0' pick'git.zsh'; zplugin light chitoku-k/fzf-zsh-completions
     zplugin ice lucid wait'0' atload'zpcompinit; zpcdreplay'; zplugin light zdharma/fast-syntax-highlighting
+
     zplugin ice lucid wait'0' from'gh-r' as'program'; zplugin light junegunn/fzf-bin
     zplugin ice lucid wait'0' from'gh-r' src'shell/completion.zsh' pick'/dev/null'; zplugin light junegunn/fzf
     zplugin ice lucid wait'0' from'gh-r' as'program' pick'ripgrep*/rg'; zplugin light BurntSushi/ripgrep

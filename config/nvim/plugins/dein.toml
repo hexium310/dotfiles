@@ -229,16 +229,11 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'junegunn/fzf'
-lazy = 1
-on_event = 'BufEnter'
-
-[[plugins]]
 repo = 'junegunn/fzf.vim'
-depends = ['fzf']
 lazy = 1
-on_event = 'BufEnter'
+on_if = 'executable("fzf")'
 hook_add = '''
+  let &runtimepath .= ',' . fnamemodify(expand(trim(system('which fzf'))), ':h:h')
   call plugin#fzf#set_variables()
   call plugin#fzf#set_maps()
   call plugin#fzf#set_commands()

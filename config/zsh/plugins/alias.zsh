@@ -21,6 +21,10 @@ if (( $+commands[nvim] )); then
     alias vim='nvim'
 fi
 
+if (( $+commands[fd] )); then
+    alias fd='fd --ignore-file=$XDG_CONFIG_HOME/fdignore'
+fi
+
 if [[ `uname` = 'Darwin' ]]; then
     alias ls='ls -G'
 elif [[ `uname` = 'Linux' ]]; then

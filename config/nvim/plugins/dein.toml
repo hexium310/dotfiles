@@ -241,8 +241,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'jakubfijalkowski/vim-gitgutter'
-rev = 'fix-termencoding'
+repo = 'airblade/vim-gitgutter'
 lazy = 1
 on_event = 'BufEnter'
 hook_add = '''

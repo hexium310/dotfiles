@@ -1,23 +1,3 @@
-fzf-select-git-files() {
-    local file=$(git ls-files . -co --exclude-standard 2> /dev/null | fzf)
-    [[ -n "$file" ]] && LBUFFER="$LBUFFER$file "
-
-    zle reset-prompt
-}
-
-zle -N fzf-select-git-files
-bindkey '^P' fzf-select-git-files
-
-fzf-select-all-files() {
-    local file=$(fd --hidden --exclude=.git/ --type=file --type=directory --color=always 2> /dev/null | fzf -m)
-    [[ -n "$file" ]] && LBUFFER="$LBUFFER$file "
-
-    zle reset-prompt
-}
-
-zle -N fzf-select-all-files
-bindkey '^T' fzf-select-all-files
-
 fzf-history() {
     local command=( $(history 1 \
       | tail -r \
@@ -116,4 +96,12 @@ _fzf_complete_yarn_tabularize() {
             }
         }
     '
+}
+
+_fzf_compgen_path() {
+    fd . "$1" --hidden --type=file 2> /dev/null
+}
+
+_fzf_compgen_dir() {
+    fd . "$1" --hidden --type=directory 2> /dev/null
 }

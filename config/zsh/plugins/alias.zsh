@@ -8,6 +8,8 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
 alias sudo='sudo '
+alias vim='nvim'
+alias fd='fd --ignore-file=$XDG_CONFIG_HOME/fdignore'
 
 if (( $+commands[brew] )); then
     alias brwe='brew'
@@ -15,14 +17,6 @@ fi
 
 if (( $+commands[docker-compose] )); then
     alias fig='docker-compose'
-fi
-
-if (( $+commands[nvim] )); then
-    alias vim='nvim'
-fi
-
-if (( $+commands[fd] )); then
-    alias fd='fd --ignore-file=$XDG_CONFIG_HOME/fdignore'
 fi
 
 if [[ `uname` = 'Darwin' ]]; then

@@ -21,8 +21,6 @@
     zplugin ice lucid wait'0' from'gh-r' as'program' pick'nvim*/bin/nvim'; zplugin light neovim/neovim
 
     zplugin ice atinit'local i; for i in *.zsh; do source $i; done'; zplugin light $ZDOTDIR/plugins
-    zplugin light $ZDOTDIR/local
-    zplugin ice has'fzf'; zplugin light $ZDOTDIR/plugins/fzf
 
     unfunction set_autosuggestions_env
 }

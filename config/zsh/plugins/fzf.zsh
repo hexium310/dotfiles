@@ -1,9 +1,20 @@
 fzf-history() {
-    local command=( $(history 1 \
-      | tail -r \
-      | awk '{c="";for(i=2;i<NF;i++){c=c sprintf("%s ",$i);}c=c $NF;if(!a[c]++){printf(" %6s%s\n", substr($1, length($1), 1)=="*"?$1" ":$1"  ",c)}}' \
-      | fzf --query=${LBUFFER} +s --bind=ctrl-r:toggle-sort) )
-    [[ -n "$command[1]" ]] && zle vi-fetch-history -n $command[1]
+    local history_num=($(
+        fc -rl 1 |
+        awk '
+            {
+                num = $1;
+                $1 = "";
+                if (list_for_skipping_duplication[$0]++) {
+                    next
+                }
+                printf "%6s %s\n", num, $0;
+            }
+        ' |
+        fzf --reverse --query=$LBUFFER --tiebreak=index --no-sort --bind=ctrl-r:toggle-sort --nth 2.. |
+        awk '{ print $1 }'
+    ))
+    [[ -n "$history_num" ]] && zle vi-fetch-history -n $history_num
 
     zle reset-prompt
 }

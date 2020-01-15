@@ -10,6 +10,7 @@ alias lal='ls -al'
 alias sudo='sudo '
 alias vim='nvim'
 alias fd='fd --ignore-file=$XDG_CONFIG_HOME/fdignore'
+alias gpg='LANG=C gpg'
 
 if (( $+commands[brew] )); then
     alias brwe='brew'

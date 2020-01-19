@@ -17,6 +17,7 @@ export PATH="$COMPOSER_HOME/vendor/bin:$PATH"
 export PATH="$HOME/Repositories/hexium310/git-issue/target/debug:$PATH"
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZPLG_HOME=$XDG_CACHE_HOME/zplugin
+export REVOLVER_DIR="$XDG_CACHE_HOME/revolver"
 
 declare -A ZPLGM
 ZPLGM[HOME_DIR]=$XDG_CACHE_HOME/zplugin

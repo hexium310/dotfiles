@@ -75,5 +75,5 @@ info "\n"
 info ">>> Installing plugin managers\n"
 mkdir -p $XDG_CACHE_HOME/dein
 install_plugin_managers Shougo/dein.vim $XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim
-mkdir -p $XDG_CACHE_HOME/zplugin
-install_plugin_managers zdharma/zplugin $ZPLGM[BIN_DIR]
+mkdir -p $XDG_CACHE_HOME/zinit
+install_plugin_managers zdharma/zinit $ZINIT[BIN_DIR]

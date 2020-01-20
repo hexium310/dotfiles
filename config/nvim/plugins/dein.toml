@@ -279,3 +279,14 @@ hook_add = '''
 repo = 'Yggdroot/indentLine'
 lazy = 1
 on_event = 'BufEnter'
+
+[[plugins]]
+repo = 'rhysd/conflict-marker.vim'
+lazy = 1
+on_event = 'BufEnter'
+hook_add = '''
+  let g:conflict_marker_enable_mappings = 0
+  let g:conflict_marker_enable_highlight = 0
+  nmap ]f <Plug>(conflict-marker-next-hunk)
+  nmap [f <Plug>(conflict-marker-prev-hunk)
+'''

@@ -147,6 +147,15 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'emonkak/vim-operator-sort'
+lazy = 1
+on_event = 'BufEnter'
+hook_add = '''
+  nmap so <Plug>(operator-sort)
+  vmap so <Plug>(operator-sort)
+'''
+
+[[plugins]]
 repo = 'kana/vim-textobj-user'
 lazy = 1
 on_event = 'BufEnter'

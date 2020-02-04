@@ -15,7 +15,7 @@ hook_add = '''
 
   function! Display_updates_log(buf) abort
     let log = dein#get_updates_log()
-    call nvim_buf_set_lines(a:buf, 0, -1, v:true, split(log, "\n"))
+    call nvim_buf_set_lines(a:buf, 0, -1, v:true, add(split(log, "\n"), ""))
   endfunction
 '''
 

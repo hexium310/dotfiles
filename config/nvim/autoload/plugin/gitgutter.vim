@@ -7,6 +7,7 @@ function! plugin#gitgutter#set_variables() abort
   let g:gitgutter_sign_removed = '\ '
   let g:gitgutter_sign_removed_first_line = '\ '
   let g:gitgutter_sign_modified_removed = '\ '
+  let g:gitgutter_max_signs = 1000
 endfunction
 
 function! plugin#gitgutter#set_maps() abort

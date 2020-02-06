@@ -53,13 +53,13 @@ function! utils#fold_place_without_gitgutter_sign() abort
   let max = max(b:gitgutter_sign_lnums)
   let min = min(b:gitgutter_sign_lnums)
 
-  if max == 0
-    return
-  endif
-
   setlocal foldmethod=indent
   redraw
   setlocal foldmethod=manual
+
+  if max == 0
+    return
+  endif
 
   execute(':0,' . min . '-1fold')
   execute(':' . max . '+1,$fold')

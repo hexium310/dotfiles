@@ -77,5 +77,4 @@ augroup line_number
   autocmd FileType terminal autocmd BufEnter * ++once setlocal norelativenumber
   autocmd BufEnter,InsertLeave,WinEnter * setlocal relativenumber
   autocmd BufLeave,InsertEnter,WinLeave,TermEnter * setlocal norelativenumber
-  autocmd BufRead *.zunit setlocal foldenable foldcolumn=5 foldtext=utils#fold_text(b:gitgutter_sign_lnums) foldopen=insert,mark,quickfix,search,tag,undo foldclose=all | autocmd User GitGutter ++once call utils#fold_place_without_gitgutter_sign() | command! Fold call utils#fold_place_without_gitgutter_sign()
 augroup END

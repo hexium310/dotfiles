@@ -1,8 +1,9 @@
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' max-exports 3
-zstyle ':vcs_info:git:*' formats '%c%u' '(%b)'
-zstyle ':vcs_info:git:*' actionformats '%c%u' '(%b)' ':%a'
+# untrackedstr isn't displayed if %c%u is second
+zstyle ':vcs_info:git:*' formats '(%b)' '%c%u'
+zstyle ':vcs_info:git:*' actionformats '(%b)' '%c%u' ':%a'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr '%F{yellow}!%f'
 zstyle ':vcs_info:git:*' unstagedstr '%F{red}+%f'
@@ -40,8 +41,8 @@ _zsh_prompt() {
     local user_host='%F{green}%n@%m%f'
     local directory='%F{blue}%2~%f'
 
-    [[ -n $vcs_info_msg_0_ ]] && vcs_info_msg+=$vcs_info_msg_0_
-    [[ -n $vcs_info_msg_1_ ]] && vcs_info_msg+="%F{blue}$vcs_info_msg_1_%f"
+    [[ -n $vcs_info_msg_1_ ]] && vcs_info_msg+=$vcs_info_msg_1_
+    [[ -n $vcs_info_msg_0_ ]] && vcs_info_msg+="%F{blue}$vcs_info_msg_0_%f"
     [[ -n $vcs_info_msg_2_ ]] && vcs_info_msg+="%F{red}$vcs_info_msg_2_%f"
 
     case $1 in

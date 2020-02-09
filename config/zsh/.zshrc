@@ -16,7 +16,7 @@
 
     zinit ice lucid wait'0' atload'rewrite__zsh_togglecursor_reset; unfunction rewrite__zsh_togglecursor_reset'; zinit light chitoku-k/zsh-togglecursor
     zinit ice lucid wait'0'; zinit light chitoku-k/zsh-reset-title
-    zinit ice lucid wait'0'; zinit light chitoku-k/zsh-vcs-extended
+    zinit light chitoku-k/zsh-vcs-extended
     zinit ice lucid wait'0'; zinit light zsh-users/zsh-completions
     zinit ice lucid wait'0'; zinit light b4b4r07/zsh-vimode-visual
     zinit ice lucid wait'0' pick'src/git.zsh'; zinit light chitoku-k/fzf-zsh-completions

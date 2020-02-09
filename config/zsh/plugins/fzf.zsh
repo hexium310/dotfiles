@@ -20,7 +20,7 @@ fzf-history() {
 }
 
 zle -N fzf-history
-bindkey -M 'emacs' '^R' fzf-history
+bindkey -M viins '^R' fzf-history
 
 fzf-github-repositories() {
     local repositories_path="~/Repositories/"
@@ -31,7 +31,7 @@ fzf-github-repositories() {
 }
 
 zle -N fzf-github-repositories
-bindkey -M 'emacs' '^G' fzf-github-repositories
+bindkey -M viins '^G' fzf-github-repositories
 
 _fzf_complete_yarn() {
     if [[ "$@" = 'yarn'* ]] || [[ "$@" = 'yarn run'* ]]; then

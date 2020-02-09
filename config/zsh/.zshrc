@@ -4,7 +4,8 @@
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
     set_autosuggestions_env() {
-        export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=247,underline"
+        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=247,underline"
+        ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(fzf-completion vi-cmd-mode)
     }
 
     rewrite__zsh_togglecursor_reset() {

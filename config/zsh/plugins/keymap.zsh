@@ -18,3 +18,6 @@ bindkey -M vicmd '^N' history-beginning-search-forward-end
 bindkey -M vicmd '^P' history-beginning-search-backward-end
 bindkey -M vicmd '^T' transpose-words
 bindkey -M vicmd ':w^M' vi-cmd-mode
+
+zmodload zsh/complist
+bindkey -M menuselect '^[' vi-cmd-mode

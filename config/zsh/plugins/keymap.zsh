@@ -1,5 +1,5 @@
 bindkey -v
-bindkey -M viins -r '^B' '^C' '^D' '^F' '^G' '^K' '^N' '^O' '^P' '^Q' '^T' '^Y' '^Z'
+bindkey -M viins -r '^B' '^C' '^D' '^F' '^K' '^N' '^O' '^P' '^Q' '^T' '^Y' '^Z'
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^A' vi-first-non-blank
 bindkey -M viins '^E' vi-end-of-line
@@ -13,7 +13,7 @@ bindkey -M viins '^W' backward-kill-word
 bindkey -M viins '^[[A' history-beginning-search-backward-end
 bindkey -M viins '^[[B' history-beginning-search-forward-end
 
-bindkey -M vicmd -r '^D' '=' ':' '^G'
+bindkey -M vicmd -r '^D' '=' ':'
 bindkey -M vicmd '^N' history-beginning-search-forward-end
 bindkey -M vicmd '^P' history-beginning-search-backward-end
 bindkey -M vicmd '^T' transpose-words

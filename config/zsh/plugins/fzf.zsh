@@ -21,7 +21,6 @@ fzf-history() {
 
 zle -N fzf-history
 bindkey -M viins '^R' fzf-history
-bindkey -M vicmd '^R' fzf-history
 
 fzf-github-repositories() {
     local repositories_path="~/Repositories/"

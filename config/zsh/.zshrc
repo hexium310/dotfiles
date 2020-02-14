@@ -29,7 +29,7 @@
     zinit ice lucid wait'0' from'gh-r' as'program' pick'nvim*/bin/nvim'; zinit light neovim/neovim
 
     zinit ice atinit'local i; for i in *.zsh; do source $i; done'; zinit light $ZDOTDIR/plugins
-    zinit light $ZDOTDIR/local
+    zinit ice atinit'local i; for i in *.zsh; do source $i; done'; zinit light $ZDOTDIR/local
 
     unfunction set_autosuggestions_env
 }

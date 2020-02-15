@@ -1,3 +1,6 @@
+autoload -U colors
+colors
+
 fzf-history() {
     local history_num=($(
         fc -rl 1 |
@@ -33,6 +36,14 @@ fzf-github-repositories() {
 zle -N fzf-github-repositories
 bindkey -M viins '^G' fzf-github-repositories
 bindkey -M vicmd '^G' fzf-github-repositories
+
+_fzf_compgen_path() {
+    fd . "$1" --hidden --type=file 2> /dev/null
+}
+
+_fzf_compgen_dir() {
+    fd . "$1" --hidden --type=directory 2> /dev/null
+}
 
 _fzf_complete_yarn() {
     if [[ "$@" = 'yarn'* ]] || [[ "$@" = 'yarn run'* ]]; then
@@ -110,10 +121,19 @@ _fzf_complete_yarn_tabularize() {
     '
 }
 
-_fzf_compgen_path() {
-    fd . "$1" --hidden --type=file 2> /dev/null
-}
+_fzf_complete_zinit() {
+    local arguments=${(Q)${(z)@}}
+    local subcommand=${${(Q)${(z)arguments}}[2]}
 
-_fzf_compgen_dir() {
-    fd . "$1" --hidden --type=directory 2> /dev/null
+    if [[ $subcommand =~ ^(cd|delete|status|update)$ ]]; then
+        _fzf_complete '--ansi --multi' $@ < <({
+            local plugins=(${ZINIT[PLUGINS_DIR]}/*(N:t))
+            plugins=(${plugins[@]//---/\/})
+            plugins=(${plugins[@]:#_local/zinit})
+            plugins=(${plugins[@]:#custom})
+            plugins=($fg_bold[magenta]${^plugins/\//$reset_color\/$fg_bold[yellow]}$reset_color)
+            echo ${(F)plugins}
+        })
+        return
+    fi
 }

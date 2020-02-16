@@ -212,7 +212,7 @@ hook_add = '''
 [[plugins]]
 repo = 'w0rp/ale'
 lazy = 1
-on_ft = ['typescript', 'typescriptreact']
+on_ft = ['javascript', 'typescript', 'typescriptreact']
 hook_add = '''
   call plugin#ale#set_variable()
   call plugin#ale#set_maps()

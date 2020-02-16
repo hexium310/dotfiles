@@ -10,4 +10,5 @@ command_not_found_handler() {
     esac
 
     echo "zsh: command not found: $@"
+    return 127
 }

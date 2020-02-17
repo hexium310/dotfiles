@@ -42,20 +42,11 @@ syntax region typescriptTupleType matchgroup=typescriptTypeBraces
 
 " Redefines typescriptArrowFuncDef ----------------------------------------------
 syntax clear typescriptArrowFuncDef
-syntax match   typescriptArrowFuncDef          contained /({\_[^}]*}\(:\_[^)]\)\?)\s*=>/
- \ contains=typescriptArrowFuncArg,typescriptArrowFunc
- \ nextgroup=@typescriptExpression,typescriptBlock
- \ skipwhite skipempty
-" Changed next line to \_[^()] from \_[^)]
-syntax match   typescriptArrowFuncDef          contained /(\(\_s*[a-zA-Z\$_\[]\_[^()]*\)*)\s*=>/
- \ contains=typescriptArrowFuncArg,typescriptArrowFunc
- \ nextgroup=@typescriptExpression,typescriptBlock
- \ skipwhite skipempty
 syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
  \ nextgroup=@typescriptExpression,typescriptBlock
  \ skipwhite skipempty
-syntax region  typescriptArrowFuncDef          contained start=/(\_[^)]*):/ end=/=>/
+syntax region  typescriptArrowFuncDef          contained start=/(\_[^)]*)/ end=/=>/
   \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty keepend
@@ -113,4 +104,4 @@ highlight link typescriptReadonlyArrayKeyword Special
 highlight link typescriptOptionalMark Special
 highlight link typescriptCall Constant
 
-command! VimShowHlItem echo synIDattr(synID(line("."), col("."), 1), "name")
+command! VimShowHlItem echo join(reverse(map(synstack(line('.'), col('.')), { _, id -> synIDattr(id, 'name') })), ' ')

@@ -6,7 +6,7 @@ syntax cluster typescriptTopExpression add=typescriptVariable,typescriptConditio
 
 " Enables calling function syntax highlight
 syntax match typescriptDotNotation /\./ nextgroup=typescriptProp,typescriptFuncCall skipnl
-syntax match typescriptFuncCall /[a-zA-Z]\k*\ze\(<.*>\)\?(/ containedin=typescriptIdentifierName nextgroup=typescriptGenericImpl
+syntax match typescriptFuncCall /\zs[A-Za-z_$][0-9A-Za-z_$]*\ze\(<\_.\{-}>\)\?(/ containedin=typescriptIdentifierName,typescriptParamImpl nextgroup=typescriptFuncCallArg,typescriptTypeArguments
 highlight link typescriptFuncCall Function
 
 " Added method in ES2019

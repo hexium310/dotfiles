@@ -46,7 +46,7 @@ syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
  \ contains=typescriptArrowFuncArg,typescriptArrowFunc
  \ nextgroup=@typescriptExpression,typescriptBlock
  \ skipwhite skipempty
-syntax region  typescriptArrowFuncDef          contained start=/(\_[^)]*)/ end=/=>/
+syntax region  typescriptArrowFuncDef          contained start=/(\(\_s*[a-zA-Z$_\[({]\_[^)]*\|\))/ end=/=>/
   \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
   \ nextgroup=@typescriptExpression,typescriptBlock
   \ skipwhite skipempty keepend

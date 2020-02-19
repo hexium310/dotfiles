@@ -42,14 +42,23 @@ syntax region typescriptTupleType matchgroup=typescriptTypeBraces
 
 " Redefines typescriptArrowFuncDef ----------------------------------------------
 syntax clear typescriptArrowFuncDef
-syntax match   typescriptArrowFuncDef          contained /\K\k*\s*=>/
- \ contains=typescriptArrowFuncArg,typescriptArrowFunc
- \ nextgroup=@typescriptExpression,typescriptBlock
- \ skipwhite skipempty
-syntax region  typescriptArrowFuncDef          contained start=/(\(\_s*[a-zA-Z$_\[({]\_[^)]*\|\))/ end=/=>/
-  \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
-  \ nextgroup=@typescriptExpression,typescriptBlock
-  \ skipwhite skipempty keepend
+syntax match typescriptArrowFuncDef contained /\K\k*\s*=>/
+\ contains=typescriptArrowFuncArg,typescriptArrowFunc
+\ nextgroup=@typescriptExpression,typescriptBlock
+\ skipwhite skipempty
+"                                                                                 inside `,` of {} and []         outside `,` of {} and []
+syntax match typescriptArrowFuncDef contained /(\%(\_s*[[{]\?\_s*\%(\.\.\.\_s*\)\?[_$[:alpha:]][,_$[:alnum:]]*\_s*:\?\_s*[]}]\?,\?\_s*\)*\_s*)\_s*=>/
+\ contains=typescriptArrowFuncArg,typescriptArrowFunc
+\ nextgroup=@typescriptExpression,typescriptBlock
+\ skipwhite skipempty
+syntax match typescriptArrowFuncDef contained /(\%(\_s*\[\?\_s*\%(\.\.\.\_s*\)\?[_$[:alpha:]][,_$[:alnum:]]*\_s*\]\?,\?\_s*\)*\_s*)\_s*=>/
+\ contains=typescriptArrowFuncArg,typescriptArrowFunc
+\ nextgroup=@typescriptExpression,typescriptBlock
+\ skipwhite skipempty
+syntax region typescriptArrowFuncDef contained start=/(\(\_s*[a-zA-Z$_\[({]\_[^)]*\|\))/ end=/=>/
+\ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
+\ nextgroup=@typescriptExpression,typescriptBlock
+\ skipwhite skipempty keepend
 " ------------------------------------------------------------------------------
 
 " Resets highlight link

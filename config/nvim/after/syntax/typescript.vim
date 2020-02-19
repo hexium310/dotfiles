@@ -47,7 +47,7 @@ syntax match typescriptArrowFuncDef contained /\K\k*\s*=>/
 \ nextgroup=@typescriptExpression,typescriptBlock
 \ skipwhite skipempty
 "                                                                                 inside `,` of {} and []                                                      outside `,` of {} and []
-syntax match typescriptArrowFuncDef contained /(\%(\_s*[[{]\?\_s*\%(\.\.\.\_s*\)\?[_$[:alpha:]][,_$[:alnum:]]*\_s*[]}]\?\%(:\_s*[_$[:alnum:][\]{}():=><|&?[:space:]]\+\)\?,\?\_s*\)*\_s*)\_s*\%(:\_s*[[:alnum:]]\+\)\?\_s*=>/
+syntax match typescriptArrowFuncDef contained /(\%(\_s*[[{]\?\_s*\%(\.\.\.\_s*\)\?[_$[:alpha:]][,_$[:alnum:]]*\_s*[]}]\?\%(:\_s*[_$[:alnum:][\]{}():=><|&?[:space:]]\+\)\?,\?\_s*\)*\_s*)\_s*\%(:\_s*[_$[:alnum:][\]{}():=><|&?[:space:]]\+\)\?\_s*=>/
 \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
 \ nextgroup=@typescriptExpression,typescriptBlock
 \ skipwhite skipempty

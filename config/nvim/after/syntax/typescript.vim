@@ -55,10 +55,14 @@ syntax match typescriptArrowFuncDef contained /(\%(\_s*\[\?\_s*\%(\.\.\.\_s*\)\?
 \ contains=typescriptArrowFuncArg,typescriptArrowFunc
 \ nextgroup=@typescriptExpression,typescriptBlock
 \ skipwhite skipempty
-syntax region typescriptArrowFuncDef contained start=/(\(\_s*[a-zA-Z$_\[({]\_[^)]*\|\))/ end=/=>/
+syntax match typescriptArrowFuncDef contained /(\%(\_s*[[{]\?\_s*\%(\.\.\.\_s*\)\?[_$[:alpha:]][,_$[:alnum:]]*\_s*[]}]\?\%(:\_s*[_$[:alnum:][\]{}():=><|&?[:space:]]\+\)\?,\?\_s*\)*\_s*)\_s*\%(:\_s*[[:alnum:]]\+\)\?\_s*=>/
 \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
 \ nextgroup=@typescriptExpression,typescriptBlock
-\ skipwhite skipempty keepend
+\ skipwhite skipempty
+syntax match typescriptArrowFuncDef contained /(\%(\_s*\[\?\_s*\%(\.\.\.\_s*\)\?[_$[:alpha:]][,_$[:alnum:]]*\_s*\]\?\%(:\_s*[_$[:alnum:][\]{}(): =><|&?]\+\)\?,\?\_s*\)*\_s*)\_s*\%(:\_s*[[:alnum:]]\+\)\?\_s*=>/
+\ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
+\ nextgroup=@typescriptExpression,typescriptBlock
+\ skipwhite skipempty
 " ------------------------------------------------------------------------------
 
 " Resets highlight link

@@ -89,10 +89,30 @@ hook_add = '''
         \    'lang': 'ja',
         \  },
         \}
-  let g:user_emmet_leader_key = '<Plug>(accept-completion-emmet)'
-  imap <silent><expr> <C-e> pumvisible() ? "\<C-y><Plug>(accept-completion-emmet)" : "\<Plug>(accept-completion-emmet)"
-  nmap <silent> <C-e> <Plug>(accept-completion-emmet)
-  vmap <silent> <C-e> <Plug>(accept-completion-emmet)
+  let g:user_emmet_leader_key = '<silent> <C-e>'
+  imap <C-e> <Nop>
+  nmap <C-e> <Nop>
+  vmap <C-e> <Nop>
+  const items = [
+        \ {'key': ',', 'plug': 'emmet-expand-abbr'},
+        \ {'key': ';', 'plug': 'emmet-expand-word'},
+        \ {'key': 'u', 'plug': 'emmet-update-tag'},
+        \ {'key': 'd', 'plug': 'emmet-balance-tag-inward'},
+        \ {'key': 'D', 'plug': 'emmet-balance-tag-outword'},
+        \ {'key': 'n', 'plug': 'emmet-move-next'},
+        \ {'key': 'N', 'plug': 'emmet-move-prev'},
+        \ {'key': 'i', 'plug': 'emmet-image-size'},
+        \ {'key': 'I', 'plug': 'emmet-image-encode'},
+        \ {'key': '/', 'plug': 'emmet-toggle-comment'},
+        \ {'key': 'j', 'plug': 'emmet-split-join-tag'},
+        \ {'key': 'k', 'plug': 'emmet-remove-tag'},
+        \ {'key': 'a', 'plug': 'emmet-anchorize-url'},
+        \ {'key': 'A', 'plug': 'emmet-anchorize-summary'},
+        \ {'key': 'm', 'plug': 'emmet-merge-lines'},
+  \ ]
+  for item in items
+    execute 'imap <silent><expr> <C-e>' . item.key . ' pumvisible() ? "\<C-y><Plug>(' . item.plug . ')" : "\<Plug>(' . item.plug . ')"'
+  endfor
 '''
 
 [[plugins]]

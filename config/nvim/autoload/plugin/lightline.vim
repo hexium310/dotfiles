@@ -11,7 +11,7 @@ function! plugin#lightline#set_variables() abort
         \    'right': [
         \      ['lineinfo', 'rows'],
         \      ['fileencoding', 'filetype'],
-        \      ['ale_checking', 'ale_errors', 'ale_warnings'],
+        \      ['yarn_start_status', 'ale_checking', 'ale_errors', 'ale_warnings'],
         \    ],
         \  },
         \  'inactive': {
@@ -40,6 +40,7 @@ function! plugin#lightline#set_variables() abort
         \    'fileencoding': 'plugin#lightline#fileencoding',
         \    'git_changes': 'plugin#lightline#coc_git_changes',
         \    'mode': 'plugin#lightline#mode',
+        \    'yarn_start_status': 'plugin#lightline#yarn_start_status',
         \  },
         \  'component_expand': {
         \    'ale_checking': 'lightline#ale#checking',
@@ -121,4 +122,8 @@ endfunction
 
 function! plugin#lightline#coc_git_changes() abort
   return trim(get(b:, 'coc_git_status', ''))
+endfunction
+
+function! plugin#lightline#yarn_start_status() abort
+  return exists('g:yarn_start_job_id') ? 'Y' : ''
 endfunction

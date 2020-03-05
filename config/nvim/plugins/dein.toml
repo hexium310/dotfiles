@@ -325,3 +325,17 @@ hook_add = '''
   nmap ]f <Plug>(conflict-marker-next-hunk)
   nmap [f <Plug>(conflict-marker-prev-hunk)
 '''
+
+[[plugins]]
+repo = 'wordijp/vim-vimscript-scope-syntax'
+hook_add = '''
+  let g:vimscript_scope_syntax_auto_enable = 0
+  highlight link vimGlobalVar String
+  highlight link vimScriptVar Special
+  highlight link vimLocalVar Identifier
+  highlight link vimArgsVar Type
+  highlight link vimBufVar vimGlobalVar
+  highlight link vimWinVar None
+  highlight link vimTabVar None
+  highlight link vimVVar None
+'''

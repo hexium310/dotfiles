@@ -1,6 +1,16 @@
 syntax keyword vimConst const skipwhite nextgroup=vimVar,vimFuncVar
 syntax match vimCmdSep "[:|]\+" skipwhite nextgroup=vimAddress,vimAutoCmd,vimEcho,vimIsCommand,vimExtCmd,vimFilter,vimLet,vimMap,vimMark,vimSet,vimSyntax,vimUserCmd,vimConst
-syntax cluster vimAugroupList contains=vimAugroup,vimIsCommand,vimCommand,vimUserCmd,vimExecute,vimNotFunc,vimFuncName,vimFunction,vimFunctionError,vimLineComment,vimMap,vimSpecFile,vimOper,vimNumber,vimOperParen,vimComment,vimString,vimSubst,vimMark,vimRegister,vimAddress,vimFilter,vimCmplxRepeat,vimComment,vimLet,vimSet,vimAutoCmd,vimRegion,vimSynLine,vimNotation,vimCtrlChar,vimFuncVar,vimContinue,vimSetEqual,vimOption,vimConst
-syntax cluster vimFuncBodyList contains=vimAbb,vimAddress,vimAugroupKey,vimAutoCmd,vimCmplxRepeat,vimComment,vimContinue,vimCtrlChar,vimEcho,vimEchoHL,vimExecute,vimIsCommand,vimFBVar,vimFunc,vimFunction,vimFuncVar,vimGlobal,vimHighlight,vimIsCommand,vimLet,vimLineComment,vimMap,vimMark,vimNorm,vimNotation,vimNotFunc,vimNumber,vimOper,vimOperParen,vimRegion,vimRegister,vimSearch,vimSet,vimSpecFile,vimString,vimSubst,vimSynLine,vimUnmap,vimUserCommand,vimConst
-syntax cluster vimUserCmdList contains=vimAddress,vimSyntax,vimHighlight,vimAutoCmd,vimCmplxRepeat,vimComment,vimCtrlChar,vimEscapeBrace,vimFilter,vimFunc,vimFuncName,vimFunction,vimFunctionError,vimIsCommand,vimMark,vimNotation,vimNumber,vimOper,vimRegion,vimRegister,vimLet,vimSet,vimSetEqual,vimSetString,vimSpecFile,vimString,vimSubst,vimSubstRep,vimSubstRange,vimSynLine,vimConst
-highlight default link vimConst vimCommand
+syntax cluster vimAugroupList add=vimConst
+syntax cluster vimFuncBodyList add=vimConst
+syntax cluster vimUserCmdList add=vimConst
+highlight link vimConst vimCommand
+
+syntax match vimColorscheme "\<colo\%[rscheme]\>" contains=vimCommand skipwhite nextgroup=vimColorschemeTheme
+syntax match vimColorschemeTheme /[\-[:alnum:]]\+/ contained skipwhite
+highlight link vimColorschemeTheme None
+
+highlight link vimHighlight Keyword
+highlight link vimCommand Keyword
+highlight link vimSynType Keyword
+highlight link vimHiTerm Special
+highlight link vimArgsFunction Function

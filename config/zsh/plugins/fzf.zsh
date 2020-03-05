@@ -37,6 +37,20 @@ zle -N fzf-github-repositories
 bindkey -M viins '^G' fzf-github-repositories
 bindkey -M vicmd '^G' fzf-github-repositories
 
+_fzf_complete_vim() {
+    if (( $+functions[_fzf_complete_git] )) && [[ $prefix =~ '\*$' ]]; then
+        prefix=${prefix%\*}
+        _fzf_complete_git-unstaged-files '' "--multi $_fzf_complete_preview_git_diff" $@
+        return
+    fi
+
+    _fzf_path_completion "$prefix" $@
+}
+
+_fzf_complete_nvim() {
+    _fzf_complete_vim $@
+}
+
 _fzf_compgen_path() {
     fd . "$1" --hidden --type=file 2> /dev/null
 }

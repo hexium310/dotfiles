@@ -334,3 +334,6 @@ hook_add = '''
   highlight link vimTabVar None
   highlight link vimVVar None
 '''
+
+[[plugins]]
+repo = 'kana/vim-tabpagecd'

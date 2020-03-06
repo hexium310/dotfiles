@@ -42,11 +42,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'jiangmiao/auto-pairs'
-lazy = 1
-on_event = 'BufEnter'
-
-[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 hook_add = '''
   let g:context_filetype#filetypes = {

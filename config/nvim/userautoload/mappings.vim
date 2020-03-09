@@ -14,6 +14,7 @@ nnoremap <silent> <Space>j :call utils#insert_newline_in_element_attributes()<Cr
 nnoremap <F1> <Nop>
 inoremap <F1> <Nop>
 nnoremap q: <Nop>
+noremap <C-q> <Nop>
 
 command! YRun call utils#run_yarn_start()
 command! YStop call utils#stop_yarn_start()

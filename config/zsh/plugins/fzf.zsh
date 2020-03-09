@@ -52,7 +52,7 @@ _fzf_complete_nvim() {
 }
 
 _fzf_compgen_path() {
-    fd . "$1" --hidden --type=file 2> /dev/null
+    fd . "$1" --hidden --type=file --exclude={${(pj:,:)$(git submodule status | awk '{ print $2 }')}} 2> /dev/null
 }
 
 _fzf_compgen_dir() {

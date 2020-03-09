@@ -7,8 +7,8 @@ set shiftwidth=4
 set tabstop=4
 set cindent
 set title
-set whichwrap=b,s,h,l,<,>,[,],~
-set backspace=indent,eol,start
+set whichwrap=
+set backspace=
 set virtualedit=block
 set updatetime=300
 set pyxversion=3

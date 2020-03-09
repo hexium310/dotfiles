@@ -45,6 +45,8 @@ function! utils#run_yarn_start() abort
   file job: yarn start
   setlocal nobuflisted
   stopinsert
+  const yarn_start_term_buffer_number = filter(getbufinfo(), 'v:val.name =~ "^term://.*:yarn start$"')
+  execute('bwipeout! ' . yarn_start_term_buffer_number[0].bufnr)
   quit
 endfunction
 
@@ -53,7 +55,7 @@ function! utils#show_yarn_start() abort
     return
   endif
 
-  split job: yarn start
+  split +setlocal\ nobuflisted job: yarn start
 endfunction
 
 function! utils#stop_yarn_start() abort

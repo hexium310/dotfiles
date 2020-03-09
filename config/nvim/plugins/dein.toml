@@ -36,9 +36,10 @@ repo = 'rhysd/clever-f.vim'
 lazy = 1
 on_event = 'BufEnter'
 hook_add = '''
-  let g:clever_f_smart_case = 1
   let g:clever_f_use_migemo = 1
   let g:clever_f_fix_key_direction = 1
+  map ; <Plug>(clever-f-repeat-forward)
+  map , <Plug>(clever-f-repeat-back)
 '''
 
 [[plugins]]
@@ -59,11 +60,6 @@ hook_add = '''
 repo = 'osyo-manga/vim-precious'
 lazy = 1
 on_event = 'BufEnter'
-
-[[plugins]]
-repo = 'lambdalisue/vim-gista'
-lazy = 1
-on_event = 'CmdlineEnter'
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
@@ -123,17 +119,6 @@ hook_add = '''
     autocmd!
     autocmd WinLeave, TabLeave * call anzu#clear_search_status()
   augroup END
-'''
-
-[[plugins]]
-repo = 'osyo-manga/vim-jplus'
-lazy = 1
-on_event = 'BufEnter'
-hook_add = '''
-  nmap J <Plug>(jplus)
-  vmap J <Plug>(jplus)
-  nmap <Space>J <Plug>(jplus-getchar)
-  vmap <Space>J <Plug>(jplus-getchar)
 '''
 
 [[plugins]]
@@ -289,21 +274,6 @@ hook_add = '''
 repo = 'AndrewRadev/splitjoin.vim'
 lazy = 1
 on_event = 'BufEnter'
-
-[[plugins]]
-repo = 'jeetsukumaran/vim-indentwise'
-lazy = 1
-on_event = 'BufEnter'
-hook_add = '''
-  map ;l <Plug>(IndentWisePreviousLesserIndent)
-  map ;s <Plug>(IndentWisePreviousEqualIndent)
-  map ;g <Plug>(IndentWisePreviousGreaterIndent)
-  map ,l <Plug>(IndentWiseNextLesserIndent)
-  map ,s <Plug>(IndentWiseNextEqualIndent)
-  map ,g <Plug>(IndentWiseNextGreaterIndent)
-  map <Nop>IndentWisePreviousAbsoluteIndent <Plug>(IndentWisePreviousAbsoluteIndent)
-  map <Nop>IndentWiseNextAbsoluteIndent <Plug>(IndentWiseNextAbsoluteIndent)
-'''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'

@@ -274,6 +274,9 @@ hook_add = '''
 repo = 'AndrewRadev/splitjoin.vim'
 lazy = 1
 on_event = 'BufEnter'
+hook_add = '''
+  let g:splitjoin_html_attributes_bracket_on_new_line = 1
+'''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'

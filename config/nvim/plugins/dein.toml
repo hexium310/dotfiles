@@ -279,11 +279,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
-lazy = 1
-on_event = 'BufEnter'
-
-[[plugins]]
 repo = 'rhysd/conflict-marker.vim'
 lazy = 1
 on_event = 'BufEnter'

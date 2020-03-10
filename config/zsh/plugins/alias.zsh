@@ -35,3 +35,18 @@ check-file-end() {
         [[ $new_line = '0a 0a' ]] && echo $a
     done
 }
+
+git() {
+    if [[ $1 = push ]]; then
+        shift
+        if [[ ${@[(I)[^-]*]} = 0 ]]; then
+            command git push origin HEAD $@
+            return
+        fi
+
+        command git push $@
+        return
+    fi
+
+    command git $@
+}

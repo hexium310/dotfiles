@@ -19,7 +19,7 @@
     zinit light chitoku-k/zsh-vcs-extended
     zinit ice lucid wait'0'; zinit light zsh-users/zsh-completions
     zinit ice lucid wait'0'; zinit light b4b4r07/zsh-vimode-visual
-    zinit ice lucid wait'0' pick'src/git.zsh'; zinit light chitoku-k/fzf-zsh-completions
+    zinit ice lucid wait'0' pick'' multisrc'src/{core/*,completers/{git,docker,composer}.zsh}'; zinit light chitoku-k/fzf-zsh-completions
     zinit ice lucid wait'0' atload'zpcompinit; zpcdreplay'; zinit light zdharma/fast-syntax-highlighting
     zinit ice atload'set_autosuggestions_env'; zinit light zsh-users/zsh-autosuggestions
 

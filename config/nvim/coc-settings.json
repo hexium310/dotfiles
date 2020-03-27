@@ -1,8 +1,7 @@
 {
   "javascript.validate.enable": false,
-  "coc.preferences.extensionUpdateCheck": "never",
+  "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.enableHighlightLineNumber": false,
-  "rust-analyzer.cargo-watch.enable": false,
   "git.enableGlobalStatus": false,
   "git.enableGutters": false,
   "git.realtimeGutters": false

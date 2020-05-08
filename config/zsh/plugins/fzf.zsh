@@ -40,7 +40,7 @@ bindkey -M vicmd '^G' fzf-github-repositories
 _fzf_complete_vim() {
     if (( $+functions[_fzf_complete_git] )) && [[ $prefix =~ '\*$' ]]; then
         prefix=${prefix%\*}
-        _fzf_complete_git-unstaged-files '' "--multi $_fzf_complete_preview_git_diff" $@
+        _fzf_complete_git-status-files unstaged '' "--multi $_fzf_complete_preview_git_diff" $@
         return
     fi
 

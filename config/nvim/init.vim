@@ -4,6 +4,8 @@ const s:dein_core_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 if isdirectory(s:dein_core_dir)
   let &runtimepath .= ',' . s:dein_core_dir
 
+  let g:dein#install_github_api_token = $DEIN_GITHUB_TOKEN
+
   if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 

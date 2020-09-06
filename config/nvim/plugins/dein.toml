@@ -5,7 +5,7 @@ hook_add = '''
   command! -nargs=0 DeinRecache call dein#recache_runtimepath()
 
   function s:dein_update() abort
-    call dein#update()
+    call dein#check_update(v:true)
     let buf = nvim_create_buf(v:false, v:true)
     split
     call nvim_set_current_buf(buf)

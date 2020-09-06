@@ -14,7 +14,8 @@ syntax keyword typescriptObjectStaticMethod contained fromEntries nextgroup=type
 
 " Enables import/export syntax highlight
 syntax keyword typescriptImport import nextgroup=typescriptModuleAsterisk,typescriptModuleKeyword,typescriptModuleGroup skipwhite skipempty
-syntax keyword typescriptExport export nextgroup=typescriptModuleAsterisk,typescriptModuleKeyword,typescriptModuleGroup,@typescriptStatement skipwhite skipempty
+syntax keyword typescriptExport export nextgroup=typescriptExportDefault,typescriptModuleAsterisk,typescriptModuleKeyword,typescriptModuleGroup,@typescriptStatement skipwhite skipempty
+syntax keyword typescriptExportDefault default nextgroup=typescriptModuleAsterisk,typescriptModuleKeyword,typescriptModuleGroup,@typescriptStatement skipwhite skipempty
 syntax match typescriptModuleKeyword /\<\K\k*/ nextgroup=typescriptModuleAs,typescriptFrom,typescriptModuleComma contained skipwhite skipempty
 syntax match typescriptModuleAsterisk /\*/ nextgroup=typescriptModuleKeyword,typescriptModuleAs,typescriptFrom contained skipwhite skipempty
 syntax keyword typescriptModuleAs as nextgroup=typescriptModuleKeyword contained skipwhite skipempty
@@ -23,6 +24,7 @@ syntax match typescriptModuleComma /,/ nextgroup=typescriptModuleKeyword,typescr
 syntax region typescriptModuleGroup matchgroup=typescriptModuleBraces start=/{/ end=/}/ contains=typescriptModuleKeyword,typescriptModuleComma,typescriptModuleAs,@typescriptComments nextgroup=typescriptFrom contained skipwhite skipempty
 highlight link typescriptImport Keyword
 highlight link typescriptExport Keyword
+highlight link typescriptExportDefault Keyword
 highlight link typescriptFrom Keyword
 highlight link typescriptModuleAs Keyword
 highlight link typescriptModule Keyword

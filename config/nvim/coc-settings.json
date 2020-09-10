@@ -2,6 +2,7 @@
   "javascript.validate.enable": false,
   "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.enableHighlightLineNumber": false,
+  "tailwindCSS.headwind.runOnSave": false,
   "git.enableGlobalStatus": false,
   "git.enableGutters": false,
   "git.realtimeGutters": false

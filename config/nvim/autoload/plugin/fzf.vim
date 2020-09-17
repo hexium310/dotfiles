@@ -8,6 +8,7 @@ function! plugin#fzf#set_variables() abort
   const s:fzf_rg_glob = join(map(copy(fzf_rg_glob_files), { _, file -> printf("-g %s", file) }), ' ')
   let g:fzf_statusline = 0
   let g:fzf_nvim_statusline = 0
+  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
 endfunction
 
 function! plugin#fzf#set_maps() abort

@@ -12,6 +12,7 @@ function! plugin#coc#set_variables() abort
         \   'coc-git',
         \   'coc-rust-analyzer',
         \   'coc-pairs',
+        \   'coc-emmet',
         \ ]
 endfunction
 

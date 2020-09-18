@@ -305,3 +305,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'kana/vim-tabpagecd'
+
+[[plugins]]
+repo = 'AndrewRadev/tagalong.vim'

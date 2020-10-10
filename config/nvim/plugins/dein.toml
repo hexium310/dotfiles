@@ -227,6 +227,7 @@ hook_add = '''
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 rev = 'release'
+if = 'executable("node")'
 hook_add ='''
   call plugin#coc#set_variables()
   call plugin#coc#set_maps()

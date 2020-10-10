@@ -41,6 +41,7 @@ if [[ -d $ZPLG_HOME ]]; then
 fi
 
 () {
+    setopt no_nomatch
     local file
 
     for file in $ZDOTDIR/plugins/*.zsh(D); do
@@ -48,6 +49,6 @@ fi
     done
 
     for file in $ZDOTDIR/local/*.zsh(D); do
-        source $file
+        [[ -f $file ]] && source $file
     done
 }

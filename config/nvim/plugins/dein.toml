@@ -5,7 +5,12 @@ hook_add = '''
   command! -nargs=0 DeinRecache call dein#recache_runtimepath()
 
   function s:dein_update() abort
-    call dein#check_update(v:true)
+    if empty(g:dein#install_github_api_token)
+      call dein#update()
+    else
+      call dein#check_update(v:true)
+    endif
+
     let buf = nvim_create_buf(v:false, v:true)
     split
     call nvim_set_current_buf(buf)

@@ -314,3 +314,6 @@ repo = 'kana/vim-tabpagecd'
 
 [[plugins]]
 repo = 'AndrewRadev/tagalong.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'

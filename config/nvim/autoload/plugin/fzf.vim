@@ -32,7 +32,7 @@ function! plugin#fzf#set_commands() abort
   command! -bang -nargs=? -complete=dir Files
         \ call fzf#vim#files(<q-args>, s:p(<bang>0, { 'options': ['--ansi'] }), <bang>0)
   command! -bang -nargs=? GFiles
-        \ call fzf#vim#gitfiles(<q-args> . s:colorizing, <q-args> == "?" ? { 'options': ['--ansi'] } : s:p(<bang>0, { 'options': ['--ansi'] }), <bang>0)
+       \ call fzf#vim#gitfiles(<q-args> == '?' ? <q-args> : s:colorizing, <q-args> == '?' ? {} : s:p(<bang>0, { 'options': ['--ansi'] }), <bang>0)
 endfunction
 
 function! plugin#fzf#new_file() abort

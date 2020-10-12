@@ -35,10 +35,8 @@ function! plugin#lightline#set_variables() abort
         \  },
         \  'component_function': {
         \    'anzu': 'anzu#search_status',
-        \    'coc_status_info': 'plugin#lightline#coc_status_info',
         \    'file_status': 'plugin#lightline#file_status',
         \    'fileencoding': 'plugin#lightline#fileencoding',
-        \    'git_changes': 'plugin#lightline#coc_git_changes',
         \    'mode': 'plugin#lightline#mode',
         \    'yarn_start_status': 'plugin#lightline#yarn_start_status',
         \  },
@@ -48,6 +46,8 @@ function! plugin#lightline#set_variables() abort
         \    'ale_warnings': 'lightline#ale#warnings',
         \    'coc_status_error': 'plugin#lightline#coc_status_error',
         \    'coc_status_warning': 'plugin#lightline#coc_status_warning',
+        \    'coc_status_info': 'plugin#lightline#coc_status_info',
+        \    'git_changes': 'plugin#lightline#coc_git_changes',
         \    'readonly': 'plugin#lightline#readonly',
         \  },
         \  'component_type': {
@@ -78,6 +78,9 @@ function! plugin#lightline#file_status() abort
   const filename = expand('%:t')
   const modified = &modified ? ' +' : ''
   const directory = printf('%.35s', substitute(expand('%:h:s'), '\S$', '\0/', ''))
+  if directory =~# '^fugitive'
+    return 'fugitive:' . filename
+  endif
   return filename !=# '' ? lightline#concatenate([filename . modified, directory], 0) : '[No Name]'
 endfunction
 

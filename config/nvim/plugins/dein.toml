@@ -317,3 +317,6 @@ repo = 'AndrewRadev/tagalong.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_add ='''
+  call plugin#fugitive#set_maps()
+'''

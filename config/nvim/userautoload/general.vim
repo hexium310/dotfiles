@@ -20,6 +20,7 @@ set noswapfile
 filetype plugin indent on
 set list
 set listchars=tab:»-
+set fillchars=diff:\ ,
 set scrolloff=2
 set noshowmode
 set novisualbell
@@ -38,6 +39,7 @@ set shortmess+=cs
 set completeopt-=preview
 set pumheight=20
 set cursorline
+set diffopt+=vertical
 set signcolumn=yes
 
 " Search

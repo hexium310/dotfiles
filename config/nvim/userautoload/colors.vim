@@ -12,6 +12,10 @@ highlight CocErrorSign guifg=#F2777A
 highlight link CocCursorRange None
 highlight link CocHoverRange None
 highlight SignColumn guibg=none
+highlight DiffAdd guifg=NONE guibg=#334539
+highlight DiffChange guifg=NONE guibg=#454133
+highlight DiffDelete guifg=NONE guibg=#45333a
+highlight DiffText guifg=NONE guibg=#5f5d42
 highlight GitGutterAddLineNr guibg=#5C6E5C
 highlight GitGutterChangeLineNr guibg=#786A51
 highlight GitGutterDeleteLineNr guibg=#764C4F

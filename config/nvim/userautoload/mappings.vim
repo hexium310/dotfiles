@@ -10,6 +10,8 @@ nnoremap <C-l> <C-w>l
 nnoremap s <Nop>
 nnoremap <silent> <Space>s :call utils#open_terminal()<Cr>
 nnoremap <silent> <Space>j :call utils#insert_newline_in_element_attributes()<Cr>
+nnoremap [d [c
+nnoremap ]d ]c
 
 nnoremap <F1> <Nop>
 inoremap <F1> <Nop>

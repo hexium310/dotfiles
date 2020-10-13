@@ -8,9 +8,14 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
 alias sudo='sudo '
-alias vim='nvim'
 alias fd='fd --ignore-file=$XDG_CONFIG_HOME/fdignore'
 alias gpg='LANG=C gpg'
+
+if [[ -n $VIM ]] && (( $+commands[nvr] )); then
+    alias vim='nvr --remote-tab-wait'
+elif (( $+commands[nvim] )); then
+    alias vim='nvim'
+fi
 
 if (( $+commands[brew] )); then
     alias brwe='brew'

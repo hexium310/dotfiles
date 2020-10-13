@@ -51,7 +51,9 @@ if exists('&inccommand')
   set inccommand=split
 endif
 
-let $GIT_EDITOR = 'nvr --remote-tab-wait'
+if executable('nvr')
+  let $GIT_EDITOR = 'nvr --remote-tab-wait'
+endif
 
 " autocmd
 augroup init_vim

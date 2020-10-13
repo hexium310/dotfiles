@@ -19,6 +19,7 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZPLG_HOME=$XDG_CACHE_HOME/zinit
 export REVOLVER_DIR="$XDG_CACHE_HOME/revolver"
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+(( $+commands[nvim] )) && export MANPAGER='nvim +Man!'
 
 declare -A ZINIT
 ZINIT[HOME_DIR]=$XDG_CACHE_HOME/zinit

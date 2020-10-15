@@ -13,8 +13,6 @@ alias gpg='LANG=C gpg'
 
 if [[ -n $VIM ]] && (( $+commands[nvr] )); then
     alias vim='nvr --remote-tab-wait'
-elif (( $+commands[nvim] )); then
-    alias vim='nvim'
 fi
 
 if (( $+commands[brew] )); then

@@ -3,6 +3,11 @@
   "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.enableHighlightLineNumber": false,
   "highlight.disableLanguages": ["zsh"],
+  "tailwindCSS.headwind.runOnSave": false,
+  "tailwindCSS.emmetCompletions": false,
+  "tailwindCSS.headwind.classRegex": {
+    "typescriptreact": "(?:\\bclassName\\s*=\\s*[\\\"\\']([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\'])|(?:\\bcntl\\s*`([_a-zA-Z0-9\\s\\-\\:\\/]*)`)"
+  },
   "git.enableGlobalStatus": false,
   "git.enableGutters": false,
   "git.realtimeGutters": false

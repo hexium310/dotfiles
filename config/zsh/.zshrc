@@ -34,7 +34,7 @@ if [[ -d $ZPLG_HOME ]]; then
     zinit light BurntSushi/ripgrep
     zinit ice lucid wait'!' from'gh-r' as'program' pick'fd*/fd'
     zinit light sharkdp/fd
-    zinit ice lucid wait'!' atload'alias vim=nvim' from'gh-r' ver'nightly' as'program' pick'nvim*/bin/nvim'
+    zinit ice lucid wait'!' from'gh-r' ver'nightly' as'program' pick'nvim*/bin/nvim'
     zinit light neovim/neovim
 
     unfunction set_autosuggestions_env

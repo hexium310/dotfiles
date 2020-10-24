@@ -1,4 +1,0 @@
-[[plugins]]
-repo = 'hail2u/vim-css3-syntax'
-lazy = 1
-on_ft = ['css']

@@ -1,8 +1,0 @@
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-lazy = 1
-on_ft = ['javascript']
-
-# [[plugins]]
-# repo = 'styled-components/vim-styled-components'
-# on_ft = ['javascript', 'typescript.tsx']

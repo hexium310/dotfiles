@@ -1,5 +1,9 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "typescript", "tsx" },
+  ensure_installed = {
+    "query",
+    "typescript",
+    "tsx",
+  },
   indnet = {
     enable = true,
   },

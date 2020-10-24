@@ -21,6 +21,8 @@ highlight GitGutterChangeDeleteLineNr gui=underline guibg=#786A51
 highlight GitGutterChangeLineNr guibg=#786A51
 highlight GitGutterDelete guibg=none
 highlight GitGutterDeleteLineNr guibg=#764C4F
+highlight IncSearch guifg=NONE guibg=#45333a
+highlight Search guifg=NONE guibg=#454133
 highlight SignColumn guibg=none
 highlight StatusLine guifg=#282C34 guibg=#99cc99
 highlight clear CursorLine

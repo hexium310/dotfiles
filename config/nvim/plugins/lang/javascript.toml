@@ -6,12 +6,3 @@ on_ft = ['javascript']
 # [[plugins]]
 # repo = 'styled-components/vim-styled-components'
 # on_ft = ['javascript', 'typescript.tsx']
-
-[[plugins]]
-repo = 'HerringtonDarkholme/yats.vim'
-lazy = 1
-on_ft = ['typescript', 'typescriptreact']
-
-[[plugins]]
-repo = 'maxmellon/vim-jsx-pretty'
-lazy = 1

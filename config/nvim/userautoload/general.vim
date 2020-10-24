@@ -59,7 +59,6 @@ endif
 augroup init_vim
   autocmd!
   autocmd BufEnter * setlocal formatoptions-=cro
-  autocmd BufReadPre *.tsx call dein#source('vim-jsx-pretty')
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
   autocmd TermOpen * startinsert | setlocal signcolumn=no | tnoremap <buffer> <C-q> <C-\><C-n> | set filetype=terminal

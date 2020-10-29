@@ -29,8 +29,4 @@ highlight clear CursorLine
 highlight link CocCursorRange None
 highlight link CocHoverRange None
 highlight link EndOfBuffer Ignore
-highlight link TSInclude Keyword
-highlight link TSRepeat Keyword
-highlight link TSParameter Constant
-highlight link TSOperator Special
 highlight! link gitcommitComment Comment

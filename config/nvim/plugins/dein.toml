@@ -320,3 +320,14 @@ repo = 'tpope/vim-fugitive'
 hook_add ='''
   call plugin#fugitive#set_maps()
 '''
+[[plugins]]
+repo = 'RRethy/vim-hexokinase'
+if = 'executable("go")'
+build = '''
+  make hexokinase
+'''
+hook_add = '''
+  let g:Hexokinase_virtualText = '●'
+  let g:Hexokinase_ftAutoload = ['*']
+  let g:Hexokinase_refreshEvents = ['BufEnter', 'TextChanged', 'TextChangedI']
+'''

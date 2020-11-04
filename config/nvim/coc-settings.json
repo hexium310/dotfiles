@@ -2,7 +2,6 @@
   "javascript.validate.enable": false,
   "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.enableHighlightLineNumber": false,
-  "highlight.disableLanguages": ["zsh"],
   "tailwindCSS.headwind.runOnSave": false,
   "tailwindCSS.emmetCompletions": false,
   "tailwindCSS.headwind.classRegex": {

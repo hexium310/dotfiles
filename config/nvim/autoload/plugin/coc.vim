@@ -4,7 +4,6 @@ function! plugin#coc#set_variables() abort
   let g:coc_status_info_sign = 'I: '
   let g:coc_global_extensions = [
         \   'coc-snippets',
-        \   'coc-highlight',
         \   'coc-tsserver',
         \   'coc-json',
         \   'coc-yaml',

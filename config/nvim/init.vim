@@ -9,7 +9,7 @@ if isdirectory(s:dein_core_dir)
   if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
-    for file in glob('$XDG_CONFIG_HOME/nvim/plugins/**/*.toml', 1, 1)
+    for file in glob('$XDG_CONFIG_HOME/nvim/plugins/**/*.toml', 0, 1)
       call dein#load_toml(file)
     endfor
 

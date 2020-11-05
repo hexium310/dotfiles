@@ -22,6 +22,9 @@ hook_add = '''
     let log = dein#get_updates_log()
     call nvim_buf_set_lines(a:buf, 0, -1, v:true, add(split(log, "\n"), ""))
   endfunction
+
+  " autocmd VimEnter * call dein#call_hook('post_source')
+  command -nargs=0 LoadTSConfig call dein#call_hook('post_source')
 '''
 
 [[plugins]]
@@ -320,6 +323,7 @@ repo = 'tpope/vim-fugitive'
 hook_add ='''
   call plugin#fugitive#set_maps()
 '''
+
 [[plugins]]
 repo = 'RRethy/vim-hexokinase'
 if = 'executable("go")'
@@ -330,4 +334,15 @@ hook_add = '''
   let g:Hexokinase_virtualText = '●'
   let g:Hexokinase_ftAutoload = ['*']
   let g:Hexokinase_refreshEvents = ['BufEnter', 'TextChanged', 'TextChangedI']
+'''
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_post_source = '''
+  execute('luafile' . expand('$XDG_CONFIG_HOME/nvim/plugins/nvim-treesitter.lua'))
+
+  augroup nvim-treesitter
+    autocmd!
+    autocmd FileType vim :TSBufDisable highlight
+  augroup END
 '''

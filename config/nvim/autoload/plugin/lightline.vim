@@ -75,6 +75,10 @@ function! plugin#lightline#file_status() abort
     return ''
   endif
 
+  if &filetype ==# 'toggleterm'
+    return 'terminal (' . b:toggle_number . ')'
+  endif
+
   const filename = expand('%:t')
   const modified = &modified ? ' +' : ''
   const directory = printf('%.35s', substitute(expand('%:h:s'), '\S$', '\0/', ''))

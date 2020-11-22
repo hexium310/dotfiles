@@ -23,7 +23,7 @@ hook_add = '''
     call nvim_buf_set_lines(a:buf, 0, -1, v:true, add(split(log, "\n"), ""))
   endfunction
 
-  " autocmd VimEnter * call dein#call_hook('post_source')
+  autocmd VimEnter * call dein#call_hook('post_source')
   command -nargs=0 LoadTSConfig call dein#call_hook('post_source')
 '''
 
@@ -345,4 +345,17 @@ hook_post_source = '''
     autocmd!
     autocmd FileType vim :TSBufDisable highlight
   augroup END
+'''
+
+[[plugins]]
+repo = 'akinsho/nvim-toggleterm.lua'
+hook_add = '''
+  " Call manually `require'toggleterm'.__set_highlights()` because VimEnter has
+  " already triggered when `require'toggleterm.setup {}` that call it is called.
+  autocmd VimEnter * lua require'toggleterm'.__set_highlights(-30)
+'''
+hook_post_source = '''
+  execute('luafile' . expand('$XDG_CONFIG_HOME/nvim/plugins/nvim-toggleterm.lua'))
+
+  command! -nargs=* Yarn call luaeval('require"toggleterm".exec("yarn " .. _A, 4, 15)', <q-args>)
 '''

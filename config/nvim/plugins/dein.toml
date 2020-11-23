@@ -358,3 +358,6 @@ hook_post_source = '''
 
   command! -nargs=* Yarn call luaeval('require"toggleterm".exec("yarn " .. _A, 4, 15)', <q-args>)
 '''
+
+[[plugins]]
+repo = 'hexium310/nvim-quit-term'

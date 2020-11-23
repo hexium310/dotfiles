@@ -24,7 +24,6 @@ hook_add = '''
   endfunction
 
   autocmd VimEnter * call dein#call_hook('post_source')
-  command -nargs=0 LoadTSConfig call dein#call_hook('post_source')
 '''
 
 [[plugins]]

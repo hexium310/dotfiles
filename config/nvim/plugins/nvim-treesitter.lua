@@ -11,9 +11,9 @@ require'nvim-treesitter.configs'.setup {
     "yaml",
   },
   indnet = {
-    enable = true,
+    enable = false,
   },
   highlight = {
-    enable = true,
+    enable = false,
   },
 }

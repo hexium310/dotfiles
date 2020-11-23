@@ -6,7 +6,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <S-Left> ^
 nnoremap <S-Right> $
-nnoremap <silent> <Space>j :call utils#insert_newline_in_element_attributes()<Cr>
 nnoremap [d [c
 nnoremap ]d ]c
 nnoremap s <Nop>

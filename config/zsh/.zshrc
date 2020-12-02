@@ -30,11 +30,11 @@ if [[ -d $ZPLG_HOME ]]; then
 
     zinit ice lucid wait'!' from'gh' atclone'./install --bin' atpull'%atclone' as'program' src'shell/completion.zsh' pick'bin/fzf'
     zinit light junegunn/fzf
-    zinit ice lucid wait'!' from'gh-r' as'program' pick'ripgrep*/rg'
+    zinit ice lucid from'gh-r' as'program' pick'ripgrep*/rg'
     zinit light BurntSushi/ripgrep
-    zinit ice lucid wait'!' from'gh-r' as'program' pick'fd*/fd'
+    zinit ice lucid from'gh-r' as'program' pick'fd*/fd'
     zinit light sharkdp/fd
-    zinit ice lucid wait'!' from'gh-r' ver'nightly' as'program' pick'nvim*/bin/nvim'
+    zinit ice lucid from'gh-r' ver'nightly' as'program' pick'nvim*/bin/nvim'
     zinit light neovim/neovim
 
     unfunction set_autosuggestions_env

@@ -10,7 +10,8 @@ alias lal='ls -al'
 alias sudo='sudo '
 alias fd='fd --ignore-file=$XDG_CONFIG_HOME/fdignore'
 alias gpg='LANG=C gpg'
-alias vim='nvim'
+(( $+commands[nvim] )) && alias vim='nvim'
+(( $+commands[nvim] )) && export MANPAGER='nvim +Man!'
 
 if [[ -n $VIM ]] && (( $+commands[nvr] )); then
     alias vim='nvr --remote-tab-wait'

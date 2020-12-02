@@ -13,8 +13,9 @@ alias gpg='LANG=C gpg'
 (( $+commands[nvim] )) && alias vim='nvim'
 (( $+commands[nvim] )) && export MANPAGER='nvim +Man!'
 
-if [[ -n $VIM ]] && (( $+commands[nvr] )); then
-    alias vim='nvr --remote-tab-wait'
+if [[ -n $NVIM_LISTEN_ADDRESS ]] && (( $+commands[nvr] )); then
+    alias vim='nvr --remote-tab'
+    alias :q='nvr --remote-send "<C-\><C-n>:quit<Cr>"'
 fi
 
 if (( $+commands[brew] )); then

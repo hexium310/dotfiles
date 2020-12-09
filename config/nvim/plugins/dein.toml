@@ -122,71 +122,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'kana/vim-operator-user'
-
-[[plugins]]
-repo = 'kana/vim-operator-replace'
-on_map = '<Plug>'
-hook_add = '''
-  nmap R <Plug>(operator-replace)
-'''
-
-[[plugins]]
-repo = 'rhysd/vim-operator-surround'
-on_map = '<Plug>'
-hook_add = '''
-  nmap <silent>sa <Plug>(operator-surround-append)
-  nmap <silent>sd <Plug>(operator-surround-delete)
-  nmap <silent>sr <Plug>(operator-surround-replace)
-'''
-
-[[plugins]]
-repo = 'haya14busa/vim-operator-flashy'
-on_map = '<Plug>'
-hook_add = '''
-  map y <Plug>(operator-flashy)
-'''
-
-[[plugins]]
-repo = 'emonkak/vim-operator-sort'
-on_map = '<Plug>'
-hook_add = '''
-  nmap so <Plug>(operator-sort)
-  vmap so <Plug>(operator-sort)
-'''
-
-[[plugins]]
-repo = 'kana/vim-textobj-user'
-
-[[plugins]]
-repo = 'rhysd/vim-textobj-anyblock'
-
-[[plugins]]
-repo = 'kana/vim-textobj-indent'
-
-[[plugins]]
-repo = 'kana/vim-textobj-line'
-
-[[plugins]]
-repo = 'kana/vim-textobj-entire'
-
-[[plugins]]
-repo = 'sgur/vim-textobj-parameter'
-
-[[plugins]]
-repo = 'Julian/vim-textobj-variable-segment'
-
-[[plugins]]
-repo = 'glts/vim-textobj-comment'
-on_map = '<Plug>'
-hook_add = '''
-  let g:textobj_comment_no_default_key_mappings = 1
-
-  xmap ac <Plug>(textobj-comment-a)
-  omap ac <Plug>(textobj-comment-a)
-'''
-
-[[plugins]]
 repo = 'tyru/caw.vim'
 on_map = 'gc'
 hook_add = '''
@@ -260,25 +195,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'wordijp/vim-vimscript-scope-syntax'
-on_ft = 'vim'
-hook_add = '''
-  let g:vimscript_scope_syntax_auto_enable = 0
-  highlight link vimGlobalVar String
-  highlight link vimScriptVar Special
-  highlight link vimLocalVar Identifier
-  highlight link vimArgsVar Type
-  highlight link vimBufVar vimGlobalVar
-  highlight link vimWinVar None
-  highlight link vimTabVar None
-  highlight link vimVVar None
-'''
-
-[[plugins]]
 repo = 'kana/vim-tabpagecd'
-
-[[plugins]]
-repo = 'AndrewRadev/tagalong.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'

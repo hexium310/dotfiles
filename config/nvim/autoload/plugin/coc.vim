@@ -33,7 +33,7 @@ function! plugin#coc#set_maps() abort
 endfunction
 
 function! plugin#coc#set_commands() abort
-  command! -nargs=0 Rename setlocal backspace=indent,eol,start | call CocActionAsync('rename', function('s:UnsetBackspace'))
+  command! -nargs=0 Rename call CocActionAsync('rename')
   command! -nargs=0 RenameFile call CocActionAsync('runCommand', 'workspace.renameCurrentFile')
 endfunction
 
@@ -51,8 +51,4 @@ function! plugin#coc#autocmd() abort
     autocmd CursorHoldI * silent call CocActionAsync('doHover')
     autocmd User CocDiagnosticChange,CocGitStatusChange call lightline#update()
   augroup END
-endfunction
-
-function! s:UnsetBackspace(error, response) abort
-  setlocal backspace=
 endfunction

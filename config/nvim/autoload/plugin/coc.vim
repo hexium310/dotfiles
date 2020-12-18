@@ -38,7 +38,7 @@ function! plugin#coc#set_commands() abort
 endfunction
 
 function! plugin#coc#show_documentation() abort
-  if (index(['vim','help'], &filetype) >= 0)
+  if index(['vim','help'], &filetype) >= 0
     execute 'h '.expand('<cword>')
   else
     call CocActionAsync('doHover')
@@ -48,7 +48,6 @@ endfunction
 function! plugin#coc#autocmd() abort
   augroup coc
     autocmd!
-    autocmd CursorHoldI * silent call CocActionAsync('doHover')
     autocmd User CocDiagnosticChange,CocGitStatusChange call lightline#update()
     autocmd User CocOpenFloat
           \ execute 'autocmd BufLeave <buffer=' . winbufnr(g:coc_last_float_win) . '> set backspace=' |

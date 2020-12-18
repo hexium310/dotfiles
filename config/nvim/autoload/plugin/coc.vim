@@ -50,7 +50,7 @@ function! plugin#coc#autocmd() abort
     autocmd!
     autocmd User CocDiagnosticChange,CocGitStatusChange call lightline#update()
     autocmd User CocOpenFloat
-          \ execute 'autocmd BufLeave <buffer=' . winbufnr(g:coc_last_float_win) . '> set backspace=' |
+          \ execute 'autocmd BufWinLeave <buffer=' . winbufnr(g:coc_last_float_win) . '> set backspace=' |
           \ call setwinvar(g:coc_last_float_win, '&backspace', 'indent,eol,start')
   augroup END
 endfunction

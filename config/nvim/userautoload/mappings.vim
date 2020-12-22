@@ -15,3 +15,5 @@ inoremap <F1> <Nop>
 nnoremap <F1> <Nop>
 nnoremap q: <Nop>
 noremap <C-q> <Nop>
+
+iabbrev :w <C-g>u:w

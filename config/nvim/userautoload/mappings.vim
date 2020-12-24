@@ -13,6 +13,8 @@ vnoremap v $h
 
 inoremap <F1> <Nop>
 nnoremap <F1> <Nop>
+nnoremap q <Nop>
+nnoremap qq q
 nnoremap q: <Nop>
 noremap <C-q> <Nop>
 

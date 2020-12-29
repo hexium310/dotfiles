@@ -74,3 +74,12 @@ zle -N zle-line-init _zsh_prompt_redraw
 zle -N zle-line-finish _zsh_prompt_redraw
 zle -N zle-keymap-select _zsh_prompt_redraw
 export PROMPT=''
+
+if [[ -n $NVIM_LISTEN_ADDRESS ]]; then
+    __neovim_set_pwd() {
+        ( $ZDOTDIR/plugins/main.py cd & ) > /dev/null
+    }
+
+    add-zsh-hook chpwd __neovim_set_pwd
+    __neovim_set_pwd
+fi

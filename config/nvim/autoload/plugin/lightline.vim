@@ -66,17 +66,34 @@ function! plugin#lightline#set_variables() abort
   let s:palette.normal.right[0] = ['#282C34', '#99CC99', 12, 11]
 endfunction
 
+function! s:IsTerminal() abort
+  return exists('b:terminal_job_id')
+endfunction
+
 function! plugin#lightline#readonly() abort
   return &readonly ? 'RO' : ''
 endfunction
 
 function! plugin#lightline#file_status() abort
-  if &filetype ==# 'fzf'
-    return ''
+  if s:IsTerminal()
+    let toggle_number = get(b:, 'toggle_number', 0)
+    let toggleterm = toggle_number ? printf('#%s:', toggle_number) : ''
+
+    if !exists('b:terminal_current_directory')
+      if !exists('s:terminal_reloading')
+        let s:terminal_reloading = timer_start(100, { -> lightline#update() }, { 'repeat': 50 })
+      endif
+      return toggleterm . '#toggleterm#'
+    endif
+
+    if exists('s:terminal_reloading')
+      call timer_stop(s:terminal_reloading)
+    endif
+    return toggleterm . b:terminal_current_directory
   endif
 
-  if &filetype ==# 'toggleterm'
-    return 'terminal (' . b:toggle_number . ')'
+  if &filetype ==# 'fzf'
+    return ''
   endif
 
   const filename = expand('%:t')

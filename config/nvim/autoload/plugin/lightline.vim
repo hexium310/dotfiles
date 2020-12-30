@@ -35,12 +35,12 @@ function! plugin#lightline#set_variables() abort
         \  },
         \  'component_function': {
         \    'anzu': 'anzu#search_status',
-        \    'file_status': 'plugin#lightline#file_status',
         \    'fileencoding': 'plugin#lightline#fileencoding',
         \    'mode': 'plugin#lightline#mode',
         \    'yarn_start_status': 'plugin#lightline#yarn_start_status',
         \  },
         \  'component_expand': {
+        \    'file_status': 'plugin#lightline#file_status',
         \    'ale_checking': 'lightline#ale#checking',
         \    'ale_errors': 'lightline#ale#errors',
         \    'ale_warnings': 'lightline#ale#warnings',
@@ -60,7 +60,7 @@ function! plugin#lightline#set_variables() abort
         \  },
         \}
 
-  const s:palette = g:lightline#colorscheme#onedark#palette
+  let s:palette = g:lightline#colorscheme#onedark#palette
   let s:palette.inactive.left[0] = s:palette.inactive.right[0]
   let s:palette.normal.left[0] = ['#282C34', '#99CC99', 12, 11]
   let s:palette.normal.right[0] = ['#282C34', '#99CC99', 12, 11]
@@ -89,7 +89,8 @@ function! plugin#lightline#file_status() abort
     if exists('s:terminal_reloading')
       call timer_stop(s:terminal_reloading)
     endif
-    return toggleterm . b:terminal_current_directory
+    hi TerminalCurrentDirectory guifg=#F99157 guibg=#3E4452
+    return toggleterm . '%#TerminalCurrentDirectory#' . substitute(b:terminal_current_directory, expand('$HOME'), '~', '')
   endif
 
   if &filetype ==# 'fzf'

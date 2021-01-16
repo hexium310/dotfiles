@@ -12,7 +12,7 @@ function! plugin#coc#set_variables() abort
         \   'coc-rust-analyzer',
         \   'coc-pairs',
         \   'coc-emmet',
-        \   'coc-tailwindcss',
+        \   'https://github.com/rodrigore/coc-tailwind-intellisense',
         \ ]
 endfunction
 

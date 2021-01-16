@@ -2,11 +2,9 @@
   "javascript.validate.enable": false,
   "coc.preferences.extensionUpdateCheck": "daily",
   "diagnostic.enableHighlightLineNumber": false,
-  "tailwindCSS.headwind.runOnSave": false,
-  "tailwindCSS.emmetCompletions": false,
-  "tailwindCSS.headwind.classRegex": {
-    "typescriptreact": "(?:\\bclassName\\s*=\\s*[\\\"\\']([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\'])|(?:\\bcntl\\s*`([_a-zA-Z0-9\\s\\-\\:\\/]*)`)"
-  },
+  "tailwindCSS.experimental.classRegex": [
+    "cntl`([^`]*)`"
+  ],
   "git.enableGlobalStatus": false,
   "git.enableGutters": false,
   "git.realtimeGutters": false

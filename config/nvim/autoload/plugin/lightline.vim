@@ -4,7 +4,7 @@ function! plugin#lightline#set_variables() abort
         \  'active': {
         \    'left': [
         \      ['mode', 'paste'],
-        \      ['readonly', 'file_status'],
+        \      ['readonly', 'file_status', 'notif'],
         \      ['coc_status_error', 'coc_status_warning', 'coc_status_info'],
         \      ['anzu'],
         \    ],
@@ -38,6 +38,7 @@ function! plugin#lightline#set_variables() abort
         \    'fileencoding': 'plugin#lightline#fileencoding',
         \    'mode': 'plugin#lightline#mode',
         \    'yarn_start_status': 'plugin#lightline#yarn_start_status',
+        \    'notif': 'plugin#lightline#notif_status',
         \  },
         \  'component_expand': {
         \    'file_status': 'plugin#lightline#file_status',
@@ -151,4 +152,8 @@ endfunction
 
 function! plugin#lightline#yarn_start_status() abort
   return exists('g:yarn_start_job_id') ? 'Y' : ''
+endfunction
+
+function! plugin#lightline#notif_status() abort
+  return get(g:, 'github_notif_unread', 0) ? '!' : ''
 endfunction

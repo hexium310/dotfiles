@@ -289,3 +289,14 @@ on_cmd = [
 hook_add = '''
   cabbrev bd BD
 '''
+
+[[plugins]]
+repo = 'himanoa/goshiteki'
+if = 'executable("gh") && executable("jq")'
+
+[[plugins]]
+repo = 'hexium310/github-notif.vim'
+hook_add = '''
+  let g:github_notif_token = $GITHUB_TOKEN
+  let g:github_notif_fetch_instantly = 1
+'''

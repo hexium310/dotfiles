@@ -275,3 +275,17 @@ hook_post_source = '''
   execute('luafile' . expand('$XDG_CONFIG_HOME/nvim/plugins/nvim-toggleterm.lua'))
   command! -nargs=* Yarn call luaeval('require"toggleterm".exec("yarn " .. _A, 4, 15)', <q-args>)
 '''
+
+[[plugins]]
+repo = 'qpkorr/vim-bufkill'
+on_cmd = [
+  'BUN',
+  'BD',
+  'BW',
+  'BB',
+  'BF',
+  'BA',
+]
+hook_add = '''
+  cabbrev bd BD
+'''

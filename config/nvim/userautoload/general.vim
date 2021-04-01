@@ -27,6 +27,7 @@ set laststatus=2
 set lazyredraw
 set list
 set listchars=tab:»-
+set noequalalways
 set nofoldenable
 set noshowmode
 set novisualbell

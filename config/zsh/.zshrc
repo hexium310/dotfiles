@@ -52,3 +52,7 @@ fi
         [[ -f $file ]] && source $file
     done
 }
+
+if (( $+commands[gh] )); then
+    eval $(gh completion -s zsh)
+fi

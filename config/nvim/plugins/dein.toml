@@ -149,7 +149,7 @@ hook_add ='''
 
 [[plugins]]
 repo = 'maximbaz/lightline-ale'
-depends = ['ale', 'lightline']
+depends = ['ale', 'lightline.vim']
 on_ft = ['typescript', 'typescriptreact']
 hook_add = '''
   let g:lightline#ale#indicator_checking = '...'

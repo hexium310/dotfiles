@@ -278,14 +278,6 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'qpkorr/vim-bufkill'
-on_cmd = [
-  'BUN',
-  'BD',
-  'BW',
-  'BB',
-  'BF',
-  'BA',
-]
 hook_add = '''
   cabbrev bd BD
 '''

@@ -292,3 +292,13 @@ hook_add = '''
   let g:github_notif_token = $GITHUB_TOKEN
   let g:github_notif_fetch_instantly = 1
 '''
+
+[[plugins]]
+repo = 'chaoren/vim-wordmotion'
+hook_add = '''
+let g:wordmotion_nomap = 1
+nmap w <Plug>WordMotion_w
+nmap b <Plug>WordMotion_b
+nmap e <Plug>WordMotion_e
+nmap ge <Plug>WordMotion_ge
+'''

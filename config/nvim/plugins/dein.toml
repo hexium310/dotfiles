@@ -65,6 +65,11 @@ hook_add = '''
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
+hook_post_source = '''
+  if maparg('icx') != ''
+    unmap icx
+  endif
+'''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'

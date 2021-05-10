@@ -61,4 +61,6 @@ hook_add = '''
 
   xmap ac <Plug>(textobj-comment-a)
   omap ac <Plug>(textobj-comment-a)
+  xmap ic <Plug>(textobj-comment-i)
+  omap ic <Plug>(textobj-comment-i)
 '''

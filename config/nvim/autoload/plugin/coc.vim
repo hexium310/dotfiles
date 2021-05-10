@@ -10,7 +10,7 @@ function! plugin#coc#set_variables() abort
         \   'coc-vimlsp',
         \   'coc-git',
         \   'coc-rust-analyzer',
-        \   'coc-pairs',
+        "\   'coc-pairs',
         \   'coc-emmet',
         \   'https://github.com/rodrigore/coc-tailwind-intellisense',
         \ ]

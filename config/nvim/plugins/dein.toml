@@ -307,3 +307,6 @@ nmap b <Plug>WordMotion_b
 nmap e <Plug>WordMotion_e
 nmap ge <Plug>WordMotion_ge
 '''
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'

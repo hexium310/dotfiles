@@ -11,6 +11,11 @@ nnoremap ]d ]c
 nnoremap s <Nop>
 vnoremap v $h
 
+augroup mappings
+  autocmd!
+  autocmd FileType man nmap <buffer> K K
+augroup END
+
 inoremap <F1> <Nop>
 nnoremap <F1> <Nop>
 nnoremap q <Nop>

@@ -1,14 +1,14 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "bash",
-    "css",
-    "javascript",
-    "json",
-    "query",
-    "toml",
+    -- "bash",
+    -- "css",
+    -- "javascript",
+    -- "json",
+    -- "query",
+    -- "toml",
     "tsx",
     "typescript",
-    "yaml",
+    -- "yaml",
   },
   indnet = {
     enable = false,

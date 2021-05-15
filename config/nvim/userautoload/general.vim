@@ -52,7 +52,7 @@ if exists('&inccommand')
 endif
 
 if executable('nvr')
-  let $GIT_EDITOR = 'nvr --remote-tab-wait'
+  let $GIT_EDITOR = 'nvr --remote-tab-wait -c "set number"'
 endif
 
 " autocmd

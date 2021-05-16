@@ -11,7 +11,7 @@ zstyle ':vcs_info:git:*' untrackedstr '%F{green}?%f'
 # vcs_info command is executed by chitoku-k/zsh-vcs-extended
 
 _zsh_prompt_redraw() {
-    if [[ $WIDGET =~ finish ]]; then
+    if [[ $WIDGET = zle-line-finish ]]; then
         _zsh_prompt 'finish'
         return
     fi
@@ -36,41 +36,50 @@ _zsh_prompt() {
     local suffix
     local vcs_info_msg
     local host
-    local directory='%F{blue%}%1~%f'
+    local directory='%F{blue}%1~%f'
     if [[ $HOST != *.local ]]; then
         host='%m '
     fi
-    local colored_host="%F{green%}$host%f"
+    local colored_host="%F{green}$host%f"
+
+    local dark_blue='#3d5b7a'
+    local dark_red='#914749'
+    local dark_green='#5b7a5b'
+    local dark_yellow='#997a3d'
 
     [[ -n $vcs_info_msg_0_ ]] && vcs_info_msg+=$vcs_info_msg_0_
-    [[ -n $vcs_info_msg_1_ ]] && vcs_info_msg+="%F{blue%}$vcs_info_msg_1_%f"
-    [[ -n $vcs_info_msg_2_ ]] && vcs_info_msg+="%F{red%}$vcs_info_msg_2_%f"
+    [[ -n $vcs_info_msg_1_ ]] && vcs_info_msg+="%F{blue}$vcs_info_msg_1_%f"
+    [[ -n $vcs_info_msg_2_ ]] && vcs_info_msg+="%F{red}$vcs_info_msg_2_%f"
 
     case $1 in
         insert)
-            suffix='%K{blue%}%F{#393939%} $ %f%k'
+            suffix='%K{blue}%F{#393939} $ %f%k'
             ;;
         visual)
-            suffix='%K{magenta%}%F{#393939%} $ %f%k'
+            suffix='%K{magenta}%F{#393939} $ %f%k'
             ;;
         normal)
-            suffix='%K{green%}%F{#393939%} $ %f%k'
+            suffix='%K{green}%F{#393939} $ %f%k'
             ;;
         finish)
-            suffix='%K{#898989%}%F{#393939%} $ %f%k'
-            colored_host="%F{#89b789%}$host%f"
-            directory='%F{#5b89b7%}%1~%f'
-            vcs_info_msg=${vcs_info_msg//\{blue\}/\{#5b89b7\}}
-            vcs_info_msg=${vcs_info_msg//\{red\}/\{#d96b6d\}}
-            vcs_info_msg=${vcs_info_msg//\{green\}/\{#89b789\}}
-            vcs_info_msg=${vcs_info_msg//\{yellow\}/\{#e5b75b\}}
+            suffix='%K{#515151}%F{#242424} $ %f%k'
+            colored_host="%F{#$dark_green}$host%f"
+            directory="%F{$dark_blue}%1~%f"
+            vcs_info_msg=${vcs_info_msg//\{blue\}/\{$dark_blue\}}
+            vcs_info_msg=${vcs_info_msg//\{red\}/\{$dark_red\}}
+            vcs_info_msg=${vcs_info_msg//\{green\}/\{$dark_green\}}
+            vcs_info_msg=${vcs_info_msg//\{yellow\}/\{$dark_yellow\}}
             ;;
         *)
-            suffix='%K{blue%}%F{#393939%} $ %f%k'
+            suffix='%K{blue}%F{#393939} $ %f%k'
             ;;
     esac
 
-    PROMPT="%B$colored_host$directory $vcs_info_msg $suffix %b"
+    if [[ -z $vcs_info_msg ]]; then
+        PROMPT="%B$colored_host$directory $suffix %b"
+    else
+        PROMPT="%B$colored_host$directory $vcs_info_msg $suffix %b"
+    fi
     zle reset-prompt
 }
 

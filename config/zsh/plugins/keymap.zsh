@@ -1,3 +1,9 @@
+autoload -Uz select-word-style {backward,forward}-word-match
+select-word-style shell
+
+zle -N backward-word-match
+zle -N forward-word-match
+
 bindkey -v
 bindkey -M viins -r '^B' '^C' '^D' '^F' '^K' '^N' '^O' '^P' '^Q' '^T' '^Y' '^Z'
 bindkey -M viins '^?' backward-delete-char
@@ -13,6 +19,8 @@ bindkey -M viins '^W' backward-kill-word
 bindkey -M viins '^[[A' history-beginning-search-backward-end
 bindkey -M viins '^[[B' history-beginning-search-forward-end
 
+bindkey -M vicmd B backward-word-match
+bindkey -M vicmd W forward-word-match
 bindkey -M vicmd -r '^D' '=' ':'
 bindkey -M vicmd '^N' history-beginning-search-forward-end
 bindkey -M vicmd '^P' history-beginning-search-backward-end

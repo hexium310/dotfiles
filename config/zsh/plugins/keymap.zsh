@@ -25,6 +25,8 @@ bindkey -M viins '^[[A' history-beginning-search-backward-end
 bindkey -M viins '^[[B' history-beginning-search-forward-end
 
 bindkey -M vicmd B backward-word-match
+bindkey -M vicmd E shell-style-forward-word-end
+bindkey -M vicmd gE shell-style-backward-word-end
 bindkey -M vicmd W forward-word-match
 bindkey -M vicmd -r '^D' '=' ':'
 bindkey -M vicmd '^N' history-beginning-search-forward-end

@@ -1,8 +1,12 @@
 autoload -Uz select-word-style {backward,forward}-word-match
+autoload -Uz history-search-end
 select-word-style shell
 
 zle -N backward-word-match
 zle -N forward-word-match
+
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
 
 bindkey -v
 bindkey -M viins -r '^B' '^C' '^D' '^F' '^K' '^N' '^O' '^P' '^Q' '^T' '^Y' '^Z'

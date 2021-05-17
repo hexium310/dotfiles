@@ -1,6 +1,7 @@
-autoload -Uz select-word-style {backward,forward}-word-match
+autoload -Uz {backward,forward}-word-match
 autoload -Uz history-search-end
-select-word-style shell
+
+zstyle ':zle:(backward|forward)-word-match' word-style shell
 
 zle -N backward-word-match
 zle -N forward-word-match

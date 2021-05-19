@@ -3,10 +3,7 @@ if [[ -d $ZPLG_HOME ]]; then
     autoload -Uz _zinit
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
-    set_autosuggestions_env() {
-        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=247,underline"
-        ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(fzf-completion vi-cmd-mode)
-    }
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=247,underline"
 
     rewrite__zsh_togglecursor_reset() {
         _zsh_togglecursor_reset() {
@@ -18,15 +15,13 @@ if [[ -d $ZPLG_HOME ]]; then
     zinit light chitoku-k/fzf-zsh-completions
     zinit light chitoku-k/zsh-reset-title
     zinit light chitoku-k/zsh-vcs-extended
-    zinit ice atload'set_autosuggestions_env'
-    zinit light zsh-users/zsh-autosuggestions
 
     zinit ice lucid  wait'!' atload'rewrite__zsh_togglecursor_reset; unfunction rewrite__zsh_togglecursor_reset'
     zinit light chitoku-k/zsh-togglecursor
-    zinit ice lucid wait'!'
-    zinit light zsh-users/zsh-completions
-    zinit ice lucid wait'!' atload'zpcompinit; zpcdreplay' nocd
-    zinit light zdharma/fast-syntax-highlighting
+    zinit lucid wait'!' for \
+        atinit'zpcompinit; zpcdreplay' nocd zdharma/fast-syntax-highlighting \
+        blockf zsh-users/zsh-completions \
+        atload'!ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(fzf-completion vi-cmd-mode); _zsh_autosuggest_start' zsh-users/zsh-autosuggestions
 
     zinit ice lucid wait'!' from'gh' atclone'./install --bin' atpull'%atclone' as'program' src'shell/completion.zsh' pick'bin/fzf'
     zinit light junegunn/fzf
@@ -36,8 +31,6 @@ if [[ -d $ZPLG_HOME ]]; then
     zinit light sharkdp/fd
     zinit ice lucid from'gh-r' ver'nightly' as'program' pick'nvim*/bin/nvim'
     zinit light neovim/neovim
-
-    unfunction set_autosuggestions_env
 fi
 
 () {

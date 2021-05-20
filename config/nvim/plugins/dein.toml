@@ -124,7 +124,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'w0rp/ale'
-on_ft = ['javascript', 'typescript', 'typescriptreact']
+on_ft = ['javascript', 'json', 'typescript', 'typescriptreact']
 hook_add = '''
   call plugin#ale#set_variable()
   call plugin#ale#set_maps()

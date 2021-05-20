@@ -17,11 +17,12 @@ function! plugin#ale#set_variable() abort
   let g:ale_fixers = {
         \  'typescript': ['eslint'],
         \  'typescriptreact': ['eslint'],
+        \  'json': ['fixjson'],
         \}
 endfunction
 
 function! plugin#ale#set_maps() abort
   nmap <silent> [a <Plug>(ale_previous_wrap)
   nmap <silent> ]a <Plug>(ale_next_wrap)
-  nmap <Space>fix <Plug>(ale_fix)
+  nmap <F8> <Plug>(ale_fix)
 endfunction

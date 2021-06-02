@@ -8,9 +8,9 @@ SAVEHIST=100000
 HISTSIZE=100000
 
 __check_syntax_error() {
-    local arguments=(${(Q)${(z)${@%%$'\n'}}})
+    local argument=${@%%$'\n'}
 
-    if ! zsh -cn "$arguments" 2> /dev/null; then
+    if ! zsh -cn "$argument" 2> /dev/null; then
         return 1
     fi
 }
@@ -28,10 +28,10 @@ __ignore_shorter_command() {
 add-zsh-hook zshaddhistory __ignore_shorter_command
 
 __ignore_duplicates_before_last() {
-    local arguments=(${(Q)${(z)${@%%$'\n'}}})
+    local argument=${@%%$'\n'}
     local before_last=$(fc -ln -2 | head -n 1)
 
-    if [[ $arguments = $before_last ]]; then
+    if [[ $argument = $before_last ]]; then
         return 1
     fi
 }

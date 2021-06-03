@@ -1,0 +1,55 @@
+# What protocol to use when performing git operations. Supported values: ssh, https
+git_protocol: ssh
+# What editor gh should run when creating issues, pull requests, etc. If blank, will refer to environment.
+editor:
+# When to interactively prompt. This is a global config that cannot be overridden by hostname. Supported values: enabled, disabled
+prompt: enabled
+# A pager program to send command output to, e.g. "less". Set the value to "cat" to disable the pager.
+pager:
+# Aliases allow you to create nicknames for gh commands
+aliases:
+    co: pr checkout
+    vulns: |-
+        api graphql
+          --jq '.data | select(.repositoryOwner != null).repositoryOwner.repositories | { pageInfo: .pageInfo, repositories: [(.edges[] | select(.node.vulnerabilityAlerts.nodes | length > 0)).node | { name: .name, vulnerabilityAlerts: .vulnerabilityAlerts.nodes[] }] | group_by(.vulnerabilityAlerts.securityVulnerability.advisory.ghsaId) }'
+          -F owner=$1 -f query='
+            query ($owner: String!) {
+              repositoryOwner(login: $owner){
+                repositories(first: 100) {
+                  pageInfo {
+                    startCursor
+                    endCursor
+                    hasNextPage
+                    hasPreviousPage
+                  }
+                  edges {
+                    node {
+                      name
+                      vulnerabilityAlerts(first: 100) {
+                        nodes {
+                          vulnerableRequirements
+                          vulnerableManifestPath
+                          securityVulnerability {
+                            advisory {
+                              ghsaId
+                              publishedAt
+                              notificationsPermalink
+                              summary
+                            }
+                            severity
+                            vulnerableVersionRange
+                            firstPatchedVersion {
+                              identifier
+                            }
+                            package {
+                              name
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          '

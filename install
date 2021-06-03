@@ -49,6 +49,7 @@ install_dotfiels() {
 
   make_symlink zsh $ZDOTDIR
   make_symlink git $XDG_CONFIG_HOME/git
+  make_symlink gh $XDG_CONFIG_HOME/gh
   make_symlink nvim $XDG_CONFIG_HOME/nvim
   make_symlink fdignore $XDG_CONFIG_HOME/fdignore
   make_symlink bat $XDG_CONFIG_HOME/bat

@@ -42,11 +42,6 @@ syntax region typescriptTupleType matchgroup=typescriptTypeBraces
  \ contains=@typescriptType
  \ contained skipwhite oneline
 
-" syntax region   typescriptArrowFuncDef          contained start=/\%(=>\_s*\)\@3<!(\_s*{/ end=/\_s*)\_s*=>/
-"  \ contains=typescriptArrowFuncArg,typescriptArrowFunc,typescriptTypeAnnotation
-"  \ nextgroup=@typescriptExpression,typescriptBlock
-"  \ skipwhite skipempty keepend
-
 " Resets highlight link
 highlight link typescriptClassName Function
 highlight link typescriptClassTypeParameter Operator

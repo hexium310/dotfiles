@@ -31,6 +31,8 @@ if [[ -d $ZPLG_HOME ]]; then
     zinit light sharkdp/fd
     zinit ice lucid from'gh-r' ver'nightly' as'program' pick'nvim*/bin/nvim'
     zinit light neovim/neovim
+    zinit ice lucid as'program'
+    zinit light hexium310/gh-vulns
 fi
 
 () {

@@ -6,3 +6,6 @@ config/zsh/*.zwc
 
 config/nvim/.netrwhist
 config/nvim/spell
+
+config/gh/*
+!config/gh/config.yml

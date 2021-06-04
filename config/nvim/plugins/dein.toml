@@ -299,3 +299,6 @@ nmap ge <Plug>WordMotion_ge
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'tversteeg/registers.nvim'

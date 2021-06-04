@@ -72,7 +72,7 @@ augroup line_number
   autocmd!
   autocmd FileType fzf autocmd OptionSet * ++once setlocal nonumber norelativenumber
   autocmd FileType list,help autocmd OptionSet * ++once setlocal number norelativenumber
-  autocmd FileType terminal autocmd BufEnter * ++once setlocal norelativenumber
+  autocmd FileType toggleterm autocmd BufEnter * setlocal norelativenumber
   autocmd BufEnter,InsertLeave,WinEnter * setlocal relativenumber
   autocmd BufLeave,InsertEnter,WinLeave,TermEnter * setlocal norelativenumber
 augroup END

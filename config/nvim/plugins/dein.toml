@@ -27,7 +27,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'ii14/onedark.nvim'
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'

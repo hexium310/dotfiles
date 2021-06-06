@@ -1,4 +1,5 @@
 function! plugin#coc#set_variables() abort
+  let g:coc_enable_locationlist = 0
   let g:coc_status_error_sign = 'E: '
   let g:coc_status_warning_sign = 'W: '
   let g:coc_status_info_sign = 'I: '
@@ -51,5 +52,6 @@ function! plugin#coc#autocmd() abort
     autocmd User CocOpenFloat
           \ execute 'autocmd BufWinLeave <buffer=' . winbufnr(g:coc_last_float_win) . '> set backspace=' |
           \ call setwinvar(g:coc_last_float_win, '&backspace', 'indent,eol,start')
+    autocmd User CocLocationsChange CocList --normal location
   augroup END
 endfunction

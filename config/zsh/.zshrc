@@ -21,7 +21,11 @@ if [[ -d $ZPLG_HOME ]]; then
     zinit lucid wait'!' for \
         atinit'zpcompinit; zpcdreplay' nocd zdharma/fast-syntax-highlighting \
         blockf zsh-users/zsh-completions \
-        atload'!ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(fzf-completion vi-cmd-mode history-beginning-search-backward-end history-beginning-search-forward-end); _zsh_autosuggest_start' nocd zsh-users/zsh-autosuggestions
+        atload'!
+            ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(fzf-completion vi-cmd-mode history-beginning-search-backward-end history-beginning-search-forward-end);
+            ZSH_AUTOSUGGEST_STRATEGY=(history completion);
+            _zsh_autosuggest_start
+        ' nocd zsh-users/zsh-autosuggestions
 
     zinit ice lucid wait'!' from'gh' atclone'./install --bin' atpull'%atclone' as'program' src'shell/completion.zsh' pick'bin/fzf'
     zinit light junegunn/fzf

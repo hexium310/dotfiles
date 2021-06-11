@@ -52,7 +52,7 @@ if exists('&inccommand')
 endif
 
 if executable('nvr')
-  let $GIT_EDITOR = 'nvr --remote-tab-wait -c "set number"'
+  let $GIT_EDITOR = 'nvr --remote-tab-wait'
 endif
 
 " autocmd
@@ -72,7 +72,14 @@ augroup line_number
   autocmd!
   autocmd FileType fzf autocmd OptionSet * ++once setlocal nonumber norelativenumber
   autocmd FileType list,help autocmd OptionSet * ++once setlocal number norelativenumber
-  autocmd FileType toggleterm autocmd BufEnter * setlocal norelativenumber
-  autocmd BufEnter,InsertLeave,WinEnter * setlocal relativenumber
-  autocmd BufLeave,InsertEnter,WinLeave,TermEnter * setlocal norelativenumber
+  autocmd BufEnter,InsertLeave,WinEnter * if &ft ==? 'toggleterm' |
+              \   setlocal nonumber norelativenumber |
+              \ else |
+              \   setlocal number relativenumber |
+              \ endif
+  autocmd BufLeave,InsertEnter,WinLeave * if &ft ==? 'toggleterm' |
+              \   setlocal nonumber norelativenumber |
+              \ else |
+              \   setlocal number norelativenumber |
+              \ endif
 augroup END

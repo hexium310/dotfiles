@@ -4,6 +4,7 @@ function! plugin#ale#set_variable() abort
         \  'typescriptreact': ['eslint'],
         \  'javascript': ['eslint'],
         \  'javascriptreact': ['eslint'],
+        \  'markdown': ['textlint'],
         \}
   let g:ale_disable_lsp = 1
   let g:ale_echo_msg_format = '%severity% [%linter%] %s'

@@ -69,15 +69,16 @@ augroup init_vim
 augroup END
 
 augroup line_number
+  let filetypes = ['toggleterm', 'man']
   autocmd!
   autocmd FileType fzf autocmd OptionSet * ++once setlocal nonumber norelativenumber
   autocmd FileType list,help autocmd OptionSet * ++once setlocal number norelativenumber
-  autocmd BufEnter,InsertLeave,WinEnter * if &ft ==? 'toggleterm' |
+  autocmd BufEnter,InsertLeave,WinEnter * if index(filetypes, &ft, 0, v:true) >= 0 |
               \   setlocal nonumber norelativenumber |
               \ else |
               \   setlocal number relativenumber |
               \ endif
-  autocmd BufLeave,InsertEnter,WinLeave * if &ft ==? 'toggleterm' |
+  autocmd BufLeave,InsertEnter,WinLeave * if index(filetypes, &ft, 0, v:true) >= 0 |
               \   setlocal nonumber norelativenumber |
               \ else |
               \   setlocal number norelativenumber |

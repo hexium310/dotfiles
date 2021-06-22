@@ -11,7 +11,13 @@ alias sudo='sudo '
 alias fd='fd --ignore-file=$XDG_CONFIG_HOME/fdignore'
 alias gpg='LANG=C gpg'
 (( $+commands[nvim] )) && alias vim='nvim'
-(( $+commands[nvim] )) && export MANPAGER='nvim +Man!'
+
+if (( $+commands[nvim] )); then
+    export MANPAGER='nvim +Man!'
+    if [[ -n $NVIM_LISTEN_ADDRESS ]]; then
+        export MANPAGER='python3 $ZDOTDIR/plugins/stdin.py'
+    fi
+fi
 
 if [[ -n $NVIM_LISTEN_ADDRESS ]] && (( $+commands[nvr] )); then
     alias vim='nvr --remote-tab'

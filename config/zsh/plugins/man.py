@@ -7,5 +7,5 @@ if not address:
     sys.exit(0)
 
 nvim = pynvim.attach("socket", path=address);
-name = list(sys.stdin)[1].split()[0].lower()
+name = list(filter(lambda item: item != '\n', sys.stdin))[0].split()[0].lower()
 nvim.command(f'Man {name}')

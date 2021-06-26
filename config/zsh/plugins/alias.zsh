@@ -15,7 +15,7 @@ alias gpg='LANG=C gpg'
 if (( $+commands[nvim] )); then
     export MANPAGER='nvim +Man!'
     if [[ -n $NVIM_LISTEN_ADDRESS ]]; then
-        export MANPAGER='python3 $ZDOTDIR/plugins/stdin.py'
+        export MANPAGER='python3 $ZDOTDIR/plugins/man.py'
     fi
 fi
 

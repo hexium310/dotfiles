@@ -90,7 +90,7 @@ export PROMPT=''
 
 if [[ -n $NVIM_LISTEN_ADDRESS ]]; then
     __neovim_set_pwd() {
-        ( $ZDOTDIR/plugins/main.py cd & ) > /dev/null
+        ( $ZDOTDIR/plugins/terminal.py cd & ) > /dev/null
     }
 
     add-zsh-hook chpwd __neovim_set_pwd

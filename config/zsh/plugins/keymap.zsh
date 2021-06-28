@@ -37,3 +37,5 @@ bindkey -M vicmd ':w^M' vi-cmd-mode
 zmodload zsh/complist
 bindkey -M menuselect '^[' vi-cmd-mode
 bindkey -M menuselect '^[[Z' reverse-menu-complete
+
+stty -ixon

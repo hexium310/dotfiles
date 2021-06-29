@@ -12,7 +12,6 @@ if [[ -d $ZPLG_HOME ]]; then
     }
 
     zinit light b4b4r07/zsh-vimode-visual
-    zinit light chitoku-k/fzf-zsh-completions
     zinit light chitoku-k/zsh-reset-title
     zinit light chitoku-k/zsh-vcs-extended
 
@@ -40,7 +39,7 @@ if [[ -d $ZPLG_HOME ]]; then
 fi
 
 () {
-    setopt no_nomatch
+    setopt local_options no_nomatch
     local file
 
     for file in $ZDOTDIR/plugins/*.zsh(D); do
@@ -51,6 +50,9 @@ fi
         [[ -f $file ]] && source $file
     done
 }
+
+# Load after alias.zsh for the completion of aliases
+zinit light chitoku-k/fzf-zsh-completions
 
 if (( $+commands[gh] )); then
     eval $(gh completion -s zsh)

@@ -1,4 +1,4 @@
-autoload -Uz vcs_info
+autoload -Uz vcs_info add-zsh-hook
 
 zstyle ':vcs_info:*' max-exports 3
 zstyle ':vcs_info:git:*' formats '%c%u' '(%b)'

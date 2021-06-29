@@ -1,5 +1,12 @@
+() {
+    local file
+    for file in $ZDOTDIR/{plugins,local}/*.zsh(DN); do
+        source $file
+    done
+}
+
 if [[ -d $ZPLG_HOME ]]; then
-    source $XDG_CACHE_HOME/zinit/bin/zinit.zsh
+    source $ZPLG_HOME/bin/zinit.zsh
     autoload -Uz _zinit
     (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -12,6 +19,7 @@ if [[ -d $ZPLG_HOME ]]; then
     }
 
     zinit light b4b4r07/zsh-vimode-visual
+    zinit light chitoku-k/fzf-zsh-completions
     zinit light chitoku-k/zsh-reset-title
     zinit light chitoku-k/zsh-vcs-extended
 
@@ -37,22 +45,6 @@ if [[ -d $ZPLG_HOME ]]; then
     zinit ice lucid as'program'
     zinit light hexium310/gh-vulns
 fi
-
-() {
-    setopt local_options no_nomatch
-    local file
-
-    for file in $ZDOTDIR/plugins/*.zsh(D); do
-        source $file
-    done
-
-    for file in $ZDOTDIR/local/*.zsh(D); do
-        [[ -f $file ]] && source $file
-    done
-}
-
-# Load after alias.zsh for the completion of aliases
-zinit light chitoku-k/fzf-zsh-completions
 
 if (( $+commands[gh] )); then
     eval $(gh completion -s zsh)

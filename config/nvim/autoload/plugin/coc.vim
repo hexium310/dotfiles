@@ -39,7 +39,7 @@ endfunction
 
 function! plugin#coc#show_documentation() abort
   if index(['vim','help'], &filetype) >= 0
-    execute 'h '.expand('<cword>')
+    silent! execute 'h '.expand('<cword>')
   else
     call CocActionAsync('doHover')
   endif

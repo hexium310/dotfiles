@@ -1,18 +1,19 @@
 [color]
-  ui = true
+	ui = true
 [user]
-  name = Hexin
-  email = hexium310@gmail.com
+	name = Hexin
+	email = hexium310@gmail.com
 [merge]
-  ff = false
+	ff = false
+	conflictstyle = diff3
 [pull]
-  ff = only
+	ff = only
 [core]
-  editor = nvim
+	editor = nvim
 [alias]
-  oneline = log --oneline --graph --pretty=format:'%C(yellow)%h%Creset %C(blue)[%cd]%Creset %C(auto)%d %s' --date=format:'%Y/%m/%d %H:%M:%S'
+	oneline = log --oneline --graph --pretty=format:'%C(yellow)%h%Creset %C(blue)[%cd]%Creset %C(auto)%d %s' --date=format:'%Y/%m/%d %H:%M:%S'
 [rebase]
-  autosquash = true
+	autosquash = true
 [init]
 	defaultBranch = master
 [push]

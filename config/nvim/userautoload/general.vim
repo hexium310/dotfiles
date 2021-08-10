@@ -55,6 +55,21 @@ if executable('nvr')
   let $GIT_EDITOR = 'nvr --remote-tab-wait'
 endif
 
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+
+  " Doubly escape `|` because the backslash before `|`` will be removed by the `:!` command
+  " Unescape `!`
+  command! -range -nargs=* -complete=file GrepRange
+        \ execute(printf(
+        \   'grep --multiline %s <args>',
+        \   substitute(shellescape(join(map(getline('<line1>', '<line2>'), {
+        \     _, val -> escape(escape(val, '.+*?{}[]()^$|\'), '|')
+        \   }), "\n"), 1), '\\!', '!', 'g')
+        \ ))
+endif
+
 " autocmd
 augroup init_vim
   autocmd!

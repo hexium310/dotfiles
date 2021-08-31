@@ -40,8 +40,6 @@ if [[ -d $ZPLG_HOME ]]; then
     zinit light BurntSushi/ripgrep
     zinit ice lucid from'gh-r' as'program' pick'fd*/fd'
     zinit light sharkdp/fd
-    zinit ice lucid from'gh-r' ver'nightly' as'program' pick'nvim*/bin/nvim'
-    zinit light neovim/neovim
 fi
 
 if (( $+commands[gh] )); then

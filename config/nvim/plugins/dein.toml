@@ -237,15 +237,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-on_cmd = [
-  'TSInstall',
-  'TSUpdate',
-  'TSInstallInfo',
-  'TSUninstalll',
-  'TSBufEnable',
-  'TSBufEnableAll',
-  'TSModuleInfo',
-]
+on_event = 'VimEnter'
 hook_post_source = '''
   lua require('plugins/nvim-treesitter')()
 '''

@@ -7,5 +7,11 @@
   ],
   "git.enableGlobalStatus": false,
   "git.enableGutters": false,
-  "git.realtimeGutters": false
+  "git.realtimeGutters": false,
+  "Lua.diagnostics.globals": [
+    "vim"
+  ],
+  "Lua.workspace.library": {
+    "/usr/local/share/nvim/runtime/lua": true
+  }
 }

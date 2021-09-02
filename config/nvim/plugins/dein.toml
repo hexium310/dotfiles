@@ -247,12 +247,7 @@ on_cmd = [
   'TSModuleInfo',
 ]
 hook_post_source = '''
-  execute('luafile' . expand('$XDG_CONFIG_HOME/nvim/plugins/nvim-treesitter.lua'))
-
-  augroup nvim-treesitter
-    autocmd!
-    autocmd FileType vim :TSBufDisable highlight
-  augroup END
+  lua require('plugins/nvim-treesitter')()
 '''
 
 [[plugins]]
@@ -266,8 +261,7 @@ on_map = {
   ni = '<C-t>',
 }
 hook_post_source = '''
-  execute('luafile' . expand('$XDG_CONFIG_HOME/nvim/plugins/nvim-toggleterm.lua'))
-  command! -nargs=* Yarn call luaeval('require"toggleterm".exec("yarn " .. _A, 4, 15)', <q-args>)
+  lua require('plugins/toggleterm')()
 '''
 
 [[plugins]]

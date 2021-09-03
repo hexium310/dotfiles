@@ -49,18 +49,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
-hook_post_source = '''
-  if maparg('icx') != ''
-    unmap icx
-  endif
-'''
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'php', 'css', 'javascript', 'typescript', 'typescriptreact']
 hook_add = '''

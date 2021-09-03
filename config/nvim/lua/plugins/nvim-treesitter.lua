@@ -3,7 +3,6 @@ local function init()
     'bash',
     'css',
     'javascript',
-    'query',
     'tsx',
     'typescript',
   }

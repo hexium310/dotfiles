@@ -1,33 +1,41 @@
-syntax on
-
 set termguicolors
 colorscheme base16-tomorrow-night-eighties
-highlight ALEErrorSign guifg=#F2777A
-highlight ALEStyleErrorSign guifg=#FFCC66
-highlight CocErrorSign guifg=#F2777A
+
+lua << EOF
+local base16 = require('base16-colorscheme')
+local highlight = base16.highlight
+local colors = base16.colorschemes['tomorrow-night-eighties']
+
+highlight.ALEErrorSign = { guibg = colors.base08 }
+highlight.ALEStyleErrorSign = { guibg = colors.base0A }
+highlight.CocErrorSign = { guibg = colors.base08 }
+highlight.Comment = { guifg = colors.base03, gui = 'italic' }
+highlight.CursorLineNr = { guifg=colors.base04, guibg='#202020', gui='bold' }
+highlight.LineNr = { guifg=colors.base04, guibg=colors.base01 }
+EOF
+
 highlight CocFloating guibg=#000000
-highlight Comment gui=italic guifg=#aaaaaa
-highlight CursorLineNr gui=bold guifg=#AAAAAA guibg=#202020
 highlight DiffAdd guifg=NONE guibg=#334539
 highlight DiffChange guifg=NONE guibg=#454133
 highlight DiffDelete guifg=NONE guibg=#45333a
 highlight DiffText guifg=NONE guibg=#5f5d42
 highlight Flashy guibg=#134a28
-highlight GitGutterAdd guibg=none
+highlight GitGutterAdd guibg=NONE
 highlight GitGutterAddLineNr guibg=#5C6E5C
-highlight GitGutterChange guibg=none
-highlight GitGutterChangeDelete guibg=none
+highlight GitGutterChange guibg=NONE
+highlight GitGutterChangeDelete guibg=NONE
 highlight GitGutterChangeDeleteLineNr gui=underline guibg=#786A51
 highlight GitGutterChangeLineNr guibg=#786A51
-highlight GitGutterDelete guibg=none
+highlight GitGutterDelete guibg=NONE
 highlight GitGutterDeleteLineNr guibg=#764C4F
 highlight IncSearch guifg=NONE guibg=#45333a
 highlight Search guifg=NONE guibg=#454133
-highlight SignColumn guibg=none
-highlight StatusLine guifg=#282C34 guibg=#99cc99
+highlight SignColumn guibg=NONE
+highlight Substitute guifg=NONE guibg=#454133
+
 highlight clear CursorLine
-highlight link CocCursorRange None
-highlight link CocHoverRange None
+highlight link CocCursorRange NONE
+highlight link CocHoverRange NONE
 highlight link EndOfBuffer Ignore
 highlight link TSInclude Keyword
 highlight link TSRepeat Keyword

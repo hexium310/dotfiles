@@ -27,10 +27,7 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'chriskempson/base16-vim'
-hook_add = '''
-  let g:base16colorspace = 256
-'''
+repo = 'RRethy/nvim-base16'
 
 [[plugins]]
 repo = 'ii14/onedark.nvim'

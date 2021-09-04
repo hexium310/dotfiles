@@ -279,3 +279,9 @@ repo = 'tversteeg/registers.nvim'
 hook_add = '''
   let g:registers_window_min_height = 15
 '''
+
+[[plugins]]
+repo = 'nvim-treesitter/playground'
+depends = ['nvim-treesitter']
+on_ft = ['query']
+on_cmd = ['TSHighlightCapturesUnderCursor', 'TSPlaygroundToggle']

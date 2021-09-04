@@ -29,6 +29,13 @@ local function init()
       disable = disables,
       enable = true,
     },
+    playground = {
+      disable = disables,
+      enable = true,
+    },
+    query_linter ={
+      enable = true,
+    },
   }
 end
 

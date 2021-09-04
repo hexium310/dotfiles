@@ -282,3 +282,10 @@ repo = 'nvim-treesitter/playground'
 depends = ['nvim-treesitter']
 on_ft = ['query']
 on_cmd = ['TSHighlightCapturesUnderCursor', 'TSPlaygroundToggle']
+
+[[plugins]]
+repo = 'notomo/lreload.nvim'
+on_ft = ['lua']
+hook_post_source = '''
+  lua require('lreload').enable('plugins')
+'''

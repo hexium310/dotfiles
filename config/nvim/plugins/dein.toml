@@ -27,6 +27,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'chriskempson/base16-vim'
+hook_add = '''
+  let g:base16colorspace = 256
+'''
+
+[[plugins]]
 repo = 'ii14/onedark.nvim'
 
 [[plugins]]
@@ -40,7 +46,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
-on_map = ['f', 'F', 't', 'T', '<Plug>']
+on_map = ['f', 'F', 't', 'T']
 hook_add = '''
   let g:clever_f_use_migemo = 1
   let g:clever_f_fix_key_direction = 1
@@ -152,12 +158,6 @@ repo = 'airblade/vim-gitgutter'
 hook_add = '''
   call plugin#gitgutter#set_variables()
   call plugin#gitgutter#set_maps()
-'''
-
-[[plugins]]
-repo = 'chriskempson/base16-vim'
-hook_add = '''
-  let g:base16colorspace = 256
 '''
 
 [[plugins]]

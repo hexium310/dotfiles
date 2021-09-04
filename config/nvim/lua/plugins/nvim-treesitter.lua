@@ -7,7 +7,7 @@ local function init()
     'typescript',
   }
 
-  require'nvim-treesitter.configs'.setup {
+  require('nvim-treesitter.configs').setup({
     ensure_installed = {
       'bash',
       'css',
@@ -36,7 +36,7 @@ local function init()
     query_linter ={
       enable = true,
     },
-  }
+  })
 end
 
 return init

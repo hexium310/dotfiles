@@ -23,7 +23,6 @@ function! plugin#coc#set_maps() abort
   inoremap <silent> <Cr> <C-]><C-g>u<Cr><C-r>=coc#on_enter()<Cr>
   nmap <silent> [c <Plug>(coc-diagnostic-prev)
   nmap <silent> ]c <Plug>(coc-diagnostic-next)
-  nmap <silent> <Space>h <Plug>(coc-git-chunkinfo)
   nmap <silent> gf <Plug>(coc-definition)
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"

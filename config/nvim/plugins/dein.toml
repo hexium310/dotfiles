@@ -172,6 +172,7 @@ repo = 'airblade/vim-gitgutter'
 hook_add = '''
   call plugin#gitgutter#set_variables()
   call plugin#gitgutter#set_maps()
+  call plugin#gitgutter#set_autocmd()
 '''
 
 [[plugins]]

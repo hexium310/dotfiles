@@ -8,13 +8,11 @@ local colors = base16.colorschemes['tomorrow-night-eighties']
 
 highlight.ALEErrorSign = { guibg = colors.base08 }
 highlight.ALEStyleErrorSign = { guibg = colors.base0A }
-highlight.CocErrorSign = { guibg = colors.base08 }
 highlight.Comment = { guifg = colors.base03, gui = 'italic' }
 highlight.CursorLineNr = { guifg=colors.base04, guibg='#202020', gui='bold' }
 highlight.LineNr = { guifg=colors.base04, guibg=colors.base01 }
 EOF
 
-highlight CocFloating guibg=#000000
 highlight DiffAdd guifg=NONE guibg=#334539
 highlight DiffChange guifg=NONE guibg=#454133
 highlight DiffDelete guifg=NONE guibg=#45333a
@@ -34,8 +32,6 @@ highlight SignColumn guibg=NONE
 highlight Substitute guifg=NONE guibg=#454133
 
 highlight clear CursorLine
-highlight link CocCursorRange NONE
-highlight link CocHoverRange NONE
 highlight link EndOfBuffer Ignore
 highlight link TSInclude Keyword
 highlight link TSRepeat Keyword

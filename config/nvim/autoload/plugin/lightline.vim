@@ -5,7 +5,6 @@ function! plugin#lightline#set_variables() abort
         \    'left': [
         \      ['mode', 'paste'],
         \      ['readonly', 'file_status', 'notif'],
-        \      ['coc_status_error', 'coc_status_warning', 'coc_status_info'],
         \      ['anzu'],
         \    ],
         \    'right': [
@@ -45,18 +44,13 @@ function! plugin#lightline#set_variables() abort
         \    'ale_checking': 'lightline#ale#checking',
         \    'ale_errors': 'lightline#ale#errors',
         \    'ale_warnings': 'lightline#ale#warnings',
-        \    'coc_status_error': 'plugin#lightline#coc_status_error',
-        \    'coc_status_warning': 'plugin#lightline#coc_status_warning',
-        \    'coc_status_info': 'plugin#lightline#coc_status_info',
-        \    'git_changes': 'plugin#lightline#coc_git_changes',
+        \    'git_changes': 'plugin#lightline#git_changes',
         \    'readonly': 'plugin#lightline#readonly',
         \  },
         \  'component_type': {
         \    'ale_checking': 'left',
         \    'ale_errors': 'error',
         \    'ale_warnings': 'warning',
-        \    'coc_status_error': 'error',
-        \    'coc_status_warning': 'warning',
         \    'readonly': 'error',
         \  },
         \}
@@ -112,10 +106,6 @@ function! plugin#lightline#mode() abort
     return 'FZF'
   endif
 
-  if &filetype ==# 'list'
-    return 'COC'
-  endif
-
   return lightline#mode()
 endfunction
 
@@ -127,27 +117,9 @@ function! plugin#lightline#fileencoding() abort
   return &fileencoding !=# '' ? &fileencoding : &encoding
 endfunction
 
-function! plugin#lightline#coc_status_error() abort
-  const count = plugin#lightline#coc_diagnostic_count('error')
-  return count == 0 ? '' : get(g:, 'coc_status_error_sign', 'E: ') . count
-endfunction
-
-function! plugin#lightline#coc_status_warning() abort
-  const count = plugin#lightline#coc_diagnostic_count('warning')
-  return count == 0 ? '' : get(g:, 'coc_status_warning_sign', 'W: ') . count
-endfunction
-
-function! plugin#lightline#coc_status_info() abort
-  const count = plugin#lightline#coc_diagnostic_count('information')
-  return count == 0 ? '' : get(g:, 'coc_status_info_sign', 'I: ') . count
-endfunction
-
-function! plugin#lightline#coc_diagnostic_count(type) abort
-  return get(get(b:, 'coc_diagnostic_info', {}), a:type, 0)
-endfunction
-
-function! plugin#lightline#coc_git_changes() abort
-  return trim(get(b:, 'coc_git_status', ''))
+function! plugin#lightline#git_changes() abort
+  let [added, modified, removed] = GitGutterGetHunkSummary()
+  return added + modified + removed == 0 ? '' : printf('+%d ~%d -%d', added, modified, removed)
 endfunction
 
 function! plugin#lightline#yarn_start_status() abort
@@ -156,4 +128,11 @@ endfunction
 
 function! plugin#lightline#notif_status() abort
   return get(g:, 'github_notif_unread', 0) ? '!' : ''
+endfunction
+
+function! plugin#lightline#automcd() abort
+  augroup plugin#lightline
+    autocmd!
+    autocmd User GitGutter call lightline#update()
+  augroup END
 endfunction

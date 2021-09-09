@@ -1,0 +1,34 @@
+local M = {}
+
+function M.disable_cursor_hold()
+  vim.cmd([[
+    setlocal eventignore+=CursorHold
+    autocmd CursorMoved,CursorMovedI,BufHidden,InsertCharPre <buffer> ++once setlocal eventignore-=CursorHold
+  ]])
+end
+
+function M.hover_or_open_vim_help()
+  if vim.bo.filetype == 'vim' or vim.bo.filetype == 'help' then
+    vim.cmd([[
+      silent! execute 'h '.expand('<cword>')
+    ]])
+  else
+    vim.lsp.buf.hover()
+    require('plugins/lsp/utils').disable_cursor_hold()
+  end
+end
+
+function M.send_key(command, bufnr)
+  local floating_window = vim.F.npcall(vim.api.nvim_buf_get_var, bufnr or 0, 'lsp_floating_preview')
+  local escaped_command = vim.api.nvim_replace_termcodes(command, true, false, true)
+  if floating_window and vim.api.nvim_win_is_valid(floating_window) and
+    vim.api.nvim_win_get_height(floating_window) < vim.api.nvim_buf_line_count(vim.api.nvim_win_get_buf(floating_window)) then
+    vim.api.nvim_win_call(floating_window, function ()
+      vim.cmd([[execute "normal ]] .. escaped_command .. [["]])
+    end)
+    return
+  end
+  vim.api.nvim_feedkeys(escaped_command, 'n', true)
+end
+
+return M

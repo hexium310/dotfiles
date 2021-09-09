@@ -18,6 +18,8 @@ local function init()
   end
 
   vim.cmd([[
+    command! -nargs=0 RenameFile lua require('plugins/lsp/utils').rename_file(); vim.fn['lightline#update']()
+
     augroup lspconfig
       autocmd!
       autocmd CursorHold * lua vim.lsp.diagnostic.show_position_diagnostics({ border = 'rounded', focusable = false })

@@ -31,4 +31,19 @@ function M.send_key(command, bufnr)
   vim.api.nvim_feedkeys(escaped_command, 'n', true)
 end
 
+function M.rename_file()
+  local filename = vim.fn.expand('%')
+  local new_filename = vim.fn.input({
+    prompt = 'New Filename: ',
+    default = filename,
+    completion = 'file',
+  })
+
+  if new_filename == '' then
+    return
+  end
+
+  vim.lsp.util.rename(filename, new_filename)
+end
+
 return M

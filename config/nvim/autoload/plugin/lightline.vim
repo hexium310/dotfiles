@@ -5,6 +5,7 @@ function! plugin#lightline#set_variables() abort
         \    'left': [
         \      ['mode', 'paste'],
         \      ['readonly', 'file_status', 'notif'],
+        \      ['lsp_diagnositc_error', 'lsp_diagnositc_warning', 'lsp_diagnositc_info', 'lsp_diagnositc_hint'],
         \      ['anzu'],
         \    ],
         \    'right': [
@@ -44,6 +45,10 @@ function! plugin#lightline#set_variables() abort
         \    'ale_checking': 'lightline#ale#checking',
         \    'ale_errors': 'lightline#ale#errors',
         \    'ale_warnings': 'lightline#ale#warnings',
+        \    'lsp_diagnositc_error': 'plugin#lightline#lsp_diagnositc_error',
+        \    'lsp_diagnositc_warning': 'plugin#lightline#lsp_diagnositc_warning',
+        \    'lsp_diagnositc_info': 'plugin#lightline#lsp_diagnositc_info',
+        \    'lsp_diagnositc_hint': 'plugin#lightline#lsp_diagnositc_hint',
         \    'git_changes': 'plugin#lightline#git_changes',
         \    'readonly': 'plugin#lightline#readonly',
         \  },
@@ -51,6 +56,8 @@ function! plugin#lightline#set_variables() abort
         \    'ale_checking': 'left',
         \    'ale_errors': 'error',
         \    'ale_warnings': 'warning',
+        \    'lsp_diagnositc_error': 'error',
+        \    'lsp_diagnositc_warning': 'warning',
         \    'readonly': 'error',
         \  },
         \}
@@ -117,6 +124,26 @@ function! plugin#lightline#fileencoding() abort
   return &fileencoding !=# '' ? &fileencoding : &encoding
 endfunction
 
+function! plugin#lightline#lsp_diagnositc_error() abort
+  const count = luaeval('vim.lsp.diagnostic.get_count(0, "Error")')
+  return count == 0 ? '' : 'E: ' . count
+endfunction
+
+function! plugin#lightline#lsp_diagnositc_warning() abort
+  const count = luaeval('vim.lsp.diagnostic.get_count(0, "Warning")')
+  return count == 0 ? '' : 'W: ' . count
+endfunction
+
+function! plugin#lightline#lsp_diagnositc_info() abort
+  const count = luaeval('vim.lsp.diagnostic.get_count(0, "Information")')
+  return count == 0 ? '' : 'I: ' . count
+endfunction
+
+function! plugin#lightline#lsp_diagnositc_hint() abort
+  const count = luaeval('vim.lsp.diagnostic.get_count(0, "Hint")')
+  return count == 0 ? '' : 'H: ' . count
+endfunction
+
 function! plugin#lightline#git_changes() abort
   let [added, modified, removed] = GitGutterGetHunkSummary()
   return added + modified + removed == 0 ? '' : printf('+%d ~%d -%d', added, modified, removed)
@@ -133,6 +160,6 @@ endfunction
 function! plugin#lightline#automcd() abort
   augroup plugin#lightline
     autocmd!
-    autocmd User GitGutter call lightline#update()
+    autocmd User GitGutter,LspDiagnosticsChanged call lightline#update()
   augroup END
 endfunction

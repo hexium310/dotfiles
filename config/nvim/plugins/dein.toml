@@ -308,3 +308,23 @@ hook_post_source = '''
 [[plugins]]
 repo = 'kabouzeid/nvim-lspinstall'
 on_lua = ['lspconfig']
+
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
+on_lua = ['lspconfig']
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+on_lua = ['cmp']
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+on_lua = ['cmp']
+
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+on_lua = ['cmp']
+
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+on_lua = ['cmp']

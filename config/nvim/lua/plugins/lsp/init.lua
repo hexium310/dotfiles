@@ -11,6 +11,7 @@ local function init()
     'typescript'
   }
   servers:install()
+  config.completion()
 
   for _, lang in pairs(servers:installed_servers()) do
     config.lspconfig(lang)

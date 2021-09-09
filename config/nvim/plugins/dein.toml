@@ -297,3 +297,14 @@ on_ft = ['lua']
 hook_post_source = '''
   lua require('lreload').enable('plugins')
 '''
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+on_event = 'VimEnter'
+hook_post_source = '''
+  lua require('plugins/lsp')()
+'''
+
+[[plugins]]
+repo = 'kabouzeid/nvim-lspinstall'
+on_lua = ['lspconfig']

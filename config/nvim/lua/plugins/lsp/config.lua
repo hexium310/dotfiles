@@ -1,5 +1,32 @@
 local M = {
-  language_configs = {},
+  language_configs = {
+    lua = function ()
+      local runtime_path = vim.split(package.path, ';')
+      table.insert(runtime_path, "?.lua")
+      table.insert(runtime_path, "?/init.lua")
+
+      return {
+        Lua = {
+          hover = {
+            previewFields = 100
+          },
+          completion = {
+            requireSeparator = '/'
+          },
+          runtime = {
+            version = 'LuaJIT',
+            path = runtime_path,
+          },
+          diagnostics = {
+            globals = { 'vim' },
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file('lua/', true)
+          },
+        },
+      }
+    end,
+  },
   handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = 'rounded',

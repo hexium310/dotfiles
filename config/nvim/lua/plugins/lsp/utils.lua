@@ -19,7 +19,8 @@ function M.hover_or_open_vim_help()
 end
 
 function M.send_key(command, bufnr)
-  local floating_window = vim.F.npcall(vim.api.nvim_buf_get_var, bufnr or 0, 'lsp_floating_preview')
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+  local floating_window = vim.F.npcall(vim.api.nvim_buf_get_var, bufnr, 'lsp_floating_preview')
   local escaped_command = vim.api.nvim_replace_termcodes(command, true, false, true)
   if floating_window and vim.api.nvim_win_is_valid(floating_window) and
     vim.api.nvim_win_get_height(floating_window) < vim.api.nvim_buf_line_count(vim.api.nvim_win_get_buf(floating_window)) then

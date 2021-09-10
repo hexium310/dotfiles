@@ -125,22 +125,22 @@ function! plugin#lightline#fileencoding() abort
 endfunction
 
 function! plugin#lightline#lsp_diagnositc_error() abort
-  const count = luaeval('vim.lsp.diagnostic.get_count(0, "Error")')
+  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Error")')
   return count == 0 ? '' : 'E: ' . count
 endfunction
 
 function! plugin#lightline#lsp_diagnositc_warning() abort
-  const count = luaeval('vim.lsp.diagnostic.get_count(0, "Warning")')
+  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Warning")')
   return count == 0 ? '' : 'W: ' . count
 endfunction
 
 function! plugin#lightline#lsp_diagnositc_info() abort
-  const count = luaeval('vim.lsp.diagnostic.get_count(0, "Information")')
+  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Information")')
   return count == 0 ? '' : 'I: ' . count
 endfunction
 
 function! plugin#lightline#lsp_diagnositc_hint() abort
-  const count = luaeval('vim.lsp.diagnostic.get_count(0, "Hint")')
+  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Hint")')
   return count == 0 ? '' : 'H: ' . count
 endfunction
 

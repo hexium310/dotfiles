@@ -17,7 +17,7 @@ highlight DiffAdd guifg=NONE guibg=#334539
 highlight DiffChange guifg=NONE guibg=#454133
 highlight DiffDelete guifg=NONE guibg=#45333a
 highlight DiffText guifg=NONE guibg=#5f5d42
-highlight Flashy guibg=#134a28
+highlight Yanked guibg=#134a28
 highlight GitGutterAdd guibg=NONE
 highlight GitGutterAddLineNr guibg=#5C6E5C
 highlight GitGutterChange guibg=NONE

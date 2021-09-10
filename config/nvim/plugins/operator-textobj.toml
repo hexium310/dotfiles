@@ -18,13 +18,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'haya14busa/vim-operator-flashy'
-on_map = '<Plug>'
-hook_add = '''
-  map y <Plug>(operator-flashy)
-'''
-
-[[plugins]]
 repo = 'emonkak/vim-operator-sort'
 on_map = '<Plug>'
 hook_add = '''

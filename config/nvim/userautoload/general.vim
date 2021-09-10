@@ -81,6 +81,7 @@ augroup init_vim
   autocmd FileType gitcommit,gitrebase setlocal bufhidden=delete
   autocmd FileType markdown setlocal listchars+=trail:·
   autocmd FileType vim autocmd OptionSet * ++once setlocal iskeyword-=#
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank({ higroup = 'Yanked', timeout = 100 })
 augroup END
 
 augroup line_number

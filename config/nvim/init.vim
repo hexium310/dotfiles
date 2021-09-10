@@ -6,7 +6,7 @@ if isdirectory(s:dein_core_dir)
 
   let g:dein#install_github_api_token = $DEIN_GITHUB_TOKEN
 
-  if dein#load_state(s:dein_dir)
+  if dein#min#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     for file in glob('$XDG_CONFIG_HOME/nvim/plugins/**/*.toml', 0, 1)

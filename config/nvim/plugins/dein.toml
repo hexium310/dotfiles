@@ -292,6 +292,10 @@ on_ft = ['query']
 on_cmd = ['TSHighlightCapturesUnderCursor', 'TSPlaygroundToggle']
 
 [[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter-textobjects'
+depends = ['nvim-treesitter']
+
+[[plugins]]
 repo = 'notomo/lreload.nvim'
 on_ft = ['lua']
 hook_post_source = '''

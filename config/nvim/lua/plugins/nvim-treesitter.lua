@@ -36,6 +36,25 @@ local function init()
     query_linter ={
       enable = true,
     },
+    textobjects = {
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ['af'] = '@function.outer',
+          ['if'] = '@function.inner',
+        },
+      },
+      swap = {
+        enable = true,
+        swap_next = {
+          ['<Space>pn'] = '@parameter.inner',
+        },
+        swap_previous = {
+          ['<Space>pp'] = '@parameter.inner',
+        },
+      },
+    },
   })
 end
 

@@ -5,7 +5,7 @@ function! plugin#lightline#set_variables() abort
         \    'left': [
         \      ['mode', 'paste'],
         \      ['readonly', 'file_status', 'notif'],
-        \      ['coc_status_error', 'coc_status_warning', 'coc_status_info'],
+        \      ['lsp_diagnositc_error', 'lsp_diagnositc_warning', 'lsp_diagnositc_info', 'lsp_diagnositc_hint'],
         \      ['anzu'],
         \    ],
         \    'right': [
@@ -45,18 +45,19 @@ function! plugin#lightline#set_variables() abort
         \    'ale_checking': 'lightline#ale#checking',
         \    'ale_errors': 'lightline#ale#errors',
         \    'ale_warnings': 'lightline#ale#warnings',
-        \    'coc_status_error': 'plugin#lightline#coc_status_error',
-        \    'coc_status_warning': 'plugin#lightline#coc_status_warning',
-        \    'coc_status_info': 'plugin#lightline#coc_status_info',
-        \    'git_changes': 'plugin#lightline#coc_git_changes',
+        \    'lsp_diagnositc_error': 'plugin#lightline#lsp_diagnositc_error',
+        \    'lsp_diagnositc_warning': 'plugin#lightline#lsp_diagnositc_warning',
+        \    'lsp_diagnositc_info': 'plugin#lightline#lsp_diagnositc_info',
+        \    'lsp_diagnositc_hint': 'plugin#lightline#lsp_diagnositc_hint',
+        \    'git_changes': 'plugin#lightline#git_changes',
         \    'readonly': 'plugin#lightline#readonly',
         \  },
         \  'component_type': {
         \    'ale_checking': 'left',
         \    'ale_errors': 'error',
         \    'ale_warnings': 'warning',
-        \    'coc_status_error': 'error',
-        \    'coc_status_warning': 'warning',
+        \    'lsp_diagnositc_error': 'error',
+        \    'lsp_diagnositc_warning': 'warning',
         \    'readonly': 'error',
         \  },
         \}
@@ -112,10 +113,6 @@ function! plugin#lightline#mode() abort
     return 'FZF'
   endif
 
-  if &filetype ==# 'list'
-    return 'COC'
-  endif
-
   return lightline#mode()
 endfunction
 
@@ -127,27 +124,29 @@ function! plugin#lightline#fileencoding() abort
   return &fileencoding !=# '' ? &fileencoding : &encoding
 endfunction
 
-function! plugin#lightline#coc_status_error() abort
-  const count = plugin#lightline#coc_diagnostic_count('error')
-  return count == 0 ? '' : get(g:, 'coc_status_error_sign', 'E: ') . count
+function! plugin#lightline#lsp_diagnositc_error() abort
+  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Error")')
+  return count == 0 ? '' : 'E: ' . count
 endfunction
 
-function! plugin#lightline#coc_status_warning() abort
-  const count = plugin#lightline#coc_diagnostic_count('warning')
-  return count == 0 ? '' : get(g:, 'coc_status_warning_sign', 'W: ') . count
+function! plugin#lightline#lsp_diagnositc_warning() abort
+  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Warning")')
+  return count == 0 ? '' : 'W: ' . count
 endfunction
 
-function! plugin#lightline#coc_status_info() abort
-  const count = plugin#lightline#coc_diagnostic_count('information')
-  return count == 0 ? '' : get(g:, 'coc_status_info_sign', 'I: ') . count
+function! plugin#lightline#lsp_diagnositc_info() abort
+  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Information")')
+  return count == 0 ? '' : 'I: ' . count
 endfunction
 
-function! plugin#lightline#coc_diagnostic_count(type) abort
-  return get(get(b:, 'coc_diagnostic_info', {}), a:type, 0)
+function! plugin#lightline#lsp_diagnositc_hint() abort
+  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Hint")')
+  return count == 0 ? '' : 'H: ' . count
 endfunction
 
-function! plugin#lightline#coc_git_changes() abort
-  return trim(get(b:, 'coc_git_status', ''))
+function! plugin#lightline#git_changes() abort
+  let [added, modified, removed] = GitGutterGetHunkSummary()
+  return added + modified + removed == 0 ? '' : printf('+%d ~%d -%d', added, modified, removed)
 endfunction
 
 function! plugin#lightline#yarn_start_status() abort
@@ -156,4 +155,11 @@ endfunction
 
 function! plugin#lightline#notif_status() abort
   return get(g:, 'github_notif_unread', 0) ? '!' : ''
+endfunction
+
+function! plugin#lightline#automcd() abort
+  augroup plugin#lightline
+    autocmd!
+    autocmd User GitGutter,LspDiagnosticsChanged call lightline#update()
+  augroup END
 endfunction

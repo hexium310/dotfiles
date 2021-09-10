@@ -56,6 +56,7 @@ repo = 'editorconfig/editorconfig-vim'
 repo = 'itchyny/lightline.vim'
 hook_add = '''
   call plugin#lightline#set_variables()
+  call plugin#lightline#automcd()
 '''
 
 [[plugins]]
@@ -139,17 +140,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
-rev = 'release'
-if = 'executable("node")'
-hook_add ='''
-  call plugin#coc#set_variables()
-  call plugin#coc#set_maps()
-  call plugin#coc#set_commands()
-  call plugin#coc#autocmd()
-'''
-
-[[plugins]]
 repo = 'maximbaz/lightline-ale'
 depends = ['ale', 'lightline.vim']
 on_ft = ['typescript', 'typescriptreact']
@@ -172,6 +162,7 @@ repo = 'airblade/vim-gitgutter'
 hook_add = '''
   call plugin#gitgutter#set_variables()
   call plugin#gitgutter#set_maps()
+  call plugin#gitgutter#set_autocmd()
 '''
 
 [[plugins]]
@@ -306,3 +297,34 @@ on_ft = ['lua']
 hook_post_source = '''
   lua require('lreload').enable('plugins')
 '''
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+on_event = 'VimEnter'
+hook_post_source = '''
+  lua require('plugins/lsp')()
+'''
+
+[[plugins]]
+repo = 'kabouzeid/nvim-lspinstall'
+on_lua = ['lspconfig']
+
+[[plugins]]
+repo = 'hrsh7th/nvim-cmp'
+on_lua = ['lspconfig']
+
+[[plugins]]
+repo = 'hrsh7th/vim-vsnip'
+on_lua = ['cmp']
+
+[[plugins]]
+repo = 'hrsh7th/cmp-nvim-lsp'
+on_lua = ['cmp']
+
+[[plugins]]
+repo = 'hrsh7th/cmp-buffer'
+on_lua = ['cmp']
+
+[[plugins]]
+repo = 'hrsh7th/cmp-path'
+on_lua = ['cmp']

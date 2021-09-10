@@ -84,10 +84,10 @@ augroup init_vim
 augroup END
 
 augroup line_number
-  let filetypes = ['toggleterm', 'man', 'coc_float']
+  let filetypes = ['toggleterm', 'man']
   autocmd!
   autocmd FileType fzf autocmd OptionSet * ++once setlocal nonumber norelativenumber
-  autocmd FileType list,help autocmd OptionSet * ++once setlocal number norelativenumber
+  autocmd FileType help autocmd OptionSet * ++once setlocal number norelativenumber
   autocmd FileType toggleterm autocmd OptionSet * ++once startinsert
   autocmd BufEnter,InsertLeave,WinEnter * if index(filetypes, &ft, 0, v:true) >= 0 |
               \   setlocal nonumber norelativenumber |

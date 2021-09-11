@@ -2,9 +2,6 @@ local function init()
   local disables = {
     'bash',
     'css',
-    'javascript',
-    'tsx',
-    'typescript',
   }
 
   require('nvim-treesitter.configs').setup({

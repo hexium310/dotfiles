@@ -15,6 +15,9 @@ highlight.TSVariable = { guifg = colors.base05 }
 highlight.TSVariableBuiltin = { guifg = colors.base05, gui = 'italic' }
 highlight.TSKeywordReturn = { guifg = colors.base08 }
 highlight.TerminalCurrentDirectory = { guifg=colors.base09, guibg='#3E4452' }
+highlight.TSPunctSpecial = { guifg=colors.base0C }
+highlight.TSPunctBracket = { guifg=colors.base0D }
+highlight.TSInclude = { guifg=colors.base0E }
 EOF
 
 highlight DiffAdd guifg=NONE guibg=#334539

@@ -91,7 +91,6 @@ function! plugin#lightline#file_status() abort
     if exists('s:terminal_reloading')
       call timer_stop(s:terminal_reloading)
     endif
-    hi TerminalCurrentDirectory guifg=#F99157 guibg=#3E4452
     return toggleterm . '%#TerminalCurrentDirectory#' . substitute(b:terminal_current_directory, expand('$HOME'), '~', '')
   endif
 

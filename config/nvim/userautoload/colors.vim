@@ -9,8 +9,12 @@ local colors = base16.colorschemes['tomorrow-night-eighties']
 highlight.ALEErrorSign = { guibg = colors.base08 }
 highlight.ALEStyleErrorSign = { guibg = colors.base0A }
 highlight.Comment = { guifg = colors.base03, gui = 'italic' }
-highlight.CursorLineNr = { guifg=colors.base04, guibg='#202020', gui='bold' }
-highlight.LineNr = { guifg=colors.base04, guibg=colors.base01 }
+highlight.CursorLineNr = {  guifg = colors.base04, guibg = '#202020', gui = 'bold' }
+highlight.LineNr = { guifg = colors.base04, guibg = colors.base01 }
+highlight.TSVariable = { guifg = colors.base05 }
+highlight.TSVariableBuiltin = { guifg = colors.base05, gui = 'italic' }
+highlight.TSKeywordReturn = { guifg = colors.base08 }
+highlight.TerminalCurrentDirectory = { guifg=colors.base09, guibg='#3E4452' }
 EOF
 
 highlight DiffAdd guifg=NONE guibg=#334539
@@ -33,8 +37,4 @@ highlight Substitute guifg=NONE guibg=#454133
 
 highlight clear CursorLine
 highlight link EndOfBuffer Ignore
-highlight link TSInclude Keyword
-highlight link TSRepeat Keyword
-highlight link TSParameter Constant
-highlight link TSOperator Special
 highlight! link gitcommitComment Comment

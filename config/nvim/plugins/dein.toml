@@ -40,7 +40,7 @@ hook_add = '''
         table.remove(package.loaders, 1)
       end
       return {
-        ['tomorrow-night-eighties'] = require('colors.tomorrow-night-eighties')
+        ['tomorrow-night-eighties'] = require('colors.tomorrow-night-eighties'),
       }
     end
 EOF

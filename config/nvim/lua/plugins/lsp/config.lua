@@ -26,6 +26,16 @@ local M = {
         },
       }
     end,
+    json = function ()
+      local json_schemas = require('plugins/lsp/json_schemas')
+      json_schemas.setup()
+
+      return {
+        json = {
+          schemas = json_schemas.decode().schemas
+        }
+      }
+    end
   },
   handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

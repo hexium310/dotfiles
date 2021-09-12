@@ -47,4 +47,11 @@ function M.rename_file()
   vim.lsp.util.rename(filename, new_filename)
 end
 
+function M.signature_help()
+  if vim.tbl_isempty(vim.tbl_filter(function (v) return v.resolved_capabilities.signature_help end, vim.lsp.buf_get_clients())) then
+    return
+  end
+  vim.lsp.buf.signature_help()
+end
+
 return M

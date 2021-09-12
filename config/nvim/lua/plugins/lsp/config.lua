@@ -52,6 +52,14 @@ local M = {
       signs = false,
     }),
   },
+  commands = {
+    RenameFile = {
+      function ()
+        require('plugins/lsp/utils').rename_file()
+        vim.fn['lightline#update']()
+      end
+    },
+  },
 }
 
 function M.lspconfig(lang)
@@ -63,6 +71,7 @@ function M.lspconfig(lang)
   require('lspconfig')[lang].setup({
     on_attach = M.on_attach,
     handlers = M.handlers,
+    commands = M.commands,
     settings = settings,
     capabilities = capabilities,
   })

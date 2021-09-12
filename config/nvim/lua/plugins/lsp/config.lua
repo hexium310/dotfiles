@@ -2,8 +2,8 @@ local M = {
   language_configs = {
     lua = function ()
       local runtime_path = vim.split(package.path, ';')
-      table.insert(runtime_path, "?.lua")
-      table.insert(runtime_path, "?/init.lua")
+      table.insert(runtime_path, '?.lua')
+      table.insert(runtime_path, '?/init.lua')
 
       return {
         Lua = {
@@ -38,16 +38,16 @@ local M = {
     end
   },
   handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
       border = 'rounded',
       focusable = false,
     }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
       border = 'rounded',
       silent = true,
       focusable = false,
     }),
-    ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    ['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = false,
       signs = false,
     }),
@@ -85,10 +85,10 @@ function M.on_attach(client, bufnr)
     { 'n', 'gf', [[<Cmd>lua vim.lsp.buf.definition()<CR>]] },
     { 'n', ']c', [[<Cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = 'rounded', focusable = false } })<CR>]] },
     { 'n', '[c', [[<Cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = 'rounded', focusable = false } })<CR>]] },
-    { 'n', '<C-d>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-d>', ]] .. bufnr .. [[)<Cr>]] },
-    { 'n', '<C-u>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-u>', ]] .. bufnr .. [[)<Cr>]] },
-    { 'n', '<C-f>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-f>', ]] .. bufnr .. [[)<Cr>]] },
-    { 'n', '<C-b>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-b>', ]] .. bufnr .. [[)<Cr>]] },
+    { 'n', '<C-d>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-d>', ]] .. bufnr .. [[)<CR>]] },
+    { 'n', '<C-u>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-u>', ]] .. bufnr .. [[)<CR>]] },
+    { 'n', '<C-f>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-f>', ]] .. bufnr .. [[)<CR>]] },
+    { 'n', '<C-b>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-b>', ]] .. bufnr .. [[)<CR>]] },
   }
 
   for _, v in ipairs(maps) do
@@ -119,7 +119,7 @@ function M.completion()
     },
     snippet = {
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
+        vim.fn['vsnip#anonymous'](args.body)
       end,
     },
     mapping = {

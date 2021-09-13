@@ -5,6 +5,10 @@ function! plugin#fugitive#set_maps() abort
 endfunction
 
 function! s:ToggleStatusWindow() abort
+  if empty(FugitiveGitDir())
+    return
+  endif
+
   const status_window = filter(getwininfo(), { _, v -> has_key(v.variables, 'fugitive_status') })
 
   if empty(status_window)

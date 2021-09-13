@@ -186,6 +186,9 @@ repo = 'kana/vim-tabpagecd'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+on_func = [
+  'FugitiveGitDir'
+]
 on_cmd = [
   'G',
   'Git',

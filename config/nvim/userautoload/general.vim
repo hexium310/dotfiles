@@ -2,10 +2,7 @@
 language en_US.UTF-8
 set backspace=
 set cindent
-set encoding=utf-8
 set expandtab
-set hidden
-set nobackup
 set noswapfile
 set nowritebackup
 set pyxversion=3
@@ -18,18 +15,15 @@ set whichwrap=
 
 " Display
 filetype plugin indent on
-set ambiwidth=single
 set completeopt-=preview
 set cursorline
 set diffopt+=vertical
 set fillchars=diff:\ ,
-set laststatus=2
 set lazyredraw
 set list
 set listchars=tab:»-
 set nofoldenable
 set noshowmode
-set novisualbell
 set nowrap
 set number
 set numberwidth=5
@@ -43,10 +37,8 @@ set splitbelow
 set splitright
 
 " Search
-set hlsearch
 set ignorecase
 set smartcase
-set wrapscan
 if exists('&inccommand')
   set inccommand=split
 endif
@@ -74,7 +66,6 @@ endif
 augroup init_vim
   autocmd!
   autocmd BufEnter * setlocal formatoptions-=cro
-  autocmd BufReadPre *.tsx call dein#source('vim-jsx-pretty')
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd VimLeave * set guicursor=a:ver25
   autocmd TermOpen * setlocal signcolumn=no | tnoremap <buffer> <C-q> <C-\><C-n>

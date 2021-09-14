@@ -4,6 +4,7 @@ function! plugin#ale#set_variable() abort
         \  'typescriptreact': ['eslint'],
         \  'javascript': ['eslint'],
         \  'javascriptreact': ['eslint'],
+        \  'json': [],
         \  'markdown': ['textlint'],
         \}
   let g:ale_disable_lsp = 1

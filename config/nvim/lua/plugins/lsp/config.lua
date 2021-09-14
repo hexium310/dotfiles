@@ -1,38 +1,51 @@
 local M = {
   language_configs = {
+    json = function ()
+      local json_schemas = require('plugins/lsp/json_schemas')
+      json_schemas.setup()
+
+      return {
+        settings = {
+          json = {
+            schemas = json_schemas.decode().schemas
+          }
+        },
+      }
+    end,
     lua = function ()
       local runtime_path = vim.split(package.path, ';')
       table.insert(runtime_path, '?.lua')
       table.insert(runtime_path, '?/init.lua')
 
       return {
-        Lua = {
-          hover = {
-            previewFields = 100
-          },
-          completion = {
-            requireSeparator = '/'
-          },
-          runtime = {
-            version = 'LuaJIT',
-            path = runtime_path,
-          },
-          diagnostics = {
-            globals = { 'vim' },
-          },
-          workspace = {
-            library = vim.api.nvim_get_runtime_file('lua/', true)
+        settings = {
+          Lua = {
+            hover = {
+              previewFields = 100
+            },
+            completion = {
+              requireSeparator = '/'
+            },
+            runtime = {
+              version = 'LuaJIT',
+              path = runtime_path,
+            },
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('lua/', true)
+            },
           },
         },
       }
     end,
-    json = function ()
-      local json_schemas = require('plugins/lsp/json_schemas')
-      json_schemas.setup()
-
+    tailwindcss = function ()
       return {
-        json = {
-          schemas = json_schemas.decode().schemas
+        filetypes = {
+          'html',
+          'javascriptreact',
+          'typescriptreact',
         }
       }
     end
@@ -64,17 +77,16 @@ local M = {
 
 function M.lspconfig(lang)
   require('lspinstall').setup()
-  local settings = vim.F.npcall(M.language_configs[lang]) or {}
+  local config = vim.F.npcall(M.language_configs[lang]) or {}
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-  require('lspconfig')[lang].setup({
+  require('lspconfig')[lang].setup(vim.tbl_deep_extend('error', {}, {
     on_attach = M.on_attach,
     handlers = M.handlers,
     commands = M.commands,
-    settings = settings,
     capabilities = capabilities,
-  })
+  }, config))
 end
 
 function M.on_attach(client, bufnr)

@@ -5,7 +5,7 @@ function! plugin#lightline#set_variables() abort
         \    'left': [
         \      ['mode', 'paste'],
         \      ['readonly', 'file_status', 'notif'],
-        \      ['lsp_diagnositc_error', 'lsp_diagnositc_warning', 'lsp_diagnositc_info', 'lsp_diagnositc_hint'],
+        \      ['diagnostic_error', 'diagnostic_warning', 'diagnostic_info', 'diagnostic_hint'],
         \      ['anzu'],
         \    ],
         \    'right': [
@@ -45,10 +45,10 @@ function! plugin#lightline#set_variables() abort
         \    'ale_checking': 'lightline#ale#checking',
         \    'ale_errors': 'lightline#ale#errors',
         \    'ale_warnings': 'lightline#ale#warnings',
-        \    'lsp_diagnositc_error': 'plugin#lightline#lsp_diagnositc_error',
-        \    'lsp_diagnositc_warning': 'plugin#lightline#lsp_diagnositc_warning',
-        \    'lsp_diagnositc_info': 'plugin#lightline#lsp_diagnositc_info',
-        \    'lsp_diagnositc_hint': 'plugin#lightline#lsp_diagnositc_hint',
+        \    'diagnostic_error': 'plugin#lightline#diagnostic_error',
+        \    'diagnostic_warning': 'plugin#lightline#diagnostic_warning',
+        \    'diagnostic_info': 'plugin#lightline#diagnostic_info',
+        \    'diagnostic_hint': 'plugin#lightline#diagnostic_hint',
         \    'git_changes': 'plugin#lightline#git_changes',
         \    'readonly': 'plugin#lightline#readonly',
         \  },
@@ -56,8 +56,8 @@ function! plugin#lightline#set_variables() abort
         \    'ale_checking': 'left',
         \    'ale_errors': 'error',
         \    'ale_warnings': 'warning',
-        \    'lsp_diagnositc_error': 'error',
-        \    'lsp_diagnositc_warning': 'warning',
+        \    'diagnostic_error': 'error',
+        \    'diagnostic_warning': 'warning',
         \    'readonly': 'error',
         \  },
         \}
@@ -123,23 +123,23 @@ function! plugin#lightline#fileencoding() abort
   return &fileencoding !=# '' ? &fileencoding : &encoding
 endfunction
 
-function! plugin#lightline#lsp_diagnositc_error() abort
-  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Error")')
+function! plugin#lightline#diagnostic_error() abort
+  const count = luaeval('vim.tbl_count(vim.diagnostic.get(vim.api.nvim_get_current_buf(), { severity = vim.diagnostic.severity.ERROR }))')
   return count == 0 ? '' : 'E: ' . count
 endfunction
 
-function! plugin#lightline#lsp_diagnositc_warning() abort
-  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Warning")')
+function! plugin#lightline#diagnostic_warning() abort
+  const count = luaeval('vim.tbl_count(vim.diagnostic.get(vim.api.nvim_get_current_buf(), { severity = vim.diagnostic.severity.WARN }))')
   return count == 0 ? '' : 'W: ' . count
 endfunction
 
-function! plugin#lightline#lsp_diagnositc_info() abort
-  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Information")')
+function! plugin#lightline#diagnostic_info() abort
+  const count = luaeval('vim.tbl_count(vim.diagnostic.get(vim.api.nvim_get_current_buf(), { severity = vim.diagnostic.severity.INFO }))')
   return count == 0 ? '' : 'I: ' . count
 endfunction
 
-function! plugin#lightline#lsp_diagnositc_hint() abort
-  const count = luaeval('vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), "Hint")')
+function! plugin#lightline#diagnostic_hint() abort
+  const count = luaeval('vim.tbl_count(vim.diagnostic.get(vim.api.nvim_get_current_buf(), { severity = vim.diagnostic.severity.HINT }))')
   return count == 0 ? '' : 'H: ' . count
 endfunction
 

@@ -334,4 +334,3 @@ on_lua = ['cmp']
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
-on_event = ['QuickFixCmdPost']

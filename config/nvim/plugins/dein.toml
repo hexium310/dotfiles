@@ -331,3 +331,9 @@ on_lua = ['cmp']
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
+
+[[plugins]]
+repo = 'nathom/filetype.nvim'
+hook_add = '''
+  let g:did_load_filetypes = 1
+'''

@@ -3,21 +3,31 @@ colorscheme base16-tomorrow-night-eighties
 
 lua << EOF
 local base16 = require('base16-colorscheme')
-local highlight = base16.highlight
 local colors = base16.colorschemes['tomorrow-night-eighties']
 
-highlight.ALEErrorSign = { guibg = colors.base08 }
-highlight.ALEStyleErrorSign = { guibg = colors.base0A }
-highlight.Comment = { guifg = colors.base03, gui = 'italic' }
-highlight.CursorLineNr = {  guifg = colors.base04, guibg = '#202020', gui = 'bold' }
-highlight.LineNr = { guifg = colors.base04, guibg = colors.base01 }
-highlight.TSVariable = { guifg = colors.base05 }
-highlight.TSVariableBuiltin = { guifg = colors.base05, gui = 'italic' }
-highlight.TSKeywordReturn = { guifg = colors.base08 }
-highlight.TerminalCurrentDirectory = { guifg=colors.base09, guibg='#3E4452' }
-highlight.TSPunctSpecial = { guifg=colors.base0C }
-highlight.TSPunctBracket = { guifg=colors.base0D }
-highlight.TSInclude = { guifg=colors.base0E }
+local function set_highlight(name, opt)
+  local cmd = {}
+  table.insert(cmd, 'highlight')
+  table.insert(cmd, name)
+  for k, v in pairs(opt) do
+    table.insert(cmd, k .. '=' .. v)
+  end
+  vim.cmd(table.concat(cmd, ' '))
+end
+
+set_highlight('ALEErrorSign', { guibg = colors.base08 })
+set_highlight('ALEErrorSign', { guibg = colors.base08 })
+set_highlight('ALEStyleErrorSign', { guibg = colors.base0A })
+set_highlight('Comment', { guifg = colors.base03, gui = 'italic' })
+set_highlight('CursorLineNr', {  guifg = colors.base04, guibg = '#202020', gui = 'bold' })
+set_highlight('LineNr', { guifg = colors.base04, guibg = colors.base01 })
+set_highlight('TSVariable', { guifg = colors.base05 })
+set_highlight('TSVariableBuiltin', { guifg = colors.base05, gui = 'italic' })
+set_highlight('TSKeywordReturn', { guifg = colors.base08 })
+set_highlight('TerminalCurrentDirectory', { guifg=colors.base09, guibg='#3E4452' })
+set_highlight('TSPunctSpecial', { guifg=colors.base0C })
+set_highlight('TSPunctBracket', { guifg=colors.base0D })
+set_highlight('TSInclude', { guifg=colors.base0E })
 EOF
 
 highlight DiffAdd guifg=NONE guibg=#334539

@@ -48,6 +48,5 @@ highlight Search guifg=NONE guibg=#454133
 highlight SignColumn guibg=NONE
 highlight Substitute guifg=NONE guibg=#454133
 
-highlight clear CursorLine
 highlight link EndOfBuffer Ignore
 highlight! link gitcommitComment Comment

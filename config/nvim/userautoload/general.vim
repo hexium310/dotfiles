@@ -17,6 +17,7 @@ set whichwrap=
 filetype plugin indent on
 set completeopt-=preview
 set cursorline
+set cursorlineopt=number
 set diffopt+=vertical
 set fillchars=diff:\ ,
 set lazyredraw

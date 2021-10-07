@@ -60,10 +60,6 @@ local M = {
       silent = true,
       focusable = false,
     }),
-    ['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = false,
-      signs = false,
-    }),
   },
   commands = {
     RenameFile = {
@@ -90,18 +86,34 @@ function M.lspconfig(lang)
 end
 
 function M.on_attach(client, bufnr)
-  local maps = {
-    { 'n', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
-    { 'i', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
-    { 'n', 'K', [[<Cmd>lua require('plugins/lsp/utils').hover_or_open_vim_help()<CR>]] },
-    { 'n', 'gf', [[<Cmd>lua vim.lsp.buf.definition()<CR>]] },
-    { 'n', ']c', [[<Cmd>lua vim.diagnostic.goto_next({ popup_opts = { border = 'rounded', focusable = false } })<CR>]] },
-    { 'n', '[c', [[<Cmd>lua vim.diagnostic.goto_prev({ popup_opts = { border = 'rounded', focusable = false } })<CR>]] },
-    { 'n', '<C-d>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-d>', ]] .. bufnr .. [[)<CR>]] },
-    { 'n', '<C-u>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-u>', ]] .. bufnr .. [[)<CR>]] },
-    { 'n', '<C-f>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-f>', ]] .. bufnr .. [[)<CR>]] },
-    { 'n', '<C-b>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-b>', ]] .. bufnr .. [[)<CR>]] },
-  }
+  local namespace = vim.lsp.diagnostic.get_namespace(client.id)
+  local maps = {}
+
+  if client.name == 'json' or client.name == 'typescript' then
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+    vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]])
+  end
+
+  if client.name == 'null-ls' then
+    vim.list_extend(maps, {
+      { 'n', ']a', [[<Cmd>lua vim.diagnostic.goto_next({ namespace = ]] .. namespace .. [[, popup_opts = { border = 'rounded', focusable = false, source = 'always' } })<CR>]] },
+      { 'n', '[a', [[<Cmd>lua vim.diagnostic.goto_prev({ namespace = ]] .. namespace .. [[, popup_opts = { border = 'rounded', focusable = false, source = 'always' } })<CR>]] },
+    })
+  else
+    vim.list_extend(maps, {
+      { 'n', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
+      { 'i', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
+      { 'n', 'K', [[<Cmd>lua require('plugins/lsp/utils').hover_or_open_vim_help()<CR>]] },
+      { 'n', 'gf', [[<Cmd>lua vim.lsp.buf.definition()<CR>]] },
+      { 'n', ']c', [[<Cmd>lua vim.diagnostic.goto_next({ popup_opts = { border = 'rounded', focusable = false, source = 'always' } })<CR>]] },
+      { 'n', '[c', [[<Cmd>lua vim.diagnostic.goto_prev({ popup_opts = { border = 'rounded', focusable = false, source = 'always' } })<CR>]] },
+      { 'n', '<C-d>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-d>', ]] .. bufnr .. [[)<CR>]] },
+      { 'n', '<C-u>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-u>', ]] .. bufnr .. [[)<CR>]] },
+      { 'n', '<C-f>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-f>', ]] .. bufnr .. [[)<CR>]] },
+      { 'n', '<C-b>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-b>', ]] .. bufnr .. [[)<CR>]] },
+    })
+  end
 
   for _, v in ipairs(maps) do
     local mode = v[1]
@@ -110,6 +122,20 @@ function M.on_attach(client, bufnr)
 
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true })
   end
+end
+
+function M.null_ls()
+  local null_ls = require('null-ls')
+
+  null_ls.config({
+    diagnostics_format = '(#{c}) #{m}',
+    sources = {
+      null_ls.builtins.diagnostics.eslint_d,
+      null_ls.builtins.diagnostics.luacheck,
+      null_ls.builtins.formatting.eslint_d,
+      null_ls.builtins.formatting.fixjson,
+    },
+  })
 end
 
 function M.completion()
@@ -153,6 +179,13 @@ function M.completion()
     documentation = {
       border = 'single'
     },
+  })
+end
+
+function M.diagnostic()
+  vim.diagnostic.config({
+    virtual_text = false,
+    signs = false,
   })
 end
 

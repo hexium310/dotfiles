@@ -11,7 +11,7 @@ function! plugin#lightline#set_variables() abort
         \    'right': [
         \      ['lineinfo', 'rows'],
         \      ['fileencoding', 'filetype'],
-        \      ['yarn_start_status', 'ale_checking', 'ale_errors', 'ale_warnings'],
+        \      ['yarn_start_status'],
         \    ],
         \  },
         \  'inactive': {
@@ -42,9 +42,6 @@ function! plugin#lightline#set_variables() abort
         \  },
         \  'component_expand': {
         \    'file_status': 'plugin#lightline#file_status',
-        \    'ale_checking': 'lightline#ale#checking',
-        \    'ale_errors': 'lightline#ale#errors',
-        \    'ale_warnings': 'lightline#ale#warnings',
         \    'diagnostic_error': 'plugin#lightline#diagnostic_error',
         \    'diagnostic_warning': 'plugin#lightline#diagnostic_warning',
         \    'diagnostic_info': 'plugin#lightline#diagnostic_info',
@@ -53,9 +50,6 @@ function! plugin#lightline#set_variables() abort
         \    'readonly': 'plugin#lightline#readonly',
         \  },
         \  'component_type': {
-        \    'ale_checking': 'left',
-        \    'ale_errors': 'error',
-        \    'ale_warnings': 'warning',
         \    'diagnostic_error': 'error',
         \    'diagnostic_warning': 'warning',
         \    'readonly': 'error',

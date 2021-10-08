@@ -1,54 +1,29 @@
-local M = {
-  language_configs = {
-    json = function ()
-      local json_schemas = require('plugins/lsp/json_schemas')
-      json_schemas.setup()
+local M = {}
 
-      return {
-        settings = {
-          json = {
-            schemas = json_schemas.decode().schemas
-          }
-        },
-      }
-    end,
-    lua = function ()
-      local runtime_path = vim.split(package.path, ';')
-      table.insert(runtime_path, '?.lua')
-      table.insert(runtime_path, '?/init.lua')
+local function disable_formatting(client)
+  client.resolved_capabilities.document_formatting = false
+  client.resolved_capabilities.document_range_formatting = false
+  vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]])
+end
 
-      return {
-        settings = {
-          Lua = {
-            hover = {
-              previewFields = 100
-            },
-            completion = {
-              requireSeparator = '/'
-            },
-            runtime = {
-              version = 'LuaJIT',
-              path = runtime_path,
-            },
-            diagnostics = {
-              globals = { 'vim' },
-            },
-            workspace = {
-              library = vim.api.nvim_get_runtime_file('lua/', true)
-            },
-          },
-        },
-      }
-    end,
-    tailwindcss = function ()
-      return {
-        filetypes = {
-          'html',
-          'javascriptreact',
-          'typescriptreact',
-        }
-      }
-    end
+local function set_keymap(bufnr, mappings)
+  for _, v in ipairs(mappings) do
+    local mode = v[1]
+    local lhs = v[2]
+    local rhs = v[3]
+
+    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true })
+  end
+end
+
+local general = {
+  commands = {
+    RenameFile = {
+      function ()
+        require('plugins/lsp/utils').rename_file()
+        vim.fn['lightline#update']()
+      end,
+    },
   },
   handlers = {
     ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -61,47 +36,8 @@ local M = {
       focusable = false,
     }),
   },
-  commands = {
-    RenameFile = {
-      function ()
-        require('plugins/lsp/utils').rename_file()
-        vim.fn['lightline#update']()
-      end
-    },
-  },
-}
-
-function M.lspconfig(lang)
-  require('lspinstall').setup()
-  local config = vim.F.npcall(M.language_configs[lang]) or {}
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-  require('lspconfig')[lang].setup(vim.tbl_deep_extend('error', {}, {
-    on_attach = M.on_attach,
-    handlers = M.handlers,
-    commands = M.commands,
-    capabilities = capabilities,
-  }, config))
-end
-
-function M.on_attach(client, bufnr)
-  local namespace = vim.lsp.diagnostic.get_namespace(client.id)
-  local maps = {}
-
-  if client.name == 'json' or client.name == 'typescript' then
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-    vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]])
-  end
-
-  if client.name == 'null-ls' then
-    vim.list_extend(maps, {
-      { 'n', ']a', [[<Cmd>lua vim.diagnostic.goto_next({ namespace = ]] .. namespace .. [[, popup_opts = { border = 'rounded', focusable = false, source = 'always' } })<CR>]] },
-      { 'n', '[a', [[<Cmd>lua vim.diagnostic.goto_prev({ namespace = ]] .. namespace .. [[, popup_opts = { border = 'rounded', focusable = false, source = 'always' } })<CR>]] },
-    })
-  else
-    vim.list_extend(maps, {
+  on_attach = function (_, bufnr)
+    local maps = {
       { 'n', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
       { 'i', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
       { 'n', 'K', [[<Cmd>lua require('plugins/lsp/utils').hover_or_open_vim_help()<CR>]] },
@@ -112,16 +48,109 @@ function M.on_attach(client, bufnr)
       { 'n', '<C-u>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-u>', ]] .. bufnr .. [[)<CR>]] },
       { 'n', '<C-f>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-f>', ]] .. bufnr .. [[)<CR>]] },
       { 'n', '<C-b>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-b>', ]] .. bufnr .. [[)<CR>]] },
-    })
-  end
+    }
 
-  for _, v in ipairs(maps) do
-    local mode = v[1]
-    local lhs = v[2]
-    local rhs = v[3]
-
-    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true })
+    set_keymap(bufnr, maps)
   end
+}
+
+local languages = {
+  json = function ()
+    local json_schemas = require('plugins/lsp/json_schemas')
+    json_schemas.setup()
+
+    return {
+      on_attach = function (client, bufnr)
+        disable_formatting(client)
+        general.on_attach(client, bufnr)
+      end,
+      settings = {
+        json = {
+          schemas = json_schemas.decode().schemas,
+        },
+      },
+    }
+  end,
+  lua = function ()
+    local runtime_path = vim.split(package.path, ';')
+    table.insert(runtime_path, '?.lua')
+    table.insert(runtime_path, '?/init.lua')
+
+    return {
+      settings = {
+        Lua = {
+          hover = {
+            previewFields = 100,
+          },
+          completion = {
+            requireSeparator = '/',
+          },
+          runtime = {
+            version = 'LuaJIT',
+            path = runtime_path,
+          },
+          diagnostics = {
+            globals = { 'vim' },
+          },
+          workspace = {
+            library = vim.api.nvim_get_runtime_file('lua/', true),
+          },
+        },
+      },
+    }
+  end,
+  tailwindcss = function ()
+    return {
+      filetypes = {
+        'html',
+        'javascriptreact',
+        'typescriptreact',
+      },
+    }
+  end,
+  typescript = function ()
+    return {
+      on_attach = function (client, bufnr)
+        disable_formatting(client)
+        general.on_attach(client, bufnr)
+      end,
+    }
+  end,
+  ['null-ls'] = function ()
+    return {
+      on_attach = function (client, bufnr)
+        local namespace = vim.lsp.diagnostic.get_namespace(client.id)
+        local goto_opts = {
+          namespace = namespace,
+          popup_opts = {
+            border = 'rounded',
+            focusable = false,
+            source = 'always',
+          },
+        }
+        local maps = {
+          { 'n', ']a', [[<Cmd>lua vim.diagnostic.goto_next(]] .. vim.inspect(goto_opts, { newline = '' }) .. [[)<CR>]] },
+          { 'n', '[a', [[<Cmd>lua vim.diagnostic.goto_prev(]] .. vim.inspect(goto_opts, { newline = '' }) .. [[)<CR>]] },
+        }
+
+        set_keymap(bufnr, maps)
+      end,
+    }
+  end,
+}
+
+function M.lspconfig(lang)
+  require('lspinstall').setup()
+  local config = vim.F.npcall(languages[lang]) or {}
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+  require('lspconfig')[lang].setup(vim.tbl_deep_extend('force', {
+    on_attach = general.on_attach,
+    handlers = general.handlers,
+    commands = general.commands,
+    capabilities = capabilities,
+  }, config))
 end
 
 function M.null_ls()
@@ -146,7 +175,7 @@ function M.completion()
   cmp.setup({
     sources = {
       {
-        name = 'nvim_lsp'
+        name = 'nvim_lsp',
       },
       {
         name = 'buffer',
@@ -164,7 +193,7 @@ function M.completion()
       ['<C-x><C-n>'] = cmp.mapping.complete(),
       ['<C-y>'] = cmp.mapping.confirm({
         select = true,
-      })
+      }),
     },
     formatting = {
       format = function (entry, vim_item)
@@ -173,11 +202,12 @@ function M.completion()
           buffer = '[Buffer]',
           path = '[Path]',
         })[entry.source.name]
+
         return vim_item
       end,
     },
     documentation = {
-      border = 'single'
+      border = 'single',
     },
   })
 end

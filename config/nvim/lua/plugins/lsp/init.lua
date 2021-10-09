@@ -24,7 +24,7 @@ local function init()
     augroup lspconfig
       autocmd!
       autocmd CursorHold * lua vim.diagnostic.show_position_diagnostics({ border = 'rounded', focusable = false, source = 'always' })
-      autocmd CursorHoldI * lua require('plugins/lsp/utils').signature_help()
+      autocmd CursorHoldI * lua if not require('cmp').visible() then require('plugins/lsp/utils').signature_help() end
     augroup END
   ]])
 end

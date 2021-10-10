@@ -3,6 +3,9 @@ local M = {}
 local function disable_formatting(client)
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
+end
+
+local function format_on_save()
   vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]])
 end
 
@@ -62,6 +65,7 @@ local languages = {
     return {
       on_attach = function (client, bufnr)
         disable_formatting(client)
+        format_on_save()
         general.on_attach(client, bufnr)
       end,
       settings = {
@@ -111,6 +115,11 @@ local languages = {
   typescript = function ()
     return {
       on_attach = function (client, bufnr)
+        local maps = {
+          { 'n', '<F8>', [[<Cmd>lua vim.lsp.buf.formatting()<CR>]] },
+        }
+
+        set_keymap(bufnr, maps)
         disable_formatting(client)
         general.on_attach(client, bufnr)
       end,

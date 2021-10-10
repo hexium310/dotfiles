@@ -1,9 +1,9 @@
 (
   (table_array_element
     (pair
-      (bare_key) @_hook_identifier
+      (bare_key) @property
       (string) @none
     )
   )
-  (#contains? @_hook_identifier "hook_")
+  (#contains? @property "hook_")
 )

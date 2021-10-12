@@ -23,6 +23,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'nathom/filetype.nvim'
+hook_add = '''
+  let g:did_load_filetypes = 1
+'''
+
+[[plugins]]
 repo = 'RRethy/nvim-base16'
 hook_add = '''
   " Due to loading the `colors` module is slow, include only the colorscheme to use.
@@ -56,57 +62,15 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'rhysd/clever-f.vim'
-on_map = ['f', 'F', 't', 'T']
-hook_add = '''
-  let g:clever_f_use_migemo = 1
-  let g:clever_f_fix_key_direction = 1
-  map ; <Plug>(clever-f-repeat-forward)
-  map , <Plug>(clever-f-repeat-back)
+repo = 'RRethy/vim-hexokinase'
+if = 'executable("go")'
+build = '''
+  make hexokinase
 '''
-
-[[plugins]]
-repo = 'mattn/emmet-vim'
-on_ft = ['html', 'php', 'css', 'javascript', 'typescript', 'typescriptreact']
 hook_add = '''
-  let g:user_emmet_settings = {
-        \  'javascript': {
-        \    'extends': 'jsx',
-        \  },
-        \  'typescript': {
-        \    'extends': 'jsx',
-        \  },
-        \  'typescriptreact': {
-        \    'extends': 'jsx',
-        \  },
-        \  'variables': {
-        \    'lang': 'ja',
-        \  },
-        \}
-  let g:user_emmet_leader_key = '<silent> <C-e>'
-  imap <C-e> <Nop>
-  nmap <C-e> <Nop>
-  vmap <C-e> <Nop>
-  const items = [
-        \ {'key': ',', 'plug': 'emmet-expand-abbr'},
-        \ {'key': ';', 'plug': 'emmet-expand-word'},
-        \ {'key': 'u', 'plug': 'emmet-update-tag'},
-        \ {'key': 'd', 'plug': 'emmet-balance-tag-inward'},
-        \ {'key': 'D', 'plug': 'emmet-balance-tag-outword'},
-        \ {'key': 'n', 'plug': 'emmet-move-next'},
-        \ {'key': 'N', 'plug': 'emmet-move-prev'},
-        \ {'key': 'i', 'plug': 'emmet-image-size'},
-        \ {'key': 'I', 'plug': 'emmet-image-encode'},
-        \ {'key': '/', 'plug': 'emmet-toggle-comment'},
-        \ {'key': 'j', 'plug': 'emmet-split-join-tag'},
-        \ {'key': 'k', 'plug': 'emmet-remove-tag'},
-        \ {'key': 'a', 'plug': 'emmet-anchorize-url'},
-        \ {'key': 'A', 'plug': 'emmet-anchorize-summary'},
-        \ {'key': 'm', 'plug': 'emmet-merge-lines'},
-  \ ]
-  for item in items
-    execute 'imap <silent><expr> <C-e>' . item.key . ' pumvisible() ? "\<C-y><Plug>(' . item.plug . ')" : "\<Plug>(' . item.plug . ')"'
-  endfor
+  let g:Hexokinase_virtualText = '●'
+  let g:Hexokinase_ftAutoload = ['*']
+  let g:Hexokinase_refreshEvents = ['BufEnter', 'TextChanged', 'TextChangedI']
 '''
 
 [[plugins]]
@@ -121,21 +85,9 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'junegunn/fzf.vim'
-if = 'executable("fzf")'
+repo = 'qpkorr/vim-bufkill'
 hook_add = '''
-  set runtimepath+=$ZPLG_HOME/plugins/junegunn---fzf
-  call plugin#fzf#set_variables()
-  call plugin#fzf#set_maps()
-  call plugin#fzf#set_commands()
-'''
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-  call plugin#gitgutter#set_variables()
-  call plugin#gitgutter#set_maps()
-  call plugin#gitgutter#set_autocmd()
+  cabbrev bd BD
 '''
 
 [[plugins]]
@@ -146,12 +98,71 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'rhysd/conflict-marker.vim'
+repo = 'chaoren/vim-wordmotion'
 hook_add = '''
-  let g:conflict_marker_enable_mappings = 0
-  let g:conflict_marker_enable_highlight = 0
-  nmap ]f <Plug>(conflict-marker-next-hunk)
-  nmap [f <Plug>(conflict-marker-prev-hunk)
+  let g:wordmotion_nomap = 1
+  nmap w <Plug>WordMotion_w
+  nmap b <Plug>WordMotion_b
+  nmap e <Plug>WordMotion_e
+  nmap ge <Plug>WordMotion_ge
+'''
+
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+on_map = ['f', 'F', 't', 'T']
+hook_add = '''
+  let g:clever_f_use_migemo = 1
+  let g:clever_f_fix_key_direction = 1
+  map ; <Plug>(clever-f-repeat-forward)
+  map , <Plug>(clever-f-repeat-back)
+'''
+
+[[plugins]]
+repo = 'tversteeg/registers.nvim'
+hook_add = '''
+  let g:registers_window_min_height = 15
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+if = 'executable("fzf")'
+hook_add = '''
+  set runtimepath+=$ZPLG_HOME/plugins/junegunn---fzf
+  call plugin#fzf#set_variables()
+  call plugin#fzf#set_maps()
+  call plugin#fzf#set_commands()
+'''
+
+[[plugins]]
+repo = 'akinsho/nvim-toggleterm.lua'
+on_cmd = [
+  'ToggleTerm',
+  'TermExec',
+  'Yarn',
+]
+on_map = {
+  ni = '<C-t>',
+}
+hook_post_source = '''
+  lua require('plugins/toggleterm')()
+'''
+
+[[plugins]]
+repo = 'kevinhwang91/nvim-bqf'
+
+[[plugins]]
+repo = 'windwp/nvim-autopairs'
+on_event = ['InsertEnter']
+hook_post_source = '''
+  lua require('plugins/autopairs')()
+'''
+
+[[plugins]]
+repo = 'numToStr/Comment.nvim'
+depends = ['nvim-ts-context-commentstring']
+on_map = ['gc']
+hook_post_source = '''
+  lua require('plugins/comment')()
 '''
 
 [[plugins]]
@@ -190,80 +201,25 @@ hook_add ='''
 '''
 
 [[plugins]]
-repo = 'RRethy/vim-hexokinase'
-if = 'executable("go")'
-build = '''
-  make hexokinase
-'''
+repo = 'airblade/vim-gitgutter'
 hook_add = '''
-  let g:Hexokinase_virtualText = '●'
-  let g:Hexokinase_ftAutoload = ['*']
-  let g:Hexokinase_refreshEvents = ['BufEnter', 'TextChanged', 'TextChangedI']
+  call plugin#gitgutter#set_variables()
+  call plugin#gitgutter#set_maps()
+  call plugin#gitgutter#set_autocmd()
 '''
 
 [[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-on_event = 'VimEnter'
-hook_post_source = '''
-  lua require('plugins/nvim-treesitter')()
-'''
-
-[[plugins]]
-repo = 'akinsho/nvim-toggleterm.lua'
-on_cmd = [
-  'ToggleTerm',
-  'TermExec',
-  'Yarn',
-]
-on_map = {
-  ni = '<C-t>',
-}
-hook_post_source = '''
-  lua require('plugins/toggleterm')()
-'''
-
-[[plugins]]
-repo = 'qpkorr/vim-bufkill'
+repo = 'rhysd/conflict-marker.vim'
 hook_add = '''
-  cabbrev bd BD
+  let g:conflict_marker_enable_mappings = 0
+  let g:conflict_marker_enable_highlight = 0
+  nmap ]f <Plug>(conflict-marker-next-hunk)
+  nmap [f <Plug>(conflict-marker-prev-hunk)
 '''
 
 [[plugins]]
-repo = 'himanoa/goshiteki'
-if = 'executable("gh") && executable("jq")'
-
-[[plugins]]
-repo = 'hexium310/github-notif.vim'
-hook_add = '''
-  let g:github_notif_token = $GITHUB_TOKEN
-  let g:github_notif_fetch_instantly = 1
-'''
-
-[[plugins]]
-repo = 'chaoren/vim-wordmotion'
-hook_add = '''
-  let g:wordmotion_nomap = 1
-  nmap w <Plug>WordMotion_w
-  nmap b <Plug>WordMotion_b
-  nmap e <Plug>WordMotion_e
-  nmap ge <Plug>WordMotion_ge
-'''
-
-[[plugins]]
-repo = 'tversteeg/registers.nvim'
-hook_add = '''
-  let g:registers_window_min_height = 15
-'''
-
-[[plugins]]
-repo = 'nvim-treesitter/playground'
-depends = ['nvim-treesitter']
-on_ft = ['query']
-on_cmd = ['TSHighlightCapturesUnderCursor', 'TSPlaygroundToggle']
-
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter-textobjects'
-depends = ['nvim-treesitter']
+repo = 'nvim-lua/plenary.nvim'
+on_lua = ['plenary']
 
 [[plugins]]
 repo = 'notomo/lreload.nvim'
@@ -284,6 +240,11 @@ repo = 'kabouzeid/nvim-lspinstall'
 on_lua = ['lspconfig']
 
 [[plugins]]
+repo = 'jose-elias-alvarez/null-ls.nvim'
+depends = ['nvim-lspconfig', 'plenary.nvim']
+on_lua = ['null-ls']
+
+[[plugins]]
 repo = 'hrsh7th/nvim-cmp'
 on_lua = ['lspconfig']
 
@@ -302,40 +263,3 @@ on_lua = ['cmp']
 [[plugins]]
 repo = 'hrsh7th/cmp-path'
 on_lua = ['cmp']
-
-[[plugins]]
-repo = 'kevinhwang91/nvim-bqf'
-
-[[plugins]]
-repo = 'nathom/filetype.nvim'
-hook_add = '''
-  let g:did_load_filetypes = 1
-'''
-
-[[plugins]]
-repo = 'nvim-lua/plenary.nvim'
-on_lua = ['plenary']
-
-[[plugins]]
-repo = 'jose-elias-alvarez/null-ls.nvim'
-depends = ['nvim-lspconfig', 'plenary.nvim']
-on_lua = ['null-ls']
-
-[[plugins]]
-repo = 'windwp/nvim-autopairs'
-on_event = ['InsertEnter']
-hook_post_source = '''
-  lua require('plugins/autopairs')()
-'''
-
-[[plugins]]
-repo = 'JoosepAlviste/nvim-ts-context-commentstring'
-depends = ['nvim-treesitter']
-
-[[plugins]]
-repo = 'numToStr/Comment.nvim'
-depends = ['nvim-ts-context-commentstring']
-on_map = ['gc']
-hook_post_source = '''
-  lua require('plugins/comment')()
-'''

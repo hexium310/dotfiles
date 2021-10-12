@@ -257,9 +257,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'jiangmiao/auto-pairs'
-
-[[plugins]]
 repo = 'tversteeg/registers.nvim'
 hook_add = '''
   let g:registers_window_min_height = 15
@@ -330,3 +327,10 @@ on_lua = ['plenary']
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = ['nvim-lspconfig', 'plenary.nvim']
 on_lua = ['null-ls']
+
+[[plugins]]
+repo = 'windwp/nvim-autopairs'
+on_event = ['InsertEnter']
+hook_post_source = '''
+  lua require('plugins/autopairs')()
+'''

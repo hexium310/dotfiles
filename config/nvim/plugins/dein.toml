@@ -121,13 +121,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tyru/caw.vim'
-on_map = 'gc'
-hook_add = '''
-  let g:caw_operator_keymappings = 1
-'''
-
-[[plugins]]
 repo = 'junegunn/fzf.vim'
 if = 'executable("fzf")'
 hook_add = '''
@@ -333,4 +326,16 @@ repo = 'windwp/nvim-autopairs'
 on_event = ['InsertEnter']
 hook_post_source = '''
   lua require('plugins/autopairs')()
+'''
+
+[[plugins]]
+repo = 'JoosepAlviste/nvim-ts-context-commentstring'
+depends = ['nvim-treesitter']
+
+[[plugins]]
+repo = 'numToStr/Comment.nvim'
+depends = ['nvim-ts-context-commentstring']
+on_map = ['gc']
+hook_post_source = '''
+  lua require('plugins/comment')()
 '''

@@ -52,6 +52,13 @@ local function init()
         },
       },
     },
+    context_commentstring = {
+      enable = true,
+      disable = disables,
+      config = {
+        vim = '" %s',
+      },
+    },
   })
 end
 

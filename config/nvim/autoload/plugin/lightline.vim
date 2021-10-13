@@ -137,8 +137,7 @@ function! plugin#lightline#diagnostic_hint() abort
 endfunction
 
 function! plugin#lightline#git_changes() abort
-  let [added, modified, removed] = GitGutterGetHunkSummary()
-  return added + modified + removed == 0 ? '' : printf('+%d ~%d -%d', added, modified, removed)
+  return get(b:, 'gitsigns_status', '')
 endfunction
 
 function! plugin#lightline#yarn_start_status() abort
@@ -148,6 +147,6 @@ endfunction
 function! plugin#lightline#automcd() abort
   augroup plugin#lightline
     autocmd!
-    autocmd User GitGutter,LspDiagnosticsChanged call lightline#update()
+    autocmd User LspDiagnosticsChanged call lightline#update()
   augroup END
 endfunction

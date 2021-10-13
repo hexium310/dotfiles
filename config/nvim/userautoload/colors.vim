@@ -34,19 +34,15 @@ highlight DiffAdd guifg=NONE guibg=#334539
 highlight DiffChange guifg=NONE guibg=#454133
 highlight DiffDelete guifg=NONE guibg=#45333a
 highlight DiffText guifg=NONE guibg=#5f5d42
-highlight Yanked guibg=#134a28
-highlight GitGutterAdd guibg=NONE
-highlight GitGutterAddLineNr guibg=#5C6E5C
-highlight GitGutterChange guibg=NONE
-highlight GitGutterChangeDelete guibg=NONE
-highlight GitGutterChangeDeleteLineNr gui=underline guibg=#786A51
-highlight GitGutterChangeLineNr guibg=#786A51
-highlight GitGutterDelete guibg=NONE
-highlight GitGutterDeleteLineNr guibg=#764C4F
+highlight GitSignsAddNr guibg=#5C6E5C
+highlight GitSignsChangeDeleteNr gui=underline guibg=#786A51
+highlight GitSignsChangeNr guibg=#786A51
+highlight GitSignsDeleteNr guibg=#764C4F
 highlight IncSearch guifg=NONE guibg=#45333a
 highlight Search guifg=NONE guibg=#454133
 highlight SignColumn guibg=NONE
 highlight Substitute guifg=NONE guibg=#454133
+highlight Yanked guibg=#134a28
 
 highlight link EndOfBuffer Ignore
 highlight! link gitcommitComment Comment

@@ -201,11 +201,9 @@ hook_add ='''
 '''
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-  call plugin#gitgutter#set_variables()
-  call plugin#gitgutter#set_maps()
-  call plugin#gitgutter#set_autocmd()
+repo = 'lewis6991/gitsigns.nvim'
+hook_post_source = '''
+  lua require('plugins/gitsigns')()
 '''
 
 [[plugins]]

@@ -127,6 +127,13 @@ local languages = {
   end,
   ['null-ls'] = function ()
     return {
+      handlers = {
+        ["textDocument/publishDiagnostics"] = vim.lsp.with(
+          vim.lsp.diagnostic.on_publish_diagnostics, {
+            signs = false,
+          }
+        )
+      },
       on_attach = function (client, bufnr)
         local namespace = vim.lsp.diagnostic.get_namespace(client.id)
         local goto_opts = {
@@ -224,7 +231,7 @@ end
 function M.diagnostic()
   vim.diagnostic.config({
     virtual_text = false,
-    signs = false,
+    signs = true,
   })
 end
 

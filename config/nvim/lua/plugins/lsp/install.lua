@@ -1,49 +1,16 @@
-local lspinstall = require('lspinstall')
+local M = {}
 
-local function _install(servers)
-  for _, v in ipairs(servers) do
-    lspinstall.install_server(v)
+local lsp_installer_servers = require('nvim-lsp-installer.servers')
+
+function M.install(servers)
+  for _, s in ipairs(servers) do
+    local ok, server = lsp_installer_servers.get_server(s)
+    if not ok or server:is_installed() then
+      return
+    end
+
+    server:install()
   end
 end
-
-local M = {
-  install = function (self)
-    lspinstall.post_install_hook = function ()
-      vim.cmd([[startinsert]])
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Cr>', true, false, true), 'n', true)
-    end
-
-    _install(self:not_installed_servers())
-
-    lspinstall.post_uninstall_hook = function() end
-  end,
-  update = function (self, all)
-    lspinstall.post_install_hook = function ()
-      vim.cmd([[startinsert]])
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Cr>', true, false, true), 'n', true)
-    end
-
-    if all then
-      _install(self.servers)
-    else
-      local servers = require('plugins/lsp/update').check_update()
-
-      _install(vim.tbl_keys(servers))
-      print(vim.inspect(servers))
-    end
-
-    lspinstall.post_uninstall_hook = function() end
-  end,
-  installed_servers = function (self)
-    return vim.tbl_filter(function (key)
-      return vim.tbl_contains(self.servers, key)
-    end, lspinstall.installed_servers())
-  end,
-  not_installed_servers = function (self)
-    return vim.tbl_filter(function (key)
-      return vim.tbl_contains(self.servers, key)
-    end, lspinstall.not_installed_servers())
-  end,
-}
 
 return M

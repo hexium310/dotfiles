@@ -234,8 +234,8 @@ hook_post_source = '''
 '''
 
 [[plugins]]
-repo = 'kabouzeid/nvim-lspinstall'
-on_lua = ['lspconfig']
+repo = 'williamboman/nvim-lsp-installer'
+on_lua = ['nvim-lsp-installer']
 
 [[plugins]]
 repo = 'jose-elias-alvarez/null-ls.nvim'

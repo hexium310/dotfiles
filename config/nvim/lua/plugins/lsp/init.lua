@@ -1,24 +1,21 @@
 local function init()
-  local config = require('plugins/lsp/config')
-  local servers = require('plugins/lsp/install')
-  servers.servers = {
-    'json',
-    'lua',
-    'rust',
+  vim.lsp.stop_client(vim.lsp.get_active_clients())
+
+  require('plugins/lsp/install').install({
+    'jsonls',
+    'rust_analyzer',
+    'sumneko_lua',
     'tailwindcss',
-    'vim',
-    'yaml',
-    'typescript'
-  }
-  servers:install()
+    'tsserver',
+    'vimls',
+    'yamlls',
+  })
+
+  local config = require('plugins/lsp/config')
   config.completion()
   config.diagnostic()
   config.null_ls()
-
-  vim.lsp.stop_client(vim.lsp.get_active_clients())
-  for _, lang in ipairs(vim.list_extend({ 'null-ls' }, servers:installed_servers())) do
-    config.lspconfig(lang)
-  end
+  config.lspconfig()
 
   vim.cmd([[
     augroup lspconfig

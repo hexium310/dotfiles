@@ -19,6 +19,11 @@ local function set_keymap(bufnr, mappings)
   end
 end
 
+local function get_cmp_nvim_lsp_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  return require('cmp_nvim_lsp').update_capabilities(capabilities)
+end
+
 local general = {
   commands = {
     RenameFile = {
@@ -58,7 +63,7 @@ local general = {
 }
 
 local languages = {
-  json = function ()
+  jsonls = function ()
     local json_schemas = require('plugins/lsp/json_schemas')
     json_schemas.setup()
 
@@ -75,7 +80,7 @@ local languages = {
       },
     }
   end,
-  lua = function ()
+  sumneko_lua = function ()
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, '?.lua')
     table.insert(runtime_path, '?/init.lua')
@@ -112,7 +117,7 @@ local languages = {
       },
     }
   end,
-  typescript = function ()
+  tsserver = function ()
     return {
       on_attach = function (client, bufnr)
         local maps = {
@@ -155,18 +160,21 @@ local languages = {
   end,
 }
 
-function M.lspconfig(lang)
-  require('lspinstall').setup()
-  local config = vim.F.npcall(languages[lang]) or {}
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+function M.lspconfig()
+  local capabilities = get_cmp_nvim_lsp_capabilities()
 
-  require('lspconfig')[lang].setup(vim.tbl_deep_extend('force', {
-    on_attach = general.on_attach,
-    handlers = general.handlers,
-    commands = general.commands,
-    capabilities = capabilities,
-  }, config))
+  require('nvim-lsp-installer').on_server_ready(function (server)
+    local lsp_config = vim.F.npcall(languages[server.name]) or {}
+
+    server:setup(vim.tbl_deep_extend('force', {
+      on_attach = general.on_attach,
+      handlers = general.handlers,
+      commands = general.commands,
+      capabilities = capabilities,
+    }, lsp_config))
+
+    vim.cmd [[doautocmd User LspAttachBuffers]]
+  end)
 end
 
 function M.null_ls()
@@ -181,6 +189,16 @@ function M.null_ls()
       null_ls.builtins.formatting.fixjson,
     },
   })
+
+  local lsp_config = vim.F.npcall(languages['null-ls']) or {}
+  local capabilities = get_cmp_nvim_lsp_capabilities()
+
+  require('lspconfig')['null-ls'].setup(vim.tbl_deep_extend('force', {
+    on_attach = general.on_attach,
+    handlers = general.handlers,
+    commands = general.commands,
+    capabilities = capabilities,
+  }, lsp_config))
 end
 
 function M.completion()

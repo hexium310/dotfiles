@@ -1,8 +1,8 @@
 local M = {}
 
-local function disable_formatting(client)
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
+local function set_document_formatting(client, bool)
+  client.resolved_capabilities.document_formatting = bool
+  client.resolved_capabilities.document_range_formatting = bool
 end
 
 local function format_on_save()
@@ -63,13 +63,42 @@ local general = {
 }
 
 local languages = {
+  eslint = function ()
+    return {
+      on_attach = function (client, bufnr)
+        set_document_formatting(client, true)
+
+        local namespace = vim.lsp.diagnostic.get_namespace(client.id)
+        local goto_opts = {
+          namespace = namespace,
+          popup_opts = {
+            border = 'rounded',
+            focusable = false,
+            source = 'always',
+          },
+        }
+        local maps = {
+          { 'n', ']a', [[<Cmd>lua vim.diagnostic.goto_next(]] .. vim.inspect(goto_opts, { newline = '' }) .. [[)<CR>]] },
+          { 'n', '[a', [[<Cmd>lua vim.diagnostic.goto_prev(]] .. vim.inspect(goto_opts, { newline = '' }) .. [[)<CR>]] },
+          { 'n', '<F8>', [[<Cmd>lua vim.lsp.buf.formatting()<CR>]] },
+        }
+
+        set_keymap(bufnr, maps)
+      end,
+      settings = {
+        format = {
+          enable = true,
+        },
+      },
+    }
+  end,
   jsonls = function ()
     local json_schemas = require('plugins/lsp/json_schemas')
     json_schemas.setup()
 
     return {
       on_attach = function (client, bufnr)
-        disable_formatting(client)
+        set_document_formatting(client, false)
         format_on_save()
         general.on_attach(client, bufnr)
       end,
@@ -120,12 +149,7 @@ local languages = {
   tsserver = function ()
     return {
       on_attach = function (client, bufnr)
-        local maps = {
-          { 'n', '<F8>', [[<Cmd>lua vim.lsp.buf.formatting()<CR>]] },
-        }
-
-        set_keymap(bufnr, maps)
-        disable_formatting(client)
+        set_document_formatting(client, false)
         general.on_attach(client, bufnr)
       end,
     }
@@ -183,9 +207,7 @@ function M.null_ls()
   null_ls.config({
     diagnostics_format = '(#{c}) #{m}',
     sources = {
-      null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.diagnostics.luacheck,
-      null_ls.builtins.formatting.eslint_d,
       null_ls.builtins.formatting.fixjson,
     },
   })

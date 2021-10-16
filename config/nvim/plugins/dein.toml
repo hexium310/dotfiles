@@ -240,7 +240,7 @@ on_lua = ['nvim-lsp-installer']
 [[plugins]]
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = ['nvim-lspconfig', 'plenary.nvim']
-on_lua = ['null-ls']
+on_lua = ['lspconfig']
 
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'

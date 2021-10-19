@@ -28,6 +28,10 @@ set_highlight('TerminalCurrentDirectory', { guifg=colors.base09, guibg='#3E4452'
 set_highlight('TSPunctSpecial', { guifg=colors.base0C })
 set_highlight('TSPunctBracket', { guifg=colors.base0D })
 set_highlight('TSInclude', { guifg=colors.base0E })
+set_highlight('CmpItemAbbr', { guifg=colors.base03 })
+set_highlight('CmpItemAbbrMatch', { gui = 'bold', guifg=colors.base05 })
+set_highlight('CmpItemAbbrMatchFuzzy', { guifg=colors.base05 })
+set_highlight('CmpItemMenu', { guifg=colors.base05 })
 EOF
 
 highlight DiffAdd guifg=NONE guibg=#334539

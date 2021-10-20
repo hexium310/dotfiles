@@ -121,6 +121,7 @@ hook_add = '''
 repo = 'tversteeg/registers.nvim'
 hook_add = '''
   let g:registers_window_min_height = 15
+  let g:registers_window_border = 'single'
 '''
 
 [[plugins]]

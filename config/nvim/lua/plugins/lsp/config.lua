@@ -1,3 +1,5 @@
+local utils = require('plugins/lsp/utils')
+
 local M = {}
 
 local function set_document_formatting(client, bool)
@@ -45,13 +47,16 @@ local general = {
     }),
   },
   on_attach = function (_, bufnr)
+    local goto_opts = {
+      float = utils.float_opts,
+    }
     local maps = {
       { 'n', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
       { 'i', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
       { 'n', 'K', [[<Cmd>lua require('plugins/lsp/utils').hover_or_open_vim_help()<CR>]] },
       { 'n', 'gf', [[<Cmd>lua vim.lsp.buf.definition()<CR>]] },
-      { 'n', ']c', [[<Cmd>lua vim.diagnostic.goto_next({ popup_opts = { border = 'rounded', focusable = false, source = 'always' } })<CR>]] },
-      { 'n', '[c', [[<Cmd>lua vim.diagnostic.goto_prev({ popup_opts = { border = 'rounded', focusable = false, source = 'always' } })<CR>]] },
+      { 'n', ']c', ([[<Cmd>lua vim.diagnostic.goto_next(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
+      { 'n', '[c', ([[<Cmd>lua vim.diagnostic.goto_prev(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
       { 'n', '<C-d>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-d>', ]] .. bufnr .. [[)<CR>]] },
       { 'n', '<C-u>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-u>', ]] .. bufnr .. [[)<CR>]] },
       { 'n', '<C-f>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-f>', ]] .. bufnr .. [[)<CR>]] },
@@ -78,15 +83,11 @@ local languages = {
         local namespace = vim.lsp.diagnostic.get_namespace(client.id)
         local goto_opts = {
           namespace = namespace,
-          popup_opts = {
-            border = 'rounded',
-            focusable = false,
-            source = 'always',
-          },
+          float = utils.float_opts,
         }
         local maps = {
-          { 'n', ']a', [[<Cmd>lua vim.diagnostic.goto_next(]] .. vim.inspect(goto_opts, { newline = '' }) .. [[)<CR>]] },
-          { 'n', '[a', [[<Cmd>lua vim.diagnostic.goto_prev(]] .. vim.inspect(goto_opts, { newline = '' }) .. [[)<CR>]] },
+          { 'n', ']a', ([[<Cmd>lua vim.diagnostic.goto_next(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
+          { 'n', '[a', ([[<Cmd>lua vim.diagnostic.goto_prev(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
           { 'n', '<F8>', [[<Cmd>lua vim.lsp.buf.formatting()<CR>]] },
         }
 
@@ -174,15 +175,11 @@ local languages = {
         local namespace = vim.lsp.diagnostic.get_namespace(client.id)
         local goto_opts = {
           namespace = namespace,
-          popup_opts = {
-            border = 'rounded',
-            focusable = false,
-            source = 'always',
-          },
+          float = utils.float_opts,
         }
         local maps = {
-          { 'n', ']a', [[<Cmd>lua vim.diagnostic.goto_next(]] .. vim.inspect(goto_opts, { newline = '' }) .. [[)<CR>]] },
-          { 'n', '[a', [[<Cmd>lua vim.diagnostic.goto_prev(]] .. vim.inspect(goto_opts, { newline = '' }) .. [[)<CR>]] },
+          { 'n', ']a', ([[<Cmd>lua vim.diagnostic.goto_next(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
+          { 'n', '[a', ([[<Cmd>lua vim.diagnostic.goto_prev(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
         }
 
         set_keymap(bufnr, maps)

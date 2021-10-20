@@ -1,5 +1,15 @@
 local M = {}
 
+M.float_opts = {
+  border = 'rounded',
+  focusable = false,
+  source = 'always',
+}
+
+function M.table_to_string(tbl)
+  return vim.inspect(tbl, { newline = '' })
+end
+
 function M.disable_cursor_hold()
   vim.cmd([[
     setlocal eventignore+=CursorHold

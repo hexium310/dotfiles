@@ -233,7 +233,7 @@ function M.completion()
   vim.o.completeopt = 'menuone,noselect'
 
   cmp.setup({
-    sources = {
+    sources = cmp.config.sources({
       {
         name = 'nvim_lsp',
       },
@@ -243,7 +243,7 @@ function M.completion()
       {
         name = 'path',
       },
-    },
+    }),
     snippet = {
       expand = function(args)
         vim.fn['vsnip#anonymous'](args.body)

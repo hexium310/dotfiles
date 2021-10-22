@@ -57,10 +57,10 @@ local general = {
       { 'n', 'gf', [[<Cmd>lua vim.lsp.buf.definition()<CR>]] },
       { 'n', ']c', ([[<Cmd>lua vim.diagnostic.goto_next(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
       { 'n', '[c', ([[<Cmd>lua vim.diagnostic.goto_prev(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
-      { 'n', '<C-d>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-d>', ]] .. bufnr .. [[)<CR>]] },
-      { 'n', '<C-u>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-u>', ]] .. bufnr .. [[)<CR>]] },
-      { 'n', '<C-f>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-f>', ]] .. bufnr .. [[)<CR>]] },
-      { 'n', '<C-b>', [[<Cmd>lua require('plugins/lsp/utils').send_key('<C-b>', ]] .. bufnr .. [[)<CR>]] },
+      { 'n', '<C-d>', ([[<Cmd>lua require('plugins/lsp/utils').send_key('<C-d>', %s)<CR>]]):format(bufnr) },
+      { 'n', '<C-u>', ([[<Cmd>lua require('plugins/lsp/utils').send_key('<C-u>', %s)<CR>]]):format(bufnr) },
+      { 'n', '<C-f>', ([[<Cmd>lua require('plugins/lsp/utils').send_key('<C-f>', %s)<CR>]]):format(bufnr) },
+      { 'n', '<C-b>', ([[<Cmd>lua require('plugins/lsp/utils').send_key('<C-b>', %s)<CR>]]):format(bufnr) },
     }
 
     set_keymap(bufnr, maps)

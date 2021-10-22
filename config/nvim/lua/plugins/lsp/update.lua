@@ -36,7 +36,7 @@ local function github_release(repo)
   return vim.fn.json_decode(job({
     'curl',
     '-s',
-    string.format('https://api.github.com/repos/%s/releases/latest', repo),
+    ('https://api.github.com/repos/%s/releases/latest'):format(repo),
   }))
 end
 

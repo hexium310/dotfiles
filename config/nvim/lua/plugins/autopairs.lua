@@ -11,10 +11,6 @@ local function init()
     },
   })
 
-  require('nvim-autopairs/completion/cmp').setup({
-    auto_select = false,
-  })
-
   autopairs.add_rules({
     rule("'''", "'''", { 'toml' }),
     rule(' ', ' ')

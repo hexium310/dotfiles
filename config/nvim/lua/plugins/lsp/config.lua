@@ -200,8 +200,6 @@ function M.lspconfig()
       commands = general.commands,
       capabilities = capabilities,
     }, lsp_config))
-
-    vim.cmd [[doautocmd User LspAttachBuffers]]
   end)
 end
 

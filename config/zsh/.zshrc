@@ -31,7 +31,3 @@ if [[ -a $XDG_DATA_HOME/zcomet/bin/zcomet.zsh ]]; then
 
     zcomet compinit
 fi
-
-if (( $+commands[gh] )); then
-    eval $(gh completion -s zsh)
-fi

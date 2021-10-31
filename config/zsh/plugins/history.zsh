@@ -12,7 +12,11 @@ HISTSIZE=100000
 __check_syntax_error() {
     local argument=${@%%$'\n'}
 
-    if ! zsh -cn "$argument" 2> /dev/null; then
+    local error
+    error=$(zsh -cn "$argument" 2>&1)
+    local code=$?
+
+    if (( $code )) && [[ $error != 'zsh:1: no directory expansion: '* ]]; then
         return 1
     fi
 }

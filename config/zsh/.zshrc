@@ -5,41 +5,31 @@
     done
 }
 
-if [[ -d $ZPLG_HOME ]]; then
-    source $ZPLG_HOME/bin/zinit.zsh
-    autoload -Uz _zinit
-    (( ${+_comps} )) && _comps[zinit]=_zinit
+if [[ -a $XDG_DATA_HOME/zcomet/bin/zcomet.zsh ]]; then
+    zstyle ':zcomet:*' home-dir $XDG_DATA_HOME/zcomet
+    source $XDG_DATA_HOME/zcomet/bin/zcomet.zsh
 
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=247,underline"
-
-    rewrite__zsh_togglecursor_reset() {
-        _zsh_togglecursor_reset() {
-            _zsh_togglecursor_apply_cursor 'line'
-        }
+    zcomet load b4b4r07/zsh-vimode-visual
+    zcomet load --no-submodules chitoku-k/fzf-zsh-completions
+    zcomet load chitoku-k/zsh-reset-title
+    zcomet load chitoku-k/zsh-vcs-extended
+    zcomet load chitoku-k/zsh-togglecursor
+    _zsh_togglecursor_reset() {
+        _zsh_togglecursor_apply_cursor 'line'
     }
 
-    zinit light b4b4r07/zsh-vimode-visual
-    zinit light chitoku-k/fzf-zsh-completions
-    zinit light chitoku-k/zsh-reset-title
-    zinit light chitoku-k/zsh-vcs-extended
+    zcomet load junegunn/fzf shell completion.zsh
+    (( ${+commands[fzf]} )) || ~[fzf]/install --bin
 
-    zinit ice lucid  wait'!' atload'rewrite__zsh_togglecursor_reset; unfunction rewrite__zsh_togglecursor_reset'
-    zinit light chitoku-k/zsh-togglecursor
-    zinit lucid wait'!' for \
-        atinit'zpcompinit; zpcdreplay' nocd zdharma/fast-syntax-highlighting \
-        blockf zsh-users/zsh-completions \
-        atload'!
-            ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(fzf-completion vi-cmd-mode history-beginning-search-backward-end history-beginning-search-forward-end);
-            ZSH_AUTOSUGGEST_STRATEGY=(history completion);
-            _zsh_autosuggest_start
-        ' nocd zsh-users/zsh-autosuggestions
+    zcomet load zsh-users/zsh-autosuggestions
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247,underline'
+    ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(fzf-completion vi-cmd-mode history-beginning-search-backward-end history-beginning-search-forward-end)
+    ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-    zinit ice lucid wait'!' from'gh' atclone'./install --bin' atpull'%atclone' as'program' src'shell/completion.zsh' pick'bin/fzf'
-    zinit light junegunn/fzf
-    zinit ice lucid from'gh-r' as'program' pick'ripgrep*/rg'
-    zinit light BurntSushi/ripgrep
-    zinit ice lucid from'gh-r' as'program' pick'fd*/fd'
-    zinit light sharkdp/fd
+    zcomet load zsh-users/zsh-completions
+    zcomet load zsh-users/zsh-syntax-highlighting
+
+    zcomet compinit
 fi
 
 if (( $+commands[gh] )); then

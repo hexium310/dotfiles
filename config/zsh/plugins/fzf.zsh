@@ -58,20 +58,3 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
     fd . "$1" --hidden --type=directory 2> /dev/null
 }
-
-_fzf_complete_zinit() {
-    local arguments=${(Q)${(z)@}}
-    local subcommand=${${(Q)${(z)arguments}}[2]}
-
-    if [[ $subcommand =~ ^(cd|delete|status|update)$ ]]; then
-        _fzf_complete '--ansi --multi' $@ < <({
-            local plugins=(${ZINIT[PLUGINS_DIR]}/*(N:t))
-            plugins=(${plugins[@]//---/\/})
-            plugins=(${plugins[@]:#_local/zinit})
-            plugins=(${plugins[@]:#custom})
-            plugins=($fg_bold[magenta]${^plugins/\//$reset_color\/$fg_bold[yellow]}$reset_color)
-            echo ${(F)plugins}
-        })
-        return
-    fi
-}

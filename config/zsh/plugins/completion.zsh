@@ -6,20 +6,30 @@ zstyle ':completion:*' ignore-@arents parent pwd ..
 zstyle ':completion:*' matcher-lsit 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
-ZSH_COMPLETION_DIR=$XDG_CACHE_HOME/zsh/completion
-fpath=($ZSH_COMPLETION_DIR $fpath)
+ZSH_COMPLETION_DIR=$XDG_CACHE_HOME/zsh/completions
 if ! [[ -d $ZSH_COMPLETION_DIR ]]; then
     mkdir -p $ZSH_COMPLETION_DIR
 fi
+fpath=($ZSH_COMPLETION_DIR $fpath)
 
-if (( ${+commands[gh]} )); then
-    gh completion -s zsh > $ZSH_COMPLETION_DIR/_gh
-fi
+__generate_completion() {
+    setopt local_options extended_glob
+    local filename=$1
+    local file=$ZSH_COMPLETION_DIR/$filename
+    local checks=("${(z)2}")
+    shift 2
 
-if (( ${+commands[rustup]} )); then
-    rustup completions zsh > $ZSH_COMPLETION_DIR/_rustup
-fi
+    if [[ ${#${(k)commands}:*checks} != ${#checks} ]]; then
+        return
+    fi
 
-if (( ${+commands[rustup]} )) && (( ${+commands[cargo]} )); then
-    rustup completions zsh cargo > $ZSH_COMPLETION_DIR/_cargo
-fi
+    if [[ -a $file ]] && [[ -z $file(#qN.mh+24) ]]; then
+        return
+    fi
+
+    $@ > $file
+}
+
+__generate_completion '_gh' 'gh' gh completion -s zsh
+__generate_completion '_rustup' 'rustup' rustup completions zsh
+__generate_completion '_cargo' 'rustup cargo' rustup completions zsh cargo

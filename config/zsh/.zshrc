@@ -30,5 +30,12 @@ if [[ -a $XDG_DATA_HOME/zcomet/bin/zcomet.zsh ]]; then
     zcomet load zsh-users/zsh-completions
     zcomet load zsh-users/zsh-syntax-highlighting
 
-    zcomet compinit
+    () {
+        setopt local_options
+        local zcompdump=$(echo $ZDOTDIR/.zcompdump_*~*.zwc)
+        if ! [[ -a $zcompdump ]] || [[ $ZSH_COMPLETION_DIR -nt $zcompdump ]] || [[ -n $zcompdump(#qN.mh+24) ]]; then
+            zcomet compinit
+            touch $zcompdump $zcompdump.zwc
+        fi
+    }
 fi

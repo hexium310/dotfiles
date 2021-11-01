@@ -34,10 +34,18 @@ if [[ -a $XDG_DATA_HOME/zcomet/bin/zcomet.zsh ]]; then
 
     () {
         setopt local_options
-        local zcompdump=$(echo $ZDOTDIR/.zcompdump_*~*.zwc)
-        if ! [[ -a $zcompdump ]] || [[ $ZSH_COMPLETION_DIR -nt $zcompdump ]] || [[ -n $zcompdump(#qN.mh+24) ]]; then
-            zcomet compinit
+        local zcompdump=$(echo $ZDOTDIR/.zcompdump_*~*.zwc(N))
+
+        if [[ $ZSH_COMPLETION_DIR -ot $zcompdump ]] && [[ -z $zcompdump(#qN.mh+24) ]]; then
+            zstyle ':zcomet:compinit' arguments -C
+        fi
+
+        zcomet compinit
+
+        if [[ -a $zcompdump ]]; then
             touch $zcompdump $zcompdump.zwc
         fi
+
+        zstyle -d ':zcomet:compinit' arguments
     }
 fi

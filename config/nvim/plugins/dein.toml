@@ -128,7 +128,7 @@ hook_add = '''
 repo = 'junegunn/fzf.vim'
 if = 'executable("fzf")'
 hook_add = '''
-  set runtimepath+=$ZPLG_HOME/plugins/junegunn---fzf
+  set runtimepath+=$FZF_HOME
   call plugin#fzf#set_variables()
   call plugin#fzf#set_maps()
   call plugin#fzf#set_commands()

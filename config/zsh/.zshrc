@@ -20,6 +20,7 @@ if [[ -a $XDG_DATA_HOME/zcomet/bin/zcomet.zsh ]]; then
 
     zcomet load junegunn/fzf shell completion.zsh
     (( ${+commands[fzf]} )) || ~[fzf]/install --bin
+    export FZF_HOME=~[fzf]
 
     zcomet load zsh-users/zsh-autosuggestions
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247,underline'

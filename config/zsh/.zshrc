@@ -5,6 +5,8 @@
     done
 }
 
+setopt print_exit_value
+
 if [[ -a $XDG_DATA_HOME/zcomet/bin/zcomet.zsh ]]; then
     zstyle ':zcomet:*' home-dir $XDG_DATA_HOME/zcomet
     source $XDG_DATA_HOME/zcomet/bin/zcomet.zsh

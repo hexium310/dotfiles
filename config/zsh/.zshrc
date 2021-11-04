@@ -21,8 +21,12 @@ if [[ -a $XDG_DATA_HOME/zcomet/bin/zcomet.zsh ]]; then
     }
 
     zcomet load junegunn/fzf shell completion.zsh
-    (( ${+commands[fzf]} )) || ~[fzf]/install --bin
-    export FZF_HOME=~[fzf]
+    if ! (( ${+commands[fzf]} )) && [[ -d ~[fzf] ]]; then
+        export FZF_HOME=~[fzf]
+        echo $'#/usr/bin/env zsh\n[[ -n $(git diff --name-only HEAD@{1}...HEAD -- install) ]] && ./install --bin' > ~[fzf]/.git/hooks/post-merge
+        chmod +x ~[fzf]/.git/hooks/post-merge
+        ~[fzf]/install --bin
+    fi
 
     zcomet load zsh-users/zsh-autosuggestions
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247,underline'

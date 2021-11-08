@@ -10,12 +10,14 @@ export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
 export DENO_DIR="$XDG_CACHE_HOME/deno"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$CARGO_HOME/bin:$PATH"
-export PATH="$GEM_HOME/bin:$PATH"
-export PATH="$COMPOSER_HOME/vendor/bin:$PATH"
-export PATH="$HOME/Repositories/hexium310/git-issue/target/debug:$PATH"
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export REVOLVER_DIR="$XDG_CACHE_HOME/revolver"
 export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 export GOPATH=$XDG_CACHE_HOME/go
+typeset -U path=(
+    '/usr/local/sbin'
+    "$CARGO_HOME/bin"
+    "$GEM_HOME/bin"
+    "$COMPOSER_HOME/bin"
+    "${path[@]}"
+)

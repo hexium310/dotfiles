@@ -248,6 +248,8 @@ function M.completion()
       end,
     },
     mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
       ['<C-x><C-n>'] = cmp.mapping.complete(),
       ['<C-y>'] = cmp.mapping.confirm({
         select = true,

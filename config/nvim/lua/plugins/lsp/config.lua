@@ -267,6 +267,7 @@ function M.completion()
     documentation = {
       border = 'single',
     },
+    preselect = cmp.PreselectMode.None,
   })
 
   cmp.event:on('confirm_done', require('nvim-autopairs/completion/cmp').on_confirm_done())

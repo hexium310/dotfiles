@@ -147,6 +147,6 @@ endfunction
 function! plugin#lightline#automcd() abort
   augroup plugin#lightline
     autocmd!
-    autocmd User LspDiagnosticsChanged call lightline#update()
+    autocmd DiagnosticChanged * call lightline#update()
   augroup END
 endfunction

@@ -107,7 +107,6 @@ local languages = {
     return {
       on_attach = function (client, bufnr)
         set_document_formatting(client, false)
-        format_on_save()
         general.on_attach(client, bufnr)
       end,
       settings = {
@@ -210,7 +209,6 @@ function M.null_ls()
     diagnostics_format = '(#{c}) #{m}',
     sources = {
       null_ls.builtins.diagnostics.luacheck,
-      null_ls.builtins.formatting.fixjson,
     },
   })
 

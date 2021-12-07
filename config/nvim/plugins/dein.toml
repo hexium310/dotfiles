@@ -31,20 +31,13 @@ hook_add = '''
 [[plugins]]
 repo = 'RRethy/nvim-base16'
 hook_add = '''
-  " Due to loading the `colors` module is slow, include only the colorscheme to use.
+  " Include only the colorscheme to use because loading the `colors` module is slow.
   lua << EOF
-    -- Make the priority of `package.preload` the highest temporarily until loading the `colors` module in this plugin.
-    -- The first loader is via dein.vim, and the second loader is via Neovim.
-    table.insert(package.loaders, 1, package.loaders[3])
-
-    package.preload['colors'] = function ()
-      if #package.loaders == 7 then
-        table.remove(package.loaders, 1)
-      end
-      return {
-        ['tomorrow-night-eighties'] = require('colors.tomorrow-night-eighties'),
-      }
-    end
+    vim.cmd(([[
+      autocmd ColorSchemePre * lua package.loaded['colors'] = %s
+    ]]):format(vim.inspect({
+      ['tomorrow-night-eighties'] = require('colors.tomorrow-night-eighties')
+    }, { newline = '' })))
 EOF
 '''
 

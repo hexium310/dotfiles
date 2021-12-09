@@ -1,0 +1,6 @@
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+on_ft = ['markdown']
+hook_add = '''
+  let g:table_mode_corner='|'
+'''

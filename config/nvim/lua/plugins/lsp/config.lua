@@ -205,22 +205,20 @@ end
 function M.null_ls()
   local null_ls = require('null-ls')
 
-  null_ls.config({
-    diagnostics_format = '(#{c}) #{m}',
-    sources = {
-      null_ls.builtins.diagnostics.luacheck,
-    },
-  })
-
-  local lsp_config = vim.F.npcall(languages['null-ls']) or {}
   local capabilities = get_cmp_nvim_lsp_capabilities()
-
-  require('lspconfig')['null-ls'].setup(vim.tbl_deep_extend('force', {
+  local lsp_setting = vim.tbl_deep_extend('force', {
     on_attach = general.on_attach,
     handlers = general.handlers,
     commands = general.commands,
     capabilities = capabilities,
-  }, lsp_config))
+  }, vim.F.npcall(languages['null-ls']) or {})
+
+  null_ls.setup(vim.tbl_deep_extend('force', {
+    diagnostics_format = '(#{c}) #{m}',
+    sources = {
+      null_ls.builtins.diagnostics.luacheck,
+    },
+  }, lsp_setting))
 end
 
 function M.completion()

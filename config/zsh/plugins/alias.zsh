@@ -11,7 +11,6 @@ alias sudo='sudo '
 alias fd='fd --ignore-file=$XDG_CONFIG_HOME/fdignore'
 alias gpg='LANG=C gpg'
 (( $+commands[nvim] )) && alias vim='nvim'
-(( $+commands[gojq] )) && alias jq='gojq'
 
 if (( $+commands[nvim] )); then
     export MANPAGER='nvim +Man!'

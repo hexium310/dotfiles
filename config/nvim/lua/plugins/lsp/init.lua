@@ -27,7 +27,7 @@ local function init()
   vim.cmd(([[
     augroup lspconfig
       autocmd!
-      autocmd CursorHold * lua vim.diagnostic.open_float(vim.api.nvim_get_current_buf(), %s)
+      autocmd CursorHold * lua vim.diagnostic.open_float(%s)
       autocmd CursorHoldI * lua if not require('cmp').visible() then require('plugins/lsp/utils').signature_help() end
     augroup END
   ]]):format(utils.table_to_string(float_opts)))

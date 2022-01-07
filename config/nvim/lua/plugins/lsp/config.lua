@@ -13,11 +13,15 @@ end
 
 local function set_keymap(bufnr, mappings)
   for _, v in ipairs(mappings) do
-    local mode = v[1]
+    local modes = v[1]
     local lhs = v[2]
     local rhs = v[3]
+    local opts = {
+      buffer = bufnr,
+      silent = true,
+    }
 
-    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true })
+    vim.keymap.set(modes, lhs, rhs, opts)
   end
 end
 
@@ -51,16 +55,15 @@ local general = {
       float = utils.float_opts,
     }
     local maps = {
-      { 'n', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
-      { 'i', '<F2>', [[<Cmd>lua vim.lsp.buf.rename()<CR>]] },
-      { 'n', 'K', [[<Cmd>lua require('plugins/lsp/utils').hover_or_open_vim_help()<CR>]] },
-      { 'n', 'gf', [[<Cmd>lua vim.lsp.buf.definition()<CR>]] },
-      { 'n', ']c', ([[<Cmd>lua vim.diagnostic.goto_next(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
-      { 'n', '[c', ([[<Cmd>lua vim.diagnostic.goto_prev(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
-      { 'n', '<C-d>', ([[<Cmd>lua require('plugins/lsp/utils').send_key('<C-d>', %s)<CR>]]):format(bufnr) },
-      { 'n', '<C-u>', ([[<Cmd>lua require('plugins/lsp/utils').send_key('<C-u>', %s)<CR>]]):format(bufnr) },
-      { 'n', '<C-f>', ([[<Cmd>lua require('plugins/lsp/utils').send_key('<C-f>', %s)<CR>]]):format(bufnr) },
-      { 'n', '<C-b>', ([[<Cmd>lua require('plugins/lsp/utils').send_key('<C-b>', %s)<CR>]]):format(bufnr) },
+      { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
+      { 'n', 'K', require('plugins/lsp/utils').hover_or_open_vim_help },
+      { 'n', 'gf', vim.lsp.buf.definition },
+      { 'n', ']c', function () vim.diagnostic.goto_next(goto_opts) end },
+      { 'n', '[c', function () vim.diagnostic.goto_prev(goto_opts) end },
+      { 'n', '<C-d>', function () require('plugins/lsp/utils').send_key('<C-d>', bufnr) end },
+      { 'n', '<C-u>', function () require('plugins/lsp/utils').send_key('<C-u>', bufnr) end },
+      { 'n', '<C-f>', function () require('plugins/lsp/utils').send_key('<C-f>', bufnr) end },
+      { 'n', '<C-b>', function () require('plugins/lsp/utils').send_key('<C-b>', bufnr) end },
     }
 
     set_keymap(bufnr, maps)
@@ -86,9 +89,9 @@ local languages = {
           float = utils.float_opts,
         }
         local maps = {
-          { 'n', ']a', ([[<Cmd>lua vim.diagnostic.goto_next(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
-          { 'n', '[a', ([[<Cmd>lua vim.diagnostic.goto_prev(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
-          { 'n', '<F8>', [[<Cmd>lua vim.lsp.buf.formatting()<CR>]] },
+          { 'n', ']a', function () vim.diagnostic.goto_next(goto_opts) end },
+          { 'n', '[a', function () vim.diagnostic.goto_prev(goto_opts) end },
+          { 'n', '<F8>', vim.lsp.buf.formatting() },
         }
 
         set_keymap(bufnr, maps)
@@ -177,8 +180,8 @@ local languages = {
           float = utils.float_opts,
         }
         local maps = {
-          { 'n', ']a', ([[<Cmd>lua vim.diagnostic.goto_next(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
-          { 'n', '[a', ([[<Cmd>lua vim.diagnostic.goto_prev(%s)<CR>]]):format(utils.table_to_string(goto_opts)) },
+          { 'n', ']a', function () vim.diagnostic.goto_next(goto_opts) end },
+          { 'n', '[a', function () vim.diagnostic.goto_prev(goto_opts) end },
         }
 
         set_keymap(bufnr, maps)

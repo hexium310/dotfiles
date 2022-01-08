@@ -2,6 +2,14 @@ local utils = require('plugins/lsp/utils')
 
 local M = {}
 
+local namespaces_without_signs = {}
+
+local function ignore_signs(namespace)
+  if not vim.tbl_contains(namespaces_without_signs, namespace) then
+    table.insert(namespaces_without_signs, namespace)
+  end
+end
+
 local function set_document_formatting(client, bool)
   client.resolved_capabilities.document_formatting = bool
   client.resolved_capabilities.document_range_formatting = bool
@@ -73,16 +81,7 @@ local general = {
 local languages = {
   eslint = function ()
     return {
-      handlers = {
-        ["textDocument/publishDiagnostics"] = vim.lsp.with(
-          vim.lsp.diagnostic.on_publish_diagnostics, {
-            signs = false,
-          }
-        )
-      },
       on_attach = function (client, bufnr)
-        set_document_formatting(client, true)
-
         local namespace = vim.lsp.diagnostic.get_namespace(client.id)
         local goto_opts = {
           namespace = namespace,
@@ -94,7 +93,9 @@ local languages = {
           { 'n', '<F8>', vim.lsp.buf.formatting() },
         }
 
+        ignore_signs(namespace)
         set_keymap(bufnr, maps)
+        set_document_formatting(client, true)
       end,
       settings = {
         format = {
@@ -166,25 +167,24 @@ local languages = {
   end,
   ['null-ls'] = function ()
     return {
-      handlers = {
-        ["textDocument/publishDiagnostics"] = vim.lsp.with(
-          vim.lsp.diagnostic.on_publish_diagnostics, {
-            signs = false,
-          }
-        )
-      },
-      on_attach = function (client, bufnr)
-        local namespace = vim.lsp.diagnostic.get_namespace(client.id)
-        local goto_opts = {
-          namespace = namespace,
-          float = utils.float_opts,
-        }
-        local maps = {
-          { 'n', ']a', function () vim.diagnostic.goto_next(goto_opts) end },
-          { 'n', '[a', function () vim.diagnostic.goto_prev(goto_opts) end },
-        }
+      on_attach = function (_, bufnr)
+        local namespaces = vim.tbl_map(function (source)
+          return require('null-ls/diagnostics').get_namespace(source.id)
+        end, require('null-ls').get_sources())
 
-        set_keymap(bufnr, maps)
+        for _, namespace in ipairs(namespaces) do
+          local goto_opts = {
+            namespace = namespace,
+            float = utils.float_opts,
+          }
+          local maps = {
+            { 'n', ']a', function () vim.diagnostic.goto_next(goto_opts) end },
+            { 'n', '[a', function () vim.diagnostic.goto_prev(goto_opts) end },
+          }
+
+          ignore_signs(namespace)
+          set_keymap(bufnr, maps)
+        end
       end,
     }
   end,
@@ -279,6 +279,31 @@ function M.diagnostic()
     virtual_text = false,
     signs = true,
   })
+
+  local orig_signs_handler = vim.diagnostic.handlers.signs
+  local namespace = vim.api.nvim_create_namespace('highest_severity_diagnostic_signs')
+  vim.diagnostic.handlers.signs = {
+    show = function (_, bufnr, _, opts)
+      local diagnostics = vim.diagnostic.get(bufnr)
+      diagnostics = vim.tbl_filter(function (diagnostic)
+        return not vim.tbl_contains(namespaces_without_signs, diagnostic.namespace)
+      end, diagnostics)
+
+      local max_severity_per_line = {}
+      for _, diagnostic in pairs(diagnostics) do
+        local max = max_severity_per_line[diagnostic.lnum]
+        if not max or diagnostic.severity < max.severity then
+          max_severity_per_line[diagnostic.lnum] = diagnostic
+        end
+      end
+
+      local filtered_diagnostics = vim.tbl_values(max_severity_per_line)
+      orig_signs_handler.show(namespace, bufnr, filtered_diagnostics, opts)
+    end,
+    hide = function(_, bufnr)
+      orig_signs_handler.hide(namespace, bufnr)
+    end,
+  }
 end
 
 return M

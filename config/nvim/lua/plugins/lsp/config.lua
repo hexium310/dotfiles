@@ -281,7 +281,7 @@ function M.diagnostic()
   })
 
   local orig_signs_handler = vim.diagnostic.handlers.signs
-  local namespace = vim.api.nvim_create_namespace('highest_severity_diagnostic_signs')
+  local signs_namespace = vim.api.nvim_create_namespace('highest_severity_diagnostic_signs')
   vim.diagnostic.handlers.signs = {
     show = function (_, bufnr, _, opts)
       local diagnostics = vim.diagnostic.get(bufnr)
@@ -298,10 +298,26 @@ function M.diagnostic()
       end
 
       local filtered_diagnostics = vim.tbl_values(max_severity_per_line)
-      orig_signs_handler.show(namespace, bufnr, filtered_diagnostics, opts)
+      orig_signs_handler.show(signs_namespace, bufnr, filtered_diagnostics, opts)
     end,
     hide = function(_, bufnr)
-      orig_signs_handler.hide(namespace, bufnr)
+      orig_signs_handler.hide(signs_namespace, bufnr)
+    end,
+  }
+
+  local orig_underline_handler = vim.diagnostic.handlers.underline
+  local underline_namespace = vim.api.nvim_create_namespace('highest_severity_diagnostic_underline')
+  vim.diagnostic.handlers.underline = {
+    show = function (_, bufnr, _, opts)
+      local diagnostics = vim.diagnostic.get()
+      table.sort(diagnostics, function (prev, current)
+        return prev.severity > current.severity
+      end)
+
+      orig_underline_handler.show(underline_namespace, bufnr, diagnostics, opts)
+    end,
+    hide = function(_, bufnr)
+      orig_underline_handler.hide(underline_namespace, bufnr)
     end,
   }
 end

@@ -16,7 +16,9 @@ local function set_highlight(name, opt)
 end
 
 set_highlight('Comment', { guifg = colors.base03, gui = 'italic' })
-set_highlight('CursorLineNr', {  guifg = colors.base04, guibg = '#202020', gui = 'bold' })
+set_highlight('CursorLineNr', { guifg = colors.base04, guibg = '#202020', gui = 'bold' })
+set_highlight('DiagnosticWarn', { guifg = colors.base0A })
+set_highlight('DiagnosticUnderlineWarn', { guisp = colors.base0A, gui = 'undercurl' })
 set_highlight('LineNr', { guifg = colors.base04, guibg = colors.base01 })
 set_highlight('TSVariable', { guifg = colors.base05 })
 set_highlight('TSVariableBuiltin', { guifg = colors.base05, gui = 'italic' })

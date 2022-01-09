@@ -38,6 +38,12 @@ local function get_cmp_nvim_lsp_capabilities()
   return require('cmp_nvim_lsp').update_capabilities(capabilities)
 end
 
+local function reset_diagnostic()
+  vim.diagnostic.reset(nil, 0)
+  package.loaded['vim.diagnostic'] = nil
+  vim.diagnostic = require('vim.diagnostic')
+end
+
 local general = {
   commands = {
     RenameFile = {
@@ -275,6 +281,8 @@ function M.completion()
 end
 
 function M.diagnostic()
+  reset_diagnostic()
+
   vim.diagnostic.config({
     virtual_text = false,
     signs = true,
@@ -300,7 +308,7 @@ function M.diagnostic()
       local filtered_diagnostics = vim.tbl_values(max_severity_per_line)
       orig_signs_handler.show(signs_namespace, bufnr, filtered_diagnostics, opts)
     end,
-    hide = function(_, bufnr)
+    hide = function (_, bufnr)
       orig_signs_handler.hide(signs_namespace, bufnr)
     end,
   }
@@ -309,14 +317,14 @@ function M.diagnostic()
   local underline_namespace = vim.api.nvim_create_namespace('highest_severity_diagnostic_underline')
   vim.diagnostic.handlers.underline = {
     show = function (_, bufnr, _, opts)
-      local diagnostics = vim.diagnostic.get()
+      local diagnostics = vim.diagnostic.get(bufnr)
       table.sort(diagnostics, function (prev, current)
         return prev.severity > current.severity
       end)
 
       orig_underline_handler.show(underline_namespace, bufnr, diagnostics, opts)
     end,
-    hide = function(_, bufnr)
+    hide = function (_, bufnr)
       orig_underline_handler.hide(underline_namespace, bufnr)
     end,
   }

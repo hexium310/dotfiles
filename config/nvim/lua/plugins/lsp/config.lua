@@ -44,6 +44,8 @@ local function reset_diagnostic()
   vim.diagnostic = require('vim.diagnostic')
 end
 
+local remove_confirm_done_event = function () end
+
 local general = {
   commands = {
     RenameFile = {
@@ -277,7 +279,8 @@ function M.completion()
     preselect = cmp.PreselectMode.None,
   })
 
-  cmp.event:on('confirm_done', require('nvim-autopairs/completion/cmp').on_confirm_done())
+  remove_confirm_done_event()
+  remove_confirm_done_event = cmp.event:on('confirm_done', require('nvim-autopairs/completion/cmp').on_confirm_done())
 end
 
 function M.diagnostic()

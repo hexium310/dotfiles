@@ -26,9 +26,11 @@ set_highlight('TSPunctSpecial', { guifg = colors.base0C })
 set_highlight('TSPunctBracket', { guifg = colors.base0D })
 set_highlight('TSInclude', { guifg = colors.base0E })
 set_highlight('CmpItemAbbr', { guifg = colors.base03 })
+set_highlight('CmpItemAbbrDeprecated', { guifg = colors.base03, gui = 'italic' })
 set_highlight('CmpItemAbbrMatch', { guifg = colors.base05, gui = 'bold' })
-set_highlight('CmpItemAbbrMatchFuzzy', { guifg = colors.base05 })
-set_highlight('CmpItemMenu', { guifg = colors.base05 })
+set_highlight('CmpItemAbbrMatchFuzzy', { guifg = colors.base05, gui = 'bold' })
+set_highlight('CmpItemKind', { guifg = colors.base0C })
+set_highlight('CmpItemMenu', { guifg = colors.base03 })
 EOF
 
 highlight DiffAdd guifg=NONE guibg=#334539

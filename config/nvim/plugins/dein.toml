@@ -111,6 +111,10 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'nishigori/increment-activator'
+on_map = ['<C-a>', '<C-x>']
+
+[[plugins]]
 repo = 'tversteeg/registers.nvim'
 hook_add = '''
   let g:registers_window_min_height = 15

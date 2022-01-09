@@ -44,6 +44,29 @@ local function reset_diagnostic()
   vim.diagnostic = require('vim.diagnostic')
 end
 
+local function separate_and_sort(diagnostics)
+  local severity = vim.diagnostic.severity
+  local linter = {
+    [severity.ERROR] = {},
+    [severity.WARN] = {},
+    [severity.INFO] = {},
+    [severity.HINT] = {},
+  }
+  local lsp = {
+    [severity.ERROR] = {},
+    [severity.WARN] = {},
+    [severity.INFO] = {},
+    [severity.HINT] = {},
+  }
+
+  for _, diagnostic in ipairs(diagnostics) do
+    local list = vim.tbl_contains(namespaces_without_signs, diagnostic.namespace) and linter or lsp
+    table.insert(list[diagnostic.severity], diagnostic)
+  end
+
+  return linter, lsp
+end
+
 local remove_confirm_done_event = function () end
 
 local general = {
@@ -321,9 +344,8 @@ function M.diagnostic()
   vim.diagnostic.handlers.underline = {
     show = function (_, bufnr, _, opts)
       local diagnostics = vim.diagnostic.get(bufnr)
-      table.sort(diagnostics, function (prev, current)
-        return prev.severity > current.severity
-      end)
+      local linter, lsp = separate_and_sort(diagnostics)
+      diagnostics = vim.fn.flatten({ vim.tbl_values(linter), vim.tbl_values(lsp) })
 
       orig_underline_handler.show(underline_namespace, bufnr, diagnostics, opts)
     end,

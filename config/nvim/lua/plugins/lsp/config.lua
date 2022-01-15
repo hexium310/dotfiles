@@ -121,7 +121,7 @@ local languages = {
         local maps = {
           { 'n', ']a', function () vim.diagnostic.goto_next(goto_opts) end },
           { 'n', '[a', function () vim.diagnostic.goto_prev(goto_opts) end },
-          { 'n', '<F8>', vim.lsp.buf.formatting() },
+          { 'n', '<F8>', vim.lsp.buf.formatting },
         }
 
         ignore_signs(namespace)

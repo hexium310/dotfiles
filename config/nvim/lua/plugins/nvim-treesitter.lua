@@ -45,10 +45,10 @@ local function init()
       swap = {
         enable = true,
         swap_next = {
-          ['<Space>pn'] = '@parameter.inner',
+          ['<Space>pn'] = '@definition.field',
         },
         swap_previous = {
-          ['<Space>pp'] = '@parameter.inner',
+          ['<Space>pp'] = '@definition.field',
         },
       },
     },

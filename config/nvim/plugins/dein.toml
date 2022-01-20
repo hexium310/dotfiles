@@ -41,16 +41,6 @@ EOF
 
 [[plugins]]
 repo = 'RRethy/nvim-base16'
-hook_add = '''
-  " Include only the colorscheme to use because loading the `colors` module is slow.
-  lua << EOF
-    vim.cmd(([[
-      autocmd ColorSchemePre * lua package.loaded['colors'] = %s
-    ]]):format(vim.inspect({
-      ['tomorrow-night-eighties'] = require('colors.tomorrow-night-eighties')
-    }, { newline = '' })))
-EOF
-'''
 
 [[plugins]]
 repo = 'ii14/onedark.nvim'

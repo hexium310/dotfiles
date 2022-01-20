@@ -158,6 +158,9 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
+hook_post_source = '''
+  lua require('plugins/bqf')()
+'''
 
 [[plugins]]
 repo = 'windwp/nvim-autopairs'

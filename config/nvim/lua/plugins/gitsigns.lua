@@ -25,6 +25,10 @@ local function init()
       zindex = 60,
     }
   })
+
+  vim.cmd([[
+    command! ToggleDeletedLine lua require('gitsigns').toggle_deleted()
+  ]])
 end
 
 return init

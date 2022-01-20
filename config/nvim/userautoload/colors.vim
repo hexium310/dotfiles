@@ -43,6 +43,7 @@ highlight GitSignsAddNr guibg=#5C6E5C
 highlight GitSignsChangeDeleteNr gui=underline guibg=#786A51
 highlight GitSignsChangeNr guibg=#786A51
 highlight GitSignsDeleteNr guibg=#764C4F
+highlight GitSignsDeleteLn guibg=#45333a
 highlight IncSearch guifg=NONE guibg=#45333a
 highlight Search guifg=NONE guibg=#454133
 highlight SignColumn guibg=NONE

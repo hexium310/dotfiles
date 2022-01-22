@@ -25,15 +25,7 @@ hook_add = '''
 [[plugins]]
 repo = 'nathom/filetype.nvim'
 hook_post_source = '''
-  lua << EOF
-    require('filetype').setup({
-      overrides = {
-        complex = {
-          ['queries/.+/.+%.scm'] = 'query'
-        }
-      }
-    })
-EOF
+  lua require('plugins/filetype')()
 '''
 
 [[plugins]]

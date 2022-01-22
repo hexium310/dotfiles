@@ -1,4 +1,5 @@
-local utils = require('plugins/lsp/utils')
+local utils = require('plugins/utils')
+local lsp_utils = require('plugins/lsp/utils')
 
 local M = {}
 
@@ -17,20 +18,6 @@ end
 
 local function format_on_save()
   vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]])
-end
-
-local function set_keymap(bufnr, mappings)
-  for _, v in ipairs(mappings) do
-    local modes = v[1]
-    local lhs = v[2]
-    local rhs = v[3]
-    local opts = {
-      buffer = bufnr,
-      silent = true,
-    }
-
-    vim.keymap.set(modes, lhs, rhs, opts)
-  end
 end
 
 local function get_cmp_nvim_lsp_capabilities()
@@ -91,7 +78,7 @@ local general = {
   },
   on_attach = function (_, bufnr)
     local goto_opts = {
-      float = utils.float_opts,
+      float = lsp_utils.float_opts,
     }
     local maps = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
@@ -105,7 +92,10 @@ local general = {
       { 'n', '<C-b>', function () require('plugins/lsp/utils').send_key('<C-b>', bufnr) end },
     }
 
-    set_keymap(bufnr, maps)
+    utils.set_keymaps(maps, {
+      buffer = bufnr,
+      silent = true,
+    })
   end
 }
 
@@ -116,7 +106,7 @@ local languages = {
         local namespace = vim.lsp.diagnostic.get_namespace(client.id)
         local goto_opts = {
           namespace = namespace,
-          float = utils.float_opts,
+          float = lsp_utils.float_opts,
         }
         local maps = {
           { 'n', ']a', function () vim.diagnostic.goto_next(goto_opts) end },
@@ -125,7 +115,10 @@ local languages = {
         }
 
         ignore_signs(namespace)
-        set_keymap(bufnr, maps)
+        utils.set_keymaps(maps, {
+          buffer = bufnr,
+          silent = true,
+        })
         set_document_formatting(client, true)
       end,
       settings = {
@@ -206,7 +199,7 @@ local languages = {
         for _, namespace in ipairs(namespaces) do
           local goto_opts = {
             namespace = namespace,
-            float = utils.float_opts,
+            float = lsp_utils.float_opts,
           }
           local maps = {
             { 'n', ']a', function () vim.diagnostic.goto_next(goto_opts) end },
@@ -214,7 +207,10 @@ local languages = {
           }
 
           ignore_signs(namespace)
-          set_keymap(bufnr, maps)
+          utils.set_keymaps(maps, {
+            buffer = bufnr,
+            silent = true,
+          })
         end
       end,
     }

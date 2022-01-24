@@ -1,4 +1,3 @@
 [[plugins]]
 repo = 'posva/vim-vue'
-lazy = 1
 on_ft = ['vue']

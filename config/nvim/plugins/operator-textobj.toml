@@ -1,16 +1,19 @@
 [[plugins]]
 repo = 'kana/vim-operator-user'
+on_event = ['VimEnter']
 
 [[plugins]]
 repo = 'kana/vim-operator-replace'
-on_map = '<Plug>'
+depends = ['vim-operator-user']
+on_map = ['<Plug>']
 hook_add = '''
   nmap R <Plug>(operator-replace)
 '''
 
 [[plugins]]
 repo = 'rhysd/vim-operator-surround'
-on_map = '<Plug>'
+depends = ['vim-operator-user']
+on_map = ['<Plug>']
 hook_add = '''
   nmap <silent>sa <Plug>(operator-surround-append)
   nmap <silent>sd <Plug>(operator-surround-delete)
@@ -19,7 +22,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'emonkak/vim-operator-sort'
-on_map = '<Plug>'
+depends = ['vim-operator-user']
+on_map = ['<Plug>']
 hook_add = '''
   nmap so <Plug>(operator-sort)
   vmap so <Plug>(operator-sort)
@@ -27,24 +31,53 @@ hook_add = '''
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'
+on_event = ['VimEnter']
 
 [[plugins]]
 repo = 'rhysd/vim-textobj-anyblock'
+depends = ['vim-operator-user']
+on_map = {
+  xo = ['ab', 'ib'],
+}
 
 [[plugins]]
 repo = 'kana/vim-textobj-indent'
+depends = ['vim-operator-user']
+on_map = {
+  xo = ['ai', 'ii', 'aI', 'iI'],
+}
 
 [[plugins]]
 repo = 'kana/vim-textobj-line'
+depends = ['vim-operator-user']
+on_map = {
+  xo = ['al', 'il'],
+}
 
 [[plugins]]
 repo = 'kana/vim-textobj-entire'
+depends = ['vim-operator-user']
+on_map = {
+  xo = ['ae', 'ie'],
+}
 
 [[plugins]]
 repo = 'sgur/vim-textobj-parameter'
+depends = ['vim-operator-user']
+on_map = {
+  xo = ['a,', 'i,', 'i2,'],
+}
 
 [[plugins]]
 repo = 'Julian/vim-textobj-variable-segment'
+depends = ['vim-operator-user']
+on_map = {
+  xo = ['av', 'iv'],
+}
 
 [[plugins]]
 repo = 'glts/vim-textobj-comment'
+depends = ['vim-operator-user']
+on_map = {
+  xo = ['ac', 'ic', 'aC'],
+}

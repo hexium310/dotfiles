@@ -47,6 +47,7 @@ hook_add = '''
 [[plugins]]
 repo = 'RRethy/vim-hexokinase'
 if = 'executable("go")'
+on_event = ['VimEnter']
 build = '''
   make hexokinase
 '''
@@ -69,6 +70,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'qpkorr/vim-bufkill'
+on_event = ['CmdlineEnter']
 hook_add = '''
   cabbrev bd BD
 '''
@@ -82,6 +84,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'chaoren/vim-wordmotion'
+on_map = ['<Plug>WordMotion']
 hook_add = '''
   let g:wordmotion_nomap = 1
   nmap w <Plug>WordMotion_w
@@ -106,16 +109,27 @@ on_map = ['<C-a>', '<C-x>']
 
 [[plugins]]
 repo = 'tversteeg/registers.nvim'
+on_map = {
+  nv = '"',
+  i = '<C-r>',
+}
+on_cmd = ['Registers']
 hook_add = '''
   let g:registers_window_min_height = 15
   let g:registers_window_border = 'single'
 '''
 
 [[plugins]]
+repo = '$FZF_HOME'
+if = 'executable("fzf")'
+on_event = ['VimEnter']
+
+[[plugins]]
 repo = 'junegunn/fzf.vim'
 if = 'executable("fzf")'
+depends = ['fzf']
+on_event = ['VimEnter']
 hook_add = '''
-  set runtimepath+=$FZF_HOME
   call plugin#fzf#set_variables()
   call plugin#fzf#set_maps()
   call plugin#fzf#set_commands()
@@ -137,13 +151,13 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
+on_event = ['CursorHold', 'CursorMoved', 'InsertEnter', 'CmdlineEnter']
 hook_post_source = '''
   lua require('plugins/bqf')()
 '''
 
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
-on_lua = ['cmp']
 hook_post_source = '''
   lua require('plugins/autopairs')()
 '''
@@ -199,6 +213,7 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
+on_event = ['BufEnter']
 hook_add = '''
   let g:conflict_marker_enable_mappings = 0
   let g:conflict_marker_enable_highlight = 0
@@ -219,7 +234,7 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-on_event = 'VimEnter'
+on_event = ['VimEnter']
 hook_post_source = '''
   lua require('plugins/lsp')()
 '''
@@ -243,12 +258,15 @@ on_lua = ['cmp']
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'
+depends = ['nvim-cmp']
 on_lua = ['cmp']
 
 [[plugins]]
 repo = 'hrsh7th/cmp-buffer'
+depends = ['nvim-cmp']
 on_lua = ['cmp']
 
 [[plugins]]
 repo = 'hrsh7th/cmp-path'
+depends = ['nvim-cmp']
 on_lua = ['cmp']

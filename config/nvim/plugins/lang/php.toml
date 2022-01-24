@@ -1,4 +1,3 @@
 [[plugins]]
 repo = 'StanAngeloff/php.vim'
-lazy = 1
 on_ft = ['php']

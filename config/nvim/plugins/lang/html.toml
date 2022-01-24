@@ -1,5 +1,6 @@
 [[plugins]]
 repo = 'AndrewRadev/tagalong.vim'
+on_ft = ['html', 'php', 'typescriptreact']
 
 [[plugins]]
 repo = 'mattn/emmet-vim'

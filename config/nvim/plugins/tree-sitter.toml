@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
-on_event = 'VimEnter'
+on_event = ['VimEnter']
 hook_post_source = '''
   lua require('plugins/nvim-treesitter')()
 '''
@@ -14,7 +14,9 @@ on_cmd = ['TSHighlightCapturesUnderCursor', 'TSPlaygroundToggle']
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter-textobjects'
 depends = ['nvim-treesitter']
+on_event = ['VimEnter']
 
 [[plugins]]
 repo = 'JoosepAlviste/nvim-ts-context-commentstring'
 depends = ['nvim-treesitter']
+on_event = ['VimEnter']

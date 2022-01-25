@@ -15,7 +15,6 @@ local function init()
   })
 
   local config = require('plugins/lsp/config')
-  config.completion()
   config.diagnostic()
   config.null_ls()
   config.lspconfig()

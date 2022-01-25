@@ -19,7 +19,7 @@ hook_add = '''
     call nvim_buf_set_lines(a:buf, 0, -1, v:true, add(split(log, "\n"), ""))
   endfunction
 
-  autocmd VimEnter * call dein#call_hook('post_source')
+  autocmd VimEnter * lua vim.schedule(function () vim.fn['dein#call_hook']('post_source') end)
 '''
 
 [[plugins]]
@@ -36,6 +36,7 @@ repo = 'ii14/onedark.nvim'
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
+on_event = ['BufEnter']
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -47,7 +48,7 @@ hook_add = '''
 [[plugins]]
 repo = 'RRethy/vim-hexokinase'
 if = 'executable("go")'
-on_event = ['VimEnter']
+on_event = ['BufEnter']
 build = '''
   make hexokinase
 '''
@@ -122,13 +123,37 @@ hook_add = '''
 [[plugins]]
 repo = '$FZF_HOME'
 if = 'executable("fzf")'
-on_event = ['VimEnter']
+on_func = ['fzf#']
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 if = 'executable("fzf")'
 depends = ['fzf']
-on_event = ['VimEnter']
+on_func = ['fzf#']
+on_cmd = [
+  'Files',
+  'GitFiles',
+  'GFiles',
+  'Buffers',
+  'Lines',
+  'BLines',
+  'Colors',
+  'Locate',
+  'Ag',
+  'Rg',
+  'Tags',
+  'BTags',
+  'Snippets',
+  'Commands',
+  'Marks',
+  'Helptags',
+  'Windows',
+  'Commits',
+  'BCommits',
+  'Maps',
+  'Filetypes',
+  'History'
+]
 hook_add = '''
   call plugin#fzf#set_variables()
   call plugin#fzf#set_maps()
@@ -164,8 +189,6 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'numToStr/Comment.nvim'
-depends = ['nvim-ts-context-commentstring']
-on_map = ['gc']
 hook_post_source = '''
   lua require('plugins/comment')()
 '''
@@ -207,6 +230,7 @@ hook_add ='''
 
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
+on_event = ['BufRead']
 hook_post_source = '''
   lua require('plugins/gitsigns')()
 '''
@@ -234,39 +258,40 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-on_event = ['VimEnter']
+depends = ['cmp-nvim-lsp', 'nvim-lsp-installer']
+on_event = ['BufRead']
 hook_post_source = '''
   lua require('plugins/lsp')()
 '''
 
 [[plugins]]
 repo = 'williamboman/nvim-lsp-installer'
-on_lua = ['nvim-lsp-installer']
+on_event = ['BufRead']
 
 [[plugins]]
 repo = 'jose-elias-alvarez/null-ls.nvim'
 depends = ['nvim-lspconfig', 'plenary.nvim']
-on_lua = ['lspconfig']
+on_event = ['BufRead']
 
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'
-on_lua = ['lspconfig']
+on_event = ['InsertEnter']
+hook_post_source = '''
+  lua require('plugins/cmp')()
+'''
 
 [[plugins]]
 repo = 'hrsh7th/vim-vsnip'
-on_lua = ['cmp']
+on_source = ['nvim-cmp']
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'
-depends = ['nvim-cmp']
-on_lua = ['cmp']
+lazy = true
 
 [[plugins]]
 repo = 'hrsh7th/cmp-buffer'
-depends = ['nvim-cmp']
-on_lua = ['cmp']
+on_source = ['nvim-cmp']
 
 [[plugins]]
 repo = 'hrsh7th/cmp-path'
-depends = ['nvim-cmp']
-on_lua = ['cmp']
+on_source = ['nvim-cmp']

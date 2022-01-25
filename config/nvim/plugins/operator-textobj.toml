@@ -1,6 +1,5 @@
 [[plugins]]
 repo = 'kana/vim-operator-user'
-on_event = ['VimEnter']
 
 [[plugins]]
 repo = 'kana/vim-operator-replace'
@@ -31,7 +30,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'
-on_event = ['VimEnter']
 
 [[plugins]]
 repo = 'rhysd/vim-textobj-anyblock'

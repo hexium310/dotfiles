@@ -36,6 +36,8 @@ set showtabline=2
 set signcolumn=yes
 set splitbelow
 set splitright
+let g:loaded_matchit = v:true
+let g:loaded_matchparen = v:true
 
 " Search
 set ignorecase

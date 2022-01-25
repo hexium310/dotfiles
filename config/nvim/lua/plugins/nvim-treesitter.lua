@@ -59,6 +59,10 @@ local function init()
         vim = '" %s',
       },
     },
+    matchup = {
+      enable = true,
+      disable = disables,
+    }
   })
 end
 

@@ -34,48 +34,34 @@ repo = 'kana/vim-textobj-user'
 [[plugins]]
 repo = 'rhysd/vim-textobj-anyblock'
 depends = ['vim-operator-user']
-on_map = {
-  xo = ['ab', 'ib'],
-}
+on_event = ['BufRead']
 
 [[plugins]]
 repo = 'kana/vim-textobj-indent'
 depends = ['vim-operator-user']
-on_map = {
-  xo = ['ai', 'ii', 'aI', 'iI'],
-}
+on_event = ['BufRead']
 
 [[plugins]]
 repo = 'kana/vim-textobj-line'
 depends = ['vim-operator-user']
-on_map = {
-  xo = ['al', 'il'],
-}
+on_event = ['BufRead']
 
 [[plugins]]
 repo = 'kana/vim-textobj-entire'
 depends = ['vim-operator-user']
-on_map = {
-  xo = ['ae', 'ie'],
-}
+on_event = ['BufRead']
 
 [[plugins]]
 repo = 'sgur/vim-textobj-parameter'
 depends = ['vim-operator-user']
-on_map = {
-  xo = ['a,', 'i,', 'i2,'],
-}
+on_event = ['BufRead']
 
 [[plugins]]
 repo = 'Julian/vim-textobj-variable-segment'
 depends = ['vim-operator-user']
-on_map = {
-  xo = ['av', 'iv'],
-}
+on_event = ['BufRead']
 
 [[plugins]]
 repo = 'glts/vim-textobj-comment'
 depends = ['vim-operator-user']
-on_map = {
-  xo = ['ac', 'ic', 'aC'],
-}
+on_event = ['BufRead']

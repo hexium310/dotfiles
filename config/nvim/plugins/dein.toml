@@ -36,7 +36,7 @@ repo = 'ii14/onedark.nvim'
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
-on_event = ['BufEnter']
+on_event = ['BufRead']
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -48,7 +48,7 @@ hook_add = '''
 [[plugins]]
 repo = 'RRethy/vim-hexokinase'
 if = 'executable("go")'
-on_event = ['BufEnter']
+on_event = ['BufRead']
 build = '''
   make hexokinase
 '''
@@ -244,7 +244,7 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
-on_event = ['BufEnter']
+on_event = ['BufRead']
 hook_add = '''
   let g:conflict_marker_enable_mappings = 0
   let g:conflict_marker_enable_highlight = 0

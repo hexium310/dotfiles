@@ -33,6 +33,8 @@ set_highlight('CmpItemAbbrMatch', { guifg = colors.base05, gui = 'bold' })
 set_highlight('CmpItemAbbrMatchFuzzy', { guifg = colors.base05, gui = 'bold' })
 set_highlight('CmpItemKind', { guifg = colors.base0C })
 set_highlight('CmpItemMenu', { guifg = colors.base03 })
+set_highlight('GitSignsAddInline', { guifg = colors.base00, guibg = colors.base0B })
+set_highlight('GitSignsDeleteInline', { guifg = colors.base00, guibg = colors.base08 })
 EOF
 
 highlight DiffAdd guifg=NONE guibg=#334539

@@ -265,20 +265,19 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-depends = ['cmp-nvim-lsp', 'nvim-lsp-installer']
-on_event = ['BufRead']
+on_event = ['BufRead', 'CmdlineEnter']
 hook_post_source = '''
   lua require('plugins/lsp')()
 '''
 
 [[plugins]]
 repo = 'williamboman/nvim-lsp-installer'
-on_event = ['BufRead']
+on_source = ['nvim-lspconfig']
 
 [[plugins]]
 repo = 'jose-elias-alvarez/null-ls.nvim'
-depends = ['nvim-lspconfig', 'plenary.nvim']
-on_event = ['BufRead']
+depends = ['plenary.nvim']
+on_source = ['nvim-lspconfig']
 
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'
@@ -293,7 +292,7 @@ on_source = ['nvim-cmp']
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'
-lazy = true
+on_source = ['nvim-lspconfig']
 
 [[plugins]]
 repo = 'hrsh7th/cmp-buffer'

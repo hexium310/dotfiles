@@ -296,6 +296,13 @@ function M.diagnostic()
       orig_underline_handler.hide(underline_namespace, bufnr)
     end,
   }
+
+  vim.cmd([[
+    sign define DiagnosticSignError text=E texthl=DiagnosticSignError linehl= numhl=
+    sign define DiagnosticSignWarn text=W texthl=DiagnosticSignWarn linehl= numhl=
+    sign define DiagnosticSignInfo text=I texthl=DiagnosticSignInfo linehl= numhl=
+    sign define DiagnosticSignHint text=H texthl=DiagnosticSignHint linehl= numhl=
+  ]])
 end
 
 return M

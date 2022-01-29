@@ -9,7 +9,7 @@ function! plugin#lightline#set_variables() abort
         \      ['anzu'],
         \    ],
         \    'right': [
-        \      ['lineinfo', 'rows'],
+        \      ['lineinfo'],
         \      ['fileencoding', 'filetype'],
         \      ['yarn_start_status'],
         \    ],
@@ -28,7 +28,9 @@ function! plugin#lightline#set_variables() abort
         \    'left': [
         \      ['tabs', 'git_changes']
         \    ],
-        \    'right': [],
+        \    'right': [
+        \      ['git_head']
+        \    ],
         \  },
         \  'component': {
         \    'rows': '%LL',
@@ -46,6 +48,7 @@ function! plugin#lightline#set_variables() abort
         \    'diagnostic_info': 'plugin#lightline#diagnostic_info',
         \    'diagnostic_hint': 'plugin#lightline#diagnostic_hint',
         \    'git_changes': 'plugin#lightline#git_changes',
+        \    'git_head': 'plugin#lightline#git_head',
         \    'readonly': 'plugin#lightline#readonly',
         \  },
         \  'component_type': {
@@ -109,11 +112,7 @@ function! plugin#lightline#mode() abort
 endfunction
 
 function! plugin#lightline#fileencoding() abort
-  if &fileencoding ==# 'utf-8' || &encoding ==# 'utf-u'
-    return ''
-  endif
-
-  return &fileencoding !=# '' ? &fileencoding : &encoding
+  return &fileencoding ==# 'utf-8' ? '' : &fileencoding
 endfunction
 
 function! plugin#lightline#diagnostic_error() abort
@@ -138,6 +137,10 @@ endfunction
 
 function! plugin#lightline#git_changes() abort
   return get(b:, 'gitsigns_status', '')
+endfunction
+
+function! plugin#lightline#git_head() abort
+  return get(b:, 'gitsigns_head', '')
 endfunction
 
 function! plugin#lightline#yarn_start_status() abort

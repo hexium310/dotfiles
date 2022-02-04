@@ -247,7 +247,10 @@ repo = 'rhysd/conflict-marker.vim'
 on_event = ['BufRead']
 hook_add = '''
   let g:conflict_marker_enable_mappings = 0
-  let g:conflict_marker_enable_highlight = 0
+  let g:conflict_marker_highlight_group = ''
+  let g:conflict_marker_begin = '^<<<<<<< .*$'
+  let g:conflict_marker_end   = '^>>>>>>> .*$'
+  let g:conflict_marker_common_ancestors = '^||||||| .*$'
   nmap ]f <Plug>(conflict-marker-next-hunk)
   nmap [f <Plug>(conflict-marker-prev-hunk)
 '''

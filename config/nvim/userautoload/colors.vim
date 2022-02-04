@@ -55,6 +55,11 @@ highlight MatchParen gui=reverse guibg=NONE
 highlight MatchParenCur guibg=#515151
 highlight MatchWord guibg=#454545
 highlight MatchWordCur guibg=#515151
+highlight ConflictMarkerBegin guibg=#255c51
+highlight ConflictMarkerEnd guibg=#254e71
+highlight ConflictMarkerOurs guibg=#203833
+highlight ConflictMarkerTheirs guibg=#243749
+highlight ConflictMarkerCommonAncestorsHunk guibg=#51335a
 
 highlight link EndOfBuffer Ignore
 highlight! link gitcommitComment Comment

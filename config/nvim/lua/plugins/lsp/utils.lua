@@ -6,6 +6,8 @@ M.float_opts = {
   source = 'always',
 }
 
+---@param tbl table
+---@return table
 function M.table_to_string(tbl)
   return vim.inspect(tbl, { newline = '' })
 end
@@ -28,6 +30,8 @@ function M.hover_or_open_vim_help()
   end
 end
 
+---@param command string
+---@param bufnr number
 function M.send_key(command, bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
   local floating_window = vim.F.npcall(vim.api.nvim_buf_get_var, bufnr, 'lsp_floating_preview')
@@ -62,6 +66,18 @@ function M.signature_help()
     return
   end
   vim.lsp.buf.signature_help()
+end
+
+---@param client table
+---@param bool boolean
+function M.set_document_formatting(client, bool)
+  client.resolved_capabilities.document_formatting = bool
+  client.resolved_capabilities.document_range_formatting = bool
+end
+
+function M.get_cmp_nvim_lsp_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  return require('cmp_nvim_lsp').update_capabilities(capabilities)
 end
 
 return M

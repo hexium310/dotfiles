@@ -13,10 +13,9 @@ require('plugins/lsp/install').install({
   'yamlls',
 })
 
-local config = require('plugins/lsp/config')
-config.diagnostic()
-config.null_ls()
-config.lspconfig()
+require('plugins/lsp/diagnostic').setup()
+require('plugins/lsp/null-ls').setup()
+require('plugins/lsp/servers').setup()
 
 local float_opts = vim.tbl_extend('error', {
   scope = 'cursor',

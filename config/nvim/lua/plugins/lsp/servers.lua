@@ -107,6 +107,27 @@ local servers = {
     setup_server(server, opts)
   end,
   ---@param server Server
+  rust_analyzer = function (server)
+    local opts = {
+      tools = {
+        autoSetHints = true,
+        hover_with_actions = false,
+        inlay_hints = {
+          show_parameter_hints = false,
+          show_variable_name = true,
+          other_hints_prefix = '-> ',
+        },
+      },
+      server = vim.tbl_deep_extend('force', server:get_default_options(), general, {
+        standalone = true,
+        capabilities = lsp_utils.get_cmp_nvim_lsp_capabilities(),
+      }),
+    }
+
+    require('rust-tools').setup(opts)
+    server:attach_buffers()
+  end,
+  ---@param server Server
   sumneko_lua = function (server)
     local runtime_path = vim.split(package.path, ';')
     table.insert(runtime_path, '?.lua')

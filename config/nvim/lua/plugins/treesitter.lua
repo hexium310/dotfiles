@@ -1,16 +1,19 @@
-local disables = {
-  'bash',
-  'css',
-}
+local disables = {}
 
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'bash',
+    'comment',
+    'cpp',
     'css',
+    'dockerfile',
+    'html',
     'javascript',
     'json',
     'lua',
+    'python',
     'query',
+    'rust',
     'toml',
     'tsx',
     'typescript',
@@ -24,6 +27,9 @@ require('nvim-treesitter.configs').setup({
   highlight = {
     disable = disables,
     enable = true,
+    custom_captures = {
+      ['operator.try'] = 'Special',
+    },
   },
   playground = {
     disable = disables,

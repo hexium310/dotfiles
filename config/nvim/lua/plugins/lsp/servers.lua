@@ -121,6 +121,13 @@ local servers = {
       server = vim.tbl_deep_extend('force', server:get_default_options(), general, {
         standalone = true,
         capabilities = lsp_utils.get_cmp_nvim_lsp_capabilities(),
+        settings = {
+          ['rust-analyzer'] = {
+            checkOnSave = {
+              command = 'clippy',
+            },
+          },
+        },
       }),
     }
 

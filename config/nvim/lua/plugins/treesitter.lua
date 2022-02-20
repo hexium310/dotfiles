@@ -29,6 +29,7 @@ require('nvim-treesitter.configs').setup({
     enable = true,
     custom_captures = {
       ['operator.try'] = 'Special',
+      ['lifetime'] = 'Special',
     },
   },
   playground = {

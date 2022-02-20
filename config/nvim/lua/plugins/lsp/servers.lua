@@ -136,34 +136,31 @@ local servers = {
   end,
   ---@param server Server
   sumneko_lua = function (server)
-    local runtime_path = vim.split(package.path, ';')
-    table.insert(runtime_path, '?.lua')
-    table.insert(runtime_path, '?/init.lua')
-
-    local opts = {
-      settings = {
-        Lua = {
-          hover = {
-            previewFields = 100,
-          },
-          completion = {
-            requireSeparator = '/',
-          },
-          runtime = {
-            version = 'LuaJIT',
-            path = runtime_path,
-          },
-          diagnostics = {
-            globals = { 'vim' },
-          },
-          workspace = {
-            library = vim.api.nvim_get_runtime_file('lua/', true),
+    local opts = require('lua-dev').setup({
+      runtime_path = true,
+      lspconfig = vim.tbl_deep_extend('force', general, {
+        capabilities = lsp_utils.get_cmp_nvim_lsp_capabilities(),
+        settings = {
+          Lua = {
+            hover = {
+              previewFields = 100,
+            },
+            completion = {
+              requireSeparator = '/',
+            },
           },
         },
-      },
-    }
+      })
+    })
 
-    setup_server(server, opts)
+    local libraries = {}
+    for _, value in ipairs(vim.api.nvim_get_runtime_file('lua/', true)) do
+      libraries[value] = true
+    end
+
+    opts.settings.Lua.workspace.library = vim.tbl_deep_extend('keep', opts.settings.Lua.workspace.library, libraries)
+
+    server:setup(opts)
   end,
   ---@param server Server
   tailwindcss = function (server)

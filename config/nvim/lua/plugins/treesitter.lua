@@ -27,10 +27,6 @@ require('nvim-treesitter.configs').setup({
   highlight = {
     disable = disables,
     enable = true,
-    custom_captures = {
-      ['operator.try'] = 'Special',
-      ['lifetime'] = 'Special',
-    },
   },
   playground = {
     disable = disables,
@@ -69,4 +65,9 @@ require('nvim-treesitter.configs').setup({
     enable = true,
     disable = disables,
   },
+})
+
+require('nvim-treesitter.highlight').set_custom_captures({
+  ['operator.try'] = 'Special',
+  ['lifetime'] = 'Special',
 })

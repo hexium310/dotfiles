@@ -124,6 +124,8 @@ hook_add = '''
 repo = '$FZF_HOME'
 if = 'executable("fzf")'
 on_func = ['fzf#']
+# Don't update by dein because fzf is managed with a plugin manager for Zsh
+frozen = true
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'

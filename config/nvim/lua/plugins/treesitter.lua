@@ -11,6 +11,7 @@ require('nvim-treesitter.configs').setup({
     'javascript',
     'json',
     'lua',
+    'make',
     'python',
     'query',
     'rust',

@@ -35,6 +35,7 @@ set_highlight('CmpItemKind', { guifg = colors.base0C })
 set_highlight('CmpItemMenu', { guifg = colors.base03 })
 set_highlight('GitSignsAddInline', { guifg = colors.base00, guibg = colors.base0B })
 set_highlight('GitSignsDeleteInline', { guifg = colors.base00, guibg = colors.base08 })
+set_highlight('Whitespace', { guifg = colors.base02 })
 EOF
 
 highlight DiffAdd guifg=NONE guibg=#334539

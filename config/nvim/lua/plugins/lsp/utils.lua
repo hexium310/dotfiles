@@ -13,10 +13,19 @@ function M.table_to_string(tbl)
 end
 
 function M.disable_cursor_hold()
-  vim.cmd([[
-    setlocal eventignore+=CursorHold
-    autocmd CursorMoved,CursorMovedI,BufHidden,InsertCharPre <buffer> ++once setlocal eventignore-=CursorHold
-  ]])
+  vim.opt.eventignore:append('CursorHold')
+
+  vim.api.nvim_create_augroup('LspConfig.DisableCursorHold', { clear = true })
+
+  vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'BufHidden', 'InsertCharPre' }, {
+    group = 'LspConfig.DisableCursorHold',
+    buffer = vim.api.nvim_get_current_buf(),
+    once = true,
+    desc = 'Prevent floating window with diagnostic opening while one with hover information is opened',
+    callback = function ()
+      vim.opt.eventignore:remove('CursorHold')
+    end
+  })
 end
 
 function M.hover_or_open_vim_help()

@@ -312,3 +312,9 @@ repo = 'antoinemadec/FixCursorHold.nvim'
 hook_add = '''
   let g:cursorhold_updatetime = 100
 '''
+
+[[plugins]]
+repo = 'hexium310/diffmt.nvim'
+hook_add = '''
+  command! Diffmt lua require('diffmt').diff()
+'''

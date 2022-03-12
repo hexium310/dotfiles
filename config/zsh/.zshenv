@@ -37,6 +37,7 @@ if [[ -o login ]]; then
     }
 
     __link_bin_directory_for_homebrew_keg_only /usr/local/opt/ruby/bin
+    __link_bin_directory_for_homebrew_keg_only /usr/local/opt/curl/bin
 
     unfunction __link_bin_directory_for_homebrew_keg_only
 fi

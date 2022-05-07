@@ -1,3 +1,5 @@
+local lspconfig = require('lspconfig')
+
 local utils = require('plugins/utils')
 local lsp_utils = require('plugins/lsp/utils')
 local diagnostic = require('plugins/lsp/diagnostic')
@@ -74,7 +76,7 @@ local general = {
 ---@param server Server
 ---@param opts table|nil
 local function setup_server(server, opts)
-  server:setup(vim.tbl_deep_extend('force', general, {
+  lspconfig[server.name].setup(vim.tbl_deep_extend('force', general, {
     capabilities = lsp_utils.get_cmp_nvim_lsp_capabilities(),
   }, opts or {}))
 end
@@ -130,8 +132,8 @@ local servers = {
 
     setup_server(server, opts)
   end,
-  ---@param server Server
-  rust_analyzer = function (server)
+  ---@param _ Server
+  rust_analyzer = function (_)
     local opts = {
       tools = {
         autoSetHints = true,
@@ -142,7 +144,7 @@ local servers = {
           other_hints_prefix = '-> ',
         },
       },
-      server = vim.tbl_deep_extend('force', server:get_default_options(), general, {
+      server = vim.tbl_deep_extend('force', general, {
         standalone = true,
         capabilities = lsp_utils.get_cmp_nvim_lsp_capabilities(),
         settings = {
@@ -156,7 +158,6 @@ local servers = {
     }
 
     require('rust-tools').setup(opts)
-    server:attach_buffers()
   end,
   ---@param server Server
   sumneko_lua = function (server)
@@ -179,7 +180,7 @@ local servers = {
 
     vim.list_extend(opts.settings.Lua.workspace.library, vim.api.nvim_get_runtime_file('lua/', true))
 
-    server:setup(opts)
+    setup_server(server, opts)
   end,
   ---@param server Server
   tailwindcss = function (server)
@@ -245,9 +246,11 @@ setmetatable(servers, {
 })
 
 function M.setup()
-  require('nvim-lsp-installer').on_server_ready(function (server)
+  require('nvim-lsp-installer').setup()
+
+  for _, server in ipairs(require('nvim-lsp-installer').get_installed_servers()) do
     servers[server.name](server)
-  end)
+  end
 end
 
 M.general = general

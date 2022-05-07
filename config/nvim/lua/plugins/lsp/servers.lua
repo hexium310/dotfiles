@@ -177,12 +177,7 @@ local servers = {
       })
     })
 
-    local libraries = {}
-    for _, value in ipairs(vim.api.nvim_get_runtime_file('lua/', true)) do
-      libraries[value] = true
-    end
-
-    opts.settings.Lua.workspace.library = vim.tbl_deep_extend('keep', opts.settings.Lua.workspace.library, libraries)
+    vim.list_extend(opts.settings.Lua.workspace.library, vim.api.nvim_get_runtime_file('lua/', true))
 
     server:setup(opts)
   end,

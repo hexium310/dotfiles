@@ -71,7 +71,7 @@ function M.rename_file()
 end
 
 function M.signature_help()
-  if vim.tbl_isempty(vim.tbl_filter(function (v) return v.resolved_capabilities.signature_help end, vim.lsp.buf_get_clients())) then
+  if vim.tbl_isempty(vim.tbl_filter(function (v) return v.server_capabilities.signatureHelpProvider end, vim.lsp.buf_get_clients())) then
     return
   end
   vim.lsp.buf.signature_help()
@@ -80,8 +80,8 @@ end
 ---@param client table
 ---@param bool boolean
 function M.set_document_formatting(client, bool)
-  client.resolved_capabilities.document_formatting = bool
-  client.resolved_capabilities.document_range_formatting = bool
+  client.server_capabilities.documentFormattingProvider = bool
+  client.server_capabilities.documentRangeFormattingProvider = bool
 end
 
 function M.get_cmp_nvim_lsp_capabilities()

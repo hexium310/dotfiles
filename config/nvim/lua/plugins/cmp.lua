@@ -22,14 +22,14 @@ cmp.setup({
       vim.fn['vsnip#anonymous'](args.body)
     end,
   },
-  mapping = {
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-x><C-n>'] = cmp.mapping.complete(),
     ['<C-y>'] = cmp.mapping.confirm({
       select = true,
     }),
-  },
+  }),
   formatting = {
     format = function (entry, vim_item)
       vim_item.menu = ({
@@ -41,8 +41,10 @@ cmp.setup({
       return vim_item
     end,
   },
-  documentation = {
-    border = 'double',
+  window = {
+    documentation = cmp.config.window.bordered({
+      border = 'double',
+    }),
   },
   preselect = cmp.PreselectMode.None,
 })

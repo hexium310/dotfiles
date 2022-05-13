@@ -88,7 +88,7 @@ zle -N zle-line-finish _zsh_prompt_redraw
 zle -N zle-keymap-select _zsh_prompt_redraw
 export PROMPT=''
 
-if [[ -n $NVIM_LISTEN_ADDRESS ]]; then
+if [[ -n $NVIM ]]; then
     __neovim_set_pwd() {
         ( $ZDOTDIR/plugins/terminal.py cd & ) > /dev/null
     }

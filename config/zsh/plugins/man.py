@@ -2,7 +2,7 @@ import os
 import pynvim
 import sys
 
-address = os.environ.get('NVIM_LISTEN_ADDRESS')
+address = os.environ.get('NVIM')
 if not address:
     sys.exit(0)
 

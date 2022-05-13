@@ -14,12 +14,12 @@ alias gpg='LANG=C gpg'
 
 if (( $+commands[nvim] )); then
     export MANPAGER='nvim +Man!'
-    if [[ -n $NVIM_LISTEN_ADDRESS ]]; then
+    if [[ -n $NVIM ]]; then
         export MANPAGER='python3 $ZDOTDIR/plugins/man.py'
     fi
 fi
 
-if [[ -n $NVIM_LISTEN_ADDRESS ]] && (( $+commands[nvr] )); then
+if [[ -n $NVIM ]] && (( $+commands[nvr] )); then
     alias vim='nvr --remote-tab'
     alias :q='nvr --remote-send "<C-\><C-n>:quit<Cr>"'
 fi

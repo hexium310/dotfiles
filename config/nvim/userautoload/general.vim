@@ -76,6 +76,7 @@ augroup init_vim
   autocmd FileType markdown setlocal listchars+=trail:·
   autocmd FileType vim autocmd OptionSet * ++once setlocal iskeyword-=#
   autocmd TextYankPost * silent! lua vim.highlight.on_yank({ higroup = 'Yanked', timeout = 100 })
+  autocmd BufEnter * if ! exists('b:terminal_job_id') | setlocal winhighlight= | endif
 augroup END
 
 augroup line_number

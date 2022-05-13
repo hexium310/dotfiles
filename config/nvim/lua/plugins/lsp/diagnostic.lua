@@ -67,7 +67,7 @@ local function show_higest_severity_underline()
     show = function (_, bufnr, _, opts)
       local diagnostics = vim.diagnostic.get(bufnr)
       local linter, lsp = separate_and_sort(diagnostics)
-      diagnostics = vim.fn.flatten({ vim.tbl_values(linter), vim.tbl_values(lsp) })
+      diagnostics = vim.fn.flatten({ vim.tbl_values(vim.fn.reverse(linter)), vim.tbl_values(vim.fn.reverse(lsp)) })
 
       orig_underline_handler.show(underline_namespace, bufnr, diagnostics, opts)
     end,

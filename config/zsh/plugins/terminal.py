@@ -23,7 +23,7 @@ def cd(args):
         sys.exit(1)
 
     nvim.buffers[int(buffer_id)].vars['terminal_current_directory'] = args.directory
-    nvim.eval('lightline#update()')
+    nvim.command('redrawstatus')
 
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers()

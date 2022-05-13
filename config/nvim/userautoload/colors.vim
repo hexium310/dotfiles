@@ -3,6 +3,8 @@ colorscheme base16-tomorrow-night-eighties
 
 lua << EOF
 local base16 = require('base16-colorscheme')
+local onedark = require('onedark/colors')
+
 local colors = base16.colorschemes['tomorrow-night-eighties']
 
 local function set_highlight(name, opt)
@@ -36,6 +38,9 @@ set_highlight('TSVariable', { guifg = colors.base05 })
 set_highlight('TSVariableBuiltin', { guifg = colors.base05, gui = 'italic' })
 set_highlight('TerminalCurrentDirectory', { guifg = colors.base09, guibg = '#3E4452' })
 set_highlight('Whitespace', { guifg = colors.base02 })
+set_highlight('StatusLineDiagnosticError', { guifg = onedark.black.gui, guibg = onedark.red.gui })
+set_highlight('StatusLineDiagnosticWarn', { guifg = onedark.black.gui, guibg = onedark.yellow.gui })
+set_highlight('StatusLineDiagnosticHint', { guifg = onedark.black.gui, guibg = onedark.cyan.gui })
 EOF
 
 highlight ConflictMarkerBegin guibg=#255c51

@@ -11,7 +11,6 @@ local general = {
     RenameFile = {
       function ()
         require('plugins/lsp/utils').rename_file()
-        vim.fn['lightline#update']()
       end,
     },
   },

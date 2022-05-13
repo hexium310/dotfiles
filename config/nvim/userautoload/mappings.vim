@@ -10,6 +10,7 @@ nnoremap [d [c
 nnoremap ]d ]c
 nnoremap s <NOP>
 vnoremap v $h
+nnoremap <silent> <Esc><Esc> :nohlsearch<Cr>
 
 augroup mappings
   autocmd!

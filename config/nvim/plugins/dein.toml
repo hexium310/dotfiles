@@ -59,17 +59,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'osyo-manga/vim-anzu'
-on_map = '<Plug>'
-hook_add = '''
-  nmap <silent> <Esc><Esc> <Plug>(anzu-clear-search-status):nohlsearch<Cr>
-  nmap n <Plug>(anzu-n)zz
-  nmap N <Plug>(anzu-N)zz
-  nmap * <Plug>(anzu-star)zz
-  nmap # <Plug>(anzu-sharp)zz
-'''
-
-[[plugins]]
 repo = 'qpkorr/vim-bufkill'
 on_event = ['CmdlineEnter']
 hook_add = '''

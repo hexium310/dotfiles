@@ -274,6 +274,13 @@ depends = ['plenary.nvim']
 on_source = ['nvim-lspconfig']
 
 [[plugins]]
+repo = 'ray-x/lsp_signature.nvim'
+on_source = ['nvim-lspconfig']
+hook_post_source = '''
+  lua require('plugins/lsp/signature')
+'''
+
+[[plugins]]
 repo = 'hrsh7th/nvim-cmp'
 on_event = ['InsertEnter']
 hook_post_source = '''

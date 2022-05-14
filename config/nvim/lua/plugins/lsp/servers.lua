@@ -58,17 +58,6 @@ local general = {
         }, lsp_utils.float_opts))
       end,
     })
-
-    utils.create_unique_autocmd({ 'CursorHoldI' }, {
-      group = 'LspConfig',
-      buffer = bufnr,
-      desc = 'Open signature help',
-      callback = function ()
-        if not require('cmp').visible() then
-          require('plugins/lsp/utils').signature_help()
-        end
-      end,
-    })
   end,
 }
 
@@ -245,7 +234,7 @@ setmetatable(servers, {
 })
 
 function M.setup()
-  require('nvim-lsp-installer').setup()
+  require('nvim-lsp-installer').setup({})
 
   for _, server in ipairs(require('nvim-lsp-installer').get_installed_servers()) do
     servers[server.name](server)

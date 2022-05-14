@@ -132,6 +132,17 @@ require('lualine').setup({
             bg = onedark.black.gui,
           },
         },
+        fmt = function (str)
+          local bufnr = vim.fn.bufnr(str)
+
+          if bufnr <= 0 then
+            return str
+          end
+
+          local modified = vim.api.nvim_buf_get_option(bufnr, 'modified') and ' +' or ' '
+
+          return str .. modified
+        end,
       },
     },
     lualine_b = {

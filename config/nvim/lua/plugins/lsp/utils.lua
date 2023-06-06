@@ -84,9 +84,4 @@ function M.set_document_formatting(client, bool)
   client.server_capabilities.documentRangeFormattingProvider = bool
 end
 
-function M.get_cmp_nvim_lsp_capabilities()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  return require('cmp_nvim_lsp').update_capabilities(capabilities)
-end
-
 return M

@@ -11,7 +11,7 @@ local config = vim.tbl_deep_extend('force', general, {
   sources = {
     null_ls.builtins.diagnostics.luacheck,
   },
-  capabilities = lsp_utils.get_cmp_nvim_lsp_capabilities(),
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
   on_attach = function (_, bufnr)
     local namespaces = vim.tbl_map(function (source)
       return require('null-ls/diagnostics').get_namespace(source.id)

@@ -65,7 +65,7 @@ local general = {
 ---@param opts table|nil
 local function setup_server(server, opts)
   lspconfig[server.name].setup(vim.tbl_deep_extend('force', general, {
-    capabilities = lsp_utils.get_cmp_nvim_lsp_capabilities(),
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
   }, opts or {}))
 end
 
@@ -134,7 +134,7 @@ local servers = {
       },
       server = vim.tbl_deep_extend('force', general, {
         standalone = true,
-        capabilities = lsp_utils.get_cmp_nvim_lsp_capabilities(),
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
         settings = {
           ['rust-analyzer'] = {
             checkOnSave = {
@@ -152,7 +152,7 @@ local servers = {
     local opts = require('lua-dev').setup({
       runtime_path = true,
       lspconfig = vim.tbl_deep_extend('force', general, {
-        capabilities = lsp_utils.get_cmp_nvim_lsp_capabilities(),
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
         settings = {
           Lua = {
             hover = {

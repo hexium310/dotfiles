@@ -69,7 +69,5 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
-require('nvim-treesitter.highlight').set_custom_captures({
-  ['operator.try'] = 'Special',
-  ['lifetime'] = 'Special',
-})
+vim.api.nvim_set_hl(0, '@operator.try', { link = 'Special' })
+vim.api.nvim_set_hl(0, '@lifetime', { link = 'Special' })

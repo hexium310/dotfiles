@@ -12,6 +12,7 @@ set title
 set updatetime=300
 set virtualedit=block
 set whichwrap=
+set mouse=
 
 " Display
 filetype plugin indent on

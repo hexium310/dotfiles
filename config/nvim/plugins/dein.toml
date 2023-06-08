@@ -9,8 +9,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'nathom/filetype.nvim'
-hook_post_source = '''
-  lua require('plugins/filetype')
+lua_post_source = '''
+  require('plugins/filetype')
 '''
 
 [[plugins]]
@@ -26,8 +26,8 @@ on_event = ['BufRead']
 [[plugins]]
 repo = 'nvim-lualine/lualine.nvim'
 on_event = ['VimEnter']
-hook_post_source = '''
-  lua require('plugins/lualine')
+lua_post_source = '''
+  require('plugins/lualine')
 '''
 
 [[plugins]]
@@ -147,27 +147,27 @@ on_cmd = [
 on_map = {
   ni = '<C-t>',
 }
-hook_post_source = '''
-  lua require('plugins/toggleterm')
+lua_post_source = '''
+  require('plugins/toggleterm')
 '''
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
 on_event = ['CursorHold', 'CursorMoved', 'InsertEnter', 'CmdlineEnter']
-hook_post_source = '''
-  lua require('plugins/bqf')
+lua_post_source = '''
+  require('plugins/bqf')
 '''
 
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
-hook_post_source = '''
-  lua require('plugins/autopairs')
+lua_post_source = '''
+  require('plugins/autopairs')
 '''
 
 [[plugins]]
 repo = 'numToStr/Comment.nvim'
-hook_post_source = '''
-  lua require('plugins/comment')
+lua_post_source = '''
+  require('plugins/comment')
 '''
 
 [[plugins]]
@@ -215,8 +215,8 @@ hook_add ='''
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
 on_event = ['BufRead']
-hook_post_source = '''
-  lua require('plugins/gitsigns')
+lua_post_source = '''
+  require('plugins/gitsigns')
 '''
 
 [[plugins]]
@@ -239,15 +239,15 @@ on_lua = ['plenary']
 [[plugins]]
 repo = 'notomo/lreload.nvim'
 on_ft = ['lua']
-hook_post_source = '''
-  lua require('lreload').enable('plugins')
+lua_post_source = '''
+  require('lreload').enable('plugins')
 '''
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 on_event = ['BufRead', 'CmdlineEnter']
-hook_post_source = '''
-  lua require('plugins/lsp')
+lua_post_source = '''
+  require('plugins/lsp')
 '''
 
 [[plugins]]
@@ -262,15 +262,15 @@ on_source = ['nvim-lspconfig']
 [[plugins]]
 repo = 'ray-x/lsp_signature.nvim'
 on_source = ['nvim-lspconfig']
-hook_post_source = '''
-  lua require('plugins/lsp/signature')
+lua_post_source = '''
+  require('plugins/lsp/signature')
 '''
 
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'
 on_event = ['InsertEnter']
-hook_post_source = '''
-  lua require('plugins/cmp')
+lua_post_source = '''
+  require('plugins/cmp')
 '''
 
 [[plugins]]

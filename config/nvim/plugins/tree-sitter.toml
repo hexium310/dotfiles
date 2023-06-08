@@ -1,8 +1,8 @@
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
 on_event = ['BufRead', 'CmdlineEnter']
-hook_post_source = '''
-  lua require('plugins/treesitter')
+lua_post_source = '''
+  require('plugins/treesitter')
 '''
 
 [[plugins]]

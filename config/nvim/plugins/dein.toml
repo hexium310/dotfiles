@@ -89,8 +89,9 @@ on_map = {
   i = '<C-r>',
 }
 on_cmd = ['Registers']
-hook_post_source = '''
-  lua require('plugins/registers')
+hook_add = '''
+  let g:registers_window_min_height = 15
+  let g:registers_window_border = 'single'
 '''
 
 [[plugins]]

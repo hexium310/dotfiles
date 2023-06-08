@@ -84,6 +84,7 @@ on_map = ['<C-a>', '<C-x>']
 
 [[plugins]]
 repo = 'tversteeg/registers.nvim'
+rev = 'f354159'
 on_map = {
   nv = '"',
   i = '<C-r>',

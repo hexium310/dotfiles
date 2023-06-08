@@ -6,5 +6,5 @@
       (string) @none
     )
   )
-  (#contains? @property "hook_")
+  (#match? @property "^\(hook|lua\)_")
 )

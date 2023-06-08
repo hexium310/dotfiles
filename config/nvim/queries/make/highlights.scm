@@ -1,3 +1,4 @@
+;extends
 (define_directive
   [
     "define"

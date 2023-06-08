@@ -1,3 +1,4 @@
+;extends
 (hl_group) @function.macro
 ["return"] @keyword.return
 (

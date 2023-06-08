@@ -1,3 +1,4 @@
+;extends
 ; FIXME: Commas multiplies when I switch field that is table
 (table_constructor
   "," @_start .

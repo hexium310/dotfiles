@@ -1,3 +1,4 @@
+;extends
 (jsx_opening_element ((identifier) @constructor
  (#match? @constructor "^[A-Z]")))
 

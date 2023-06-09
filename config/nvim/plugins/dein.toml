@@ -8,12 +8,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'nathom/filetype.nvim'
-lua_post_source = '''
-  require('plugins/filetype')
-'''
-
-[[plugins]]
 repo = 'RRethy/nvim-base16'
 
 [[plugins]]

@@ -22,4 +22,4 @@ if isdirectory(s:dein_core_dir)
   endif
 endif
 
-runtime! userautoload/*.vim
+runtime! userautoload/*.{vim,lua}

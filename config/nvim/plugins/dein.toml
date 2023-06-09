@@ -14,10 +14,6 @@ repo = 'RRethy/nvim-base16'
 repo = 'ii14/onedark.nvim'
 
 [[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-on_event = ['BufRead']
-
-[[plugins]]
 repo = 'nvim-lualine/lualine.nvim'
 on_event = ['VimEnter']
 lua_post_source = '''

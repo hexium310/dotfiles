@@ -39,6 +39,7 @@ require('lualine').setup({
       },
       {
         'filename',
+        newfile_status = true,
         symbols = {
           modified = ' +',
           readonly = '',

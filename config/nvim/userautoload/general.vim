@@ -85,7 +85,6 @@ augroup line_number
   autocmd!
   autocmd FileType fzf autocmd OptionSet * ++once setlocal nonumber norelativenumber
   autocmd FileType help autocmd OptionSet * ++once setlocal number norelativenumber
-  autocmd FileType toggleterm autocmd OptionSet * ++once startinsert
   autocmd BufEnter,InsertLeave,WinEnter * if index(filetypes, &ft, 0, v:true) >= 0 |
               \   setlocal nonumber norelativenumber |
               \ else |

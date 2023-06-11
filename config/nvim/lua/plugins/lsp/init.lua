@@ -13,8 +13,8 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     'eslint',
     'jsonls',
+    'lua_ls',
     'rust_analyzer',
-    'sumneko_lua',
     'tailwindcss',
     'tsserver',
     'vimls',

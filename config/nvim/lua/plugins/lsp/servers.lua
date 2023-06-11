@@ -148,25 +148,25 @@ local servers = {
     require('rust-tools').setup(opts)
   end,
   ---@param server string
-  sumneko_lua = function (server)
-    local opts = require('lua-dev').setup({
-      runtime_path = true,
-      lspconfig = vim.tbl_deep_extend('force', general, {
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
-        settings = {
-          Lua = {
-            hover = {
-              previewFields = 100,
-            },
-            completion = {
-              requireSeparator = '/',
-            },
+  lua_ls = function (server)
+    require('neodev').setup({})
+
+    local opts = {
+      on_attach = function (client, bufnr)
+        client.server_capabilities.semanticTokensProvider = nil
+        general.on_attach(client, bufnr)
+      end,
+      settings = {
+        Lua = {
+          hover = {
+            previewFields = 100,
+          },
+          completion = {
+            requireSeparator = '/',
           },
         },
-      })
-    })
-
-    vim.list_extend(opts.settings.Lua.workspace.library, vim.api.nvim_get_runtime_file('lua/', true))
+      },
+    }
 
     setup_server(server, opts)
   end,

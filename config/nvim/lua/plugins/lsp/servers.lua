@@ -61,16 +61,16 @@ local general = {
   end,
 }
 
----@param server Server
+---@param server string
 ---@param opts table|nil
 local function setup_server(server, opts)
-  lspconfig[server.name].setup(vim.tbl_deep_extend('force', general, {
+  lspconfig[server].setup(vim.tbl_deep_extend('force', general, {
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
   }, opts or {}))
 end
 
 local servers = {
-  ---@param server Server
+  ---@param server string
   eslint = function (server)
     local opts = {
       on_attach = function (client, bufnr)
@@ -101,7 +101,7 @@ local servers = {
 
     setup_server(server, opts)
   end,
-  ---@param server Server
+  ---@param server string
   jsonls = function (server)
     local json_schemas = require('plugins/lsp/json_schemas')
     json_schemas.setup()
@@ -120,7 +120,7 @@ local servers = {
 
     setup_server(server, opts)
   end,
-  ---@param _ Server
+  ---@param _ string
   rust_analyzer = function (_)
     local opts = {
       tools = {
@@ -147,7 +147,7 @@ local servers = {
 
     require('rust-tools').setup(opts)
   end,
-  ---@param server Server
+  ---@param server string
   sumneko_lua = function (server)
     local opts = require('lua-dev').setup({
       runtime_path = true,
@@ -170,7 +170,7 @@ local servers = {
 
     setup_server(server, opts)
   end,
-  ---@param server Server
+  ---@param server string
   tailwindcss = function (server)
     local opts = {
       filetypes = {
@@ -182,7 +182,7 @@ local servers = {
 
     setup_server(server, opts)
   end,
-  ---@param server Server
+  ---@param server string
   tsserver = function (server)
     local opts = {
       on_attach = function (client, bufnr)
@@ -193,7 +193,7 @@ local servers = {
 
     setup_server(server, opts)
   end,
-  ---@param server Server
+  ---@param server string
   ['null-ls'] = function (server)
     local opts = {
       on_attach = function (_, bufnr)
@@ -224,21 +224,11 @@ local servers = {
   end,
 }
 
-setmetatable(servers, {
-  __index = function (_, _)
-    ---@param server Server
-    return function (server)
-      setup_server(server)
-    end
-  end,
-})
-
 function M.setup()
-  require('nvim-lsp-installer').setup({})
-
-  for _, server in ipairs(require('nvim-lsp-installer').get_installed_servers()) do
-    servers[server.name](server)
-  end
+  require('mason-lspconfig').setup({})
+  require('mason-lspconfig').setup_handlers(vim.tbl_deep_extend('force', {
+    setup_server,
+  }, servers))
 end
 
 M.general = general

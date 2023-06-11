@@ -1,23 +1,25 @@
 vim.lsp.stop_client(vim.lsp.get_active_clients())
 
-local augroup = vim.api.nvim_create_augroup('LspInstallerConfig', {})
-vim.api.nvim_create_autocmd('FileType', {
-  group = augroup,
-  pattern = 'lsp-installer',
-  callback = function ()
-    vim.api.nvim_win_set_config(0, { border = "rounded" })
-  end
+require('mason').setup({
+  ui = {
+    border = 'rounded',
+    keymaps = {
+      apply_language_filter = '<C-g>',
+    },
+  },
 })
 
-require('plugins/lsp/install').install({
-  'eslint',
-  'jsonls',
-  'rust_analyzer',
-  'sumneko_lua',
-  'tailwindcss',
-  'tsserver',
-  'vimls',
-  'yamlls',
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'eslint',
+    'jsonls',
+    'rust_analyzer',
+    'sumneko_lua',
+    'tailwindcss',
+    'tsserver',
+    'vimls',
+    'yamlls',
+  },
 })
 
 require('plugins/lsp/diagnostic').setup()

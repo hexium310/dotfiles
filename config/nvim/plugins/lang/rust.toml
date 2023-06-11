@@ -4,4 +4,4 @@ on_ft = ['rust']
 
 [[plugins]]
 repo = 'simrat39/rust-tools.nvim'
-on_lua = ['nvim-lsp-installer']
+on_lua = ['mason-lspconfig']

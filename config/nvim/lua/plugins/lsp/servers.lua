@@ -124,11 +124,9 @@ local servers = {
   rust_analyzer = function (_)
     local opts = {
       tools = {
-        autoSetHints = true,
-        hover_with_actions = false,
         inlay_hints = {
+          auto = true,
           show_parameter_hints = false,
-          show_variable_name = true,
           other_hints_prefix = '-> ',
         },
       },

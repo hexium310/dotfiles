@@ -240,12 +240,16 @@ lua_post_source = '''
   require('plugins/lsp')
 '''
 
+# Lazy-loading this plugin is not recommended.
 [[plugins]]
 repo = 'williamboman/mason.nvim'
-on_source = ['nvim-lspconfig']
+lua_post_source = '''
+  require('plugins/mason')
+'''
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
+depends = ['mason.nvim', 'nvim-lspconfig']
 on_source = ['nvim-lspconfig']
 
 [[plugins]]

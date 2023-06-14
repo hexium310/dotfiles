@@ -34,6 +34,5 @@ gitsigns.setup({
   end,
 })
 
-vim.cmd([[
-  command! ToggleDeletedLine lua require('gitsigns').toggle_deleted()
-]])
+vim.api.nvim_create_user_command('ToggleDeletedLine', gitsigns.toggle_deleted, {})
+vim.api.nvim_create_user_command('ToggleLineBlame', gitsigns.toggle_current_line_blame, {})

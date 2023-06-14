@@ -30,9 +30,7 @@ end
 
 function M.hover_or_open_vim_help()
   if vim.bo.filetype == 'vim' or vim.bo.filetype == 'help' then
-    vim.cmd([[
-      silent! execute 'h ' .. expand('<cword>')
-    ]])
+    vim.cmd.help({ vim.fn.expand('<cword>'), mods = { emsg_silent = true } })
   else
     vim.lsp.buf.hover()
     require('plugins/lsp/utils').disable_cursor_hold()
@@ -48,7 +46,7 @@ function M.send_key(command, bufnr)
   if floating_window and vim.api.nvim_win_is_valid(floating_window) and
     vim.api.nvim_win_get_height(floating_window) < vim.api.nvim_buf_line_count(vim.api.nvim_win_get_buf(floating_window)) then
     vim.api.nvim_win_call(floating_window, function ()
-      vim.cmd(([[execute "normal %s"]]):format(escaped_command))
+      vim.cmd.normal(escaped_command)
     end)
     return
   end

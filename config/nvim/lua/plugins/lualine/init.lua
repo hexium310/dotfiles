@@ -30,7 +30,7 @@ require('lualine').setup({
       {
         -- readonly
         function ()
-          return vim.api.nvim_get_option('readonly') and 'RO' or ''
+          return vim.api.nvim_get_option_value('readonly', {}) and 'RO' or ''
         end,
         color = {
           fg = onedark.black.gui,
@@ -88,7 +88,7 @@ require('lualine').setup({
       {
         -- fileencoding
         function ()
-          local encoding = vim.api.nvim_get_option('fileencoding')
+          local encoding = vim.api.nvim_get_option_value('fileencoding', {})
           return encoding == 'utf-8' and '' or encoding
         end,
       },
@@ -140,7 +140,7 @@ require('lualine').setup({
             return str
           end
 
-          local modified = vim.api.nvim_buf_get_option(bufnr, 'modified') and ' +' or ' '
+          local modified = vim.api.nvim_get_option_value('modified', { buf = bufnr }) and ' +' or ' '
 
           return str .. modified
         end,

@@ -7,5 +7,3 @@ require('toggleterm').setup({
   persist_size = true,
   direction = 'horizontal',
 })
-
-vim.cmd([[command! -nargs=* Yarn call luaeval('require("toggleterm").exec("yarn " .. _A, 4, 15)', <q-args>)]])

@@ -23,5 +23,3 @@ nnoremap q <NOP>
 nnoremap qq q
 nnoremap q: <NOP>
 noremap <C-q> <NOP>
-
-iabbrev :w <C-g>u:w

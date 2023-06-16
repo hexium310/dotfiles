@@ -157,6 +157,7 @@ lua_post_source = '''
 
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
+on_event = ['InsertEnter']
 lua_post_source = '''
   require('plugins/autopairs')
 '''

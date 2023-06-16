@@ -23,3 +23,5 @@ nnoremap q <NOP>
 nnoremap qq q
 nnoremap q: <NOP>
 noremap <C-q> <NOP>
+
+cabbrev hc helpclose

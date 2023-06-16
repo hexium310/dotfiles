@@ -21,6 +21,7 @@ set cursorline
 set cursorlineopt=number
 set diffopt+=vertical
 set fillchars=diff:\ ,
+set helpheight=0
 set lazyredraw
 set list
 set listchars=tab:»-

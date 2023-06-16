@@ -1,11 +1,11 @@
 local M = {}
 
-local dir = vim.fn.stdpath('data') .. '/schemastore'
-local file = dir .. '/catalog.json'
+local dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'schemastore')
+local file = vim.fs.joinpath(dir, 'catalog.json')
 
 function M.download()
   vim.fn.mkdir(dir, 'p')
-  vim.fn.jobstart({
+  vim.system({
     'curl',
     '-sL',
     '-o',
@@ -17,7 +17,15 @@ function M.download()
 end
 
 function M.decode()
-  return vim.fn.json_decode(vim.fn.readfile(file))
+  local file_handle = assert(io.open(file))
+  local json = vim.json.decode(file_handle:read("*a"))
+  file_handle:close()
+
+  return json
+end
+
+function M.get_catalog_path()
+  return file
 end
 
 function M.setup()

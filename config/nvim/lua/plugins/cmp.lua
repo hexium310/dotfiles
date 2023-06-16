@@ -49,5 +49,7 @@ cmp.setup({
   preselect = cmp.PreselectMode.None,
 })
 
+-- -- After reloading the config multiple `()`s are displayed when confirming a completion item, so reset an event listener.
+-- -- event:on() returns a function to remove an event listener.
 ;(_G.cmp.remove_autopairs_confirm_done_event or function () end)()
 _G.cmp.remove_autopairs_confirm_done_event = cmp.event:on('confirm_done', require('nvim-autopairs/completion/cmp').on_confirm_done())

@@ -164,6 +164,7 @@ lua_post_source = '''
 
 [[plugins]]
 repo = 'numToStr/Comment.nvim'
+on_map = ['gb', 'gc']
 lua_post_source = '''
   require('plugins/comment')
 '''

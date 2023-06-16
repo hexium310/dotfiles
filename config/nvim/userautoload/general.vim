@@ -28,7 +28,7 @@ set nofoldenable
 set noshowmode
 set nowrap
 set number
-set numberwidth=5
+set numberwidth=7
 set pumheight=20
 set relativenumber
 set scrolloff=2

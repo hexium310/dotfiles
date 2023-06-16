@@ -21,6 +21,13 @@ lua_post_source = '''
 '''
 
 [[plugins]]
+repo = 'luukvbaal/statuscol.nvim'
+on_event = ['BufRead']
+lua_post_source = '''
+  require('plugins/statuscol')
+'''
+
+[[plugins]]
 repo = 'RRethy/vim-hexokinase'
 if = 'executable("go")'
 on_event = ['BufRead']

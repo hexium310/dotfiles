@@ -5,12 +5,10 @@ local actions = require('gitsigns.actions')
 
 gitsigns.setup({
   signs = {
-    changedelete = {
-      numhl = 'GitSignsChangeDeleteNr',
-    },
+    delete       = { text = '┃' },
+    topdelete    = { text = '┃' },
+    changedelete = { text = '┃' },
   },
-  signcolumn = false,
-  numhl = true,
   preview_config = {
     border = 'double',
     -- Display a hunk preview over a LSP popup (zindex=50)

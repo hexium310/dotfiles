@@ -1,5 +1,7 @@
 vim.lsp.stop_client(vim.lsp.get_active_clients())
 
+require('lspconfig.ui.windows').default_options.border = 'rounded'
+
 require('mason-lspconfig').setup({
   ensure_installed = {
     'eslint',

@@ -190,35 +190,6 @@ local servers = {
 
     setup_server(server, opts)
   end,
-  ---@param server string
-  ['null-ls'] = function (server)
-    local opts = {
-      on_attach = function (_, bufnr)
-        local namespaces = vim.tbl_map(function (source)
-          return require('null-ls/diagnostics').get_namespace(source.id)
-        end, require('null-ls').get_sources())
-
-        for _, namespace in ipairs(namespaces) do
-          local goto_opts = {
-            namespace = namespace,
-            float = lsp_utils.float_opts,
-          }
-          local maps = {
-            { 'n', ']a', function () vim.diagnostic.goto_next(goto_opts) end },
-            { 'n', '[a', function () vim.diagnostic.goto_prev(goto_opts) end },
-          }
-
-          diagnostic.ignore_signs(namespace)
-          utils.set_keymaps(maps, {
-            buffer = bufnr,
-            silent = true,
-          })
-        end
-      end,
-    }
-
-    setup_server(server, opts)
-  end,
 }
 
 function M.setup()

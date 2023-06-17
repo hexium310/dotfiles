@@ -151,7 +151,6 @@ local servers = {
 
     local opts = {
       on_attach = function (client, bufnr)
-        client.server_capabilities.semanticTokensProvider = nil
         general.on_attach(client, bufnr)
       end,
       settings = {

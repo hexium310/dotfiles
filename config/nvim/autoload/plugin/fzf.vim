@@ -27,12 +27,6 @@ function! plugin#fzf#set_commands() abort
         \ )
   command! -bang -nargs=* RG call plugin#fzf#ripgrep_fzf(<q-args>, <bang>0)
   command! -nargs=0 EditNew call plugin#fzf#new_file()
-
-  const s:colorizing = '| ' . $FZF_DEFAULT_COMMAND
-  command! -bang -nargs=? -complete=dir Files
-        \ call fzf#vim#files(<q-args>, s:p(<bang>0, { 'options': ['--ansi'] }), <bang>0)
-  command! -bang -nargs=? GFiles
-       \ call fzf#vim#gitfiles(<q-args> == '?' ? <q-args> : s:colorizing, <q-args> == '?' ? {} : s:p(<bang>0, { 'options': ['--ansi'] }), <bang>0)
 endfunction
 
 function! plugin#fzf#new_file() abort
@@ -61,21 +55,4 @@ function! plugin#fzf#ripgrep_fzf(query, fullscreen)
         \}
 
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec, 'up:50%'), a:fullscreen)
-endfunction
-
-function! s:p(bang, ...)
-  if a:bang
-    return s:get_fzf_vim_sid()(a:bang, a:1)
-  else
-    return a:1
-  endif
-endfunction
-
-function! s:get_fzf_vim_sid()
-  let scriptname = ''
-  redir => scriptname
-  silent! filter fzf.vim/plugin/fzf.vim scriptnames
-  redir END
-  const sid = substitute(trim(scriptname), '^\s*\(\d\+\):.*', '\1', '')
-  return function('<SNR>' . sid . '_p')
 endfunction

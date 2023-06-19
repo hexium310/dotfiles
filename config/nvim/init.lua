@@ -29,4 +29,7 @@ if vim.fn.isdirectory(dein_core) == 1 then
   end
 end
 
+-- lua vim.opt.runtimepath:prepend(vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy/lazy.nvim'))
+-- lua require('plugins/lazy')
+
 vim.cmd.runtime({ 'userautoload/*.lua', bang = true })

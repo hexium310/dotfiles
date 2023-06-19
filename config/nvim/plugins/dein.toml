@@ -150,7 +150,7 @@ lua_post_source = '''
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
-on_event = ['CursorHold', 'CursorMoved', 'InsertEnter', 'CmdlineEnter']
+on_ft = 'qf'
 lua_post_source = '''
   require('plugins/bqf')
 '''

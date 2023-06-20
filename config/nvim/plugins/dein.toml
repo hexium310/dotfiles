@@ -28,6 +28,13 @@ lua_post_source = '''
 '''
 
 [[plugins]]
+repo = 'stevearc/dressing.nvim'
+on_event = ['BufRead']
+lua_post_source = '''
+  require('plugins/dressing')
+'''
+
+[[plugins]]
 repo = 'RRethy/vim-hexokinase'
 if = 'executable("go")'
 on_event = ['BufRead']

@@ -4,6 +4,7 @@ require('statuscol').setup({
   ft_ignore = {
     'toggleterm',
     'fugitive',
+    'DressingInput',
   },
   segments = {
     {

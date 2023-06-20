@@ -82,7 +82,7 @@ augroup init_vim
 augroup END
 
 augroup line_number
-  let filetypes = ['toggleterm', 'man']
+  let filetypes = ['toggleterm', 'man', 'DressingInput']
   autocmd!
   autocmd FileType fzf autocmd OptionSet * ++once setlocal nonumber norelativenumber
   autocmd FileType help autocmd OptionSet * ++once setlocal number norelativenumber

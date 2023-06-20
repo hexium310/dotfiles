@@ -94,45 +94,20 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = '$FZF_HOME'
-if = 'executable("fzf")'
-on_func = ['fzf#']
-# Don't update by dein because fzf is managed with a plugin manager for Zsh
-frozen = true
-
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-if = 'executable("fzf")'
-depends = ['fzf']
-on_func = ['fzf#']
+repo = 'ibhagwan/fzf-lua'
+on_map = [
+  '<C-p>',
+  '<Space><C-m>',
+  '<Space>e'
+]
 on_cmd = [
-  'Files',
-  'GitFiles',
-  'GFiles',
-  'Buffers',
-  'Lines',
-  'BLines',
-  'Colors',
-  'Locate',
-  'Ag',
+  'FzfLua',
   'Rg',
-  'Tags',
-  'BTags',
-  'Snippets',
-  'Commands',
-  'Marks',
-  'Helptags',
-  'Windows',
   'Commits',
   'BCommits',
-  'Maps',
-  'Filetypes',
-  'History'
 ]
-hook_add = '''
-  call plugin#fzf#set_variables()
-  call plugin#fzf#set_maps()
-  call plugin#fzf#set_commands()
+lua_post_source = '''
+  require('plugins/fzf')
 '''
 
 [[plugins]]

@@ -1,0 +1,3 @@
+--glob=!LICENSE
+--glob=!yarn.lock
+--glob=!package-lock.json

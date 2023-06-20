@@ -6,3 +6,7 @@
 
 ### Node ###
 yarn-error.log
+
+### Lua ###
+# .luarc.json includes full paths and its content is different in each environment.
+.luarc.json

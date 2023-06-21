@@ -28,8 +28,8 @@ if (( $+commands[brew] )); then
     alias brwe='brew'
 fi
 
-if (( $+commands[docker-compose] )); then
-    alias fig='docker-compose'
+if (( $+commands[docker] )); then
+    alias fig='docker compose'
 fi
 
 if [[ `uname` = 'Darwin' ]]; then

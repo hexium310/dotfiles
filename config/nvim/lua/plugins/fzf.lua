@@ -37,6 +37,9 @@ fzf.setup({
       },
     },
   },
+  oldfiles = {
+    include_current_session = true,
+  },
 })
 
 vim.keymap.set('n', '<C-p>', fzf.git_files)

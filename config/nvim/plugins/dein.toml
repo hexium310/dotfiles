@@ -264,8 +264,14 @@ lua_post_source = '''
 '''
 
 [[plugins]]
-repo = 'hrsh7th/vim-vsnip'
+repo = 'L3MON4D3/LuaSnip'
 on_source = ['nvim-cmp']
+build = '''
+  make install_jsregexp
+'''
+lua_post_source = '''
+  require('plugins/luasnip')
+'''
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'

@@ -19,7 +19,7 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      vim.fn['vsnip#anonymous'](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = cmp.mapping.preset.insert({
@@ -29,6 +29,20 @@ cmp.setup({
     ['<C-y>'] = cmp.mapping.confirm({
       select = true,
     }),
+    ['<C-n>'] = cmp.mapping(function (fallback)
+      if cmp.visible() then
+        cmp.select_next_item({ behavior = require('cmp/types').cmp.SelectBehavior.Insert })
+      else
+        fallback()
+      end
+    end),
+    ['<C-p>'] = cmp.mapping(function (fallback)
+      if cmp.visible() then
+        cmp.select_prev_item({ behavior = require('cmp/types').cmp.SelectBehavior.Insert })
+      else
+        fallback()
+      end
+    end),
   }),
   formatting = {
     format = function (entry, vim_item)

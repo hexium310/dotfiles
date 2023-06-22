@@ -1,5 +1,8 @@
 vim.o.termguicolors = true
-vim.cmd.colorscheme('base16-tomorrow-night-eighties')
+if not pcall(vim.cmd.colorscheme, 'base16-tomorrow-night-eighties') then
+  vim.cmd.colorscheme('habamax')
+  return
+end
 
 local base16 = require('base16-colorscheme')
 local onedark = require('onedark/colors')

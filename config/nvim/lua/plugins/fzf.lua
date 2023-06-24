@@ -10,6 +10,10 @@ fzf.setup({
       horizontal = 'right:45%',
       title = true,
     },
+    on_create = function ()
+      vim.opt_local.number = false
+      vim.opt_local.relativenumber = false
+    end,
   },
   actions = {
     files = vim.tbl_extend('force', fzf.config.defaults.actions.files, {

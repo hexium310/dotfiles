@@ -190,8 +190,8 @@ on_cmd = [
   'GRemove',
   'GBrowse',
 ]
-hook_add ='''
-  call plugin#fugitive#set_maps()
+lua_add ='''
+  require('plugins/fugitive')
 '''
 
 [[plugins]]

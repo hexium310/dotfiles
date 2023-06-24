@@ -42,16 +42,10 @@ lua_post_source = '''
 '''
 
 [[plugins]]
-repo = 'RRethy/vim-hexokinase'
-if = 'executable("go")'
+repo = 'NvChad/nvim-colorizer.lua'
 on_event = ['BufRead']
-build = '''
-  make hexokinase
-'''
-lua_add = '''
-  vim.g.Hexokinase_virtualText = '●'
-  vim.g.Hexokinase_ftAutoload = { '*' }
-  vim.g.Hexokinase_refreshEvents = { 'BufEnter', 'TextChanged', 'TextChangedI' }
+lua_post_source = '''
+  require('plugins/colorizer')
 '''
 
 [[plugins]]

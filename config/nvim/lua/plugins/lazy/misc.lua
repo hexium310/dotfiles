@@ -10,22 +10,18 @@ local plugins = {
     end,
   },
   {
-    'junegunn/fzf.vim',
-    cond = function ()
-      return vim.fn.executable('fzf')
-    end,
-    -- event = { 'VeryLazy' },
-    dependencies = {
-      {
-        dir = vim.fs.normalize('$FZF_HOME'),
-        -- Don't update by dein because fzf is managed with a plugin manager for Zsh
-        pin = true,
-      },
+    'ibhagwan/fzf-lua',
+    cmd = {
+      'FzfLua',
+      'Rg',
     },
-    init = function ()
-      vim.fn['plugin#fzf#set_variables']()
-      vim.fn['plugin#fzf#set_maps']()
-      vim.fn['plugin#fzf#set_commands']()
+    keys = {
+      '<C-p>',
+      '<Space><C-m>',
+      '<Space>e',
+    },
+    config = function ()
+      require('plugins/fzf')
     end,
   },
   {
@@ -43,9 +39,9 @@ local plugins = {
   },
   {
     'tpope/vim-fugitive',
-    -- event = { 'VeryLazy' },
+    event = { 'VeryLazy' },
     init = function ()
-      vim.fn['plugin#fugitive#set_maps']()
+      require('plugins/fugitive')
     end,
   },
   {
@@ -76,7 +72,7 @@ local plugins = {
     'notomo/lreload.nvim',
     ft = { 'lua' },
     config = function ()
-      -- require('lreload').enable('plugins')
+      require('lreload').enable('plugins')
     end,
   },
   {
@@ -86,6 +82,13 @@ local plugins = {
       vim.api.nvim_create_user_command('Diffmt', require('diffmt').diff, {})
     end,
   },
+  {
+    'stevearc/dressing.nvim',
+    event ={ 'BufRead' },
+    config = function ()
+      require('plugins/dressing')
+    end
+  }
 }
 
 return plugins

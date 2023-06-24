@@ -26,6 +26,7 @@ cmp.setup({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-x><C-n>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.abort(),
     ['<C-y>'] = cmp.mapping.confirm({
       select = true,
     }),

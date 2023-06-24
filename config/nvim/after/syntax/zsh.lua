@@ -8,10 +8,14 @@ vim.cmd([[
   syntax match zshSubscriptFlag /(\%([wpfrRiIkKe]\{-}\|[snb]\(.\)\%(\1\@!.\{-}\)\?\1\|\)\+)/ contained
 ]])
 
-vim.api.nvim_set_hl(0, 'zshParameterFlag', { link = 'Macro' })
-vim.api.nvim_set_hl(0, 'zshSubscriptFlag', { link = 'Macro' })
-vim.api.nvim_set_hl(0, 'zshSubscriptBrackets', { link = 'zshSubst' })
-vim.api.nvim_set_hl(0, 'zshSubscript', { link = 'zshSubst' })
-vim.api.nvim_set_hl(0, 'zshIdetifier', { link = 'zshSubst' })
-vim.api.nvim_set_hl(0, 'zshParameterExpansionPrefix', { link = 'Macro' })
-vim.api.nvim_set_hl(0, 'zshParameterExpansionSuffix', { link = 'Macro' })
+local set_highlights = require('plugins/utils').set_highlights
+
+set_highlights({
+  { 'zshParameterFlag', { link = 'Macro' } },
+  { 'zshSubscriptFlag', { link = 'Macro' } },
+  { 'zshSubscriptBrackets', { link = 'zshSubst' } },
+  { 'zshSubscript', { link = 'zshSubst' } },
+  { 'zshIdetifier', { link = 'zshSubst' } },
+  { 'zshParameterExpansionPrefix', { link = 'Macro' } },
+  { 'zshParameterExpansionSuffix', { link = 'Macro' } },
+})

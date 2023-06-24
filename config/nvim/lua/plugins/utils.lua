@@ -15,6 +15,15 @@ function M.set_keymaps(mappings, opts)
   end
 end
 
+function M.set_highlights(highlighs)
+  for _, v in ipairs(highlighs) do
+    local name = v[1]
+    local args = v[2]
+
+    vim.api.nvim_set_hl(0, name, args)
+  end
+end
+
 function M.create_unique_autocmd(event, opts)
   local pattern = opts.buffer and ('<buffer=%s>'):format(opts.buffer) or opts.pattern
 

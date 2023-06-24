@@ -68,6 +68,3 @@ require('nvim-treesitter.configs').setup({
     disable = disables,
   },
 })
-
-vim.api.nvim_set_hl(0, '@operator.try', { link = 'Special' })
-vim.api.nvim_set_hl(0, '@lifetime', { link = 'Special' })

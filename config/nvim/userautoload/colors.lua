@@ -7,55 +7,60 @@ end
 local base16 = require('base16-colorscheme')
 local onedark = require('onedark/colors')
 local colors = base16.colorschemes['tomorrow-night-eighties']
+local set_highlights = require('plugins/utils').set_highlights
 
-vim.api.nvim_set_hl(0, 'CmpItemAbbr', { fg = colors.base03 })
-vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { fg = colors.base03, italic = true })
-vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { fg = colors.base05, bold = true })
-vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { fg = colors.base05, bold = true })
-vim.api.nvim_set_hl(0, 'CmpItemKind', { fg = colors.base0C })
-vim.api.nvim_set_hl(0, 'CmpItemMenu', { fg = colors.base03 })
-vim.api.nvim_set_hl(0, 'Comment', { fg = colors.base03, italic = true })
-vim.api.nvim_set_hl(0, 'ConflictMarkerBegin', { bg = '#255c51' })
-vim.api.nvim_set_hl(0, 'ConflictMarkerCommonAncestorsHunk', { bg = '#51335a' })
-vim.api.nvim_set_hl(0, 'ConflictMarkerEnd', { bg='#254e71' })
-vim.api.nvim_set_hl(0, 'ConflictMarkerOurs', { bg = '#203833' })
-vim.api.nvim_set_hl(0, 'ConflictMarkerTheirs', { bg = '#243749' })
-vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = colors.base04, bg = '#202020', bold = true })
-vim.api.nvim_set_hl(0, 'CurSearch', { link = 'IncSearch' })
-vim.api.nvim_set_hl(0, 'DiagnosticUnderlineWarn', { sp = colors.base0A, underline = true })
-vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = colors.base08, bg = colors.base01 })
-vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = colors.base0A, bg = colors.base01 })
-vim.api.nvim_set_hl(0, 'DiagnosticInfo', { fg = colors.base05, bg = colors.base01 })
-vim.api.nvim_set_hl(0, 'DiagnosticHint', { fg = colors.base0C, bg = colors.base01 })
-vim.api.nvim_set_hl(0, 'DiffAdd', { bg = '#334539' })
-vim.api.nvim_set_hl(0, 'DiffChange', { bg = '#454133' })
-vim.api.nvim_set_hl(0, 'DiffDelete', { bg = '#45333a', bold = true })
-vim.api.nvim_set_hl(0, 'DiffText', { bg = '#5f5d42', bold = true })
-vim.api.nvim_set_hl(0, 'EndOfBuffer', { link = 'Ignore' })
-vim.api.nvim_set_hl(0, 'GitSignsAdd', { fg = colors.base0B, bg = colors.base01 })
-vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = colors.base0A, bg = colors.base01 })
-vim.api.nvim_set_hl(0, 'GitSignsDelete', { fg = colors.base08, bg = colors.base01 })
-vim.api.nvim_set_hl(0, 'GitSignsAddInline', { fg = colors.base00, bg = colors.base0B })
-vim.api.nvim_set_hl(0, 'GitSignsDeleteInline', { fg = colors.base00, bg = colors.base08 })
-vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#45333a' })
-vim.api.nvim_set_hl(0, 'LineNr', { fg = colors.base04, bg = colors.base01 })
-vim.api.nvim_set_hl(0, 'MatchParen', { reverse = true })
-vim.api.nvim_set_hl(0, 'MatchParenCur', { bg = '#515151' })
-vim.api.nvim_set_hl(0, 'MatchWord', { bg = '#454545' })
-vim.api.nvim_set_hl(0, 'MatchWordCur', { bg = '#515151' })
-vim.api.nvim_set_hl(0, 'Search', { bg = '#454133' })
-vim.api.nvim_set_hl(0, 'SignColumn', { link = 'LineNr' })
-vim.api.nvim_set_hl(0, 'StatusLineDiagnosticError', { fg = onedark.black.gui, bg = onedark.red.gui })
-vim.api.nvim_set_hl(0, 'StatusLineDiagnosticWarn', { fg = onedark.black.gui, bg = onedark.yellow.gui })
-vim.api.nvim_set_hl(0, 'StatusLineDiagnosticHint', { fg = onedark.black.gui, bg = onedark.cyan.gui })
-vim.api.nvim_set_hl(0, 'Substitute', { bg = '#454133' })
-vim.api.nvim_set_hl(0, 'TerminalCurrentDirectory', { fg = colors.base09, bg = '#3E4452' })
-vim.api.nvim_set_hl(0, 'Whitespace', { fg = colors.base02 })
-vim.api.nvim_set_hl(0, 'Yanked', { bg = '#134a28' })
-vim.api.nvim_set_hl(0, 'gitcommitComment', { link = 'Comment' })
-vim.api.nvim_set_hl(0, '@include', { fg = colors.base0E })
-vim.api.nvim_set_hl(0, '@keyword.return', { fg = colors.base08 })
-vim.api.nvim_set_hl(0, '@punctuation.bracket', { fg = colors.base0D })
-vim.api.nvim_set_hl(0, '@punctuation.special', { fg = colors.base0C })
-vim.api.nvim_set_hl(0, '@variable', { fg = colors.base05 })
-vim.api.nvim_set_hl(0, '@variable.builtin', { fg = colors.base05, italic = true })
+set_highlights({
+  { 'CmpItemAbbr', { fg = colors.base03 } },
+  { 'CmpItemAbbrDeprecated', { fg = colors.base03, italic = true } },
+  { 'CmpItemAbbrMatch', { fg = colors.base05, bold = true } },
+  { 'CmpItemAbbrMatchFuzzy', { fg = colors.base05, bold = true } },
+  { 'CmpItemKind', { fg = colors.base0C } },
+  { 'CmpItemMenu', { fg = colors.base03 } },
+  { 'Comment', { fg = colors.base03, italic = true } },
+  { 'ConflictMarkerBegin', { bg = '#255c51' } },
+  { 'ConflictMarkerCommonAncestorsHunk', { bg = '#51335a' } },
+  { 'ConflictMarkerEnd', { bg='#254e71' } },
+  { 'ConflictMarkerOurs', { bg = '#203833' } },
+  { 'ConflictMarkerTheirs', { bg = '#243749' } },
+  { 'CursorLineNr', { fg = colors.base04, bg = '#202020', bold = true } },
+  { 'CurSearch', { link = 'IncSearch' } },
+  { 'DiagnosticUnderlineWarn', { sp = colors.base0A, underline = true } },
+  { 'DiagnosticError', { fg = colors.base08, bg = colors.base01 } },
+  { 'DiagnosticWarn', { fg = colors.base0A, bg = colors.base01 } },
+  { 'DiagnosticInfo', { fg = colors.base05, bg = colors.base01 } },
+  { 'DiagnosticHint', { fg = colors.base0C, bg = colors.base01 } },
+  { 'DiffAdd', { bg = '#334539' } },
+  { 'DiffChange', { bg = '#454133' } },
+  { 'DiffDelete', { bg = '#45333a', bold = true } },
+  { 'DiffText', { bg = '#5f5d42', bold = true } },
+  { 'EndOfBuffer', { link = 'Ignore' } },
+  { 'GitSignsAdd', { fg = colors.base0B, bg = colors.base01 } },
+  { 'GitSignsChange', { fg = colors.base0A, bg = colors.base01 } },
+  { 'GitSignsDelete', { fg = colors.base08, bg = colors.base01 } },
+  { 'GitSignsAddInline', { fg = colors.base00, bg = colors.base0B } },
+  { 'GitSignsDeleteInline', { fg = colors.base00, bg = colors.base08 } },
+  { 'IncSearch', { bg = '#45333a' } },
+  { 'LineNr', { fg = colors.base04, bg = colors.base01 } },
+  { 'MatchParen', { reverse = true } },
+  { 'MatchParenCur', { bg = '#515151' } },
+  { 'MatchWord', { bg = '#454545' } },
+  { 'MatchWordCur', { bg = '#515151' } },
+  { 'Search', { bg = '#454133' } },
+  { 'SignColumn', { link = 'LineNr' } },
+  { 'StatusLineDiagnosticError', { fg = onedark.black.gui, bg = onedark.red.gui } },
+  { 'StatusLineDiagnosticWarn', { fg = onedark.black.gui, bg = onedark.yellow.gui } },
+  { 'StatusLineDiagnosticHint', { fg = onedark.black.gui, bg = onedark.cyan.gui } },
+  { 'Substitute', { bg = '#454133' } },
+  { 'TerminalCurrentDirectory', { fg = colors.base09, bg = '#3E4452' } },
+  { 'Whitespace', { fg = colors.base02 } },
+  { 'Yanked', { bg = '#134a28' } },
+  { 'gitcommitComment', { link = 'Comment' } },
+  { '@include', { fg = colors.base0E } },
+  { '@keyword.return', { fg = colors.base08 } },
+  { '@lifetime', { link = 'Special' } },
+  { '@operator.try', { link = 'Special' } },
+  { '@punctuation.bracket', { fg = colors.base0D } },
+  { '@punctuation.special', { fg = colors.base0C } },
+  { '@variable', { fg = colors.base05 } },
+  { '@variable.builtin', { fg = colors.base05, italic = true } },
+})

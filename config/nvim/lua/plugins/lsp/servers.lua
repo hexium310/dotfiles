@@ -25,7 +25,7 @@ local general = {
       focusable = false,
     }),
   },
-  on_attach = function (_, bufnr)
+  on_attach = function (client, bufnr)
     local goto_opts = {
       float = lsp_utils.float_opts,
     }
@@ -45,6 +45,10 @@ local general = {
       buffer = bufnr,
       silent = true,
     })
+
+    if client.server_capabilities.inlayHintProvider then
+      vim.lsp.buf.inlay_hint(0, true)
+    end
 
     vim.api.nvim_create_augroup('LspConfig', { clear = false })
 
@@ -125,7 +129,7 @@ local servers = {
     local opts = {
       tools = {
         inlay_hints = {
-          auto = true,
+          auto = false,
           show_parameter_hints = false,
           other_hints_prefix = '-> ',
         },

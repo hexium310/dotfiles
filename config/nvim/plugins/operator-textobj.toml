@@ -5,19 +5,29 @@ repo = 'kana/vim-operator-user'
 repo = 'kana/vim-operator-replace'
 depends = ['vim-operator-user']
 on_map = ['<Plug>']
-hooks_file = '$HOOKS_DIR/operator-replace.lua'
+lua_add = '''
+  vim.keymap.set('n', 'R', '<Plug>(operator-replace)', { remap = true })
+'''
 
 [[plugins]]
 repo = 'rhysd/vim-operator-surround'
 depends = ['vim-operator-user']
 on_map = ['<Plug>']
-hooks_file = '$HOOKS_DIR/operator-surround.lua'
+lua_add = '''
+  require('plugins/utils').set_keymaps({
+    { 'n', 'sa', '<Plug>(operator-surround-append)' },
+    { 'n', 'sd', '<Plug>(operator-surround-delete)' },
+    { 'n', 'sr', '<Plug>(operator-surround-replace)' },
+  }, { remap = true, silent = true })
+'''
 
 [[plugins]]
 repo = 'emonkak/vim-operator-sort'
 depends = ['vim-operator-user']
 on_map = ['<Plug>']
-hooks_file = '$HOOKS_DIR/operator-sort.lua'
+lua_add = '''
+  vim.keymap.set({ 'n', 'v' }, 'so', '<Plug>(operator-sort)', { remap = true })
+'''
 
 [[plugins]]
 repo = 'kana/vim-textobj-user'

@@ -1,6 +1,18 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-hooks_file = '$HOOKS_DIR/dein.lua'
+lua_add = '''
+  local dein = require('dein')
+
+  vim.api.nvim_create_user_command('DeinUpdate', function () dein.update() end, { nargs = 0 })
+  vim.api.nvim_create_user_command('DeinRecache', function () dein.recache_runtimepath() end, { nargs = 0 })
+  vim.api.nvim_create_autocmd('VimEnter', {
+    callback = function ()
+      vim.schedule(function ()
+        dein.call_hook('post_source')
+      end)
+    end,
+  })
+'''
 
 [[plugins]]
 repo = 'RRethy/nvim-base16'
@@ -11,42 +23,69 @@ repo = 'ii14/onedark.nvim'
 [[plugins]]
 repo = 'nvim-lualine/lualine.nvim'
 on_event = ['VimEnter']
-hooks_file = '$HOOKS_DIR/lualine.lua'
+lua_post_source = '''
+  require('plugins/lualine')
+'''
 
 [[plugins]]
 repo = 'luukvbaal/statuscol.nvim'
 on_event = ['BufRead']
-hooks_file = '$HOOKS_DIR/statuscol.lua'
+lua_post_source = '''
+  require('plugins/statuscol')
+'''
 
 [[plugins]]
 repo = 'stevearc/dressing.nvim'
 on_event = ['BufRead']
-hooks_file = '$HOOKS_DIR/dressing.lua'
+lua_post_source = '''
+  require('plugins/dressing')
+'''
 
 [[plugins]]
 repo = 'NvChad/nvim-colorizer.lua'
 on_event = ['BufRead']
-hooks_file = '$HOOKS_DIR/colorizer.lua'
+lua_post_source = '''
+  require('plugins/colorizer')
+'''
 
 [[plugins]]
 repo = 'qpkorr/vim-bufkill'
 on_event = ['CmdlineEnter']
-hooks_file = '$HOOKS_DIR/bufkill.lua'
+lua_add = '''
+  vim.keymap.set('ca', 'bd', 'BD')
+'''
 
 [[plugins]]
 repo = 'AndrewRadev/splitjoin.vim'
 on_map = ['gJ', 'gS']
-hooks_file = '$HOOKS_DIR/splitjoin.lua'
+lua_add = '''
+  vim.g.splitjoin_html_attributes_bracket_on_new_line = 1
+'''
 
 [[plugins]]
 repo = 'chaoren/vim-wordmotion'
 on_map = ['<Plug>WordMotion']
-hooks_file = '$HOOKS_DIR/wordmotion.lua'
+lua_add = '''
+  vim.g.wordmotion_nomap = 1
+  require('plugins/utils').set_keymaps({
+    { 'n', 'w', '<Plug>WordMotion_w' },
+    { 'n', 'b', '<Plug>WordMotion_b' },
+    { 'n', 'e', '<Plug>WordMotion_e' },
+    { 'n', 'ge', '<Plug>WordMotion_ge' },
+  }, { remap = true })
+'''
 
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
 on_map = ['f', 'F', 't', 'T']
-hooks_file = '$HOOKS_DIR/clever-f.lua'
+lua_add = '''
+  vim.g.clever_f_use_migemo = 1
+  vim.g.clever_f_fix_key_direction = 1
+  require('plugins/utils').set_keymaps({
+    { 'n', ';', '<Plug>(clever-f-repeat-forward)' },
+    { 'n', ',', '<Plug>(clever-f-repeat-back)' },
+  }, { remap = true })
+'''
 
 [[plugins]]
 repo = 'nishigori/increment-activator'
@@ -61,7 +100,10 @@ on_map = {
 }
 on_cmd = ['Registers']
 on_event = ['InsertEnter']
-hooks_file = '$HOOKS_DIR/registers.lua'
+lua_add = '''
+  vim.g.registers_window_min_height = 15
+  vim.g.registers_window_border = 'single'
+'''
 
 [[plugins]]
 repo = 'ibhagwan/fzf-lua'
@@ -76,7 +118,9 @@ on_cmd = [
   'Commits',
   'BCommits',
 ]
-hooks_file = '$HOOKS_DIR/fzf.lua'
+lua_post_source = '''
+  require('plugins/fzf')
+'''
 
 [[plugins]]
 repo = 'akinsho/nvim-toggleterm.lua'
@@ -88,34 +132,43 @@ on_cmd = [
 on_map = {
   ni = '<C-t>',
 }
-hooks_file = '$HOOKS_DIR/toggleterm.lua'
+lua_post_source = '''
+  require('plugins/toggleterm')
+'''
 
 [[plugins]]
 repo = 'kevinhwang91/nvim-bqf'
 on_ft = 'qf'
-hooks_file = '$HOOKS_DIR/bqf.lua'
+lua_post_source = '''
+  require('plugins/bqf')
+'''
 
 [[plugins]]
 repo = 'windwp/nvim-autopairs'
 on_event = ['InsertEnter']
-hooks_file = '$HOOKS_DIR/autopairs.lua'
+lua_post_source = '''
+  require('plugins/autopairs')
+'''
 
 [[plugins]]
 repo = 'numToStr/Comment.nvim'
 on_map = ['gb', 'gc']
-hooks_file = '$HOOKS_DIR/comment.lua'
+lua_post_source = '''
+  require('plugins/comment')
+'''
 
 [[plugins]]
 repo = 'andymass/vim-matchup'
 on_event = ['BufRead']
-hooks_file = '$HOOKS_DIR/matchup.lua'
+lua_add = '''
+  vim.g.matchup_matchparen_offscreen = {}
+'''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 on_func = [
   'FugitiveGitDir'
 ]
-on_map = [ '<C-g>', '<Space>gd' ]
 on_cmd = [
   'G',
   'Git',
@@ -142,17 +195,31 @@ on_cmd = [
   'GRemove',
   'GBrowse',
 ]
-hooks_file = '$HOOKS_DIR/fugitive.lua'
+lua_add ='''
+  require('plugins/fugitive')
+'''
 
 [[plugins]]
 repo = 'lewis6991/gitsigns.nvim'
 on_event = ['BufRead']
-hooks_file = '$HOOKS_DIR/gitsigns.lua'
+lua_post_source = '''
+  require('plugins/gitsigns')
+'''
 
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
 on_event = ['BufRead']
-hooks_file = '$HOOKS_DIR/conflict-marker.lua'
+lua_add = '''
+  vim.g.conflict_marker_enable_mappings = 0
+  vim.g.conflict_marker_highlight_group = ''
+  vim.g.conflict_marker_begin = '^<<<<<<< .*$'
+  vim.g.conflict_marker_end   = '^>>>>>>> .*$'
+  vim.g.conflict_marker_common_ancestors = '^||||||| .*$'
+  require('plugins/utils').set_keymaps({
+    { 'n', ']f', '<Plug>(conflict-marker-next-hunk)' },
+    { 'n', '[f', '<Plug>(conflict-marker-prev-hunk)' },
+  }, { remap = true })
+'''
 
 [[plugins]]
 repo = 'nvim-lua/plenary.nvim'
@@ -161,17 +228,23 @@ on_lua = ['plenary']
 [[plugins]]
 repo = 'notomo/lreload.nvim'
 on_ft = ['lua']
-hooks_file = '$HOOKS_DIR/lreload.lua'
+lua_post_source = '''
+  require('lreload').enable('plugins')
+'''
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 on_event = ['BufRead', 'CmdlineEnter']
-hooks_file = '$HOOKS_DIR/lspconfig.lua'
+lua_post_source = '''
+  require('plugins/lsp')
+'''
 
 # Lazy-loading this plugin is not recommended.
 [[plugins]]
 repo = 'williamboman/mason.nvim'
-hooks_file = '$HOOKS_DIR/mason.lua'
+lua_post_source = '''
+  require('plugins/mason')
+'''
 
 [[plugins]]
 repo = 'williamboman/mason-lspconfig.nvim'
@@ -186,12 +259,16 @@ on_source = ['nvim-lspconfig']
 [[plugins]]
 repo = 'ray-x/lsp_signature.nvim'
 on_source = ['nvim-lspconfig']
-hooks_file = '$HOOKS_DIR/lsp_signature.lua'
+lua_post_source = '''
+  require('plugins/lsp/signature')
+'''
 
 [[plugins]]
 repo = 'hrsh7th/nvim-cmp'
 on_event = ['InsertEnter']
-hooks_file = '$HOOKS_DIR/cmp.lua'
+lua_post_source = '''
+  require('plugins/cmp')
+'''
 
 [[plugins]]
 repo = 'L3MON4D3/LuaSnip'
@@ -199,7 +276,9 @@ on_source = ['nvim-cmp']
 build = '''
   make install_jsregexp
 '''
-hooks_file = '$HOOKS_DIR/luasnip.lua'
+lua_post_source = '''
+  require('plugins/luasnip')
+'''
 
 [[plugins]]
 repo = 'hrsh7th/cmp-nvim-lsp'
@@ -215,4 +294,6 @@ on_source = ['nvim-cmp']
 
 [[plugins]]
 repo = 'hexium310/diffmt.nvim'
-hooks_file = '$HOOKS_DIR/diffmt.lua'
+lua_add = '''
+  vim.api.nvim_create_user_command('Diffmt', function() require('diffmt').diff() end, {})
+'''

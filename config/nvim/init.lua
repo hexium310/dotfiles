@@ -7,7 +7,6 @@ if vim.fn.isdirectory(dein_core) == 1 then
   local dein = require('dein')
 
   vim.g['dein#isntall_github_api_token'] = vim.env.DEIN_GITHUB_TOKEN
-  vim.env.HOOKS_DIR = vim.fs.joinpath(vim.fn.stdpath('config'), 'plugins/hooks')
 
   if dein.load_state(dein_dir) == 1 then
     dein.begin(dein_dir)

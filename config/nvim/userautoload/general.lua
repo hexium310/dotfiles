@@ -46,7 +46,7 @@ end
 
 if vim.fn.executable('rg') then
   vim.opt.grepprg = 'rg --vimgrep'
-  vim.opt.grepformat = '%f:%l%c:%m'
+  vim.opt.grepformat = '%f:%l:%c:%m'
 
   vim.api.nvim_create_user_command('GrepRange', function (t)
     local espaced_range = vim.fn.substitute(
@@ -78,7 +78,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
 vim.api.nvim_create_autocmd('QuickFixCmdPost', {
   group = init,
   pattern = '*grep*',
-  callback = vim.cmd.cwindow,
+  callback = function ()
+    vim.cmd.cwindow()
+  end,
 })
 
 vim.api.nvim_create_autocmd('VimLeave', {

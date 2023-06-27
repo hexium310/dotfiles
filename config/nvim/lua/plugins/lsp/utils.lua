@@ -68,13 +68,6 @@ function M.rename_file()
   vim.lsp.util.rename(filename, new_filename)
 end
 
-function M.signature_help()
-  if vim.tbl_isempty(vim.tbl_filter(function (v) return v.server_capabilities.signatureHelpProvider end, vim.lsp.buf_get_clients())) then
-    return
-  end
-  vim.lsp.buf.signature_help()
-end
-
 ---@param client table
 ---@param bool boolean
 function M.set_document_formatting(client, bool)

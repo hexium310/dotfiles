@@ -1,4 +1,4 @@
-local dein_dir = vim.fs.normalize('$XDG_CACHE_HOME/dein')
+local dein_dir = vim.fs.joinpath(vim.fn.stdpath('data'), 'dein')
 local dein_core = vim.fs.joinpath(dein_dir, 'repos/github.com/Shougo/dein.vim')
 
 if vim.fn.isdirectory(dein_core) ~= 1 then

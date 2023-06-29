@@ -235,6 +235,7 @@ lua_post_source = '''
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 on_event = ['BufRead', 'CmdlineEnter']
+depends = ['mason.nvim']
 lua_post_source = '''
   require('plugins/lsp')
 '''

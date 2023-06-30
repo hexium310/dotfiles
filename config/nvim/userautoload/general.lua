@@ -64,10 +64,17 @@ if vim.fn.executable('rg') then
 end
 
 local init = vim.api.nvim_create_augroup('init', {})
-vim.api.nvim_create_autocmd('BufEnter', {
+
+vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
   group = init,
   callback = function ()
     vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  group = init,
+  callback = function ()
     ---@diagnostic disable-next-line: undefined-field
     if vim.b.terminal_job_id == nil then
       vim.opt_local.winhighlight = ''

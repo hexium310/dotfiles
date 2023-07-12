@@ -63,4 +63,12 @@ set_highlights({
   { '@punctuation.special', { fg = colors.base0C } },
   { '@variable', { fg = colors.base05 } },
   { '@variable.builtin', { fg = colors.base05, italic = true } },
+  { '@lsp.mod.attribute', { link = 'Special' } },
+  { '@lsp.type.decorator.rust', { link = 'TSNamespace' } },
+  { '@lsp.type.enum', { link = 'Type' } },
+  { '@lsp.type.interface', { link = 'Type' } },
+  { '@lsp.type.macro.rust', { link = 'Function' } },
+  { '@lsp.type.namespace', { link = 'Namespace' } },
+  { '@lsp.type.namespace', { link = 'TSNamespace' } },
+  { '@lsp.type.struct', { link = 'Type' } },
 })

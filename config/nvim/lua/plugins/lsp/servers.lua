@@ -31,7 +31,7 @@ local general = {
     }
     local maps = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
-      { 'n', 'K', require('plugins/lsp/utils').hover_or_open_vim_help },
+      { 'n', 'K', require('plugins/lsp/utils').hover },
       { 'n', 'gf', vim.lsp.buf.definition },
       { 'n', ']c', function () vim.diagnostic.goto_next(goto_opts) end },
       { 'n', '[c', function () vim.diagnostic.goto_prev(goto_opts) end },
@@ -190,6 +190,16 @@ local servers = {
         lsp_utils.set_document_formatting(client, false)
         general.on_attach(client, bufnr)
       end,
+    }
+
+    setup_server(server, opts)
+  end,
+  vimls = function (server)
+    local opts = {
+      on_attach = function (client, bufnr)
+        vim.keymap.del('n', 'K', { buffer = bufnr })
+        general.on_attach(client,bufnr)
+      end
     }
 
     setup_server(server, opts)

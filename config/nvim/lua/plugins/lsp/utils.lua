@@ -28,13 +28,9 @@ function M.disable_cursor_hold()
   })
 end
 
-function M.hover_or_open_vim_help()
-  if vim.bo.filetype == 'vim' or vim.bo.filetype == 'help' then
-    vim.cmd.help({ vim.fn.expand('<cword>'), mods = { emsg_silent = true } })
-  else
-    vim.lsp.buf.hover()
-    require('plugins/lsp/utils').disable_cursor_hold()
-  end
+function M.hover()
+  vim.lsp.buf.hover()
+  M.disable_cursor_hold()
 end
 
 ---@param command string

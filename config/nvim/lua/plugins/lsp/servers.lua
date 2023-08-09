@@ -205,6 +205,22 @@ local servers = {
 
     setup_server(server, opts)
   end,
+  yamlls = function (server)
+    local opts = {
+      settings = {
+        yaml = {
+          schemas = {
+            kubernetes = {
+              '/*manifests*/**/*.yaml',
+              '/*manifests*/*.yaml',
+            },
+          }
+        },
+      },
+    }
+
+    setup_server(server, opts)
+  end,
 }
 
 function M.setup()

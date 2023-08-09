@@ -62,6 +62,9 @@ cmp.setup({
     }),
   },
   preselect = cmp.PreselectMode.None,
+  experimental = {
+    ghost_text = true,
+  },
 })
 
 -- -- After reloading the config multiple `()`s are displayed when confirming a completion item, so reset an event listener.

@@ -31,6 +31,7 @@ local general = {
     }
     local maps = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
+      { 'n', '<F3>', vim.lsp.buf.code_action },
       { 'n', 'K', require('plugins/lsp/utils').hover },
       { 'n', 'gf', vim.lsp.buf.definition },
       { 'n', ']c', function () vim.diagnostic.goto_next(goto_opts) end },

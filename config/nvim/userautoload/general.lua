@@ -12,6 +12,7 @@ vim.opt.virtualedit = 'block'
 vim.opt.whichwrap = ''
 vim.opt.mouse = ''
 
+vim.opt.shada = { '!', "'20", '<50', 's10', 'h', '@0' }
 vim.opt.completeopt:remove({ 'preview' })
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'

@@ -5,8 +5,9 @@
     (#match? @_regex_macro "^(lazy_)?regex|regex_(captures|find|is_match|replace(_all)?)$")
   )
   (token_tree
-    (raw_string_literal) @regex
+    (raw_string_literal) @injection.content
   )
+  (#set! injection.language "regex")
 )
 
 (macro_invocation
@@ -17,6 +18,7 @@
     (#match? @_regex_macro "^(lazy_)?regex|regex_(captures|find|is_match|replace(_all)?)$")
   )
   (token_tree
-    (raw_string_literal) @regex
+    (raw_string_literal) @injection.content
   )
+  (#set! injection.language "regex")
 )

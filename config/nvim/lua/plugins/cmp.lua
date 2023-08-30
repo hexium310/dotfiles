@@ -32,14 +32,14 @@ cmp.setup({
     }),
     ['<C-n>'] = cmp.mapping(function (fallback)
       if cmp.visible() then
-        cmp.select_next_item({ behavior = require('cmp/types').cmp.SelectBehavior.Insert })
+        cmp.select_next_item({ behavior = require('cmp/types').cmp.SelectBehavior.Select })
       else
         fallback()
       end
     end),
     ['<C-p>'] = cmp.mapping(function (fallback)
       if cmp.visible() then
-        cmp.select_prev_item({ behavior = require('cmp/types').cmp.SelectBehavior.Insert })
+        cmp.select_prev_item({ behavior = require('cmp/types').cmp.SelectBehavior.Select })
       else
         fallback()
       end

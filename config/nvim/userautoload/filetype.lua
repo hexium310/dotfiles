@@ -2,6 +2,9 @@ vim.filetype.add({
   extension = {
     zunit = 'zsh',
   },
+  filename = {
+    ['.envrc'] = 'bash',
+  },
 })
 
 local augroup = vim.api.nvim_create_augroup('init_filetype', {})

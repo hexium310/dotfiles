@@ -1,3 +1,0 @@
-[[plugins]]
-repo = 'StanAngeloff/php.vim'
-on_ft = ['php']

@@ -76,7 +76,6 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
 vim.api.nvim_create_autocmd('BufEnter', {
   group = init,
   callback = function ()
-    ---@diagnostic disable-next-line: undefined-field
     if vim.b.terminal_job_id == nil then
       vim.opt_local.winhighlight = ''
     end
@@ -120,12 +119,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 ;(function ()
   local filetypes_to_display_no_line_number = {
-    'toggleterm',
-    'man',
     'DressingInput',
+    'Trouble',
     'fugitive',
     'lazy',
-    'Trouble'
+    'man',
+    'toggleterm',
   }
   local filetypes_to_display_line_number_without_relative = { 'help' }
 

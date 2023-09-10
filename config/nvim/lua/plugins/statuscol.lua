@@ -2,11 +2,11 @@ local builtin = require('statuscol.builtin')
 
 require('statuscol').setup({
   ft_ignore = {
-    'toggleterm',
-    'fugitive',
     'DressingInput',
-    'lazy',
     'Trouble',
+    'fugitive',
+    'lazy',
+    'toggleterm',
   },
   segments = {
     {

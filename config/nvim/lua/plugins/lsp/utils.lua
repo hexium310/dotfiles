@@ -28,13 +28,9 @@ function M.disable_cursor_hold()
   })
 end
 
-function M.hover_or_open_vim_help()
-  if vim.bo.filetype == 'vim' or vim.bo.filetype == 'help' then
-    vim.cmd.help({ vim.fn.expand('<cword>'), mods = { emsg_silent = true } })
-  else
-    vim.lsp.buf.hover()
-    require('plugins/lsp/utils').disable_cursor_hold()
-  end
+function M.hover()
+  vim.lsp.buf.hover()
+  M.disable_cursor_hold()
 end
 
 ---@param command string
@@ -66,13 +62,6 @@ function M.rename_file()
   end
 
   vim.lsp.util.rename(filename, new_filename)
-end
-
-function M.signature_help()
-  if vim.tbl_isempty(vim.tbl_filter(function (v) return v.server_capabilities.signatureHelpProvider end, vim.lsp.buf_get_clients())) then
-    return
-  end
-  vim.lsp.buf.signature_help()
 end
 
 ---@param client table

@@ -1,10 +1,17 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-hook_add = '''
-  command! -nargs=0 DeinUpdate call dein#update()
-  command! -nargs=0 DeinRecache call dein#recache_runtimepath()
+lua_add = '''
+  local dein = require('dein')
 
-  autocmd VimEnter * lua vim.schedule(function () vim.fn['dein#call_hook']('post_source') end)
+  vim.api.nvim_create_user_command('DeinUpdate', function () dein.update() end, { nargs = 0 })
+  vim.api.nvim_create_user_command('DeinRecache', function () dein.recache_runtimepath() end, { nargs = 0 })
+  vim.api.nvim_create_autocmd('VimEnter', {
+    callback = function ()
+      vim.schedule(function ()
+        dein.call_hook('post_source')
+      end)
+    end,
+  })
 '''
 
 [[plugins]]
@@ -35,51 +42,49 @@ lua_post_source = '''
 '''
 
 [[plugins]]
-repo = 'RRethy/vim-hexokinase'
-if = 'executable("go")'
+repo = 'NvChad/nvim-colorizer.lua'
 on_event = ['BufRead']
-build = '''
-  make hexokinase
-'''
-hook_add = '''
-  let g:Hexokinase_virtualText = '●'
-  let g:Hexokinase_ftAutoload = ['*']
-  let g:Hexokinase_refreshEvents = ['BufEnter', 'TextChanged', 'TextChangedI']
+lua_post_source = '''
+  require('plugins/colorizer')
 '''
 
 [[plugins]]
 repo = 'qpkorr/vim-bufkill'
 on_event = ['CmdlineEnter']
-hook_add = '''
-  cabbrev bd BD
+lua_add = '''
+  vim.keymap.set('ca', 'bd', 'BD')
 '''
 
 [[plugins]]
 repo = 'AndrewRadev/splitjoin.vim'
 on_map = ['gJ', 'gS']
-hook_add = '''
-  let g:splitjoin_html_attributes_bracket_on_new_line = 1
+lua_add = '''
+  vim.g.splitjoin_html_attributes_bracket_on_new_line = 1
 '''
 
 [[plugins]]
 repo = 'chaoren/vim-wordmotion'
 on_map = ['<Plug>WordMotion']
-hook_add = '''
-  let g:wordmotion_nomap = 1
-  nmap w <Plug>WordMotion_w
-  nmap b <Plug>WordMotion_b
-  nmap e <Plug>WordMotion_e
-  nmap ge <Plug>WordMotion_ge
+lua_add = '''
+  vim.g.wordmotion_nomap = 1
+  require('plugins/utils').set_keymaps({
+    { 'n', 'w', '<Plug>WordMotion_w' },
+    { 'n', 'b', '<Plug>WordMotion_b' },
+    { 'n', 'e', '<Plug>WordMotion_e' },
+    { 'n', 'ge', '<Plug>WordMotion_ge' },
+  }, { remap = true })
 '''
 
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
 on_map = ['f', 'F', 't', 'T']
-hook_add = '''
-  let g:clever_f_use_migemo = 1
-  let g:clever_f_fix_key_direction = 1
-  map ; <Plug>(clever-f-repeat-forward)
-  map , <Plug>(clever-f-repeat-back)
+lua_add = '''
+  vim.g.clever_f_use_migemo = 1
+  vim.g.clever_f_fix_key_direction = 1
+  require('plugins/utils').set_keymaps({
+    { 'n', ';', '<Plug>(clever-f-repeat-forward)' },
+    { 'n', ',', '<Plug>(clever-f-repeat-back)' },
+  }, { remap = true })
 '''
 
 [[plugins]]
@@ -95,9 +100,9 @@ on_map = {
 }
 on_cmd = ['Registers']
 on_event = ['InsertEnter']
-hook_add = '''
-  let g:registers_window_min_height = 15
-  let g:registers_window_border = 'single'
+lua_add = '''
+  vim.g.registers_window_min_height = 15
+  vim.g.registers_window_border = 'single'
 '''
 
 [[plugins]]
@@ -155,8 +160,8 @@ lua_post_source = '''
 [[plugins]]
 repo = 'andymass/vim-matchup'
 on_event = ['BufRead']
-hook_add = '''
-  let g:matchup_matchparen_offscreen = {}
+lua_add = '''
+  vim.g.matchup_matchparen_offscreen = {}
 '''
 
 [[plugins]]
@@ -204,14 +209,16 @@ lua_post_source = '''
 [[plugins]]
 repo = 'rhysd/conflict-marker.vim'
 on_event = ['BufRead']
-hook_add = '''
-  let g:conflict_marker_enable_mappings = 0
-  let g:conflict_marker_highlight_group = ''
-  let g:conflict_marker_begin = '^<<<<<<< .*$'
-  let g:conflict_marker_end   = '^>>>>>>> .*$'
-  let g:conflict_marker_common_ancestors = '^||||||| .*$'
-  nmap ]f <Plug>(conflict-marker-next-hunk)
-  nmap [f <Plug>(conflict-marker-prev-hunk)
+lua_add = '''
+  vim.g.conflict_marker_enable_mappings = 0
+  vim.g.conflict_marker_highlight_group = ''
+  vim.g.conflict_marker_begin = '^<<<<<<< .*$'
+  vim.g.conflict_marker_end   = '^>>>>>>> .*$'
+  vim.g.conflict_marker_common_ancestors = '^||||||| .*$'
+  require('plugins/utils').set_keymaps({
+    { 'n', ']f', '<Plug>(conflict-marker-next-hunk)' },
+    { 'n', '[f', '<Plug>(conflict-marker-prev-hunk)' },
+  }, { remap = true })
 '''
 
 [[plugins]]
@@ -228,6 +235,7 @@ lua_post_source = '''
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
 on_event = ['BufRead', 'CmdlineEnter']
+depends = ['mason.nvim']
 lua_post_source = '''
   require('plugins/lsp')
 '''
@@ -287,6 +295,6 @@ on_source = ['nvim-cmp']
 
 [[plugins]]
 repo = 'hexium310/diffmt.nvim'
-hook_add = '''
-  command! Diffmt lua require('diffmt').diff()
+lua_add = '''
+  vim.api.nvim_create_user_command('Diffmt', function() require('diffmt').diff() end, {})
 '''

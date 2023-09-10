@@ -25,13 +25,14 @@ local general = {
       focusable = false,
     }),
   },
-  on_attach = function (_, bufnr)
+  on_attach = function (client, bufnr)
     local goto_opts = {
       float = lsp_utils.float_opts,
     }
     local maps = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
-      { 'n', 'K', require('plugins/lsp/utils').hover_or_open_vim_help },
+      { 'n', '<F3>', vim.lsp.buf.code_action },
+      { 'n', 'K', require('plugins/lsp/utils').hover },
       { 'n', 'gf', vim.lsp.buf.definition },
       { 'n', ']c', function () vim.diagnostic.goto_next(goto_opts) end },
       { 'n', '[c', function () vim.diagnostic.goto_prev(goto_opts) end },
@@ -45,6 +46,10 @@ local general = {
       buffer = bufnr,
       silent = true,
     })
+
+    if client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint(0, true)
+    end
 
     vim.api.nvim_create_augroup('LspConfig', { clear = false })
 
@@ -125,7 +130,7 @@ local servers = {
     local opts = {
       tools = {
         inlay_hints = {
-          auto = true,
+          auto = false,
           show_parameter_hints = false,
           other_hints_prefix = '-> ',
         },
@@ -186,6 +191,32 @@ local servers = {
         lsp_utils.set_document_formatting(client, false)
         general.on_attach(client, bufnr)
       end,
+    }
+
+    setup_server(server, opts)
+  end,
+  vimls = function (server)
+    local opts = {
+      on_attach = function (client, bufnr)
+        vim.keymap.del('n', 'K', { buffer = bufnr })
+        general.on_attach(client,bufnr)
+      end
+    }
+
+    setup_server(server, opts)
+  end,
+  yamlls = function (server)
+    local opts = {
+      settings = {
+        yaml = {
+          schemas = {
+            kubernetes = {
+              '/*manifests*/**/*.yaml',
+              '/*manifests*/*.yaml',
+            },
+          }
+        },
+      },
     }
 
     setup_server(server, opts)

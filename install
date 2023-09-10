@@ -77,6 +77,4 @@ install_dotfiels
 info "\n"
 
 info ">>> Installing plugin managers\n"
-mkdir -p $XDG_CACHE_HOME/dein
-install_plugin_managers Shougo/dein.vim $XDG_CACHE_HOME/dein/repos/github.com/Shougo/dein.vim
 install_plugin_managers agkozak/zcomet $XDG_DATA_HOME/zcomet/bin

@@ -9,6 +9,7 @@ require('lazy').setup('plugins/lazy', {
   diff = {
     cmd = 'browser',
   },
+  lockfile = vim.fs.joinpath(vim.fn.stdpath('cache'), 'lazy-lock.json'),
 })
 
 return {}

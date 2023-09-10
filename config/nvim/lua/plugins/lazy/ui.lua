@@ -22,16 +22,11 @@ return {
     end,
   },
   {
-    'RRethy/vim-hexokinase',
-    cond = function ()
-      return vim.fn.executable('go')
-    end,
-    build = 'make hexokinase',
+    'NvChad/nvim-colorizer.lua',
     event = { 'BufRead' },
-    init = function ()
-      vim.g.Hexokinase_virtualText = '●'
-      vim.g.Hexokinase_refreshEvents = { 'BufEnter', 'TextChanged', 'TextChangedI' }
-    end,
+    config = function ()
+      require('plugins/colorizer')
+    end
   },
   {
     'andymass/vim-matchup',

@@ -46,9 +46,26 @@ fzf.setup({
   },
 })
 
-vim.keymap.set('n', '<C-p>', fzf.git_files)
-vim.keymap.set('n', '<Space><C-m>', fzf.oldfiles)
-vim.keymap.set('n', '<Space>e', fzf.buffers)
+local function show_fzf(callback)
+  local disables = {
+    'Trouble',
+    'fugitive',
+    'lazy',
+    'toggleterm',
+  }
+
+  return function ()
+    if vim.iter(disables):any(function (filetype) return vim.opt_local.filetype:get() == filetype end) then
+      return
+    end
+
+    callback()
+  end
+end
+
+vim.keymap.set('n', '<C-p>', show_fzf(fzf.git_files))
+vim.keymap.set('n', '<Space><C-m>', show_fzf(fzf.oldfiles))
+vim.keymap.set('n', '<Space>e', show_fzf(fzf.buffers))
 
 vim.api.nvim_create_user_command('Rg', function (t)
  fzf.grep_project({ search = t.args })

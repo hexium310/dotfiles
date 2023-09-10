@@ -1,5 +1,4 @@
 local cmp = require('cmp')
-local lsp_types = require('cmp/types/lsp')
 
 -- Suppress message that _G.cmp is undefined
 _G.cmp = _G.cmp
@@ -71,17 +70,9 @@ cmp.setup({
 -- -- After reloading the config multiple `()`s are displayed when confirming a completion item, so reset an event listener.
 -- -- event:on() returns a function to remove an event listener.
 ;(_G.cmp.remove_autopairs_confirm_done_event or function () end)()
-_G.cmp.remove_autopairs_confirm_done_event = cmp.event:on('confirm_done', function (event)
-  local entry = event.entry
-  local completion_item = entry:get_completion_item()
-  local is_function = completion_item.kind == lsp_types.CompletionItemKind.Function
-
-  local is_derive_macro = is_function and completion_item.label:find('^%u') ~= nil
-  local is_function_like_macro = is_function and entry.context.cursor_after_line:find('^!') ~= nil
-
-  if entry.context.filetype == 'rust' and (is_derive_macro or is_function_like_macro) then
-    return
-  end
-
-  require('nvim-autopairs/completion/cmp').on_confirm_done()(event)
-end)
+local option = {
+  filetypes = {
+    rust = false,
+  },
+}
+_G.cmp.remove_autopairs_confirm_done_event = cmp.event:on('confirm_done', require('nvim-autopairs/completion/cmp').on_confirm_done(option))

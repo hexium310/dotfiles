@@ -131,79 +131,72 @@ return {
   },
   {
     'rhysd/vim-textobj-anyblock',
-    event = { 'BufRead' },
-    -- keys = {
-    --   { 'ib', mode = { 'x', 'o' } },
-    --   { 'ab', mode = { 'x', 'o' } },
-    -- },
+    keys = {
+      { 'ib', mode = { 'x', 'o' } },
+      { 'ab', mode = { 'x', 'o' } },
+    },
     dependencies = {
       'vim-textobj-user',
     },
   },
   {
     'kana/vim-textobj-indent',
-    event = { 'BufRead' },
-    -- keys = {
-    --   { 'ii', mode = { 'x', 'o' } },
-    --   { 'ai', mode = { 'x', 'o' } },
-    --   { 'iI', mode = { 'x', 'o' } },
-    --   { 'aI', mode = { 'x', 'o' } },
-    -- },
+    keys = {
+      { 'ii', mode = { 'x', 'o' } },
+      { 'ai', mode = { 'x', 'o' } },
+      { 'iI', mode = { 'x', 'o' } },
+      { 'aI', mode = { 'x', 'o' } },
+    },
     dependencies = {
       'vim-textobj-user',
     },
   },
   {
     'kana/vim-textobj-line',
-    event = { 'BufRead' },
-    -- keys = {
-    --   { 'il', mode = { 'x', 'o' } },
-    --   { 'al', mode = { 'x', 'o' } },
-    -- },
+    keys = {
+      { 'il', mode = { 'x', 'o' } },
+      { 'al', mode = { 'x', 'o' } },
+    },
     dependencies = {
       'vim-textobj-user',
     },
   },
   {
     'kana/vim-textobj-entire',
-    event = { 'BufRead' },
-    -- keys = {
-    --   { 'ie', mode = { 'x', 'o' } },
-    --   { 'ae', mode = { 'x', 'o' } },
-    -- },
+    keys = {
+      { 'ie', mode = { 'x', 'o' } },
+      { 'ae', mode = { 'x', 'o' } },
+    },
     dependencies = {
       'vim-textobj-user',
     },
   },
   {
     'sgur/vim-textobj-parameter',
-    event = { 'BufRead' },
-    -- keys = {
-    --   { 'i,', mode = { 'x', 'o' } },
-    --   { 'a,', mode = { 'x', 'o' } },
-    -- },
+    keys = {
+      { 'i,', mode = { 'x', 'o' } },
+      { 'a,', mode = { 'x', 'o' } },
+    },
     dependencies = {
       'vim-textobj-user',
     },
   },
   {
     'Julian/vim-textobj-variable-segment',
-    event = { 'BufRead' },
-    -- keys = {
-    --   { 'iv', mode = { 'x', 'o' } },
-    --   { 'av', mode = { 'x', 'o' } },
-    -- },
+    keys = {
+      { 'iv', mode = { 'x', 'o' } },
+      { 'av', mode = { 'x', 'o' } },
+    },
     dependencies = {
       'vim-textobj-user',
     },
   },
   {
     'glts/vim-textobj-comment',
-    event = { 'BufRead' },
-    -- keys = {
-    --   { 'ic', mode = { 'x', 'o' } },
-    --   { 'ac', mode = { 'x', 'o' } },
-    -- },
+    keys = {
+      { 'ic', mode = { 'x', 'o' } },
+      { 'ac', mode = { 'x', 'o' } },
+    },
     dependencies = {
       'vim-textobj-user',
     },

@@ -66,6 +66,7 @@ end
 vim.keymap.set('n', '<C-p>', show_fzf(fzf.git_files))
 vim.keymap.set('n', '<Space><C-m>', show_fzf(fzf.oldfiles))
 vim.keymap.set('n', '<Space>e', show_fzf(fzf.buffers))
+vim.keymap.set('n', '<Space>r', show_fzf(fzf.grep_project))
 
 vim.api.nvim_create_user_command('Rg', function (t)
  fzf.grep_project({ search = t.args })

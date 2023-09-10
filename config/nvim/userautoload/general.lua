@@ -123,6 +123,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     'toggleterm',
     'man',
     'DressingInput',
+    'fugitive',
     'lazy',
     'Trouble'
   }

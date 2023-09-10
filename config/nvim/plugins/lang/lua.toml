@@ -1,3 +1,0 @@
-[[plugins]]
-repo = 'folke/neodev.nvim'
-on_lua = ['mason-lspconfig']

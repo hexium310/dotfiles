@@ -5,6 +5,7 @@ require('statuscol').setup({
     'toggleterm',
     'fugitive',
     'DressingInput',
+    'lazy',
   },
   segments = {
     {

@@ -1,4 +1,4 @@
-local plugins = {
+return {
   {
     'RRethy/nvim-base16',
     lazy = true,
@@ -48,5 +48,3 @@ local plugins = {
     end,
   },
 }
-
-return plugins

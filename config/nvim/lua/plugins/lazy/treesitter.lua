@@ -1,4 +1,4 @@
-local plugins = {
+return {
   {
     'nvim-treesitter/nvim-treesitter',
     event = { 'BufRead' },
@@ -20,5 +20,3 @@ local plugins = {
     },
   },
 }
-
-return plugins

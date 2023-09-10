@@ -1,4 +1,4 @@
-local plugins = {
+return {
   {
     'neovim/nvim-lspconfig',
     event = { 'BufRead' },
@@ -41,5 +41,3 @@ local plugins = {
     end,
   },
 }
-
-return plugins

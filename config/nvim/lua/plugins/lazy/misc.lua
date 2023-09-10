@@ -1,4 +1,4 @@
-local plugins = {
+return {
   {
     'folke/lazy.nvim',
   },
@@ -90,5 +90,3 @@ local plugins = {
     end
   }
 }
-
-return plugins

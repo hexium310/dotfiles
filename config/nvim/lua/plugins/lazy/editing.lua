@@ -1,4 +1,4 @@
-local plugins = {
+return {
   {
     'AndrewRadev/splitjoin.vim',
     keys = {
@@ -209,5 +209,3 @@ local plugins = {
     },
   },
 }
-
-return plugins

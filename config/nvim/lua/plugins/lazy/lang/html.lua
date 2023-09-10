@@ -47,5 +47,6 @@ return {
         end, { silent = true, expr = true })
       end)
     end,
+    submodules = false,
   },
 }

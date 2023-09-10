@@ -8,6 +8,7 @@ return {
     init = function ()
       vim.g.splitjoin_html_attributes_bracket_on_new_line = 1
     end,
+    submodules = false,
   },
   {
     'chaoren/vim-wordmotion',
@@ -127,7 +128,8 @@ return {
     },
     dependencies = {
       'vim-operator-user',
-    }
+    },
+    submodules = false,
   },
   {
     'rhysd/vim-textobj-anyblock',

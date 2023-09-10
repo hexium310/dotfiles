@@ -1,10 +1,6 @@
 local set_keymaps = require('plugins/utils').set_keymaps
 
 set_keymaps({
-  { 'n', '<C-h>', '<C-w>h' },
-  { 'n', '<C-j>', '<C-w>j' },
-  { 'n', '<C-k>', '<C-w>k' },
-  { 'n', '<C-l>', '<C-w>l' },
   { 'n', '<S-Up>', '<NOP>' },
   { 'n', '<S-Down>', '<NOP>' },
   { 'n', '<S-Left>', '<NOP>' },

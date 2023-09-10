@@ -40,4 +40,14 @@ return {
       require('plugins/lsp')
     end,
   },
+  {
+    'folke/trouble.nvim',
+    cmd = { 'Trouble' },
+    keys = {
+      { '<Space>t', function () require('trouble').open() end, mode = 'n' },
+    },
+    config = function ()
+      require('plugins/trouble')
+    end,
+  },
 }

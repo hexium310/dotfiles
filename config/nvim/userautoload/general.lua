@@ -119,7 +119,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 ;(function ()
-  local filetypes_to_display_no_line_number = { 'toggleterm', 'man', 'DressingInput' }
+  local filetypes_to_display_no_line_number = {
+    'toggleterm',
+    'man',
+    'DressingInput',
+    'lazy',
+  }
   local filetypes_to_display_line_number_without_relative = { 'help' }
 
   local function check_filetype(filetypes)

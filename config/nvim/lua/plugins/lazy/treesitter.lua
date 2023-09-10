@@ -11,12 +11,4 @@ return {
       require('plugins/treesitter')
     end,
   },
-  {
-    'nvim-treesitter/playground',
-    ft = { 'query' },
-    cmd = { 'TSPlaygroundToggle' },
-    dependencies = {
-      'nvim-treesitter',
-    },
-  },
 }

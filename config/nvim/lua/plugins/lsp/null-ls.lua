@@ -37,7 +37,7 @@ local config = vim.tbl_deep_extend('force', general, {
 })
 
 function M.setup()
-  null_ls.setup(config)
+  -- null_ls.setup(config)
 end
 
 return M

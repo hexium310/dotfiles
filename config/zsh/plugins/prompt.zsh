@@ -51,18 +51,20 @@ _zsh_prompt() {
     [[ -n $vcs_info_msg_1_ ]] && vcs_info_msg+="%F{blue}$vcs_info_msg_1_%f"
     [[ -n $vcs_info_msg_2_ ]] && vcs_info_msg+="%F{red}$vcs_info_msg_2_%f"
 
+    local prefix='%K{#2d2d2d}%F{#2d2d2d}[%f'
+
     case $1 in
         insert)
-            suffix='%K{blue}%F{#393939} $ %f%k'
+            suffix='%K{blue}%F{#393939} $%F{blue}]%f%k'
             ;;
         visual)
-            suffix='%K{magenta}%F{#393939} $ %f%k'
+            suffix='%K{magenta}%F{#393939} $%F{magenta}]%f%k'
             ;;
         normal)
-            suffix='%K{green}%F{#393939} $ %f%k'
+            suffix='%K{green}%F{#393939} $%F{green}]%f%k'
             ;;
         finish)
-            suffix='%K{#515151}%F{#242424} $ %f%k'
+            suffix='%K{#515151}%F{#242424} $%F{#515151}]%f%k'
             colored_host="%F{$dark_green}$host%f"
             directory="%F{$dark_blue}%1~%f"
             vcs_info_msg=${vcs_info_msg//\{blue\}/\{$dark_blue\}}
@@ -71,14 +73,14 @@ _zsh_prompt() {
             vcs_info_msg=${vcs_info_msg//\{yellow\}/\{$dark_yellow\}}
             ;;
         *)
-            suffix='%K{blue}%F{#393939} $ %f%k'
+            suffix='%K{blue}%F{#393939} $]%f%k'
             ;;
     esac
 
     if [[ -z $vcs_info_msg ]]; then
-        PROMPT="%B$colored_host$directory $suffix %b"
+        PROMPT="%B$prefix$colored_host$directory $suffix %b"
     else
-        PROMPT="%B$colored_host$directory $vcs_info_msg $suffix %b"
+        PROMPT="%B$prefix$colored_host$directory $vcs_info_msg $suffix %b"
     fi
     zle reset-prompt
 }

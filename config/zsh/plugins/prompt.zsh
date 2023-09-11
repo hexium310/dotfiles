@@ -63,7 +63,7 @@ _zsh_prompt() {
             ;;
         finish)
             suffix='%K{#515151}%F{#242424} $ %f%k'
-            colored_host="%F{#$dark_green}$host%f"
+            colored_host="%F{$dark_green}$host%f"
             directory="%F{$dark_blue}%1~%f"
             vcs_info_msg=${vcs_info_msg//\{blue\}/\{$dark_blue\}}
             vcs_info_msg=${vcs_info_msg//\{red\}/\{$dark_red\}}

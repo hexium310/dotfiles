@@ -27,61 +27,68 @@ _zsh_prompt_redraw() {
             _zsh_prompt 'visual'
             ;;
         *)
-            _zsh_prompt $KEYMAP
+            _zsh_prompt 'normal'
             ;;
     esac
 }
 
 _zsh_prompt() {
-    local suffix
-    local vcs_info_msg
-    local host
-    local directory='%F{blue}%1~%f'
-    if [[ $HOST != *.local ]]; then
-        host='%m '
+    typeset -A format
+    local hostname="${${HOST:#*.local}:+%m }"
+
+    format[normal-prefix]='%B%K{#2d2d2d}%F{#2d2d2d}[%f'
+    format[normal-hostname]="%F{green}$hostname%f"
+    format[normal-directory]='%F{blue}%1~%f '
+    format[normal-vcs-0]='%s'
+    format[normal-vcs-1]='%%F{blue}%s%%f'
+    format[normal-vcs-2]='%%F{red}%s%%f'
+    format[normal-suffix]='%K{green}%F{#393939} $%F{green}]%f%k%b '
+
+    format[insert-prefix]="${format[normal-prefix]}"
+    format[insert-hostname]="${format[normal-hostname]}"
+    format[insert-directory]="${format[normal-directory]}"
+    format[insert-vcs-0]="${format[normal-vcs-0]}"
+    format[insert-vcs-1]="${format[normal-vcs-1]}"
+    format[insert-vcs-2]="${format[normal-vcs-2]}"
+    format[insert-suffix]='%K{blue}%F{#393939} $%F{blue}]%f%k%b '
+
+    format[visual-prefix]="${format[normal-prefix]}"
+    format[visual-hostname]="${format[normal-hostname]}"
+    format[visual-directory]="${format[normal-directory]}"
+    format[visual-vcs-0]="${format[normal-vcs-0]}"
+    format[visual-vcs-1]="${format[normal-vcs-1]}"
+    format[visual-vcs-2]="${format[normal-vcs-2]}"
+    format[visual-suffix]='%K{magenta}%F{#393939} $%F{magenta}]%f%k%b '
+
+    format[finish-prefix]="${format[normal-prefix]}"
+    format[finish-hostname]="%F{#5b7a5b}$hostname%f"
+    format[finish-directory]='%F{#3d5b7a}%1~%f '
+    format[finish-vcs-0]="${format[normal-vcs-0]}"
+    format[finish-vcs-1]='%%F{#3d5b7a}%s%%f'
+    format[finish-vcs-2]='%%F{#914749}%s%%f'
+    format[finish-suffix]='%K{#515151}%F{#242424} $%F{#515151}]%f%k%b '
+
+    local vcs_info
+    local prefix="${=format[$1-prefix]}"
+    local hostname="${=format[$1-hostname]}"
+    local directory="${=format[$1-directory]}"
+    local vcs0="${=format[$1-vcs-0]}"
+    local vcs1="${=format[$1-vcs-1]}"
+    local vcs2="${=format[$1-vcs-2]}"
+    local suffix="${=format[$1-suffix]}"
+
+    [[ -n $vcs_info_msg_0_ ]] && vcs_info+=$(printf "$vcs0" "$vcs_info_msg_0_")
+    [[ -n $vcs_info_msg_1_ ]] && vcs_info+=$(printf "$vcs1" "$vcs_info_msg_1_")
+    [[ -n $vcs_info_msg_2_ ]] && vcs_info+=$(printf "$vcs2" "$vcs_info_msg_2_")
+    [[ -n $vcs_info ]] && vcs_info+=' '
+
+    if [[ $1 = finish ]]; then
+        vcs_info=${vcs_info//\{red\}/\{#914749\}}
+        vcs_info=${vcs_info//\{green\}/\{#5b7a5b\}}
+        vcs_info=${vcs_info//\{yellow\}/\{#997a3d\}}
     fi
-    local colored_host="%F{green}$host%f"
 
-    local dark_blue='#3d5b7a'
-    local dark_red='#914749'
-    local dark_green='#5b7a5b'
-    local dark_yellow='#997a3d'
-
-    [[ -n $vcs_info_msg_0_ ]] && vcs_info_msg+=$vcs_info_msg_0_
-    [[ -n $vcs_info_msg_1_ ]] && vcs_info_msg+="%F{blue}$vcs_info_msg_1_%f"
-    [[ -n $vcs_info_msg_2_ ]] && vcs_info_msg+="%F{red}$vcs_info_msg_2_%f"
-
-    local prefix='%K{#2d2d2d}%F{#2d2d2d}[%f'
-
-    case $1 in
-        insert)
-            suffix='%K{blue}%F{#393939} $%F{blue}]%f%k'
-            ;;
-        visual)
-            suffix='%K{magenta}%F{#393939} $%F{magenta}]%f%k'
-            ;;
-        normal)
-            suffix='%K{green}%F{#393939} $%F{green}]%f%k'
-            ;;
-        finish)
-            suffix='%K{#515151}%F{#242424} $%F{#515151}]%f%k'
-            colored_host="%F{$dark_green}$host%f"
-            directory="%F{$dark_blue}%1~%f"
-            vcs_info_msg=${vcs_info_msg//\{blue\}/\{$dark_blue\}}
-            vcs_info_msg=${vcs_info_msg//\{red\}/\{$dark_red\}}
-            vcs_info_msg=${vcs_info_msg//\{green\}/\{$dark_green\}}
-            vcs_info_msg=${vcs_info_msg//\{yellow\}/\{$dark_yellow\}}
-            ;;
-        *)
-            suffix='%K{blue}%F{#393939} $]%f%k'
-            ;;
-    esac
-
-    if [[ -z $vcs_info_msg ]]; then
-        PROMPT="%B$prefix$colored_host$directory $suffix %b"
-    else
-        PROMPT="%B$prefix$colored_host$directory $vcs_info_msg $suffix %b"
-    fi
+    PROMPT="$prefix$hostname$directory$vcs_info$suffix"
     zle reset-prompt
 }
 

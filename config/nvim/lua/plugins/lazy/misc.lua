@@ -19,6 +19,7 @@ return {
       '<C-p>',
       '<Space><C-m>',
       '<Space>e',
+      '<Space>r',
     },
     config = function ()
       require('plugins/fzf')

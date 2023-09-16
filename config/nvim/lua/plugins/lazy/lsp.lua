@@ -5,6 +5,7 @@ return {
     dependencies = {
       {
         'williamboman/mason.nvim',
+        cmd = { 'Mason' },
         config = function ()
           require('plugins/mason')
         end,

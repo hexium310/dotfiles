@@ -111,17 +111,6 @@ return {
     }
   },
   {
-    'rhysd/vim-operator-surround',
-    keys = {
-      { 'sa', '<Plug>(operator-surround-append)', silent = true },
-      { 'sd', '<Plug>(operator-surround-delete)', silent = true },
-      { 'sr', '<Plug>(operator-surround-replace)', silent = true },
-    },
-    dependencies = {
-      'vim-operator-user',
-    },
-  },
-  {
     'emonkak/vim-operator-sort',
     keys = {
       { 'so', '<Plug>(operator-sort)', mode = { 'n', 'v' } },
@@ -192,5 +181,12 @@ return {
     dependencies = {
       'vim-textobj-user',
     },
+  },
+  {
+    'kylechui/nvim-surround',
+    lazy = false,
+    config = function ()
+      require('nvim-surround').setup({})
+    end
   },
 }

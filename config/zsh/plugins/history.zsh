@@ -32,14 +32,3 @@ __ignore_shorter_command() {
 }
 
 add-zsh-hook zshaddhistory __ignore_shorter_command
-
-__ignore_duplicates_before_last() {
-    local argument=${@%%$'\n'}
-    local before_last=$(fc -ln -2 | head -n 1)
-
-    if [[ $argument = $before_last ]]; then
-        return 1
-    fi
-}
-
-add-zsh-hook zshaddhistory __ignore_duplicates_before_last

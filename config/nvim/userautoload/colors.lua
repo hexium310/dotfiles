@@ -77,5 +77,6 @@ set_highlights({
   { '@lsp.type.macro.rust', { link = 'Function' } },
   { '@lsp.type.namespace', { link = 'Namespace' } },
   { '@lsp.type.namespace', { link = 'TSNamespace' } },
+  { '@lsp.type.selfTypeKeyword', { link = 'TSType' } },
   { '@lsp.type.struct', { link = 'Type' } },
 })

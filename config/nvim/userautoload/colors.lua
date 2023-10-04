@@ -50,7 +50,6 @@ set_highlights({
   { 'DiffChange', { bg = '#454133' } },
   { 'DiffDelete', { bg = '#45333a', bold = true } },
   { 'DiffText', { bg = '#5f5d42', bold = true } },
-  { 'EndOfBuffer', { link = 'Ignore' } },
   { 'GitSignsAdd', { fg = colors.base0B, bg = colors.base01 } },
   { 'GitSignsAddInline', { fg = colors.base00, bg = colors.base0B } },
   { 'GitSignsChange', { fg = colors.base0A, bg = colors.base01 } },

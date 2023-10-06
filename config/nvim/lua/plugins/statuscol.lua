@@ -43,7 +43,10 @@ require('statuscol').setup({
     {
       sign = {
         name = {
-          'GitSigns'
+          'GitSigns',
+        },
+        namespace = {
+          '.*',
         },
         maxwidth = 1,
         colwidth = 1,

@@ -17,7 +17,7 @@ vim.opt.completeopt:remove({ 'preview' })
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 vim.opt.diffopt:append({ 'vertical' })
-vim.opt.fillchars = { diff = ',', eob = ' ' }
+vim.opt.fillchars = { diff = ' ', eob = ' ' }
 vim.opt.helpheight = 0
 vim.opt.lazyredraw = true
 vim.opt.list = true

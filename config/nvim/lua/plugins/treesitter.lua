@@ -65,13 +65,6 @@ require('nvim-treesitter.configs').setup({
     },
     include_surrounding_whitespace = true,
   },
-  context_commentstring = {
-    enable = true,
-    disable = disables,
-    config = {
-      vim = '" %s',
-    },
-  },
   matchup = {
     enable = true,
     disable = disables,

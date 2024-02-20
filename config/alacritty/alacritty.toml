@@ -1,0 +1,39 @@
+import = [
+    'C:\Users\Hexin\Documents\Repositories\aarowill\base16-alacritty\colors\aaabase16-tomorrow-night-eighties-256.toml',
+]
+
+[shell]
+program = 'C:\Windows\system32\wsl.exe'
+args = [
+    '--cd',
+    '~',
+    '--distribution',
+    'arch',
+    '--exec',
+    '/bin/zsh',
+    '-c',
+    '"tmux new -A && exec zsh -i"',
+]
+
+[window]
+dimensions = { columns = 160, lines = 48 }
+position = { x = 0 , y = 0 }
+dynamic_padding = true
+dynamic_title = false
+decorations = 'None'
+
+[font]
+normal = { family = 'HackGen Console NF', style = 'Regular' }
+offset = { x = 1, y = 0 }
+
+[cursor]
+style = { shape = 'Beam', blinking = 'Off' }
+vi_mode_style  = { shape = 'Block', blinking = 'Off' }
+
+[mouse]
+hide_when_typing = true
+
+[keyboard]
+bindings = [
+    { key = 'Q', mods = 'Control', mode = 'Vi', action = 'Quit' },
+]

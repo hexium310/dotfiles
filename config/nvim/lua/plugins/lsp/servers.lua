@@ -143,6 +143,11 @@ local servers = {
             checkOnSave = {
               command = 'clippy',
             },
+            diagnostics = {
+              disabled = {
+                'needless_return',
+              },
+            }
           },
         },
       }),

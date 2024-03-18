@@ -37,3 +37,12 @@ hide_when_typing = true
 bindings = [
     { key = 'Q', mods = 'Control', mode = 'Vi', action = 'Quit' },
 ]
+
+[[hints.enabled]]
+command = { program = "cmd", args = [ "/c", "start", "" ] }
+hyperlinks = true
+post_processing = true
+persist = true
+mouse.enabled = true
+binding = { key = 'G', mods = 'Shift|Control' }
+regex = '[0-9a-f]{7,40}'

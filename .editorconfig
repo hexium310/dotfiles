@@ -11,7 +11,7 @@ trim_trailing_whitespace = true
 [{.zshrc,.zshenv,*.zsh,*.py}]
 indent_size = 4
 
-[config/git/config]
+[{**.gitconfig,config/git/config}]
 indent_style = tab
 
 [config/ime_dic/*.txt]

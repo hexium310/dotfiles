@@ -18,3 +18,5 @@
 	defaultBranch = master
 [push]
 	default = current
+[include]
+	path = delta.gitconfig

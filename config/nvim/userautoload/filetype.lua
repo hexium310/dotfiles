@@ -5,6 +5,10 @@ vim.filetype.add({
   filename = {
     ['.envrc'] = 'bash',
   },
+  pattern = {
+    ['.*/config/git/config'] = 'gitconfig',
+    ['.*%.gitconfig'] = 'gitconfig',
+  },
 })
 
 local augroup = vim.api.nvim_create_augroup('init_filetype', {})

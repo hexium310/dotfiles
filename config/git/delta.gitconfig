@@ -1,0 +1,29 @@
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only --features='decorations interactive'
+[delta]
+	features = decorations commit-decorations file-decorations
+	hyperlinks = true
+	hyperlinks-file-link-format = ""
+	navigate = true
+[delta "decorations"]
+	commit-decoration-style = blue ul
+	file-style = omit
+	grep-file-style = auto ul
+	grep-output-type = ripgrep
+	hunk-header-decoration-style = blue ul ol
+	hunk-header-file-style = red ul
+	hunk-header-line-number-style = green
+	hunk-header-style = file line-number syntax
+	line-numbers = true
+	map-styles = bold purple => syntax "#330f29", bold cyan => syntax "#271344"
+	minus-style = syntax auto
+	plus-style = syntax auto
+	side-by-side = true
+	syntax-theme = OneHalfDark
+	tabs = 4
+	true-color = always
+	wrap-right-percent = 1
+[delta "interactive"]
+	keep-plus-minus-markers = false

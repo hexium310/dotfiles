@@ -1,8 +1,5 @@
 local cmp = require('cmp')
 
--- Suppress message that _G.cmp is undefined
-_G.cmp = _G.cmp
-
 vim.o.completeopt = 'menuone,noselect'
 
 cmp.setup({
@@ -69,10 +66,12 @@ cmp.setup({
 
 -- -- After reloading the config multiple `()`s are displayed when confirming a completion item, so reset an event listener.
 -- -- event:on() returns a function to remove an event listener.
-;(_G.cmp.remove_autopairs_confirm_done_event or function () end)()
+;(_G.cmp and _G.cmp.remove_autopairs_confirm_done_event or function () end)()
 local option = {
   filetypes = {
     rust = false,
   },
 }
-_G.cmp.remove_autopairs_confirm_done_event = cmp.event:on('confirm_done', require('nvim-autopairs/completion/cmp').on_confirm_done(option))
+_G.cmp = {
+  remove_autopairs_confirm_done_event = cmp.event:on('confirm_done', require('nvim-autopairs/completion/cmp').on_confirm_done(option))
+}

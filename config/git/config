@@ -18,5 +18,9 @@
 	defaultBranch = master
 [push]
 	default = current
+[diff]
+	colorMoved = default
+[grep]
+	lineNumber = true
 [include]
 	path = delta.gitconfig

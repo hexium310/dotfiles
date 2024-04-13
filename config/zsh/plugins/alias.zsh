@@ -8,7 +8,6 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
 alias sudo='sudo '
-alias fd='fd --ignore-file=$XDG_CONFIG_HOME/fdignore'
 alias gpg='LANG=C gpg'
 (( $+commands[nvim] )) && alias vim='nvim'
 

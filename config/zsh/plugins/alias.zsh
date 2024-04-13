@@ -32,6 +32,10 @@ if (( $+commands[docker] )); then
     alias fig='docker compose'
 fi
 
+if (( $+commands[clip.exe] )); then
+    alias clip='iconv -t UTF-16 | clip.exe'
+fi
+
 if [[ `uname` = 'Darwin' ]]; then
     alias ls='ls -G'
 elif [[ `uname` = 'Linux' ]]; then

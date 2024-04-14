@@ -9,16 +9,16 @@ alias ll='ls -l'
 alias lal='ls -al'
 alias sudo='sudo '
 alias gpg='LANG=C gpg'
-(( $+commands[nvim] )) && alias vim='nvim'
 
 if (( $+commands[nvim] )); then
     export MANPAGER='nvim +Man!'
-    if [[ -n $NVIM ]]; then
-        export MANPAGER='python3 $ZDOTDIR/plugins/man.py'
-    fi
+
+    alias vim='nvim'
 fi
 
 if [[ -n $NVIM ]] && (( $+commands[nvr] )); then
+    export MANPAGER="nvr --remote-tab +Man! -"
+
     alias vim='nvr --remote-tab'
     alias :q='nvr --remote-send "<C-\><C-n>:quit<Cr>"'
 fi

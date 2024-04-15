@@ -34,6 +34,15 @@ return {
     keys = {
       { '<C-t>', mode = { 'n', 'i' } },
     },
+    dependencies = {
+      {
+        'notomo/waitevent.nvim',
+        event = { 'TermOpen' },
+        config = function ()
+          require('plugins/waitevent')
+        end,
+      },
+    },
     config = function ()
       require('plugins/toggleterm')
     end,
@@ -85,9 +94,10 @@ return {
   },
   {
     'stevearc/dressing.nvim',
-    event ={ 'BufRead' },
+    event = { 'BufRead' },
     config = function ()
       require('plugins/dressing')
     end
-  }
+  },
+
 }

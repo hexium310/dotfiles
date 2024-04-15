@@ -9,18 +9,10 @@ alias ll='ls -l'
 alias lal='ls -al'
 alias sudo='sudo '
 alias gpg='LANG=C gpg'
+alias vim=$EDITOR
 
-if (( $+commands[nvim] )); then
-    export MANPAGER='nvim +Man!'
-
-    alias vim='nvim'
-fi
-
-if [[ -n $NVIM ]] && (( $+commands[nvr] )); then
-    export MANPAGER="nvr --remote-tab +Man! -"
-
-    alias vim='nvr --remote-tab'
-    alias :q='nvr --remote-send "<C-\><C-n>:quit<Cr>"'
+if [[ -n $NVIM ]]; then
+    alias :q='nvim --server $NVIM --remote-send "<C-\><C-n>:quit<Cr>"'
 fi
 
 if (( $+commands[brew] )); then

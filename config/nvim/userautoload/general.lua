@@ -41,9 +41,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.inccommand = 'split'
 
-if vim.fn.executable('nvr') then
-  vim.env.GIT_EDITOR = 'nvr --remote-tab-wait'
-end
+vim.env.MANPAGER = ('nvim -l %s/plugins/nvim_manpager.lua -'):format(vim.env.ZDOTDIR)
 
 if vim.fn.executable('rg') then
   vim.opt.grepprg = 'rg --vimgrep'

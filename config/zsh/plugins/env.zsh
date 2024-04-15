@@ -1,4 +1,5 @@
-export EDITOR="nvim"
+export EDITOR=${EDITOR-nvim}
+export MANPAGER=${MANPAGER-nvim +Man!}
 export ZSHRC="$ZDOTDIR/.zshrc"
 export RUNEWIDTH_EASTASIAN=0
 export FZF_DEFAULT_COMMAND='fd --hidden --type=file --color=always --ignore-file=$XDG_CONFIG_HOME/fdignore'

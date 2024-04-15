@@ -99,7 +99,7 @@ export PROMPT=''
 
 if [[ -n $NVIM ]]; then
     __neovim_set_pwd() {
-        ( $ZDOTDIR/plugins/terminal.py cd & ) > /dev/null
+        ( nvim -l $ZDOTDIR/plugins/nvim_terminal.lua cd & ) > /dev/null
     }
 
     add-zsh-hook chpwd __neovim_set_pwd

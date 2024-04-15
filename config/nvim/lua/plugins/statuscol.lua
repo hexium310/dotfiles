@@ -7,6 +7,7 @@ require('statuscol').setup({
     'fugitive',
     'lazy',
     'toggleterm',
+    'man',
   },
   segments = {
     {

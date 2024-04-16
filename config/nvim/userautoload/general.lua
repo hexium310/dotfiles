@@ -43,25 +43,6 @@ vim.opt.inccommand = 'split'
 
 vim.env.MANPAGER = ('nvim -l %s/plugins/nvim_manpager.lua -'):format(vim.env.ZDOTDIR)
 
-if vim.fn.executable('rg') then
-  vim.opt.grepprg = 'rg --vimgrep'
-  vim.opt.grepformat = '%f:%l:%c:%m'
-
-  vim.api.nvim_create_user_command('GrepRange', function (t)
-    local espaced_range = vim.fn.substitute(
-      vim.fn.shellescape(
-        vim.fn.join(vim.iter(vim.api.nvim_buf_get_text(0, t.line1 - 1, 0, t.line2 - 1, -1, {})):map(function (v)
-          return vim.fn.escape(vim.fn.escape(v, '.+*?{}[]()^$|\\'), '|')
-        end):totable(), '\\n'),
-        1
-      ),
-      '\\!', '!', 'g'
-    )
-
-    vim.cmd.grep({ '--multiline', espaced_range, t.args or '.' })
-  end, { range = true, nargs = '*' })
-end
-
 local init = vim.api.nvim_create_augroup('init', {})
 
 vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {

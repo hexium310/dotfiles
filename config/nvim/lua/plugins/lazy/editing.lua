@@ -65,16 +65,6 @@ return {
     end,
   },
   {
-    'numToStr/Comment.nvim',
-    keys = {
-      { 'gb', mode = { 'n', 'v' } },
-      { 'gc', mode = { 'n', 'v' } },
-    },
-    config = function ()
-      require('plugins/comment')
-    end,
-  },
-  {
     'hrsh7th/nvim-cmp',
     event = { 'InsertEnter' },
     dependencies = {

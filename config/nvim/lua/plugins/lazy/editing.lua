@@ -68,16 +68,8 @@ return {
     'hrsh7th/nvim-cmp',
     event = { 'InsertEnter' },
     dependencies = {
-      'hrsh7th/vim-vsnip',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      {
-        'L3MON4D3/LuaSnip',
-        build = 'make install_jsregexp',
-        config = function ()
-          require('plugins/luasnip')
-        end,
-      },
     },
     config = function ()
       require('plugins/cmp')

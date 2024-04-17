@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+local set_keymaps = require('plugins/utils').set_keymaps
 
 vim.o.completeopt = 'menuone,noselect'
 
@@ -14,11 +15,6 @@ cmp.setup({
       name = 'path',
     },
   }),
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -62,6 +58,23 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
+})
+
+local maps = {
+  { { 'i', 's' }, '<C-n>', function ()
+    if vim.snippet.jumpable(1) then
+      vim.snippet.jump(1)
+    end
+  end },
+  { { 'i', 's' }, '<C-p>', function ()
+    if vim.snippet.jumpable(-1) then
+      vim.snippet.jump(-1)
+    end
+  end },
+}
+
+set_keymaps(maps, {
+  silent = true,
 })
 
 -- -- After reloading the config multiple `()`s are displayed when confirming a completion item, so reset an event listener.

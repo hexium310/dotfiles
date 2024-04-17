@@ -9,7 +9,7 @@ alias ll='ls -l'
 alias lal='ls -al'
 alias sudo='sudo '
 alias gpg='LANG=C gpg'
-alias vim=$EDITOR
+alias vim=${EDITOR-nvim}
 
 if [[ -n $NVIM ]]; then
     alias :q='nvim --server $NVIM --remote-send "<C-\><C-n>:quit<Cr>"'

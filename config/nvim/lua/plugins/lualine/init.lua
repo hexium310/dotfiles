@@ -83,7 +83,18 @@ require('lualine').setup({
         end
       },
     },
-    lualine_x = {},
+    lualine_x = {
+      {
+        -- recording
+        function ()
+          local recording = vim.fn.reg_recording()
+          return recording ~= '' and ('● REC [%s]'):format(recording) or ''
+        end,
+        color = {
+          fg = onedark.red.gui,
+        },
+      },
+    },
     lualine_y = {
       {
         -- fileencoding

@@ -48,7 +48,7 @@ local general = {
     })
 
     if client.server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint.enable(0, true)
+      vim.lsp.inlay_hint.enable(true)
     end
 
     vim.api.nvim_create_augroup('LspConfig', { clear = false })

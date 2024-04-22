@@ -14,14 +14,6 @@ return {
         'williamboman/mason-lspconfig.nvim',
       },
       {
-        'jose-elias-alvarez/null-ls.nvim',
-        dependencies = {
-          {
-            'plenary.nvim',
-          },
-        },
-      },
-      {
         'ray-x/lsp_signature.nvim',
         config = function ()
           require('plugins/lsp/signature')

@@ -75,10 +75,6 @@ return {
     end,
   },
   {
-    'nvim-lua/plenary.nvim',
-    lazy = true,
-  },
-  {
     'notomo/lreload.nvim',
     ft = { 'lua' },
     config = function ()

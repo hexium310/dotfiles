@@ -3,73 +3,14 @@ local lspconfig = require('lspconfig')
 local utils = require('plugins/utils')
 local lsp_utils = require('plugins/lsp/utils')
 local diagnostic = require('plugins/lsp/diagnostic')
+local default = require('plugins/lsp/servers/default')
 
 local M = {}
-
-local general = {
-  commands = {
-    RenameFile = {
-      function ()
-        require('plugins/lsp/utils').rename_file()
-      end,
-    },
-  },
-  handlers = {
-    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = 'rounded',
-      focusable = false,
-    }),
-    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = 'rounded',
-      silent = true,
-      focusable = false,
-    }),
-  },
-  on_attach = function (client, bufnr)
-    local goto_opts = {
-      float = lsp_utils.float_opts,
-    }
-    local maps = {
-      { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
-      { 'n', '<F3>', vim.lsp.buf.code_action },
-      { 'n', 'K', require('plugins/lsp/utils').hover },
-      { 'n', 'gf', vim.lsp.buf.definition },
-      { 'n', ']c', function () vim.diagnostic.goto_next(goto_opts) end },
-      { 'n', '[c', function () vim.diagnostic.goto_prev(goto_opts) end },
-      { 'n', '<C-d>', function () require('plugins/lsp/utils').send_key('<C-d>', bufnr) end },
-      { 'n', '<C-u>', function () require('plugins/lsp/utils').send_key('<C-u>', bufnr) end },
-      { 'n', '<C-f>', function () require('plugins/lsp/utils').send_key('<C-f>', bufnr) end },
-      { 'n', '<C-b>', function () require('plugins/lsp/utils').send_key('<C-b>', bufnr) end },
-    }
-
-    utils.set_keymaps(maps, {
-      buffer = bufnr,
-      silent = true,
-    })
-
-    if client.server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint.enable(true)
-    end
-
-    vim.api.nvim_create_augroup('LspConfig', { clear = false })
-
-    utils.create_unique_autocmd({ 'CursorHold' }, {
-      group = 'LspConfig',
-      buffer = bufnr,
-      desc = 'Open diagnostic float',
-      callback = function ()
-        vim.diagnostic.open_float(vim.tbl_extend('error', {
-          scope = 'cursor',
-        }, lsp_utils.float_opts))
-      end,
-    })
-  end,
-}
 
 ---@param server string
 ---@param opts table|nil
 local function setup_server(server, opts)
-  lspconfig[server].setup(vim.tbl_deep_extend('force', general, {
+  lspconfig[server].setup(vim.tbl_deep_extend('force', default, {
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
   }, opts or {}))
 end
@@ -122,7 +63,7 @@ local servers = {
     local opts = {
       on_attach = function (client, bufnr)
         lsp_utils.set_document_formatting(client, false)
-        general.on_attach(client, bufnr)
+        default.on_attach(client, bufnr)
       end,
       settings = {
         json = {
@@ -135,28 +76,6 @@ local servers = {
   end,
   ---@param _ string
   rust_analyzer = function (_)
-    local opts = {
-      tools = {
-        inlay_hints = {
-          auto = false,
-          show_parameter_hints = false,
-          other_hints_prefix = '-> ',
-        },
-      },
-      server = vim.tbl_deep_extend('force', general, {
-        standalone = true,
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
-        settings = {
-          ['rust-analyzer'] = {
-            checkOnSave = {
-              command = 'clippy',
-            },
-          },
-        },
-      }),
-    }
-
-    require('rust-tools').setup(opts)
   end,
   ---@param server string
   lua_ls = function (server)
@@ -164,7 +83,7 @@ local servers = {
 
     local opts = {
       on_attach = function (client, bufnr)
-        general.on_attach(client, bufnr)
+        default.on_attach(client, bufnr)
       end,
       settings = {
         Lua = {
@@ -201,7 +120,7 @@ local servers = {
     local opts = {
       on_attach = function (client, bufnr)
         lsp_utils.set_document_formatting(client, false)
-        general.on_attach(client, bufnr)
+        default.on_attach(client, bufnr)
       end,
     }
 
@@ -211,7 +130,7 @@ local servers = {
     local opts = {
       on_attach = function (client, bufnr)
         vim.keymap.del('n', 'K', { buffer = bufnr })
-        general.on_attach(client,bufnr)
+        default.on_attach(client,bufnr)
       end
     }
 
@@ -242,6 +161,6 @@ function M.setup()
   }, servers))
 end
 
-M.general = general
+M.general = default
 
 return M

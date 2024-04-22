@@ -29,12 +29,10 @@ return {
       },
       {
         'hrsh7th/cmp-nvim-lsp',
+        module = true,
       },
       {
         'folke/neodev.nvim',
-      },
-      {
-        'simrat39/rust-tools.nvim',
       },
     },
     config = function ()
@@ -50,5 +48,12 @@ return {
     config = function ()
       require('plugins/trouble')
     end,
+  },
+  {
+    'mrcjkb/rustaceanvim',
+    ft = { 'rust' },
+    config = function ()
+      require('plugins/lsp/servers/rust_analyzer')
+    end
   },
 }

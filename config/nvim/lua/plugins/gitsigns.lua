@@ -1,4 +1,4 @@
-local utils = require('plugins/utils')
+local utils = require('plugins.utils')
 
 local gitsigns = require('gitsigns')
 local actions = require('gitsigns.actions')

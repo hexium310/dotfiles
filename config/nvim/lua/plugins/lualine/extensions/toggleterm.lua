@@ -1,4 +1,4 @@
-local theme = require('lualine/themes/onedark')
+local theme = require('lualine.themes.onedark')
 
 local function path()
   return vim.b.terminal_current_directory or ''

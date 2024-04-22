@@ -1,5 +1,5 @@
-local lsp_utils = require('plugins/lsp/utils')
-local default = require('plugins/lsp/servers/default')
+local lsp_utils = require('plugins.lsp.utils')
+local default = require('plugins.lsp.servers.default')
 
 local M = {}
 

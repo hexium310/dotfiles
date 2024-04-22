@@ -1,8 +1,8 @@
-local onedark = require('onedark/colors')
-local theme = require('lualine/themes/onedark')
+local onedark = require('onedark.colors')
+local theme = require('lualine.themes.onedark')
 
-local toggleterm = require('plugins/lualine/extensions/toggleterm')
-local fugitive = require('plugins/lualine/extensions/fugitive')
+local toggleterm = require('plugins.lualine.extensions.toggleterm')
+local fugitive = require('plugins.lualine.extensions.fugitive')
 
 theme.normal.a.gui = nil
 theme.insert.a.gui = nil

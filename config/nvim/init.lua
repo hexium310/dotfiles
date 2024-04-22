@@ -15,6 +15,6 @@ if vim.fn.isdirectory(lazy_path) ~= 1 then
 end
 
 vim.opt.runtimepath:prepend(lazy_path)
-require('plugins/lazy')
+require('plugins.lazy')
 
 vim.cmd.runtime({ 'userautoload/*.lua', bang = true })

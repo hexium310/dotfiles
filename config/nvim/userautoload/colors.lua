@@ -5,8 +5,8 @@ if not pcall(vim.cmd.colorscheme, 'base16-tomorrow-night-eighties') then
 end
 
 local colors = require('base16-colorscheme').colors
-local onedark = require('onedark/colors')
-local set_highlights = require('plugins/utils').set_highlights
+local onedark = require('onedark.colors')
+local set_highlights = require('plugins.utils').set_highlights
 
 set_highlights({
   { '@include', { fg = colors.base0E } },

@@ -22,7 +22,7 @@ return {
       '<Space>r',
     },
     config = function ()
-      require('plugins/fzf')
+      require('plugins.fzf')
     end,
   },
   {
@@ -39,26 +39,26 @@ return {
         'notomo/waitevent.nvim',
         event = { 'TermOpen' },
         config = function ()
-          require('plugins/waitevent')
+          require('plugins.waitevent')
         end,
       },
     },
     config = function ()
-      require('plugins/toggleterm')
+      require('plugins.toggleterm')
     end,
   },
   {
     'tpope/vim-fugitive',
     event = { 'VeryLazy' },
     init = function ()
-      require('plugins/fugitive')
+      require('plugins.fugitive')
     end,
   },
   {
     'lewis6991/gitsigns.nvim',
     event = { 'BufRead' },
     config = function ()
-      require('plugins/gitsigns')
+      require('plugins.gitsigns')
     end,
   },
   {
@@ -92,7 +92,7 @@ return {
     'stevearc/dressing.nvim',
     event = { 'BufRead' },
     config = function ()
-      require('plugins/dressing')
+      require('plugins.dressing')
     end
   },
 

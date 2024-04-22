@@ -1,6 +1,6 @@
 local lspconfig = require('lspconfig')
 
-local default = require('plugins/lsp/servers/default')
+local default = require('plugins.lsp.servers.default')
 
 local M = {}
 
@@ -21,13 +21,13 @@ local servers = {
   end,
   ---@param server string
   eslint = function (server)
-    local config = require('plugins/lsp/servers/eslint')
+    local config = require('plugins.lsp.servers.eslint')
 
     setup_server(server, config.opts)
   end,
   ---@param server string
   jsonls = function (server)
-    local config = require('plugins/lsp/servers/jsonls')
+    local config = require('plugins.lsp.servers.jsonls')
 
     config.setup()
     setup_server(server, config.opts)
@@ -37,14 +37,14 @@ local servers = {
   end,
   ---@param server string
   lua_ls = function (server)
-    local config = require('plugins/lsp/servers/lua_ls')
+    local config = require('plugins.lsp.servers.lua_ls')
 
     config.setup()
     setup_server(server, config.opts)
   end,
   ---@param server string
   tailwindcss = function (server)
-    local config = require('plugins/lsp/servers/tailwindcss')
+    local config = require('plugins.lsp.servers.tailwindcss')
 
     setup_server(server, config.opts)
   end,
@@ -54,17 +54,17 @@ local servers = {
       return
     end
 
-    local config = require('plugins/lsp/servers/tsserver')
+    local config = require('plugins.lsp.servers.tsserver')
 
     setup_server(server, config.opts)
   end,
   vimls = function (server)
-    local config = require('plugins/lsp/servers/vimls')
+    local config = require('plugins.lsp.servers.vimls')
 
     setup_server(server, config.opts)
   end,
   yamlls = function (server)
-    local config = require('plugins/lsp/servers/yamlls')
+    local config = require('plugins.lsp.servers.yamlls')
 
     setup_server(server, config.opts)
   end,

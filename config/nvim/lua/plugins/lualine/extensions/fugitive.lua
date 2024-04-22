@@ -1,5 +1,5 @@
-local onedark = require('onedark/colors')
-local theme = require('lualine/themes/onedark')
+local onedark = require('onedark.colors')
+local theme = require('lualine.themes.onedark')
 
 local function git_root()
   return vim.fn.fnamemodify(vim.fn.FugitiveGitDir(), ':~:h')

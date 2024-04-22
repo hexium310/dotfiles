@@ -1,6 +1,6 @@
-local utils = require('plugins/utils')
-local lsp_utils = require('plugins/lsp/utils')
-local diagnostic = require('plugins/lsp/diagnostic')
+local utils = require('plugins.utils')
+local lsp_utils = require('plugins.lsp.utils')
+local diagnostic = require('plugins.lsp.diagnostic')
 
 local M = {}
 

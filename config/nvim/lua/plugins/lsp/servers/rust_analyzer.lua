@@ -1,4 +1,4 @@
-local default = require('plugins/lsp/servers/default')
+local default = require('plugins.lsp.servers.default')
 
 local M = {}
 

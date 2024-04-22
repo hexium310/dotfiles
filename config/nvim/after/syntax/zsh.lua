@@ -8,7 +8,7 @@ vim.cmd([[
   syntax match zshSubscriptFlag /(\%([wpfrRiIkKe]\{-}\|[snb]\(.\)\%(\1\@!.\{-}\)\?\1\|\)\+)/ contained
 ]])
 
-local set_highlights = require('plugins/utils').set_highlights
+local set_highlights = require('plugins.utils').set_highlights
 
 set_highlights({
   { 'zshParameterFlag', { link = 'Macro' } },

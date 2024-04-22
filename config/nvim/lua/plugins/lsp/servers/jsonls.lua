@@ -1,6 +1,6 @@
-local lsp_utils = require('plugins/lsp/utils')
-local default = require('plugins/lsp/servers/default')
-local json_schemas = require('plugins/lsp/json_schemas')
+local lsp_utils = require('plugins.lsp.utils')
+local default = require('plugins.lsp.servers.default')
+local json_schemas = require('plugins.lsp.json_schemas')
 
 local M = {}
 

@@ -1,4 +1,4 @@
-local set_keymaps = require('plugins/utils').set_keymaps
+local set_keymaps = require('plugins.utils').set_keymaps
 
 set_keymaps({
   { 'n', '<S-Up>', '<NOP>' },

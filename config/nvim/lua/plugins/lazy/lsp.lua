@@ -7,7 +7,7 @@ return {
         'williamboman/mason.nvim',
         cmd = { 'Mason' },
         config = function ()
-          require('plugins/mason')
+          require('plugins.mason')
         end,
       },
       {
@@ -16,7 +16,7 @@ return {
       {
         'ray-x/lsp_signature.nvim',
         config = function ()
-          require('plugins/lsp/signature')
+          require('plugins.lsp.signature')
         end,
       },
       {
@@ -28,7 +28,7 @@ return {
       },
     },
     config = function ()
-      require('plugins/lsp')
+      require('plugins.lsp')
     end,
   },
   {
@@ -38,14 +38,14 @@ return {
       { '<Space>t', function () require('trouble').open() end, mode = 'n' },
     },
     config = function ()
-      require('plugins/trouble')
+      require('plugins.trouble')
     end,
   },
   {
     'mrcjkb/rustaceanvim',
     ft = { 'rust' },
     config = function ()
-      require('plugins/lsp/servers/rust_analyzer').setup()
+      require('plugins.lsp.servers.rust_analyzer').setup()
     end
   },
 }

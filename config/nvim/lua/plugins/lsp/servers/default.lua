@@ -1,12 +1,12 @@
-local utils = require('plugins/utils')
-local lsp_utils = require('plugins/lsp/utils')
+local utils = require('plugins.utils')
+local lsp_utils = require('plugins.lsp.utils')
 
 local default = {
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   commands = {
     RenameFile = {
       function ()
-        require('plugins/lsp/utils').rename_file()
+        require('plugins.lsp.utils').rename_file()
       end,
     },
   },
@@ -28,14 +28,14 @@ local default = {
     local maps = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
       { 'n', '<F3>', vim.lsp.buf.code_action },
-      { 'n', 'K', require('plugins/lsp/utils').hover },
+      { 'n', 'K', require('plugins.lsp.utils').hover },
       { 'n', 'gf', vim.lsp.buf.definition },
       { 'n', ']c', function () vim.diagnostic.goto_next(goto_opts) end },
       { 'n', '[c', function () vim.diagnostic.goto_prev(goto_opts) end },
-      { 'n', '<C-d>', function () require('plugins/lsp/utils').send_key('<C-d>', bufnr) end },
-      { 'n', '<C-u>', function () require('plugins/lsp/utils').send_key('<C-u>', bufnr) end },
-      { 'n', '<C-f>', function () require('plugins/lsp/utils').send_key('<C-f>', bufnr) end },
-      { 'n', '<C-b>', function () require('plugins/lsp/utils').send_key('<C-b>', bufnr) end },
+      { 'n', '<C-d>', function () require('plugins.lsp.utils').send_key('<C-d>', bufnr) end },
+      { 'n', '<C-u>', function () require('plugins.lsp.utils').send_key('<C-u>', bufnr) end },
+      { 'n', '<C-f>', function () require('plugins.lsp.utils').send_key('<C-f>', bufnr) end },
+      { 'n', '<C-b>', function () require('plugins.lsp.utils').send_key('<C-b>', bufnr) end },
     }
 
     utils.set_keymaps(maps, {

@@ -11,21 +11,21 @@ return {
    'nvim-lualine/lualine.nvim',
     event = { 'VimEnter' },
     config = function ()
-      require('plugins/lualine')
+      require('plugins.lualine')
     end,
   },
   {
      'luukvbaal/statuscol.nvim',
     event = { 'BufRead' },
     config = function ()
-      require('plugins/statuscol')
+      require('plugins.statuscol')
     end,
   },
   {
     'NvChad/nvim-colorizer.lua',
     event = { 'BufRead' },
     config = function ()
-      require('plugins/colorizer')
+      require('plugins.colorizer')
     end
   },
   {
@@ -39,7 +39,7 @@ return {
     'kevinhwang91/nvim-bqf',
     ft = { 'qf' },
     config = function ()
-      require('plugins/bqf')
+      require('plugins.bqf')
     end,
   },
 }

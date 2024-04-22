@@ -17,5 +17,5 @@ require('mason-lspconfig').setup({
   },
 })
 
-require('plugins/lsp/diagnostic').setup()
-require('plugins/lsp/lspconfig').setup()
+require('plugins.lsp.diagnostic').setup()
+require('plugins.lsp.lspconfig').setup()

@@ -1,5 +1,5 @@
 local cmp = require('cmp')
-local set_keymaps = require('plugins/utils').set_keymaps
+local set_keymaps = require('plugins.utils').set_keymaps
 
 vim.o.completeopt = 'menuone,noselect'
 
@@ -25,14 +25,14 @@ cmp.setup({
     }),
     ['<C-n>'] = cmp.mapping(function (fallback)
       if cmp.visible() then
-        cmp.select_next_item({ behavior = require('cmp/types').cmp.SelectBehavior.Select })
+        cmp.select_next_item({ behavior = require('cmp.types').cmp.SelectBehavior.Select })
       else
         fallback()
       end
     end),
     ['<C-p>'] = cmp.mapping(function (fallback)
       if cmp.visible() then
-        cmp.select_prev_item({ behavior = require('cmp/types').cmp.SelectBehavior.Select })
+        cmp.select_prev_item({ behavior = require('cmp.types').cmp.SelectBehavior.Select })
       else
         fallback()
       end
@@ -86,5 +86,5 @@ local option = {
   },
 }
 _G.cmp = {
-  remove_autopairs_confirm_done_event = cmp.event:on('confirm_done', require('nvim-autopairs/completion/cmp').on_confirm_done(option))
+  remove_autopairs_confirm_done_event = cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done(option))
 }

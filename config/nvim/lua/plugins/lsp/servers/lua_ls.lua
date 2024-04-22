@@ -6,9 +6,6 @@ local opts = {
       hover = {
         previewFields = 100,
       },
-      completion = {
-        requireSeparator = '/',
-      },
     },
   },
 }

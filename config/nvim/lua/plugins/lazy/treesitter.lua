@@ -7,7 +7,7 @@ return {
       'vim-matchup',
     },
     config = function ()
-      require('plugins/treesitter')
+      require('plugins.treesitter')
     end,
   },
 }

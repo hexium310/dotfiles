@@ -61,7 +61,7 @@ return {
     'windwp/nvim-autopairs',
     event = { 'InsertEnter' },
     config = function ()
-      require('plugins/autopairs')
+      require('plugins.autopairs')
     end,
   },
   {
@@ -72,7 +72,7 @@ return {
       'hrsh7th/cmp-path',
     },
     config = function ()
-      require('plugins/cmp')
+      require('plugins.cmp')
     end,
   },
   {

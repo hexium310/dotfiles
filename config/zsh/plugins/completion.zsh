@@ -34,3 +34,4 @@ __generate_completion '_gh' 'gh' gh completion -s zsh
 __generate_completion '_rustup' 'rustup' rustup completions zsh
 __generate_completion '_cargo' 'rustup cargo' rustup completions zsh cargo
 __generate_completion '_docker' 'docker' docker completion zsh
+__generate_completion '_deno' 'deno' deno completion zsh

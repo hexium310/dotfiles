@@ -5,6 +5,7 @@ require('lspconfig.ui.windows').default_options.border = 'rounded'
 require('mason-lspconfig').setup({
   ensure_installed = {
     'denols',
+    'emmet_language_server',
     'eslint',
     'jsonls',
     'lua_ls',

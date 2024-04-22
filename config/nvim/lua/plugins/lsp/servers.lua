@@ -75,6 +75,14 @@ local function setup_server(server, opts)
 end
 
 local servers = {
+  ---@param server any
+  denols = function (server)
+    if lspconfig.util.root_pattern('package.json')(vim.fn.getcwd()) then
+      return
+    end
+
+    setup_server(server, {})
+  end,
   ---@param server string
   eslint = function (server)
     local opts = {
@@ -186,6 +194,10 @@ local servers = {
   end,
   ---@param server string
   tsserver = function (server)
+    if not lspconfig.util.root_pattern('package.json')(vim.fn.getcwd()) then
+      return
+    end
+
     local opts = {
       on_attach = function (client, bufnr)
         lsp_utils.set_document_formatting(client, false)

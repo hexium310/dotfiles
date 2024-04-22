@@ -14,7 +14,12 @@ local opts = {
     local maps = {
       { 'n', ']a', function () vim.diagnostic.goto_next(goto_opts) end },
       { 'n', '[a', function () vim.diagnostic.goto_prev(goto_opts) end },
-      { 'n', '<F8>', function () vim.lsp.buf.format({ async = true }) end },
+      { 'n', '<F8>', function () vim.lsp.buf.format({
+        async = true,
+        filter = function (c)
+          return c.name ~= 'tsserver'
+        end,
+      }) end },
     }
 
     diagnostic.ignore_signs(namespace)

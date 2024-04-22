@@ -17,7 +17,9 @@ local servers = {
       return
     end
 
-    setup_server(server, {})
+    local config = require('plugins.lsp.servers.denols')
+
+    setup_server(server, config.opts)
   end,
   ---@param server string
   eslint = function (server)

@@ -1,13 +1,36 @@
-local lsp_utils = require('plugins.lsp.utils')
-local default = require('plugins.lsp.servers.default')
-
 local M = {}
 
 local opts = {
-  on_attach = function (client, bufnr)
-    lsp_utils.set_document_formatting(client, false)
-    default.on_attach(client, bufnr)
-  end,
+  settings = {
+    typescript = {
+      completions = {
+        completeFunctionCalls = true,
+      },
+      inlayHints = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+    javascript = {
+      completions = {
+        completeFunctionCalls = true,
+      },
+      inlayHints = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+  },
 }
 
 M.opts = opts

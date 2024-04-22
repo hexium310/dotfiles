@@ -6,6 +6,13 @@ local opts = {
       hover = {
         previewFields = 100,
       },
+      completion = {
+        callSnippet = 'Replace',
+        keywordSnippet = 'Replace',
+      },
+      hint = {
+        enable = true,
+      },
     },
   },
 }
@@ -13,7 +20,7 @@ local opts = {
 M.opts = opts
 
 M.setup = function ()
-  require('neodev').setup({})
+  require('neodev').setup(opts)
 end
 
 return M

@@ -2,6 +2,7 @@ local utils = require('plugins/utils')
 local lsp_utils = require('plugins/lsp/utils')
 
 local default = {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
   commands = {
     RenameFile = {
       function ()

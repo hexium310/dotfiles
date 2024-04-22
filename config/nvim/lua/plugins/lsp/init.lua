@@ -19,4 +19,4 @@ require('mason-lspconfig').setup({
 
 require('plugins/lsp/diagnostic').setup()
 require('plugins/lsp/null-ls').setup()
-require('plugins/lsp/servers').setup()
+require('plugins/lsp/lspconfig').setup()

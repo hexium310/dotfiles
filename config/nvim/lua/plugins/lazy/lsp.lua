@@ -53,7 +53,7 @@ return {
     'mrcjkb/rustaceanvim',
     ft = { 'rust' },
     config = function ()
-      require('plugins/lsp/servers/rust_analyzer')
+      require('plugins/lsp/servers/rust_analyzer').setup()
     end
   },
 }

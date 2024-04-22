@@ -24,7 +24,7 @@ if (( $+commands[docker] )); then
 fi
 
 if (( $+commands[clip.exe] )); then
-    alias clip='iconv -t UTF-16 | clip.exe'
+    alias clip='iconv -t UTF-16LE | clip.exe'
 fi
 
 if [[ `uname` = 'Darwin' ]]; then

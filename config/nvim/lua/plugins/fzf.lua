@@ -44,7 +44,18 @@ fzf.setup({
   oldfiles = {
     include_current_session = true,
   },
+  lsp = {
+    code_actions = {
+      winopts = {
+        preview = {
+          vertical = 'up:70%',
+          layout = 'vertical',
+        },
+      },
+    },
+  },
 })
+vim.env.DELTA_FEATURES = '+codeaction-preview'
 
 local function show_fzf(callback)
   local disables = {

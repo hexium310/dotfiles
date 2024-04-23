@@ -27,3 +27,11 @@
 	wrap-right-percent = 1
 [delta "interactive"]
 	keep-plus-minus-markers = false
+[delta "codeaction-preview"]
+	file-style = omit
+	hunk-header-decoration-style = omit
+	hunk-header-style = blue
+	hunk-header-style = file line-number syntax
+	line-numbers-left-format = "{nm:>4}┊"
+	line-numbers-right-format = "{np:>4}│"
+	side-by-side = false

@@ -12,6 +12,8 @@ local opts = {
       },
       hint = {
         enable = true,
+        arrayIndex = 'Disable',
+        semicolon = 'Disable',
       },
     },
   },

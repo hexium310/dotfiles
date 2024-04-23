@@ -1,14 +1,9 @@
 return {
   {
-    'AndrewRadev/splitjoin.vim',
-    keys = {
-      { 'gJ' },
-      { 'gS' },
-    },
-    init = function ()
-      vim.g.splitjoin_html_attributes_bracket_on_new_line = 1
-    end,
-    submodules = false,
+    'echasnovski/mini.splitjoin',
+    config = function ()
+      require('plugins.splitjoin')
+    end
   },
   {
     'chaoren/vim-wordmotion',

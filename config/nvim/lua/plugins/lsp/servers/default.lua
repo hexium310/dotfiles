@@ -24,6 +24,10 @@ local default = {
   on_attach = function (client, bufnr)
     local goto_opts = {
       float = lsp_utils.float_opts,
+      severity = {
+        min = vim.diagnostic.severity.HINT,
+        max = vim.diagnostic.severity.ERROR,
+      },
     }
     local maps = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },

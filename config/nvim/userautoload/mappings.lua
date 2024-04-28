@@ -5,8 +5,6 @@ set_keymaps({
   { 'n', '<S-Down>', '<NOP>' },
   { 'n', '<S-Left>', '<NOP>' },
   { 'n', '<S-Right>', '<NOP>' },
-  { 'n', '[d', '[c' },
-  { 'n', ']d', ']c' },
   { 'n', 's', '<NOP>' },
   { 'v', 'v', '$h' },
   { 'n', '<Esc><Esc>', vim.cmd.nohlsearch, { silent = true } },

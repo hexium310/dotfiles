@@ -6,5 +6,9 @@ require("dial.config").augends:register_group({
     augend.constant.alias.bool,
     augend.semver.alias.semver,
     augend.misc.alias.markdown_header,
+    augend.constant.new({
+      elements = { '- [ ]', '- [x]' },
+      word = false,
+    }),
   },
 })

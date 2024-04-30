@@ -45,6 +45,22 @@ vim.env.MANPAGER = ('nvim -l %s/plugins/nvim_manpager.lua -'):format(vim.env.ZDO
 
 local init = vim.api.nvim_create_augroup('init', {})
 
+vim.api.nvim_create_autocmd({ 'TermRequest' }, {
+  group = init,
+  callback = function (event)
+    if string.sub(vim.v.termrequest, 1, 4) ~= '\x1b]7;' then
+      return
+    end
+
+    local directory = string.gsub(vim.v.termrequest, '\x1b]7;file://[^/]*', '')
+    if vim.fn.isdirectory(directory) == 0 then
+      return
+    end
+
+    vim.api.nvim_buf_set_var(event.buf, 'terminal_current_directory', directory)
+  end,
+})
+
 vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
   group = init,
   callback = function ()

@@ -1,3 +1,5 @@
+local lsp_utils = require('plugins.lsp.utils')
+
 local M = {}
 
 local namespaces_without_signs = {}
@@ -48,6 +50,9 @@ function M.setup()
   vim.diagnostic.config({
     virtual_text = false,
     signs = true,
+    jump = {
+      float = lsp_utils.float_opts,
+    },
   })
 
   set_sign_handler()

@@ -22,16 +22,11 @@ local default = {
     }),
   },
   on_attach = function (client, bufnr)
-    local goto_opts = {
-      float = lsp_utils.float_opts,
-    }
     local maps = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
       { 'n', '<F3>', vim.lsp.buf.code_action },
       { 'n', 'K', require('plugins.lsp.utils').hover },
       { 'n', 'gf', vim.lsp.buf.definition },
-      { 'n', ']d', function () vim.diagnostic.goto_next(goto_opts) end },
-      { 'n', '[d', function () vim.diagnostic.goto_prev(goto_opts) end },
       { 'n', '<C-d>', function () require('plugins.lsp.utils').send_key('<C-d>', bufnr) end },
       { 'n', '<C-u>', function () require('plugins.lsp.utils').send_key('<C-u>', bufnr) end },
       { 'n', '<C-f>', function () require('plugins.lsp.utils').send_key('<C-f>', bufnr) end },

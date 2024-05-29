@@ -170,7 +170,8 @@ return {
   },
   {
     'kylechui/nvim-surround',
-    lazy = false,
+    -- lazy = false,
+    keys = { 'sa', 'ssa', 'sA', 'sAA', 'sd', 'sr', 'sR' },
     config = function ()
       require('plugins.surround')
     end

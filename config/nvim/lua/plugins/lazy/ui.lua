@@ -16,6 +16,7 @@ return {
   },
   {
      'luukvbaal/statuscol.nvim',
+    branch = '0.10',
     event = { 'BufRead' },
     config = function ()
       require('plugins.statuscol')

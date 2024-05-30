@@ -43,4 +43,11 @@ return {
       require('plugins.bqf')
     end,
   },
+  {
+    'shellRaining/hlchunk.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('plugins.hlchunk')
+    end,
+  },
 }

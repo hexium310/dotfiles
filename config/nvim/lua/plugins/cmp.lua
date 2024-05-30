@@ -61,12 +61,12 @@ cmp.setup({
 })
 
 local maps = {
-  { { 'i', 's' }, '<C-n>', function ()
+  { { 'i', 's' }, '<C-j>', function ()
     if vim.snippet.active({ direction = 1 }) then
       vim.snippet.jump(1)
     end
   end },
-  { { 'i', 's' }, '<C-p>', function ()
+  { { 'i', 's' }, '<C-k>', function ()
     if vim.snippet.active({ direction = -1 }) then
       vim.snippet.jump(-1)
     end

@@ -17,6 +17,7 @@ return {
     },
     keys = {
       '<C-p>',
+      '<Space>f',
       '<Space><C-m>',
       '<Space>e',
       '<Space>r',
@@ -100,5 +101,20 @@ return {
     config = function ()
       require('plugins.fidget')
     end,
+  },
+  {
+    'stevearc/oil.nvim',
+    event = { 'BufRead' },
+    keys = {
+      { '<Space>o', function () require('oil').toggle_float() end },
+    },
+    config = function ()
+      require('plugins.oil')
+    end,
+  },
+  {
+    'nvim-tree/nvim-web-devicons',
+    lazy = true,
+    module = true,
   },
 }

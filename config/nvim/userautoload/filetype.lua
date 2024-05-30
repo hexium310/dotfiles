@@ -36,3 +36,11 @@ vim.api.nvim_create_autocmd('FileType', {
     })
   end
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = augroup,
+  pattern = { 'oil' },
+  callback = function ()
+    vim.keymap.set('n', '<C-^>', '<NOP>', { buffer = 0 })
+  end,
+})

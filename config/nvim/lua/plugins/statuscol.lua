@@ -6,8 +6,9 @@ require('statuscol').setup({
     'Trouble',
     'fugitive',
     'lazy',
-    'toggleterm',
     'man',
+    'oil',
+    'toggleterm',
   },
   segments = {
     {

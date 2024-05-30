@@ -3,6 +3,7 @@ local theme = require('lualine.themes.onedark')
 
 local toggleterm = require('plugins.lualine.extensions.toggleterm')
 local fugitive = require('plugins.lualine.extensions.fugitive')
+local oil = require('plugins.lualine.extensions.oil')
 
 theme.normal.a.gui = nil
 theme.insert.a.gui = nil
@@ -181,6 +182,7 @@ require('lualine').setup({
   extensions = {
     fugitive,
     toggleterm,
+    oil,
     'quickfix',
   },
 })

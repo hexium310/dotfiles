@@ -74,10 +74,25 @@ local function show_fzf(callback)
   end
 end
 
+local function fzf_dirs(opts)
+  local default_otps = {
+    prompt = 'Directories> ',
+    actions = {
+      ['default'] = function(selected)
+        require('oil').open_float(selected[1])
+      end,
+    },
+  }
+  opts = vim.tbl_deep_extend('force', opts, default_otps)
+
+  fzf.fzf_exec('fd --type d', opts)
+end
+
 vim.keymap.set('n', '<C-p>', show_fzf(fzf.git_files))
 vim.keymap.set('n', '<Space><C-m>', show_fzf(fzf.oldfiles))
 vim.keymap.set('n', '<Space>e', show_fzf(fzf.buffers))
 vim.keymap.set('n', '<Space>r', show_fzf(fzf.grep_project))
+vim.keymap.set('n', '<Space>f', show_fzf(function () fzf_dirs({}) end))
 
 vim.api.nvim_create_user_command('Rg', function (t)
  fzf.grep_project({ search = t.args })

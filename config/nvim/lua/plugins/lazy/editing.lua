@@ -1,9 +1,14 @@
 return {
   {
-    'echasnovski/mini.splitjoin',
-    config = function ()
-      require('plugins.splitjoin')
-    end
+    'Wansmer/treesj',
+    keys = {
+      { 'gJ', function () require('treesj').join() end },
+      { 'gS', function () require('treesj').split() end },
+      { 'gs', function () require('treesj').toggle() end },
+    },
+    config = function()
+      require('plugins.treesj')
+    end,
   },
   {
     'chaoren/vim-wordmotion',

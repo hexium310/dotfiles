@@ -95,5 +95,10 @@ return {
       require('plugins.dressing')
     end
   },
-
+  {
+    'j-hui/fidget.nvim',
+    config = function ()
+      require('plugins.fidget')
+    end,
+  },
 }

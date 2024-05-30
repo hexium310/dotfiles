@@ -1,5 +1,6 @@
 local disables = {}
 
+---@diagnostic disable: missing-fields
 require('nvim-treesitter.configs').setup({
   ensure_installed = {
     'bash',
@@ -41,6 +42,15 @@ require('nvim-treesitter.configs').setup({
   },
   query_linter ={
     enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<TAB>',
+      scope_incremental = '<CR>',
+      node_incremental = '<TAB>',
+      node_decremental = '<S-TAB>',
+    },
   },
   textobjects = {
     select = {

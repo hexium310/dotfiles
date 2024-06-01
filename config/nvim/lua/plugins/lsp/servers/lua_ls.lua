@@ -21,8 +21,4 @@ local opts = {
 
 M.opts = opts
 
-M.setup = function ()
-  require('neodev').setup(opts)
-end
-
 return M

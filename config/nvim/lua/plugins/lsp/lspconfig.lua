@@ -41,7 +41,6 @@ local servers = {
   lua_ls = function (server)
     local config = require('plugins.lsp.servers.lua_ls')
 
-    config.setup()
     setup_server(server, config.opts)
   end,
   ---@param server string

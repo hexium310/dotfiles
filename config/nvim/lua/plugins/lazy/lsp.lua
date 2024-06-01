@@ -23,9 +23,6 @@ return {
         'hrsh7th/cmp-nvim-lsp',
         module = true,
       },
-      {
-        'folke/neodev.nvim',
-      },
     },
     config = function ()
       require('plugins.lsp')
@@ -47,5 +44,17 @@ return {
     config = function ()
       require('plugins.lsp.servers.rust_analyzer').setup()
     end
+  },
+  {
+    'folke/lazydev.nvim',
+    ft = { 'lua' },
+    config = function ()
+      require('plugins.lazydev')
+    end
+  },
+  {
+    -- This will be installed for vim.uv typings and isn't vim plugin.
+    'Bilal2453/luvit-meta',
+    lazy = true,
   },
 }

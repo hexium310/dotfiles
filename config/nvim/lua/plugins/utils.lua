@@ -1,13 +1,57 @@
-local M = {}
-
-M.diagnostic = {
-  signs = {
-    text = {
-      ERROR = vim.fn.nr2char(0xea87),
-      WARN = vim.fn.nr2char(0xea6c),
-      INFO = vim.fn.nr2char(0xea74),
-      HINT = vim.fn.nr2char(0xeb32),
+local M = {
+  diagnostic = {
+    signs = {
+      text = {
+        ERROR = vim.fn.nr2char(0xea87),
+        WARN = vim.fn.nr2char(0xea6c),
+        INFO = vim.fn.nr2char(0xea74),
+        HINT = vim.fn.nr2char(0xeb32),
+      },
     },
+    float = {
+      opts = {
+        border = 'rounded',
+        focusable = false,
+        source = 'always',
+      },
+    },
+  },
+  lsp = {
+    floating = {
+      send_key = function (command, bufnr)
+        bufnr = bufnr or vim.api.nvim_get_current_buf()
+        local lsp_floating_window = vim.F.npcall(vim.api.nvim_buf_get_var, bufnr, 'lsp_floating_preview')
+
+        local window = (function ()
+          if lsp_floating_window and vim.api.nvim_win_is_valid(lsp_floating_window) and
+            vim.api.nvim_win_get_height(lsp_floating_window) < vim.api.nvim_buf_line_count(vim.api.nvim_win_get_buf(lsp_floating_window)) then
+            return lsp_floating_window
+          end
+
+          return vim.api.nvim_get_current_win()
+        end)()
+
+        vim.api.nvim_win_call(window, function ()
+          local escaped_command = vim.api.nvim_replace_termcodes(command, true, false, true)
+          vim.cmd(('normal! %s'):format(escaped_command))
+        end)
+      end
+    },
+    rename_file = function ()
+      local filename = vim.fn.expand('%')
+
+      vim.ui.input({
+        prompt = 'New Filename',
+        default = filename,
+        completion = 'file',
+      }, function (new_filename)
+          if new_filename == nil then
+            return
+          end
+
+          vim.lsp.util.rename(filename, new_filename)
+        end)
+    end,
   },
 }
 

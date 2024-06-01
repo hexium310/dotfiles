@@ -1,12 +1,27 @@
 local utils = require('plugins.utils')
-local lsp_utils = require('plugins.lsp.utils')
+
+local function disable_cursor_hold()
+  vim.opt.eventignore:append('CursorHold')
+
+  vim.api.nvim_create_augroup('LspConfig.DisableCursorHold', { clear = true })
+
+  vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'BufHidden', 'InsertCharPre' }, {
+    group = 'LspConfig.DisableCursorHold',
+    buffer = vim.api.nvim_get_current_buf(),
+    once = true,
+    desc = 'Prevent floating window with diagnostic opening while one with hover information is opened',
+    callback = function ()
+      vim.opt.eventignore:remove('CursorHold')
+    end
+  })
+end
 
 local default = {
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   commands = {
     RenameFile = {
       function ()
-        require('plugins.lsp.utils').rename_file()
+        require('plugins.utils').lsp.rename_file()
       end,
     },
   },
@@ -25,12 +40,16 @@ local default = {
     local maps = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
       { 'n', '<F3>', vim.lsp.buf.code_action },
-      { 'n', 'K', require('plugins.lsp.utils').hover },
+      { 'n', 'K', function ()
+        vim.lsp.buf.hover()
+        -- Stops a hover floating window from being hidden by a diagnostic floating window on CursorHold
+        disable_cursor_hold()
+      end },
       { 'n', 'gf', vim.lsp.buf.definition },
-      { 'n', '<C-d>', function () require('plugins.lsp.utils').send_key('<C-d>', bufnr) end },
-      { 'n', '<C-u>', function () require('plugins.lsp.utils').send_key('<C-u>', bufnr) end },
-      { 'n', '<C-f>', function () require('plugins.lsp.utils').send_key('<C-f>', bufnr) end },
-      { 'n', '<C-b>', function () require('plugins.lsp.utils').send_key('<C-b>', bufnr) end },
+      { 'n', '<C-d>', function () require('plugins.utils').lsp.floating.send_key('<C-d>', bufnr) end },
+      { 'n', '<C-u>', function () require('plugins.utils').lsp.floating.send_key('<C-u>', bufnr) end },
+      { 'n', '<C-f>', function () require('plugins.utils').lsp.floating.send_key('<C-f>', bufnr) end },
+      { 'n', '<C-b>', function () require('plugins.utils').lsp.floating.send_key('<C-b>', bufnr) end },
     }
 
     utils.set_keymaps(maps, {
@@ -51,7 +70,7 @@ local default = {
       callback = function ()
         vim.diagnostic.open_float(vim.tbl_extend('error', {
           scope = 'cursor',
-        }, lsp_utils.float_opts))
+        }, utils.diagnostic.float.opts))
       end,
     })
   end,

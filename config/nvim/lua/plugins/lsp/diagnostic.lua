@@ -1,4 +1,3 @@
-local lsp_utils = require('plugins.lsp.utils')
 local utils = require('plugins.utils');
 
 local M = {}
@@ -59,7 +58,7 @@ function M.setup()
       },
     },
     jump = {
-      float = lsp_utils.float_opts,
+      float = utils.diagnostic.float.opts,
     },
   })
 

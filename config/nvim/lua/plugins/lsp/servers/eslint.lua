@@ -1,5 +1,4 @@
 local utils = require('plugins.utils')
-local lsp_utils = require('plugins.lsp.utils')
 local diagnostic = require('plugins.lsp.diagnostic')
 
 local M = {}
@@ -11,7 +10,7 @@ local opts = {
       diagnostic = {
         namespace = namespace,
       },
-      float = lsp_utils.float_opts,
+      float = utils.diagnostic.float.opts,
     }
     local maps = {
       { 'n', ']a', function () vim.diagnostic.jump(vim.tbl_deep_extend('force', jump_opts, { count = 1 })) end },
@@ -29,7 +28,6 @@ local opts = {
       buffer = bufnr,
       silent = true,
     })
-    lsp_utils.set_document_formatting(client, true)
   end,
   settings = {
     format = {

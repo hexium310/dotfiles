@@ -120,6 +120,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     'lazy',
     'man',
     'toggleterm',
+    'trouble',
   }
   local filetypes_to_display_line_number_without_relative = { 'help' }
 

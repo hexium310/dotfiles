@@ -1,4 +1,7 @@
 require('trouble').setup({
-  icons = false,
-  multiline = false,
+  auto_close = true,
+  keys = {
+    [']d'] = 'next',
+    ['[d'] = 'prev',
+  },
 })

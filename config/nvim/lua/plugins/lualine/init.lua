@@ -4,6 +4,7 @@ local theme = require('lualine.themes.onedark')
 local toggleterm = require('plugins.lualine.extensions.toggleterm')
 local fugitive = require('plugins.lualine.extensions.fugitive')
 local oil = require('plugins.lualine.extensions.oil')
+local utils = require('plugins.utils')
 
 theme.normal.a.gui = nil
 theme.insert.a.gui = nil
@@ -14,7 +15,6 @@ theme.inactive.a.gui = nil
 
 require('lualine').setup({
   options = {
-    icons_enabled = false,
     theme = theme,
     component_separators = {
       left = '|',
@@ -72,9 +72,12 @@ require('lualine').setup({
           info  = 'lualine_c_normal',  -- Changes diagnostics' info color.
           hint  = 'lualine_c_normal',
         },
-        fmt = function (str)
-          return str:gsub(':', ': ')
-        end,
+        symbols = {
+          error = utils.diagnostic.signs.text.ERROR .. ' ',
+          warn = utils.diagnostic.signs.text.WARN .. ' ',
+          info = utils.diagnostic.signs.text.INFO .. ' ',
+          hint = utils.diagnostic.signs.text.HINT .. ' ',
+        },
       },
       {
         -- search count

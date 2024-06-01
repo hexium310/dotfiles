@@ -22,7 +22,7 @@ require('statuscol').setup({
           'diagnostic/signs',
         },
         maxwidth = 1,
-        colwidth = 1,
+        colwidth = 2,
         fillcharhl = 'SignColumn',
       },
     },

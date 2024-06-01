@@ -1,5 +1,16 @@
 local M = {}
 
+M.diagnostic = {
+  signs = {
+    text = {
+      ERROR = vim.fn.nr2char(0xea87),
+      WARN = vim.fn.nr2char(0xea6c),
+      INFO = vim.fn.nr2char(0xea74),
+      HINT = vim.fn.nr2char(0xeb32),
+    },
+  },
+}
+
 local function autocmd_exists(opts)
   local autocmds = vim.api.nvim_get_autocmds(opts)
   return not vim.tbl_isempty(autocmds)

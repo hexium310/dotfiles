@@ -1,4 +1,5 @@
 local lsp_utils = require('plugins.lsp.utils')
+local utils = require('plugins.utils');
 
 local M = {}
 
@@ -49,7 +50,14 @@ function M.setup()
 
   vim.diagnostic.config({
     virtual_text = false,
-    signs = true,
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = utils.diagnostic.signs.text.ERROR,
+        [vim.diagnostic.severity.WARN] = utils.diagnostic.signs.text.WARN,
+        [vim.diagnostic.severity.INFO] = utils.diagnostic.signs.text.INFO,
+        [vim.diagnostic.severity.HINT] = utils.diagnostic.signs.text.HINT,
+      },
+    },
     jump = {
       float = lsp_utils.float_opts,
     },

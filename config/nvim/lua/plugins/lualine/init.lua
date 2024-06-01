@@ -68,8 +68,8 @@ require('lualine').setup({
         'diagnostics',
         diagnostics_color = {
           error = 'StatusLineDiagnosticError',
-          warn  = 'StatusLineDiagnosticWarn',  -- Changes diagnostics' warn color.
-          info  = 'lualine_c_normal',  -- Changes diagnostics' info color.
+          warn  = 'StatusLineDiagnosticWarn',
+          info  = 'StatusLineDiagnosticInfo',
           hint  = 'lualine_c_normal',
         },
         symbols = {

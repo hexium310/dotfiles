@@ -1,6 +1,6 @@
 require('lazydev').setup({
   library = {
-    vim.env.LAZY .. '/luvit-meta/library',
+    'luvit-meta/library',
   },
   enabled = function(client)
     if vim.g.lazydev_enabled ~= nil then

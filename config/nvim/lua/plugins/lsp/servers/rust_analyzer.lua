@@ -2,7 +2,15 @@ local default = require('plugins.lsp.servers.default')
 
 local M = {}
 
-local opts = {}
+local opts = {
+  settings = {
+    ['rust-analyzer'] = {
+      rustfmt = {
+        extraArgs = { '+nightly' },
+      },
+    },
+  },
+}
 
 M.opts = opts
 
@@ -19,6 +27,7 @@ M.setup = function ()
           vim.fn.tempname() .. '-rust-analyzer.log',
         }
       end,
+      default_settings = opts.settings,
     }),
   }
 end

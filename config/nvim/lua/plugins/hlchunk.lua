@@ -4,5 +4,6 @@ require('hlchunk').setup({
     chars = {
       right_arrow = '─',
     },
+    delay = 0,
   },
 })

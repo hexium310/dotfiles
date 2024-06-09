@@ -33,7 +33,7 @@ return {
       'TermExec',
     },
     keys = {
-      { '<C-t>', mode = { 'n', 'i' } },
+      { '<C-t>' },
     },
     dependencies = {
       {

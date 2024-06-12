@@ -22,6 +22,7 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.abort(),
     ['<C-y>'] = cmp.mapping.confirm({
       select = true,
+      behavior = cmp.ConfirmBehavior.Replace,
     }),
     ['<C-n>'] = cmp.mapping(function (fallback)
       if cmp.visible() then

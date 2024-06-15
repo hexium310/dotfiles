@@ -39,10 +39,29 @@ cmp.setup({
       end
     end),
   }),
+  ---@diagnostic disable-next-line: missing-fields
   formatting = {
     format = function (entry, vim_item)
+      local lsp_menu = '[LSP]'
+
+      local filetype = entry.context.filetype
+      local detail = entry.completion_item.labelDetails and entry.completion_item.labelDetails.detail
+      local description = entry.completion_item.labelDetails and entry.completion_item.labelDetails.description
+      if detail then
+        local pattern = ''
+        if filetype == 'rust' then
+          pattern = ' %((use .+)%)'
+
+          entry.completion_item.detail = detail:gsub(pattern, '%1')
+        end
+
+        lsp_menu = detail:gsub(pattern, "%1"):sub(1, 40)
+      elseif description then
+        lsp_menu = description
+      end
+
       vim_item.menu = ({
-        nvim_lsp = '[LSP]',
+        nvim_lsp = lsp_menu,
         buffer = '[Buffer]',
         path = '[Path]',
       })[entry.source.name]

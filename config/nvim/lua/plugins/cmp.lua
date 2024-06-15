@@ -57,7 +57,7 @@ cmp.setup({
 
         lsp_menu = detail:gsub(pattern, "%1"):sub(1, 40)
       elseif description then
-        lsp_menu = description
+        lsp_menu = description:sub(1, 40)
       end
 
       vim_item.menu = ({

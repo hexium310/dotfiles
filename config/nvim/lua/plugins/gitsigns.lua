@@ -16,8 +16,8 @@ gitsigns.setup({
   },
   on_attach = function (bufnr)
     local maps = {
-      { 'n', ']g', actions.next_hunk },
-      { 'n', '[g', actions.prev_hunk },
+      { 'n', ']g', function () actions.nav_hunk('next', { navigation_message = false }) end },
+      { 'n', '[g', function () actions.nav_hunk('prev', { navigation_message = false }) end },
       { 'n', '<Space>h', actions.preview_hunk },
       { 'n', '<Space>gr', actions.reset_hunk },
       { 'v', '<Space>gr', function () gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end },

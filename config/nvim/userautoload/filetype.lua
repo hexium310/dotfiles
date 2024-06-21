@@ -2,9 +2,6 @@ vim.filetype.add({
   extension = {
     zunit = 'zsh',
   },
-  filename = {
-    ['.envrc'] = 'bash',
-  },
   pattern = {
     ['.*/config/git/config'] = 'gitconfig',
     ['.*%.gitconfig'] = 'gitconfig',

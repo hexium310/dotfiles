@@ -40,6 +40,7 @@ fzf.setup({
         layout = 'vertical',
       },
     },
+    RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
   },
   oldfiles = {
     include_current_session = true,

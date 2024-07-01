@@ -84,20 +84,25 @@ cmp.setup({
 })
 
 local maps = {
-  { { 'i', 's' }, '<C-n>', function ()
+  { { 'i', 's' }, '<Tab>', function ()
     if vim.snippet.active({ direction = 1 }) then
-      vim.snippet.jump(1)
+      return '<Cmd>lua vim.snippet.jump(1)<CR>'
+    else
+      return '<Tab>'
     end
   end },
-  { { 'i', 's' }, '<C-p>', function ()
+  { { 'i', 's' }, '<S-Tab>', function ()
     if vim.snippet.active({ direction = -1 }) then
-      vim.snippet.jump(-1)
+      return '<Cmd>lua vim.snippet.jump(-1)<CR>'
+    else
+      return '<Tab>'
     end
   end },
 }
 
 set_keymaps(maps, {
   silent = true,
+  expr = true,
 })
 
 -- -- After reloading the config multiple `()`s are displayed when confirming a completion item, so reset an event listener.

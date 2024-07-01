@@ -8,6 +8,9 @@ local opts = {
       rustfmt = {
         extraArgs = { '+nightly' },
       },
+      check = {
+        command = 'clippy',
+      },
     },
   },
 }

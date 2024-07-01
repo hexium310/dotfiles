@@ -3,6 +3,7 @@
 [user]
 	name = Hexin
 	email = hexium310@gmail.com
+	signingkey = /home/hexin/.ssh/id_ed25519.pub
 [merge]
 	ff = false
 	conflictstyle = diff3
@@ -24,3 +25,9 @@
 	lineNumber = true
 [include]
 	path = delta.gitconfig
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /home/hexin/.ssh/allowed_signers

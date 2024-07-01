@@ -59,7 +59,8 @@ require('lualine').setup({
       {
         -- filepath
         function ()
-          return ('%.35s'):format(vim.fn.expand('%:h:s')):gsub('$', '/')
+          local max_width = vim.api.nvim_win_get_width(0) - 50
+          return (vim.fn.expand('%:.:h') .. '/'):sub(1, max_width)
         end,
       },
     },

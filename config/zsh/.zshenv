@@ -5,6 +5,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export COMPOSER_HOME="$XDG_CONFIG_HOME/composer"
 export DENO_DIR="$XDG_CACHE_HOME/deno"
+export DENO_INSTALL_ROOT="$XDG_DATA_HOME/deno"
 export GEM_HOME="$XDG_DATA_HOME/gem"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
@@ -23,6 +24,7 @@ export WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 typeset -U path=(
     '/usr/local/sbin'
     "$CARGO_HOME/bin"
+    "$DENO_INSTALL_ROOT/bin"
     "$GEM_HOME/bin"
     "$COMPOSER_HOME/bin"
     "${KREW_ROOT}/bin"

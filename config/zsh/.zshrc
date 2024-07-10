@@ -20,7 +20,7 @@ if [[ -a $XDG_DATA_HOME/zcomet/bin/zcomet.zsh ]]; then
         _zsh_togglecursor_apply_cursor 'line'
     }
 
-    zcomet load junegunn/fzf shell completion.zsh
+    zcomet snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
 
     zcomet load zsh-users/zsh-autosuggestions
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247,underline'

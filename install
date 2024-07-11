@@ -55,6 +55,7 @@ install_dotfiels() {
   make_symlink ripgrep $XDG_CONFIG_HOME/ripgrep
   make_symlink bat $XDG_CONFIG_HOME/bat
   make_symlink tmux $XDG_CONFIG_HOME/tmux
+  make_symlink npm $XDG_CONFIG_HOME/npm
 }
 
 install_plugin_managers() {

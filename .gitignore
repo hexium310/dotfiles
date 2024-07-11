@@ -10,3 +10,6 @@ config/nvim/spell
 
 config/gh/*
 !config/gh/config.yml
+
+config/npm/*
+!config/npm/npmrc

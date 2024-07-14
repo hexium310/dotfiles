@@ -13,10 +13,11 @@ function M.download()
     'https://www.schemastore.org/api/json/catalog.json',
   }, {
     cwd = dir,
-  })
+  }):wait()
 end
 
 function M.decode()
+  M.setup()
   local file_handle = assert(io.open(file))
   local json = vim.json.decode(file_handle:read("*a"))
   file_handle:close()

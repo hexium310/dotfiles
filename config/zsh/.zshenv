@@ -22,6 +22,7 @@ export PSQL_HISTORY="$XDG_CACHE_HOME/pg/psql_history"
 export REVOLVER_DIR="$XDG_CACHE_HOME/revolver"
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export WASI_SDK_PATH="/opt/wasi-sdk"
 export XWIN_CACHE_DIR="$XDG_CACHE_HOME/xwin"
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 

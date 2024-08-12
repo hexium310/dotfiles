@@ -20,13 +20,14 @@ fzf.setup({
       ['ctrl-s'] = false,
       ['ctrl-x'] = actions.file_split,
     }),
-    buffers = vim.tbl_extend('force', fzf.config.defaults.actions.buffers, {
-      ['ctrl-s'] = false,
-      ['ctrl-x'] = actions.buf_split,
-    }),
   },
   fzf_opts = {
     ['--layout'] = 'default',
+  },
+  buffers = {
+    actions = {
+      ['ctrl-x'] = actions.file_split,
+    },
   },
   git = {
     files = {

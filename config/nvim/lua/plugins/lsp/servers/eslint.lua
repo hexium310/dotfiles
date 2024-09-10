@@ -18,7 +18,7 @@ local opts = {
       { 'n', '<F8>', function () vim.lsp.buf.format({
         async = true,
         filter = function (c)
-          return c.name ~= 'tsserver'
+          return c.name ~= 'ts_ls'
         end,
       }) end },
     }

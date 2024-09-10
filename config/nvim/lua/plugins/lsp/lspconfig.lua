@@ -50,12 +50,12 @@ local servers = {
     setup_server(server, config.opts)
   end,
   ---@param server string
-  tsserver = function (server)
+  ts_ls = function (server)
     if not lspconfig.util.root_pattern('package.json')(vim.fn.getcwd()) then
       return
     end
 
-    local config = require('plugins.lsp.servers.tsserver')
+    local config = require('plugins.lsp.servers.ts_ls')
 
     setup_server(server, config.opts)
   end,

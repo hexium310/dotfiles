@@ -22,13 +22,3 @@ __check_syntax_error() {
 }
 
 add-zsh-hook zshaddhistory __check_syntax_error
-
-__ignore_shorter_command() {
-    local arguments=(${(Q)${(z)${@%%$'\n'}}})
-
-    if (( ${#arguments} == 1 )) && (( ${#${arguments[1]}} <= 5 )); then
-        return 2
-    fi
-}
-
-add-zsh-hook zshaddhistory __ignore_shorter_command

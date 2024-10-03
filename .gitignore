@@ -13,3 +13,7 @@ config/gh/*
 
 config/npm/*
 !config/npm/npmrc
+
+config/systemd/user/default.target.wants
+# ssh-agent.service is included in  openssh package
+config/systemd/user/ssh-agent.service

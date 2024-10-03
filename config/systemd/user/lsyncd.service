@@ -1,0 +1,11 @@
+[Unit]
+Description=synchronization daemon
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/lsyncd -log Exec -nodaemon ${HOME}/.config/lsyncd/lsyncd.conf.lua
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=default.target

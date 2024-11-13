@@ -41,7 +41,7 @@ local default = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },
       { 'n', '<F3>', vim.lsp.buf.code_action },
       { 'n', 'K', function ()
-        vim.lsp.buf.hover()
+        vim.lsp.buf.hover(utils.diagnostic.float.opts)
         -- Stops a hover floating window from being hidden by a diagnostic floating window on CursorHold
         disable_cursor_hold()
       end },

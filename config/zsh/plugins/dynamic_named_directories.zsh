@@ -19,7 +19,7 @@ _named_directoires() {
     elif [[ $1 == 'd' ]]; then
         directories=($HOME/Repositories/*/${2:t}(N/))
 
-        (( ${#directories} != 1 )) && return 1
+        (( ${#directories} != 1 )) || [[ "${directories[0]}" != "$PWD" ]] && return 1
 
         reply=(${2:t} ${#2})
         return 0

@@ -13,3 +13,6 @@ yarn-error.log
 
 ### direnv ###
 .envrc
+
+### Visual Studio Code ###
+.vscode/

@@ -11,9 +11,6 @@ local opts = {
       check = {
         command = 'clippy',
       },
-      cargo = {
-        features = "all",
-      },
     },
   },
 }

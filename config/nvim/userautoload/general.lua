@@ -105,7 +105,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = init,
   callback = function ()
-    vim.highlight.on_yank({
+    vim.hl.on_yank({
       higroup = 'Yanked',
       timeout = 100,
     })

@@ -1,0 +1,3 @@
+[submodule "config/autohotkey/IMEv2.ahk"]
+	path = config/autohotkey/IMEv2.ahk
+	url = https://github.com/k-ayaki/IMEv2.ahk

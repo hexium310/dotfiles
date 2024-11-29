@@ -58,6 +58,7 @@ install_dotfiels() {
   make_symlink npm $XDG_CONFIG_HOME/npm
   make_symlink alacritty $XDG_CONFIG_HOME/alacritty
   make_symlink lsyncd $XDG_CONFIG_HOME/lsyncd
+  make_symlink autohotkey $XDG_CONFIG_HOME/autohotkey
   make_symlink systemd/user $XDG_CONFIG_HOME/systemd/user
 }
 

@@ -3,22 +3,18 @@
 #include ".\IMEv2.ahk\IMEv2.ahk"
 
 ; 無変換 on zh-cn layout
-$vkEB:: {
+$~vkEB:: {
     if (Get_languege_name() = "zh-cn") {
         SetDefaultKeyboard(0x0411)
         IME_SET(0)
-    } else {
-        SendInput("{vk1D}")
     }
 }
 
 ; 変換 on zh-cn layout
-$vkFF:: {
+$~vkFF:: {
     if (Get_languege_name() = "zh-cn") {
         SetDefaultKeyboard(0x0411)
         IME_SET(1)
-    } else {
-        SendInput("{vk1C}")
     }
 }
 

@@ -37,4 +37,5 @@ typeset -U path=(
     "$COMPOSER_HOME/bin"
     "${KREW_ROOT}/bin"
     "${path[@]}"
+    "$GOPATH/bin"
 )

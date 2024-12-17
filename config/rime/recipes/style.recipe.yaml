@@ -1,9 +1,9 @@
 recipe:
-  Rx: style
+  Rx: config/rime/recipes/style
   args:
   description: style recipe
 install_files: >
-  __weasel.custom.yaml
+  config/rime/__weasel.custom.yaml
 patch_files:
   weasel.custom.yaml:
     - patch/+:

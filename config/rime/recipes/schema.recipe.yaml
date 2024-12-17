@@ -1,10 +1,10 @@
 recipe:
-  Rx: schema
+  Rx: config/rime/recipes/schema
   args:
   description: schema recipe
 install_files: >
-  __default.custom.yaml
-  terra_pinyin.custom.yaml
+  config/rime/__default.custom.yaml
+  config/rime/terra_pinyin.custom.yaml
 patch_files:
   default.custom.yaml:
     - patch/+:

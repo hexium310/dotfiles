@@ -1,0 +1,17 @@
+patch:
+  app_options/wezterm.exe:
+    ascii_mode: true
+    inline_preedit: true
+    vim_mode: true
+  app_options/alacritty.exe:
+    ascii_mode: true
+    inline_preedit: true
+    vim_mode: true
+  app_options/WindowsTerminal.exe:
+    ascii_mode: true
+    inline_preedit: true
+    vim_mode: true
+  style/color_scheme: brisk
+  style/label_font_face: Noto Sans CJK SC, Noto Sans CJK JP, Noto Sans JP
+  style/comment_font_face: Noto Sans CJK SC, Noto Sans CJK JP, Noto Sans JP
+  style/layout/border_width: 1

@@ -1,0 +1,10 @@
+recipe:
+  Rx: style
+  args:
+  description: style recipe
+install_files: >
+  __weasel.custom.yaml
+patch_files:
+  weasel.custom.yaml:
+    - patch/+:
+      __include: __weasel.custom.yaml:/patch

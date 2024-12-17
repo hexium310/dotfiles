@@ -1,0 +1,18 @@
+patch:
+  stroke/enable_completion: true
+  stroke/prefix: uI
+  radical_reverse_lookup/prefix: uU
+  wubi98_mint/prefix: uW
+  recognizer/patterns/stroke: "uI[a-z]*'?$"
+  recognizer/patterns/radical_lookup: "uU[a-z]*'?$"
+  recognizer/patterns/wubi98_mint: "uW[a-z]*'?$"
+  menu/page_size: 9
+  key_binder/bindings/+:
+    - when: composing
+      accept: Control+w
+      send: Control+BackSpace
+  editor:
+    bindings:
+      Return: confirm
+      # commit pinyin with tones
+      Shift+Return: commit_comment

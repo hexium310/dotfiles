@@ -1,0 +1,11 @@
+recipe:
+  Rx: schema
+  args:
+  description: schema recipe
+install_files: >
+  __default.custom.yaml
+  terra_pinyin.custom.yaml
+patch_files:
+  default.custom.yaml:
+    - patch/+:
+      __include: __default.custom.yaml:/patch

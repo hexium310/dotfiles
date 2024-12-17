@@ -6,5 +6,4 @@ install_files: >
   config/rime/__weasel.custom.yaml
 patch_files:
   weasel.custom.yaml:
-    - patch/+:
-      __include: __weasel.custom.yaml:/patch
+    - patch/+: { __include: config/rime/__weasel.custom.yaml:/patch }

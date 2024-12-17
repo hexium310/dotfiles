@@ -7,5 +7,4 @@ install_files: >
   config/rime/terra_pinyin.custom.yaml
 patch_files:
   default.custom.yaml:
-    - patch/+:
-      __include: __default.custom.yaml:/patch
+    - patch/+: { __include: config/rime/__default.custom.yaml:/patch }

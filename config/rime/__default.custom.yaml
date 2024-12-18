@@ -1,6 +1,0 @@
-patch:
-  menu/page_size: 9
-  schema_list:
-    - schema: terra_pinyin
-    - schema: rime_mint
-    - schema: stroke

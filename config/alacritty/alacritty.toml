@@ -1,8 +1,9 @@
+[general]
 import = [
     'C:\Users\Hexin\Documents\Repositories\aarowill\base16-alacritty\colors\base16-tomorrow-night-eighties-256.toml',
 ]
 
-[shell]
+[terminal.shell]
 program = 'C:\Windows\system32\wsl.exe'
 args = [
     '--cd',
@@ -37,6 +38,7 @@ hide_when_typing = true
 bindings = [
     { key = 'Q', mods = 'Control', mode = 'Vi', action = 'Quit' },
     { key = 'Escape', mode = 'Vi|~Search', action = 'ToggleViMode' },
+    { key = '^', mods = 'Control', chars = "\u001e" },
 ]
 
 [[hints.enabled]]

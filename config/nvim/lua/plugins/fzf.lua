@@ -5,6 +5,9 @@ fzf.setup({
   'default',
   winopts = {
     width = 0.90,
+    treesitter = {
+      enabled = true,
+    },
     preview = {
       vertical = 'up:45%',
       horizontal = 'right:45%',

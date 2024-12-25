@@ -2,11 +2,13 @@
 
 #include ".\IMEv2.ahk\IMEv2.ahk"
 
+$~vk1D::
 ; 無変換 on zh-cn layout
 $~vkEB:: {
     if (Get_languege_name() = "zh-cn") {
         SetDefaultKeyboard(0x0411)
         IME_SET(0)
+        Send "{vk1D}"
     }
 }
 

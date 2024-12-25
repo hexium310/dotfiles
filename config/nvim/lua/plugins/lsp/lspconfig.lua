@@ -27,6 +27,11 @@ local servers = {
 
     setup_server(server, config.opts)
   end,
+  gopls = function (server)
+    local config = require('plugins.lsp.servers.gopls')
+
+    setup_server(server, config.opts)
+  end,
   ---@param server string
   jsonls = function (server)
     local config = require('plugins.lsp.servers.jsonls')

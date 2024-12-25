@@ -7,6 +7,7 @@ require('mason-lspconfig').setup({
     'denols',
     'emmet_language_server',
     'eslint',
+    'gopls',
     'jsonls',
     'lua_ls',
     'rust_analyzer',

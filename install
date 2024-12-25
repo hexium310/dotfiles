@@ -60,6 +60,7 @@ install_dotfiels() {
   make_symlink lsyncd $XDG_CONFIG_HOME/lsyncd
   make_symlink autohotkey $XDG_CONFIG_HOME/autohotkey
   make_symlink systemd/user $XDG_CONFIG_HOME/systemd/user
+  make_symlink srcurl $XDG_CONFIG_HOME/srcurl
 }
 
 install_plugin_managers() {

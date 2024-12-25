@@ -1,0 +1,16 @@
+#:schema https://raw.githubusercontent.com/hexium310/srcurl/refs/heads/master/schemas/srcurl.json
+
+[[sites]]
+name = "pixiv"
+patterns = [
+  "^pixiv_(?P<id>[0-9]+)_p[0-9]+",
+  "^(?P<id>[0-9]+)_p[0-9]+",
+]
+url = "https://pixiv.net/artworks/{{.Id}}"
+
+[[sites]]
+name = "twitter"
+patterns = [
+  "^twitter_(?P<id>[0-9]+)_[0-9]+",
+]
+url = "https://x.com/_/status/{{.Id}}"

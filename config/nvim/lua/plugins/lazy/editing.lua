@@ -55,15 +55,12 @@ return {
   },
   {
     'tversteeg/registers.nvim',
-    commit = 'f354159',
-    pin = true,
     keys = {
       { '"', mode = { 'n', 'v' } },
       { '<C-r>', mode = 'i' },
     },
-    init = function ()
-      vim.g.registers_window_min_height = 15
-      vim.g.registers_window_border = 'single'
+    config = function ()
+      require('plugins.registers')
     end,
   },
   {

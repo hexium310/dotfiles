@@ -2,7 +2,7 @@ local M = {}
 
 local opts = {
   settings = {
-    deno = {
+    typescript = {
       suggest = {
         completeFunctionCalls = true,
       },

@@ -71,6 +71,12 @@ return {
     end,
   },
   {
+    'ysmb-wtsg/in-and-out.nvim',
+    keys = {
+      { '<C-c>', function () require('in-and-out').in_and_out() end, mode = 'i' },
+    },
+  },
+  {
     'hrsh7th/nvim-cmp',
     event = { 'InsertEnter' },
     dependencies = {

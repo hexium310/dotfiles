@@ -157,6 +157,16 @@ return {
     },
   },
   {
+    'sgur/vim-textobj-parameter',
+    keys = {
+      { 'i,', mode = { 'x', 'o' } },
+      { 'a,', mode = { 'x', 'o' } },
+    },
+    dependencies = {
+      'vim-textobj-user',
+    },
+  },
+  {
     'Julian/vim-textobj-variable-segment',
     keys = {
       { 'iv', mode = { 'x', 'o' } },

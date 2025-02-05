@@ -118,4 +118,13 @@ return {
     lazy = true,
     module = true,
   },
+  {
+    'NStefan002/screenkey.nvim',
+    cmd = { 'Screenkey' },
+    opts = {
+      win_opts = {
+        row = 0,
+      },
+    },
+  }
 }

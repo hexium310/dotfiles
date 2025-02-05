@@ -2,7 +2,7 @@ export EDITOR=${EDITOR-nvim}
 export MANPAGER=${MANPAGER-nvim +Man!}
 export ZSHRC="$ZDOTDIR/.zshrc"
 export RUNEWIDTH_EASTASIAN=0
-export FZF_DEFAULT_COMMAND='fd --hidden --type=file --color=always --ignore-file=$XDG_CONFIG_HOME/fdignore'
+export FZF_DEFAULT_COMMAND='fd --hidden --type=file --color=always'
 export FZF_DEFAULT_OPTS='--ansi --height=80% --border --bind="ctrl-f:page-down" --bind="ctrl-b:page-up"'
 FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS\
 ' --color=fg:#cccccc,bg:#2d2d2d,hl:#f99157'\

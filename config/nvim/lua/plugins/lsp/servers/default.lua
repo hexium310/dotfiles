@@ -1,7 +1,7 @@
 local utils = require('plugins.utils')
 
 local function disable_cursor_hold()
-  vim.opt.eventignore:append('CursorHold')
+  vim.opt.eventignorewin:append('CursorHold')
 
   vim.api.nvim_create_augroup('LspConfig.DisableCursorHold', { clear = true })
 
@@ -11,7 +11,7 @@ local function disable_cursor_hold()
     once = true,
     desc = 'Prevent floating window with diagnostic opening while one with hover information is opened',
     callback = function ()
-      vim.opt.eventignore:remove('CursorHold')
+      vim.opt.eventignorewin:remove('CursorHold')
     end
   })
 end

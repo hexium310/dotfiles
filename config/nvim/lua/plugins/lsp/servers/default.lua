@@ -25,17 +25,6 @@ local default = {
       end,
     },
   },
-  handlers = {
-    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-      border = 'rounded',
-      focusable = false,
-    }),
-    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = 'rounded',
-      silent = true,
-      focusable = false,
-    }),
-  },
   on_attach = function (client, bufnr)
     local maps = {
       { { 'n', 'i' }, '<F2>', vim.lsp.buf.rename },

@@ -19,7 +19,7 @@ require('statuscol').setup({
     {
       sign = {
         namespace = {
-          'diagnostic/signs',
+          'diagnostic%.signs',
         },
         maxwidth = 1,
         colwidth = 2,

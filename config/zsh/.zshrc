@@ -26,6 +26,9 @@ if [[ -a $XDG_DATA_HOME/zcomet/bin/zcomet.zsh ]]; then
         zcomet snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
     fi
 
+    # OSC 133
+    zcomet snippet https://gitlab.freedesktop.org/Per_Bothner/specifications/-/raw/master/proposals/prompts-data/shell-integration.zsh
+
     zcomet load zsh-users/zsh-autosuggestions
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247,underline'
     ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(fzf-completion vi-cmd-mode history-beginning-search-backward-end history-beginning-search-forward-end)

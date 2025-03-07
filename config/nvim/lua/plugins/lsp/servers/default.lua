@@ -39,7 +39,7 @@ local default = {
       { 'n', '<C-u>', function () require('plugins.utils').lsp.floating.send_key('<C-u>', bufnr) end },
       { 'n', '<C-f>', function () require('plugins.utils').lsp.floating.send_key('<C-f>', bufnr) end },
       { 'n', '<C-b>', function () require('plugins.utils').lsp.floating.send_key('<C-b>', bufnr) end },
-      { 'n', '<F8>', vim.lsp.buf.format },
+      { { 'n', 'x' }, '<F8>', vim.lsp.buf.format },
     }
 
     utils.set_keymaps(maps, {

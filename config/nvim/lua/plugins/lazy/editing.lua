@@ -56,7 +56,7 @@ return {
   {
     'tversteeg/registers.nvim',
     keys = {
-      { '"', mode = { 'n', 'v' } },
+      { '"', mode = { 'n', 'x' } },
       { '<C-r>', mode = 'i' },
     },
     config = function ()

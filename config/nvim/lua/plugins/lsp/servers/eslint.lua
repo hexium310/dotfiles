@@ -15,7 +15,7 @@ local opts = {
     local maps = {
       { 'n', ']a', function () vim.diagnostic.jump(vim.tbl_deep_extend('force', jump_opts, { count = 1 })) end },
       { 'n', '[a', function () vim.diagnostic.jump(vim.tbl_deep_extend('force', jump_opts, { count = -1 })) end },
-      { 'n', '<F8>', function () vim.lsp.buf.format({
+      { { 'n', 'x' }, '<F8>', function () vim.lsp.buf.format({
         async = true,
         filter = function (c)
           return c.name ~= 'ts_ls'

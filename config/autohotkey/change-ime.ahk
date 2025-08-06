@@ -20,6 +20,10 @@ $~vkFF:: {
     }
 }
 
+$~sc029:: {
+  SetDefaultKeyboard(0x0804)
+}
+
 ; https://github.com/avin/ahk-toys/blob/1baf712c7c6c75e775820403aa7b3ca01b175ff4/run-apps/run-apps.ahk#L32-L45
 SetDefaultKeyboard(localeID) {
     static SPI_SETDEFAULTINPUTLANG := 0x005A

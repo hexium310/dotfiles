@@ -1,6 +1,4 @@
-local M = {}
-
-local opts = {
+return {
   settings = {
     gopls = {
       semanticTokens = true,
@@ -10,7 +8,3 @@ local opts = {
     },
   },
 }
-
-M.opts = opts
-
-return M

@@ -41,9 +41,6 @@ return {
   {
     'mrcjkb/rustaceanvim',
     ft = { 'rust' },
-    config = function ()
-      require('plugins.lsp.servers.rust_analyzer').setup()
-    end
   },
   {
     'folke/lazydev.nvim',

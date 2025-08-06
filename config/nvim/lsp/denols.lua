@@ -1,6 +1,10 @@
-local M = {}
-
-local opts = {
+return {
+  root_dir = function (bufnr, on_dir)
+    local type, dir = require('plugins.lsp.typescript_project_type').detect(bufnr)
+    if type == 'deno' then
+      on_dir(dir)
+    end
+  end,
   settings = {
     typescript = {
       suggest = {
@@ -25,7 +29,3 @@ local opts = {
     },
   },
 }
-
-M.opts = opts
-
-return M

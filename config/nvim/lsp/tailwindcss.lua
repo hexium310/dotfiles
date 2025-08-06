@@ -1,13 +1,7 @@
-local M = {}
-
-local opts = {
+return {
   filetypes = {
     'html',
     'javascriptreact',
     'typescriptreact',
   },
 }
-
-M.opts = opts
-
-return M

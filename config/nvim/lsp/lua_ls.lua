@@ -1,6 +1,4 @@
-local M = {}
-
-local opts = {
+return {
   settings = {
     Lua = {
       hover = {
@@ -18,7 +16,3 @@ local opts = {
     },
   },
 }
-
-M.opts = opts
-
-return M

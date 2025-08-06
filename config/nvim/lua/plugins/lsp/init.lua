@@ -1,9 +1,6 @@
-vim.lsp.stop_client(vim.lsp.get_clients())
+local default_config = require('plugins.lsp.config')
 
-require('lspconfig.ui.windows').default_options.border = 'rounded'
-
-require('mason-lspconfig').setup({
-  ensure_installed = {
+local servers = {
     'denols',
     'emmet_language_server',
     'eslint',
@@ -15,8 +12,13 @@ require('mason-lspconfig').setup({
     'ts_ls',
     'vimls',
     'yamlls',
-  },
+}
+
+require('mason-lspconfig').setup({
+  ensure_installed = servers,
 })
 
 require('plugins.lsp.diagnostic').setup()
-require('plugins.lsp.lspconfig').setup()
+
+vim.lsp.config('*', default_config)
+vim.lsp.enable(servers)

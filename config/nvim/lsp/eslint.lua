@@ -1,9 +1,7 @@
 local utils = require('plugins.utils')
 local diagnostic = require('plugins.lsp.diagnostic')
 
-local M = {}
-
-local opts = {
+return {
   on_attach = function (client, bufnr)
     local namespace = vim.lsp.diagnostic.get_namespace(client.id)
     local jump_opts = {
@@ -35,7 +33,3 @@ local opts = {
     },
   },
 }
-
-M.opts = opts
-
-return M

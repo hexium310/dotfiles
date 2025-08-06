@@ -6,7 +6,7 @@ patterns = [
   "^pixiv_(?P<id>[0-9]+)_p[0-9]+",
   "^(?P<id>[0-9]+)_p[0-9]+",
 ]
-url = "https://pixiv.net/artworks/{{.Id}}"
+url = "https://www.pixiv.net/artworks/{{.Id}}"
 
 [[sites]]
 name = "twitter"

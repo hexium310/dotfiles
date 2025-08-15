@@ -22,3 +22,4 @@ require('plugins.lsp.diagnostic').setup()
 
 vim.lsp.config('*', default_config)
 vim.lsp.enable(servers)
+vim.lsp.enable('rust_analyzer', false)

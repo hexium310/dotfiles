@@ -16,3 +16,6 @@ yarn-error.log
 
 ### Visual Studio Code ###
 .vscode/
+
+### Personal directory ###
+.local/

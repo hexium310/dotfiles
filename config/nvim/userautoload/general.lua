@@ -114,7 +114,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 ;(function ()
   local filetypes_to_display_no_line_number = {
-    'DressingInput',
+    'snacks_input',
     'Trouble',
     'fugitive',
     'lazy',

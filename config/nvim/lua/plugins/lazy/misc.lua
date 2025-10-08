@@ -90,11 +90,11 @@ return {
     end,
   },
   {
-    'stevearc/dressing.nvim',
-    event = { 'BufRead' },
+    'folke/snacks.nvim',
+    lazy = false,
     config = function ()
-      require('plugins.dressing')
-    end
+      require('plugins.snacks')
+    end,
   },
   {
     'j-hui/fidget.nvim',

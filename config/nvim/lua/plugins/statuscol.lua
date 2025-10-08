@@ -2,7 +2,7 @@ local builtin = require('statuscol.builtin')
 
 require('statuscol').setup({
   ft_ignore = {
-    'DressingInput',
+    'snacks_input',
     'Trouble',
     'fugitive',
     'lazy',

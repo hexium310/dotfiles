@@ -62,6 +62,8 @@ fzf.setup({
 })
 vim.env.DELTA_FEATURES = '+codeaction-preview'
 
+fzf.register_ui_select()
+
 local function show_fzf(callback)
   local disables = {
     'Trouble',

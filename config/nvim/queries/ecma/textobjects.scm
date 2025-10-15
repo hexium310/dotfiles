@@ -20,29 +20,29 @@
 ; [firstItem, secondItem, thirdItem]
 ;  |<------>|
 ;           |<-------->||-------|
-((array
+(array
   "," @parameter.outer
   .
-  _ @parameter.inner @parameter.outer))
-((array
-   .
+  _ @parameter.inner @parameter.outer)
+(array
+  .
   _ @parameter.inner @parameter.outer
   .
-  ","? @parameter.outer))
+  ","? @parameter.outer)
 
 ; @parameter.inner
-; { foo: value, bar: value, baz: value }
-;   |<------>|  |<------>|  |<------>|
+; { foo: value, shorthand_bar, baz: value }
+;   |<------>|  |<--------->|  |<------>|
 ; @parameter.outer
-; { foo: value, bar: value, baz: value }
+; { foo: value, shorthand_bar, baz: value }
 ;   |<------->|
-;             |<-------->||<-------->|
+;             |<----------->||<-------->|
 (object
   "," @parameter.outer
   .
-  (pair) @parameter.inner @parameter.outer)
+  (_) @parameter.inner @parameter.outer)
 (object
   .
-  (pair) @parameter.inner @parameter.outer
+  (_) @parameter.inner @parameter.outer
   .
   ","? @parameter.outer)

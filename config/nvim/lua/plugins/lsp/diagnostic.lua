@@ -31,9 +31,6 @@ function M.setup()
         [vim.diagnostic.severity.HINT] = utils.diagnostic.signs.text.HINT,
       },
     },
-    jump = {
-      float = utils.diagnostic.float.opts,
-    },
   })
 end
 

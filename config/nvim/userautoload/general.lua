@@ -34,6 +34,7 @@ vim.opt.shortmess:append('cs')
 vim.opt.showtabline = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.winborder = 'rounded'
 vim.g.loaded_matchit = true
 vim.g.loaded_matchparen = true
 

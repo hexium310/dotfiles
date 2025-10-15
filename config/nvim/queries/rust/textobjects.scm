@@ -1,29 +1,24 @@
 ;extends
 
-((parameters
-  "," @_start . (type_identifier) @parameter.inner)
- (#make-range! "parameter.outer" @_start @parameter.inner))
-((parameters
-  . (type_identifier) @parameter.inner . ","? @_end)
- (#make-range! "parameter.outer" @parameter.inner @_end))
-
-((tuple_type
-  "," @_start . (_) @parameter.inner)
- (#make-range! "parameter.outer" @_start @parameter.inner))
-((tuple_type
-  . (_) @parameter.inner . ","? @_end)
- (#make-range! "parameter.outer" @parameter.inner @_end))
-
 ((array_expression
-  "," @_start . (_) @parameter.inner)
- (#make-range! "parameter.outer" @_start @parameter.inner))
+  "," @parameter.outer
+  .
+  _ @parameter.inner @parameter.outer))
 ((array_expression
-  . (_) @parameter.inner . ","? @_end)
- (#make-range! "parameter.outer" @parameter.inner @_end))
+  .
+  _ @parameter.inner @parameter.outer
+  .
+  ","? @parameter.outer))
 
+; @method.inner
+; foo.methodA(args).methodB()
+;     |<--->|       |<--->|
+; @method.outer
+; foo.methodA(args).methodB()
+;    |<---------->||<------>|
 ((call_expression
   function: (field_expression
-    value: (_) "." @_start
-    field: (field_identifier) @method.inner)
-  arguments: (arguments) @_end)
-  (#make-range! "method.outer" @_start @_end))
+    value: _
+    "." @method.outer
+    field: (field_identifier) @method.inner @method.outer)
+  arguments: (arguments) @method.outer))

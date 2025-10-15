@@ -8,11 +8,10 @@
 ;    |<------>||<------>||<------>|
 (call_expression
   function: (member_expression
-    object: (_)
-    "." @_start
-    property: (property_identifier) @method.inner)
-  arguments: (arguments) @_end
-  (#make-range! "method.outer" @_start @_end))
+    object: _
+    "." @method.outer
+    property: (property_identifier) @method.inner @method.outer)
+  arguments: (arguments) @method.outer)
 
 ; @parameter.inner
 ; [firstItem, secondItem, thirdItem]
@@ -20,18 +19,16 @@
 ; @parameter.outer
 ; [firstItem, secondItem, thirdItem]
 ;  |<------>|
-;           |<-------->||<------->|
+;           |<-------->||-------|
 ((array
-  "," @_start
+  "," @parameter.outer
   .
-  (_) @parameter.inner)
- (#make-range! "parameter.outer" @_start @parameter.inner))
+  _ @parameter.inner @parameter.outer))
 ((array
    .
-  (_) @parameter.inner
+  _ @parameter.inner @parameter.outer
   .
-  ","? @_end)
- (#make-range! "parameter.outer" @parameter.inner @_end))
+  ","? @parameter.outer))
 
 ; @parameter.inner
 ; { foo: value, bar: value, baz: value }
@@ -41,13 +38,11 @@
 ;   |<------->|
 ;             |<-------->||<-------->|
 (object
-  "," @_start
+  "," @parameter.outer
   .
-  (pair) @parameter.inner
- (#make-range! "parameter.outer" @_start @parameter.inner))
+  (pair) @parameter.inner @parameter.outer)
 (object
   .
-  (pair) @parameter.inner
+  (pair) @parameter.inner @parameter.outer
   .
-  ","? @_end
- (#make-range! "parameter.outer" @parameter.inner @_end))
+  ","? @parameter.outer)

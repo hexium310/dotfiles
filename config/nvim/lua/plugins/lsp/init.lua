@@ -16,6 +16,7 @@ local servers = {
 
 require('mason-lspconfig').setup({
   ensure_installed = servers,
+  automatic_enable = false,
 })
 
 require('plugins.lsp.diagnostic').setup()

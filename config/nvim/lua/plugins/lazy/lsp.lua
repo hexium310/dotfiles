@@ -18,10 +18,6 @@ return {
           require('plugins.lsp.signature')
         end,
       },
-      {
-        'hrsh7th/cmp-nvim-lsp',
-        module = true,
-      },
     },
     config = function ()
       require('plugins.lsp')

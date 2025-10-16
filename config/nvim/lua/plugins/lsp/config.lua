@@ -17,7 +17,6 @@ local function disable_cursor_hold()
 end
 
 local default = {
-  capabilities = require('cmp_nvim_lsp').default_capabilities(),
   commands = {
     RenameFile = {
       function ()

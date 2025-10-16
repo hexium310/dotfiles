@@ -77,14 +77,10 @@ return {
     },
   },
   {
-    'hrsh7th/nvim-cmp',
-    event = { 'InsertEnter' },
-    dependencies = {
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-    },
+    'saghen/blink.cmp',
+    build = 'cargo build --release',
     config = function ()
-      require('plugins.cmp')
+      require('plugins.blink')
     end,
   },
   {

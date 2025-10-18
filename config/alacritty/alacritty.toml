@@ -39,6 +39,7 @@ bindings = [
     { key = 'Q', mods = 'Control', mode = 'Vi', action = 'Quit' },
     { key = 'Escape', mode = 'Vi|~Search', action = 'ToggleViMode' },
     { key = '^', mods = 'Control', chars = "\u001e" },
+    { key = 'Space', mods = 'Control', chars = "\u0000" },
 ]
 
 [[hints.enabled]]

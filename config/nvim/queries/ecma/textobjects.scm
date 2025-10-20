@@ -46,3 +46,23 @@
   (_) @parameter.inner @parameter.outer
   .
   ","? @parameter.outer)
+
+(import_clause
+  "," @parameter.outer
+  .
+  (_) @parameter.inner @parameter.outer)
+(import_clause
+  .
+  (_) @parameter.inner @parameter.outer
+  .
+  ","? @parameter.outer)
+
+(named_imports
+  "," @parameter.outer
+  .
+  (_) @parameter.inner @parameter.outer)
+(named_imports
+  .
+  (_) @parameter.inner @parameter.outer
+  .
+  ","? @parameter.outer)

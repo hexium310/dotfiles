@@ -39,8 +39,12 @@ require('blink.cmp').setup({
           },
           label_detail_or_source_name = {
             text = function (ctx)
-              if ctx.source_id == 'lsp' and ctx.label_detail ~= "" then
-                return ctx.label_detail
+              if ctx.source_id == 'lsp' then
+                if ctx.label_detail ~= "" then
+                  return ctx.label_detail
+                else
+                    return ("[%s]") :format(ctx.item.client_name)
+                end
               end
 
               return ("[%s]") :format(ctx.source_name)

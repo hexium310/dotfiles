@@ -1,3 +1,5 @@
+local namespaces_without_signs = {}
+
 local M = {
   diagnostic = {
     signs = {
@@ -15,6 +17,12 @@ local M = {
         source = 'always',
       },
     },
+    ---@param namespace number
+    ignore_signs = function (namespace)
+      if not vim.tbl_contains(namespaces_without_signs, namespace) then
+        table.insert(namespaces_without_signs, namespace)
+      end
+    end,
   },
   lsp = {
     floating = {

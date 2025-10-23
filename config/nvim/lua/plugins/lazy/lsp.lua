@@ -1,26 +1,24 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    dependencies = {
-      {
-        'williamboman/mason.nvim',
-        cmd = { 'Mason' },
-        config = function ()
-          require('plugins.mason')
-        end,
-      },
-      {
-        'williamboman/mason-lspconfig.nvim',
-      },
-      {
-        'ray-x/lsp_signature.nvim',
-        config = function ()
-          require('plugins.lsp.signature')
-        end,
-      },
-    },
+  },
+  {
+    'williamboman/mason.nvim',
+    cmd = { 'Mason' },
     config = function ()
-      require('plugins.lsp')
+      require('plugins.mason')
+    end,
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    config = function ()
+      require('plugins.mason_lspconfig')
+    end,
+  },
+  {
+    'ray-x/lsp_signature.nvim',
+    config = function ()
+      require('plugins.lsp.signature')
     end,
   },
   {

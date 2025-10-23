@@ -1,5 +1,4 @@
 local utils = require('plugins.utils')
-local diagnostic = require('plugins.lsp.diagnostic')
 
 ---@type vim.lsp.Config
 return {
@@ -26,7 +25,7 @@ return {
       }) end },
     }
 
-    diagnostic.ignore_signs(namespace)
+    utils.diagnostic.ignore_signs(namespace)
     utils.set_keymaps(maps, {
       buffer = bufnr,
       silent = true,

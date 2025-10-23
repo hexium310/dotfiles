@@ -1,10 +1,5 @@
 local default_config = require('plugins.lsp.config')
 
-local ensure_installed = {
-  'emmet_language_server',
-  'vimls',
-}
-
 local servers = {
   'biome',
   'denols',
@@ -20,12 +15,6 @@ local servers = {
   'ts_ls',
   'yamlls',
 }
-
-require('mason-lspconfig').setup({
-  ensure_installed,
-})
-
-require('plugins.lsp.diagnostic').setup()
 
 vim.lsp.config('*', default_config)
 vim.lsp.enable(servers)

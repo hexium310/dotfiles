@@ -1,7 +1,12 @@
 local utils = require('plugins.utils')
 local diagnostic = require('plugins.lsp.diagnostic')
 
+---@type vim.lsp.Config
 return {
+  -- https://archlinux.org/packages/extra/any/eslint-language-server/
+  cmd = {
+    'eslint-language-server',
+  },
   on_attach = function (client, bufnr)
     local namespace = vim.lsp.diagnostic.get_namespace(client.id)
     local jump_opts = {

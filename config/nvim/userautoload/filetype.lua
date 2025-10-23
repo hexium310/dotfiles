@@ -5,6 +5,7 @@ vim.filetype.add({
   pattern = {
     ['.*/config/git/config'] = 'gitconfig',
     ['.*%.gitconfig'] = 'gitconfig',
+    ['compose.*%.yaml'] = 'yaml.docker-compose',
   },
 })
 

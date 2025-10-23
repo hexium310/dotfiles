@@ -1,29 +1,34 @@
 local default_config = require('plugins.lsp.config')
 
+local ensure_installed = {
+  'emmet_language_server',
+  'vimls',
+}
+
 local servers = {
-    'denols',
-    'emmet_language_server',
-    'eslint',
-    'gopls',
-    'jsonls',
-    'lua_ls',
-    'rust_analyzer',
-    'tailwindcss',
-    'ts_ls',
-    'vimls',
-    'yamlls',
+  'biome',
+  'denols',
+  'docker_language_server',
+  'dockerls',
+  'eslint',
+  'gopls',
+  'jsonls',
+  'lua_ls',
+  -- `rust-analyzer` is used by rustaceanvim instead
+  -- 'rust_analyzer',
+  'taplo',
+  'ts_ls',
+  'yamlls',
 }
 
 require('mason-lspconfig').setup({
-  ensure_installed = servers,
-  automatic_enable = false,
+  ensure_installed,
 })
 
 require('plugins.lsp.diagnostic').setup()
 
 vim.lsp.config('*', default_config)
 vim.lsp.enable(servers)
-vim.lsp.enable('rust_analyzer', false)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('plugins.lsp', {}),

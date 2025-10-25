@@ -12,11 +12,11 @@
 
 ; Method
 ; @method.inner
-; foo.identifier.methodA(args).methodB()
-;                |<--->|       |<--->|
+; foo.identifier.methodA(args.field).methodB();
+;                |<--->|             |<--->|
 ; @method.outer
-; foo.identifier.methodA(args).methodB()
-;               |<---------->||------|
+; foo.identifier.methodA(args.field).methodB();
+;               |<---------------->||------|
 (call_expression
   function: (field_expression
               value: _
@@ -26,13 +26,17 @@
 
 ; Field identifier
 ; @method.inner
-; foo.identifier.methodA(args).methodB()
-;     |<------>|
+; foo.identifier.methodA(args.field).methodB();
+;     |<------>|              |<->|
+; let v = foo.identifier;
+;             |<------>|
 ; @method.outer
-; foo.identifier.methodA(args).methodB()
-;    |<------->|
-(field_expression
-  (field_expression
+; foo.identifier.methodA(args.field).methodB();
+;    |<------->|             |<-->|
+; let v = foo.identifier;
+;            |<------->|
+((field_expression
     value: _
     "." @method.outer
-    field: (field_identifier) @method.inner @method.outer))
+    field: (field_identifier) @method.inner @method.outer) @_parent
+ (#not-has-parent? @_parent call_expression))

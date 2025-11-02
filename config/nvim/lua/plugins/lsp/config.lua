@@ -50,6 +50,8 @@ local default = {
       vim.lsp.inlay_hint.enable(true)
     end
 
+    vim.lsp.document_color.enable(true, bufnr, { style = 'virtual' })
+
     vim.api.nvim_create_augroup('LspConfig', { clear = false })
 
     utils.create_unique_autocmd({ 'CursorHold' }, {

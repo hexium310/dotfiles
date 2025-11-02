@@ -23,13 +23,6 @@ return {
     end,
   },
   {
-    'NvChad/nvim-colorizer.lua',
-    event = { 'BufRead' },
-    config = function ()
-      require('plugins.colorizer')
-    end
-  },
-  {
     'andymass/vim-matchup',
     event = { 'BufRead' },
     init = function ()

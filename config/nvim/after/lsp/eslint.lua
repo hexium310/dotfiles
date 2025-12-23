@@ -5,6 +5,7 @@ return {
   -- https://archlinux.org/packages/extra/any/eslint-language-server/
   cmd = {
     'eslint-language-server',
+    '--stdio',
   },
   on_attach = function (client, bufnr)
     local namespace = vim.lsp.diagnostic.get_namespace(client.id)

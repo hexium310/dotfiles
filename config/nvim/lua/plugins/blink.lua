@@ -22,10 +22,6 @@ require('blink.cmp').setup({
       max_height = math.floor(vim.o.lines * 0.4),
       border = 'none',
       draw = {
-        treesitter = {
-          'lsp',
-          'buffer',
-        },
         columns = {
           { 'kind_icon' },
           { 'label', 'label_description', gap = 1 },

@@ -43,6 +43,19 @@ return {
     end
   },
   {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    config = function ()
+      require('plugins.lsp.typescript_tools')
+    end,
+  },
+  {
+    'esmuellert/nvim-eslint',
+    config = function ()
+      require('plugins.lsp.eslint')
+    end
+  },
+  {
     -- This will be installed for vim.uv typings and isn't vim plugin.
     'Bilal2453/luvit-meta',
     lazy = true,

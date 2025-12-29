@@ -5,14 +5,14 @@ local servers = {
   'denols',
   'docker_language_server',
   'dockerls',
-  'eslint',
+  -- 'eslint',
   'gopls',
   'jsonls',
   'lua_ls',
   -- `rust-analyzer` is used by rustaceanvim instead
   -- 'rust_analyzer',
   'taplo',
-  'ts_ls',
+  -- 'ts_ls',
   'yamlls',
 }
 

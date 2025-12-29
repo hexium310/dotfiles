@@ -11,10 +11,17 @@ return {
       completions = {
         completeFunctionCalls = true,
       },
+      preferences = {
+        importModuleSpecifierPreference = 'non-relative',
+        preferTypeOnlyAutoImports = true,
+      },
     },
     javascript = {
       completions = {
         completeFunctionCalls = true,
+      },
+      preferences = {
+        importModuleSpecifierPreference = 'non-relative',
       },
     },
   },

@@ -7,7 +7,7 @@ require('typescript-tools').setup({
     end
   end,
   settings = {
-    complete_function_calls = true,
+    complete_function_calls = false,
     tsserver_file_preferences = {
       importModuleSpecifierPreference = 'non-relative',
       preferTypeOnlyAutoImports = true,

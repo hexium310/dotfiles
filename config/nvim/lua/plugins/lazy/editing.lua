@@ -184,7 +184,15 @@ return {
   },
   {
     'kylechui/nvim-surround',
-    keys = { 'sa', 'ssa', 'sA', 'sAA', 'sd', 'sr', 'sR' },
+    keys = {
+      { 'sa', '<Plug>(nvim-surround-normal)', mode = { 'n' } },
+      { 'ssa', '<Plug>(nvim-surround-normal-cur)', mode = { 'n' } },
+      { 'sA', '<Plug>(nvim-surround-normal-line)', mode = { 'n' } },
+      { 'sAA', '<Plug>(nvim-surround-normal-cur-line)', mode = { 'n' } },
+      { 'sd', '<Plug>(nvim-surround-delete)', mode = { 'n' } },
+      { 'sr', '<Plug>(nvim-surround-change)', mode = { 'n' } },
+      { 'sR', '<Plug>(nvim-surround-change-line)', mode = { 'n' } },
+    },
     config = function ()
       require('plugins.surround')
     end

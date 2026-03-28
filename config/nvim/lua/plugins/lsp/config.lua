@@ -46,7 +46,7 @@ local default = {
       silent = true,
     })
 
-    if client.server_capabilities.inlayHintProvider then
+    if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, bufnr) then
       vim.lsp.inlay_hint.enable(true)
     end
 

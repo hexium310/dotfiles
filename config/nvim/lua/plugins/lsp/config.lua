@@ -50,7 +50,9 @@ local default = {
       vim.lsp.inlay_hint.enable(true)
     end
 
-    vim.lsp.document_color.enable(true, bufnr, { style = 'virtual' })
+    if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentColor, bufnr) then
+      vim.lsp.document_color.enable(true, { bufnr = bufnr }, { style = 'virtual' })
+    end
 
     vim.api.nvim_create_augroup('LspConfig', { clear = false })
 

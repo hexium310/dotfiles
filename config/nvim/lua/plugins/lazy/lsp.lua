@@ -32,6 +32,10 @@ return {
     end,
   },
   {
+    'mrjones2014/codesettings.nvim',
+    lazy = false,
+  },
+  {
     'mrcjkb/rustaceanvim',
     ft = { 'rust' },
   },

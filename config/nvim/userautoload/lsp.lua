@@ -16,7 +16,12 @@ local servers = {
   'yamlls',
 }
 
-vim.lsp.config('*', default_config)
+vim.lsp.config('*', vim.tbl_deep_extend('force',  default_config, {
+  before_init = function (_, config)
+    local codesettings = require('codesettings')
+    codesettings.with_local_settings(config.name, config)
+  end,
+}))
 vim.lsp.enable(servers)
 
 vim.api.nvim_create_autocmd('LspAttach', {

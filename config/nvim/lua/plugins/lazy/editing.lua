@@ -55,6 +55,7 @@ return {
   },
   {
     'tversteeg/registers.nvim',
+    url = 'https://codeberg.org/fosk/registers.nvim',
     keys = {
       { '"', mode = { 'n', 'x' } },
       { '<C-r>', mode = 'i' },

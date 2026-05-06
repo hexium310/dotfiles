@@ -61,6 +61,7 @@ install_dotfiels() {
   make_symlink autohotkey $XDG_CONFIG_HOME/autohotkey
   make_symlink systemd/user $XDG_CONFIG_HOME/systemd/user
   make_symlink srcurl $XDG_CONFIG_HOME/srcurl
+  make_symlink pacman $XDG_CONFIG_HOME/pacman
 }
 
 install_plugin_managers() {

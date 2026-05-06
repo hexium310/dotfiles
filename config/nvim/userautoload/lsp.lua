@@ -12,6 +12,7 @@ local servers = {
   -- `rust-analyzer` is used by rustaceanvim instead
   -- 'rust_analyzer',
   'taplo',
+  'tsgo',
   -- 'ts_ls',
   'yamlls',
 }

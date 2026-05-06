@@ -28,7 +28,7 @@ local M = {
     floating = {
       send_key = function (command, bufnr)
         bufnr = bufnr or vim.api.nvim_get_current_buf()
-        local lsp_floating_window = vim.F.npcall(vim.api.nvim_buf_get_var, bufnr, 'lsp_floating_preview')
+        local lsp_floating_window = vim.npcall(vim.api.nvim_buf_get_var, bufnr, 'lsp_floating_preview')
 
         local window = (function ()
           if lsp_floating_window and vim.api.nvim_win_is_valid(lsp_floating_window) and

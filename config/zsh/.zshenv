@@ -15,6 +15,7 @@ export KREW_ROOT=$XDG_DATA_HOME/krew
 export KUBECACHEDIR=$XDG_CACHE_HOME/kube
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
 export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
 export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
@@ -38,4 +39,5 @@ typeset -U path=(
     "${KREW_ROOT}/bin"
     "${path[@]}"
     "$GOPATH/bin"
+    "$PNPM_HOME/bin"
 )
